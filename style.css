@@ -1,0 +1,71 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+
+.container {
+    display: flex;
+
+}
+
+.mainSidebar {
+    background-color: black;
+    width: 270px;
+}
+
+.content {
+    background-color: #EEEBE5;
+}
+
+.mainMenu {
+    background-color: white;
+    padding: 25px 15px 0;
+}
+
+.main {
+    flex: 1;
+}
+
+.titleRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+
+}
+
+.name h1 {
+    margin: 0 15px 0 0;
+    font-size: 32px;
+    font-weight: 400;
+
+}
+.name img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.name button {
+    background-color: #EAEAEA;
+    border: 0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #9B9B9B;
+justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    outline: none;
+
+}
