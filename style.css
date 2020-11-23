@@ -6,6 +6,7 @@ html, body {
 *, *:after, *:before {
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
 }
 
 
@@ -35,6 +36,7 @@ html, body {
 .titleRow {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 .name {
@@ -49,6 +51,7 @@ html, body {
     font-weight: 400;
 
 }
+
 .name img {
     width: 40px;
     height: 40px;
@@ -62,10 +65,77 @@ html, body {
     width: 30px;
     height: 30px;
     color: #9B9B9B;
-justify-content: center;
+    justify-content: center;
     align-items: center;
     display: flex;
     cursor: pointer;
     outline: none;
 
 }
+
+.additionalMenu {
+}
+
+.additionalMenu a {
+    color: black;
+    opacity: 70%;
+    margin-right: 20px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.additionalMenu a:hover {
+    border-bottom-color: #FFC200;
+    transition: border-bottom-color 300ms ease-in-out;
+}
+
+.creators {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    margin-right: 10px;
+    display: flex;
+}
+
+.avatar a {
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+}
+
+.chatAvatar {
+    width: 16px;
+    height: 16px;
+}
+
+.button {
+    display: flex;
+}
+
+.share {
+    background-color: #EAEAEA;
+    padding: 0 15px;
+    border-radius: 12px;
+    border: none;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.chat {
+    background-color: #FFF8DD;
+    color: #FFC200;
+    padding: 0 15px;
+    border-radius: 12px;
+    border: none;
+    height: 30px;
+}
+
