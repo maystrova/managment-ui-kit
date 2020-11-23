@@ -1,0 +1,62 @@
+.navigation {
+    background-color: black;
+    width: 270px;
+    color: white;
+}
+
+.navigation__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 15px;
+    text-transform: uppercase;
+}
+
+.navigation__head button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    outline: none;
+}
+
+.navigation__head span {
+    display: flex;
+    align-items: center;
+}
+
+.navigation__head > span > img {
+    margin-right: 10px;
+}
+
+.navigation__userInfo {
+    background-color: #202020;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-weight: 100;
+    padding: 10px;
+}
+
+.navigation__greyText {
+    font-size: 13px;
+    color: grey;
+}
+
+.navigation__userInfo button {
+    background: transparent;
+    border: none;
+}
+
+.navigation__user {
+    padding-left: 15px;
+}
+
+.navigation__stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.navigation__stats .navigation__whiteText {
+    font-size: 21px;
+}
