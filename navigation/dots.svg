@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="4px" viewBox="0 0 16 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Oval</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Navigation" transform="translate(-234.000000, -122.000000)" fill="#9B9B9B">
+            <g id="User-Info" transform="translate(0.000000, 84.000000)">
+                <path d="M236,38 C237.104569,38 238,38.8954305 238,40 C238,41.1045695 237.104569,42 236,42 C234.895431,42 234,41.1045695 234,40 C234,38.8954305 234.895431,38 236,38 Z M242,38 C243.104569,38 244,38.8954305 244,40 C244,41.1045695 243.104569,42 242,42 C240.895431,42 240,41.1045695 240,40 C240,38.8954305 240.895431,38 242,38 Z M248,38 C249.104569,38 250,38.8954305 250,40 C250,41.1045695 249.104569,42 248,42 C246.895431,42 246,41.1045695 246,40 C246,38.8954305 246.895431,38 248,38 Z" id="More-Icon"></path>
+            </g>
+        </g>
+    </g>
+</svg>

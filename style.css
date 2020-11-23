@@ -13,10 +13,7 @@ html, body {
     display: flex;
 }
 
-.mainSidebar {
-    background-color: black;
-    width: 270px;
-}
+
 
 .content {
     background-color: #EEEBE5;

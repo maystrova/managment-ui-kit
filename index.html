@@ -2,15 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./header/style.css">
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="header/style.css"/>
+    <link rel="stylesheet" href="navigation/style.css"/>
     <title>Document</title>
 </head>
 <body>
 
 <div class="container">
-    <aside class="mainSidebar">
-        <h3>sidebar</h3>
+    <aside class="navigation">
+        <div class="navigation__head">
+
+            <span><img src="./navigation/navigation-icon.svg" alt="icon"> Projectus</span>
+
+                <button><img src="./navigation/search-icon.svg" alt="icon"></button>
+
+
+        </div>
+        <div class="navigation__userInfo">
+            <img src="./navigation/userpic.svg" alt="userpic">
+            <div class="navigation__user">
+                <spin class="navigation__whiteText">Emilee Simchenko</spin>
+                <spin class="navigation__greyText">Product Owner</spin>
+
+            </div>
+            <button><img src="./navigation/dots.svg" alt="more"></button>
+            
+        </div>
+
+        <div class="navigation__stats">
+            <div class="navigation__completed">
+                <span class="navigation__whiteText">372</span><br>
+                <span class="navigation__greyText">Completed Tasks</span>
+
+            </div>
+            <div class="navigation__open">
+                <span class="navigation__whiteText">1</span><br>
+                <span class="navigation__greyText">Open Tasks</span>
+
+            </div>
+            <div class="navigation__open"></div>
+        </div>
+
+
     </aside>
 
     <div class="main">
