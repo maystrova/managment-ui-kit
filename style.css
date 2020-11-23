@@ -9,10 +9,8 @@ html, body {
     margin: 0;
 }
 
-
 .container {
     display: flex;
-
 }
 
 .mainSidebar {
@@ -24,118 +22,7 @@ html, body {
     background-color: #EEEBE5;
 }
 
-.mainMenu {
-    background-color: white;
-    padding: 25px 15px 0;
-}
 
 .main {
     flex: 1;
 }
-
-.titleRow {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.name {
-    display: flex;
-    align-items: center;
-
-}
-
-.name h1 {
-    margin: 0 15px 0 0;
-    font-size: 32px;
-    font-weight: 400;
-
-}
-
-.name img {
-    width: 40px;
-    height: 40px;
-    margin-right: 15px;
-}
-
-.name button {
-    background-color: #EAEAEA;
-    border: 0;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    color: #9B9B9B;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-    outline: none;
-
-}
-
-.additionalMenu {
-}
-
-.additionalMenu a {
-    color: black;
-    opacity: 70%;
-    margin-right: 20px;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-.additionalMenu a:hover {
-    border-bottom-color: #FFC200;
-    transition: border-bottom-color 300ms ease-in-out;
-}
-
-.creators {
-    display: flex;
-    align-items: center;
-}
-
-.avatar {
-    margin-right: 10px;
-    display: flex;
-}
-
-.avatar a {
-    margin-right: 5px;
-    display: inline-block;
-}
-
-.avatar img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: block;
-}
-
-.chatAvatar {
-    width: 16px;
-    height: 16px;
-}
-
-.button {
-    display: flex;
-}
-
-.share {
-    background-color: #EAEAEA;
-    padding: 0 15px;
-    border-radius: 12px;
-    border: none;
-    height: 30px;
-    margin-right: 5px;
-}
-
-.chat {
-    background-color: #FFF8DD;
-    color: #FFC200;
-    padding: 0 15px;
-    border-radius: 12px;
-    border: none;
-    height: 30px;
-}
-

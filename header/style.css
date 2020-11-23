@@ -1,0 +1,111 @@
+
+.mainMenu {
+    background-color: white;
+    padding: 25px 15px 0;
+}
+
+.mainMenu__titleRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.mainMenu__creators {
+    display: flex;
+    align-items: center;
+}
+
+.mainMenu__additionalMenu {
+
+}
+
+.mainMenu__additionalMenu a {
+    color: black;
+    opacity: 70%;
+    margin-right: 20px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.mainMenu__additionalMenu a:hover {
+    border-bottom-color: #FFC200;
+    transition: border-bottom-color 300ms ease-in-out;
+}
+
+.mainMenu__name {
+    display: flex;
+    align-items: center;
+}
+
+.mainMenu__name h1 {
+    margin: 0 15px 0 0;
+    font-size: 32px;
+    font-weight: 400;
+
+}
+
+.mainMenu__name img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.mainMenu__name button {
+    background-color: #EAEAEA;
+    border: 0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #9B9B9B;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.avatar {
+    margin-right: 10px;
+    display: flex;
+}
+
+.avatar a {
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+}
+
+.chatAvatar {
+    width: 16px;
+    height: 16px;
+}
+
+.headerButtons {
+    display: flex;
+}
+
+.headerButton {
+    padding: 0 15px;
+    border-radius: 12px;
+    border: none;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.headerButton_share {
+    background-color: #EAEAEA;
+}
+
+.headerButton_chat {
+    background-color: #FFF8DD;
+    color: #FFC200;
+}

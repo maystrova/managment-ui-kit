@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./header/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -14,85 +15,82 @@
 
     <div class="main">
         <header class="mainMenu">
-         <div class="titleRow">
-             <div class="name">
-                 <img src="./project_icon.svg" alt="icon">
-                 <h1>Website Redesign</h1>
-                 <button>🖊️</button>
-             </div>
-             <div class="creators">
-                 <div class="avatar">
-                 <a href=""><img src="./avatar.png" alt="Avatar"></a>
-                 <a href=""><img src="./avatar.png" alt="Avatar"></a>
-                 <a href=""><img src="./avatar.png" alt="Avatar"></a>
-                 </div>
-                 <div class="button">
-                 <button class="share">Share</button>
-                 <button class="chat">💬Chat</button>
-                 </div>
-             </div>
-         </div>
-            <div class="additionalMenu">
+            <div class="mainMenu__titleRow">
+                <div class="mainMenu__name">
+                    <img src="./project_icon.svg" alt="icon">
+                    <h1>Website Redesign</h1>
+                    <button>🖊️</button>
+                </div>
+                <div class="mainMenu__creators">
+                    <div class="avatar">
+                        <a href=""><img src="header/avatar.png" alt="Avatar"></a>
+                        <a href=""><img src="header/avatar.png" alt="Avatar"></a>
+                        <a href=""><img src="header/avatar.png" alt="Avatar"></a>
+                    </div>
+                    <div class="headerButtons">
+                        <button class="headerButton headerButton_share">Share</button>
+                        <button class="headerButton headerButton_chat">💬Chat</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mainMenu__additionalMenu">
                 <a href="">Tasks</a>
                 <a href="">Kanban</a>
                 <a href="">Activity</a>
                 <a href="">Calendar</a>
                 <a href="">Files</a>
             </div>
-
-
         </header>
-       <div class="content">
-           <aside class="tasks">
-               <div class="backlog">
-                   <h3>Backlog</h3>
-                   <input type="text">
-                   <div class="backlogFirstTask">
-                       <input type="text">
-                       <span>E-mail after registration so I can confirm my address</span>
-                       <a href=""><img src="" alt="">development</a>
-                   </div>
-                   <div class="backlogSecondTask">
-                       <input type="text">
-                       <span>Find top 5 customers and get reviews from them</span>
-                       <a href=""><img src="" alt="">marketing</a>
-                   </div>
-                   <div class="backlogThirdTask">
-                       <input type="text">
-                       <span>Two-factor authentication to make my private data more secure</span>
-                       <a href=""><img src="" alt="">design</a>
-                   </div>
 
-               </div>
-               <div class="todo">
-                   <h3>To Do</h3>
-                   <input type="text">
-                   <div class="ToDoFirstTask">
-                       <input type="text">
-                       <span>An option to search in current projects or in all projects</span>
-                       <a href=""><img src="" alt="">design</a>
-                   </div>
-                   <div class="ToDoSecondTask">
-                       <input type="text">
-                       <span>Account for teams and personal in bottom style</span>
-                       <a href=""><img src="" alt="">marketing</a>
-                   </div>
-                   <div class="ToDoThirdTask">
-                       <input type="text">
-                       <span>Listing on Product Hunt so that we can reach as many potential users</span>
-                       <a href=""><img src="" alt="">design</a>
-                   </div>
+        <div class="content">
+            <aside class="tasks">
+                <div class="backlog">
+                    <h3>Backlog</h3>
+                    <input type="text">
+                    <div class="backlogFirstTask">
+                        <input type="text">
+                        <span>E-mail after registration so I can confirm my address</span>
+                        <a href=""><img src="" alt="">development</a>
+                    </div>
+                    <div class="backlogSecondTask">
+                        <input type="text">
+                        <span>Find top 5 customers and get reviews from them</span>
+                        <a href=""><img src="" alt="">marketing</a>
+                    </div>
+                    <div class="backlogThirdTask">
+                        <input type="text">
+                        <span>Two-factor authentication to make my private data more secure</span>
+                        <a href=""><img src="" alt="">design</a>
+                    </div>
+
+                </div>
+                <div class="todo">
+                    <h3>To Do</h3>
+                    <input type="text">
+                    <div class="ToDoFirstTask">
+                        <input type="text">
+                        <span>An option to search in current projects or in all projects</span>
+                        <a href=""><img src="" alt="">design</a>
+                    </div>
+                    <div class="ToDoSecondTask">
+                        <input type="text">
+                        <span>Account for teams and personal in bottom style</span>
+                        <a href=""><img src="" alt="">marketing</a>
+                    </div>
+                    <div class="ToDoThirdTask">
+                        <input type="text">
+                        <span>Listing on Product Hunt so that we can reach as many potential users</span>
+                        <a href=""><img src="" alt="">design</a>
+                    </div>
 
 
+                </div>
 
+            </aside>
+            <section class="task">
 
-               </div>
-
-              </aside>
-           <section class="task">
-
-           </section>
-       </div>
+            </section>
+        </div>
 
     </div>
 </div>
