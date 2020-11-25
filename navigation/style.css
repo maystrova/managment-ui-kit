@@ -63,7 +63,7 @@
 
 .navigation__list {
     list-style-type: none;
-    padding: 0 30px;
+    padding: 0;
 
 }
 
@@ -75,10 +75,11 @@
 
 .navigation__list li {
 
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
     font-weight: 100;
 
 }
+
 .navigation__counter {
     width: 20px;
     height: 20px;
@@ -92,19 +93,61 @@
     margin-left: 15px;
 }
 
-.navigation__link{
+.navigation__link {
     color: white;
     text-decoration: none;
     display: flex;
     align-items: center;
+    height: 40px;
+    padding: 0 10px 0 27px;
+    border-left: 3px solid transparent;
+    width: 100%;
 }
 
-.navigation__link img {
+.navigation__link__img {
     margin-right: 10px;
 }
 
 .addProject {
-    color: #FFC200;
+
     font-weight: 100;
+    padding: 20px 27px;
+    font-size: inherit;
+}
+
+.addProject a {
+    text-decoration: none;
+    color: #FFC200;
+
+}
+
+.navigation__link:hover {
+    background-color: #202020;
+    border-color: #FFC200;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team img + img {
+    margin-left: 5px;
+}
+
+
+.navigation__invite {
     padding: 30px;
+    font-weight: 100;
+    line-height: 1.7;
+}
+
+.navigation__invite a {
+    color: #FFC200;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    padding-bottom: 3px;
+    border-bottom-color: #ffc200ad;
+
 }
