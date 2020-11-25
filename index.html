@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="./style.css"/>
     <link rel="stylesheet" href="./header/style.css"/>
     <link rel="stylesheet" href="./navigation/style.css"/>
+    <link rel="stylesheet" href="./base/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -141,57 +142,118 @@
         </header>
 
         <div class="content">
-            <aside class="tasks">
+            <div class="base">
                 <div class="backlog">
-                    <h3>Backlog</h3>
-                    <input type="text">
-                    <div class="backlogFirstTask">
-                        <input type="text">
-                        <span>E-mail after registration so I can confirm my address</span>
-                        <a href=""><img src="" alt="">development</a>
+                    <div class="backlog__title">
+                        <h3>Backlog</h3>
+                        <button class="button_green backlog__button">+ Add Task</button>
                     </div>
-                    <div class="backlogSecondTask">
-                        <input type="text">
-                        <span>Find top 5 customers and get reviews from them</span>
-                        <a href=""><img src="" alt="">marketing</a>
-                    </div>
-                    <div class="backlogThirdTask">
-                        <input type="text">
-                        <span>Two-factor authentication to make my private data more secure</span>
-                        <a href=""><img src="" alt="">design</a>
+                    <div class="backlog__item taskItem_grey">
+                        <div>
+                            <button class="button_green backlog__check">
+                                <img src="./base/check.svg" alt="check">
+                            </button>
+                        </div>
+                        <div class="backlog__taskTag">
+                            <span>E-mail after registration so that I can confirm my address</span>
+
+                            <div class="tag"><img src="./base/userpic1.png" alt="userpic">
+                                <a class="tag_orange" href="#">Development</a>
+                            </div>
+                        </div>
+
                     </div>
 
+                    <div class="backlog__item taskItem_yellow">
+                        <div>
+                            <button class="button_white backlog__check">
+                                <img src="./base/checkgrey.svg" alt="check">
+                            </button>
+                        </div>
+                        <div class="backlog__taskTag">
+                            <span>Find top 5 customers and get reviews from them</span>
+
+                            <div>
+                                <img src="./base/userpic2.png" alt="userpic">
+                                <a class="tag tag_violet" href="#">Marketing</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="backlog__item taskItem_grey">
+                        <div>
+                            <button class="button_white backlog__check">
+                                <img src="./base/checkgrey.svg" alt="check">
+                            </button>
+                        </div>
+                        <div class="backlog__taskTag">
+                            <span>Two-factor authentication to make my private data more secure</span>
+
+                            <div class="tag">
+                                <img src="./base/userpic2.png" alt="userpic">
+                                <a class="tag_blue" href="#">Design</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="todo">
-                    <h3>To Do</h3>
-                    <input type="text">
-                    <div class="ToDoFirstTask">
-                        <input type="text">
-                        <span>An option to search in current projects or in all projects</span>
-                        <a href=""><img src="" alt="">design</a>
+
+                <div class="backlog">
+                    <div class="backlog__title">
+                        <h3>To Do</h3>
+                        <button class="button_green backlog__button">+ Add Task</button>
                     </div>
-                    <div class="ToDoSecondTask">
-                        <input type="text">
-                        <span>Account for teams and personal in bottom style</span>
-                        <a href=""><img src="" alt="">marketing</a>
-                    </div>
-                    <div class="ToDoThirdTask">
-                        <input type="text">
-                        <span>Listing on Product Hunt so that we can reach as many potential users</span>
-                        <a href=""><img src="" alt="">design</a>
+                    <div class="backlog__item taskItem_grey">
+                        <div>
+                            <button class="button_white backlog__check">
+                                <img src="./base/checkgrey.svg" alt="check">
+                            </button>
+                        </div>
+                        <div class="backlog__taskTag">
+                            <span>An option to search in current projects or in all projects </span>
+
+                            <div class="taskItem__footer">
+                                <img src="./base/userpic4.png" alt="userpic">
+                                <a class="tag tag_blue" href="#">Design</a>
+                            </div>
+                        </div>
+
                     </div>
 
+                    <div class="backlog__item taskItem_yellow">
+                        <div>
+                            <button class="button_white backlog__check">
+                                <img src="./base/checkgrey.svg" alt="check">
+                            </button>
+                        </div>
+                        <div class="backlog__taskTag">
+                            <span>Acoount for teams and personal in bottom style</span>
 
+                            <div class="taskItem__footer">
+                                <img src="./base/userpic5.png" alt="userpic">
+                                <a class="tag tag_violet" href="#">Marketing</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="backlog__item taskItem_grey">
+                        <div>
+                            <button class="button_white backlog__check">
+                                <img src="./base/checkgrey.svg" alt="check">
+                            </button>
+                        </div>
+                        <div class="backlog__taskTag">
+                            <span>Listing on Product Hunt so that we can reach as many potential users</span>
+
+                            <div class="taskItem__footer">
+                                <img src="./base/userpic6.png" alt="userpic">
+                                <a class="tag tag_blue" href="#">Design</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            </aside>
-            <section class="task">
-
-            </section>
+            </div>
         </div>
-
     </div>
 </div>
-
 </body>
 </html>
