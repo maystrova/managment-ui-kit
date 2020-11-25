@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="20" height="20" rx="4"></rect>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Navigation" transform="translate(-30.000000, -595.000000)">
+            <g id="Projects" transform="translate(0.000000, 437.000000)">
+                <g id="Item" transform="translate(0.000000, 148.000000)">
+                    <g id="Icon" transform="translate(30.000000, 10.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#FFC200" xlink:href="#path-1"></use>
+                        <path d="M20.093252,4.28113674 L20.093252,24.2811367 L-5.10180978,24.2811367 C-2.95556378,17.4152935 1.15613033,13.4372577 7.23327255,12.3470293 C13.3104148,11.2568009 17.5970746,8.56817003 20.093252,4.28113674 Z" id="Rectangle-2-Copy-2" fill="#FF0000" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                        <path d="M10.8900558,15.695588 C16.6989173,14.0862032 19.7666494,10.3144215 20.093252,4.38024284 L20.093252,24.2811367 L-5.10180978,24.2811367 C-1.85911202,20.5302318 0.782870159,18.1680703 2.82413674,17.1946521 C5.88603661,15.7345247 7.9627623,16.5066147 10.8900558,15.695588 Z" id="Rectangle-2" fill="#753AD7" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

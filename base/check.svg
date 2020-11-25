@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="9px" viewBox="0 0 12 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Path</title>
+    <g id="Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Project-Tasks" transform="translate(-400.000000, -292.000000)" fill="#1D201C">
+            <g id="Task-List" transform="translate(341.000000, 166.000000)">
+                <g id="Backlog" transform="translate(30.000000, 30.000000)">
+                    <g id="Task-Item" transform="translate(0.000000, 60.000000)">
+                        <g id="Tick" transform="translate(20.000000, 25.000000)">
+                            <path d="M20.5611951,11.4402894 C19.976122,10.8552409 19.0250031,10.8522406 18.4369296,11.4372892 L13.4983123,16.3786994 L11.56007,14.4405385 C10.9749969,13.8554899 10.023878,13.8554899 9.43880485,14.4405385 C8.85373172,15.0255871 8.85373172,15.976666 9.43880485,16.5617146 L12.4391799,19.5619636 C12.7302163,19.8529878 13.1142643,20 13.4983123,20 C13.8823603,20 14.2664083,19.8529878 14.5604451,19.5619636 L20.5611951,13.5614655 C21.1462683,12.976417 21.1462683,12.025338 20.5611951,11.4402894 Z" id="Path"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

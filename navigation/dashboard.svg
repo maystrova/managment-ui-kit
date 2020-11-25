@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="20" height="20" rx="4"></rect>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Navigation" transform="translate(-30.000000, -475.000000)">
+            <g id="Projects" transform="translate(0.000000, 437.000000)">
+                <g id="Item" transform="translate(0.000000, 28.000000)">
+                    <g id="Icon" transform="translate(30.000000, 10.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#FFC200" xlink:href="#path-1"></use>
+                        <path d="M14.5578793,-0.368315123 L20.4902765,-0.368315123 L20.4902765,10.2940729 L19.5575245,10.3588469 C16.064876,10.60139 13.0369048,7.96665907 12.7943617,4.47401053 C12.6699871,2.68300347 13.3108686,0.923249709 14.5578793,-0.368315123 L14.5578793,-0.368315123 L14.5578793,-0.368315123 Z" id="Rectangle" fill="#FF0000" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                        <path d="M-6.61022214,27.9030787 C-2.81890239,27.9030787 -6.61022214,23.5090086 1.98169864,22.6135346 C10.5736194,21.7180606 15.2394349,12.0969213 11.4481152,12.0969213 C7.65679543,12.0969213 -12.3818941,15.9616744 -12.3818941,19.573088 C-12.3818941,23.1845015 -10.4015419,27.9030787 -6.61022214,27.9030787 Z" id="Oval" fill="#753AD7" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
