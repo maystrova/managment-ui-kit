@@ -1,0 +1,211 @@
+.content {
+    display: flex;
+}
+
+.taskOpened {
+    width: 636px;
+    font-weight: 100;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.taskOpened__title {
+    text-transform: uppercase;
+    padding-bottom: 15px;
+}
+
+.taskOpened__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.taskOpened__top h3 {
+    font-weight: 300;
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.taskOpened__buttons input {
+    width: 30px;
+    height: 30px;
+}
+
+.taskOpened__buttons {
+    display: flex;
+    align-items: center;
+}
+
+.buttons__more {
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+
+}
+
+.buttons__more a {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons__more:hover {
+    opacity: 70%;
+}
+
+.taskOpened__info {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ECECEC;
+}
+
+.taskOpened__header {
+    padding: 40px 20px 20px;
+}
+
+.description {
+    padding: 20px 20px 40px;
+    border-bottom: 1px solid #ECECEC;
+    margin-bottom: 20px;
+}
+
+.task__borderBottom {
+    border-bottom: 1px solid #ECECEC;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+
+}
+
+.taskOpened__asignTo a {
+    display: flex;
+    align-items: center;
+}
+
+.taskOpened__info img {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.taskOpened__info a {
+    text-decoration: none;
+    color: black;
+}
+
+.description p {
+    line-height: 1.5;
+    padding-bottom: 20px;
+}
+
+.description h4 {
+    font-weight: 300;
+}
+
+.task__files {
+    display: flex;
+}
+
+.task__file {
+    display: flex;
+    margin-right: 30px;
+}
+
+.files__pdf {
+    width: 40px;
+    height: 40px;
+    background-color: #FFE2E2;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FF1000;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.files__pdf span {
+    opacity: 70%;
+}
+
+.file__weight {
+    opacity: 70%;
+    margin-right: 5px;
+}
+
+.file__delete {
+    color: #FF1000;
+}
+
+.file__name {
+    padding-bottom: 5px;
+}
+
+.discussion h4 {
+    font-weight: 300;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.commentArea {
+    width: 100%;
+    border: none;
+    background-color: #EAEAEA;
+    height: 40px;
+    border-radius: 4px;
+    color: grey;
+    padding-left: 10px;
+}
+
+.addComment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.discussion {
+    padding: 20px;
+}
+
+.discussion img {
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+
+}
+
+.discussion__comment {
+    display: flex;
+    height: 112px;
+    border-radius: 10px;
+    background-color: #F7F6F3;
+    border: none;
+    align-items: center;
+    margin: 0 0 20px 25px;
+    padding: 40px;
+    position: relative;
+}
+
+.discussion__commentContent {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.discussion__commentContent h5 {
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.comment__mention {
+    color: #FFC200;
+    opacity: 70%;
+}
+
+.discussion__commentPic {
+    position: absolute;
+    left: -24px;
+    top: 24px;
+}
