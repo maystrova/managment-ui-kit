@@ -4,6 +4,7 @@
     border-radius: 6px;
 }
 
+
 .backlog {
     font-weight: 100;
     padding: 20px;
@@ -84,36 +85,6 @@
     background-color: #FFFFFF;
 }
 
-.tag {
-    text-transform: uppercase;
-    font-size: 12px;
-    border-radius: 10px;
-    margin: 10px 0;
-    display: inline-block;
-    height: 24px;
-    padding: 0 10px;
-    line-height: 24px;
-    text-decoration: none;
-}
-
-.tag a {
-    text-decoration: none;
-}
-
-.tag_orange {
-    background-color: #FFF1E2;
-    color: #ED6400;
-}
-
-.tag_violet {
-    background-color: #F5F0FF;
-    color: #764CED;
-}
-
-.tag_blue {
-    background-color: #E3EFFF;
-    color: #1975D0;
-}
 
 .backlog__item {
     border-radius: 10px;

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="./header/style.css"/>
     <link rel="stylesheet" href="./navigation/style.css"/>
     <link rel="stylesheet" href="./base/style.css">
+    <link rel="stylesheet" href="task/style.css">
+    <link rel="stylesheet" href="./tag/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -23,8 +25,8 @@
         <div class="navigation__userInfo">
             <img src="./navigation/userpic.svg" alt="userpic">
             <div class="navigation__user">
-                <spin class="navigation__whiteText">Emilee Simchenko</spin>
-                <spin class="navigation__greyText">Product Owner</spin>
+                <span class="navigation__whiteText">Emilee Simchenko</span>
+                <span class="navigation__greyText">Product Owner</span>
 
             </div>
             <button><img src="./navigation/dots.svg" alt="more"></button>
@@ -250,6 +252,61 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="taskOpened">
+                <header class="taskOpened__top">
+                    <div class="taskOpened__head">
+                    <h3>Find top 5 customer requests</h3>
+                    <span>Added by Kristin A. yesterday at 12:44 pm</span>
+                    </div>
+                    <div class="taskOpened__buttons">
+                        <input type="checkbox" checked>
+                        <button class="buttons__more"><a href="#"><img src="./navigation/dots.svg" alt="more"></a></button>
+                    </div>
+                </header>
+                <div class="taskOpened__info task__borderBottom">
+                    <div class="taskOpened__asignTo">
+                        <div class="taskOpened__title"><span>Asign to</span></div>
+                        <a href="#"><img src="./base/userpic1.png" alt="pic">Linzell Bowman</a>
+                    </div>
+                    <div class="DueOn">
+                        <div class="taskOpened__title"><span>Due on</span></div>
+                        <span>Tue, Dec 25</span>
+                    </div>
+                    <div class="taskTag">
+
+                        <div class="taskOpened__title"><span>Tag</span></div>
+                        <a class="task__tag tag tag_violet">Marketing</a>
+                    </div>
+                    <div class="followers">
+                        <div class="taskOpened__title"><span>Followers</span></div>
+                        <a href=""><img src="./task/userpic2.png" alt="pic"></a>
+                        <a href=""><img src="./task/userpic3.png" alt="pic"></a>
+                        <a href=""><img src="./task/userpic4.png" alt="pic"></a>
+                        <a href=""><img src="./task/plus.svg" alt="pic"></a>
+                    </div>
+                </div>
+                <div class="description task__borderBottom">
+                    <h4 class="taskOpened__title">Description</h4>
+                    <p>Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.
+                    </p>
+                    <div class="task__files">
+                        <div class="task__file">
+                            <div class="files__pdf"><span>PDF</span></div>
+                            <span>Redesign Brief 2019.pdf</span>
+                            <div><span>159 KB</span>
+                                <span class="task__delete">Delete</span></div>
+                        </div>
+                        <div class="task__file">
+                            <img src="./task/fileIcon.svg" alt="file">
+                            <span>Header.png</span>
+                            <div><span>129 KB</span>
+                                <span class="task__delete">Delete</span></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

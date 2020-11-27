@@ -1,0 +1,92 @@
+.content {
+    display: flex;
+}
+.taskOpened {
+    width: 636px;
+    font-weight: 100;
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+}
+.taskOpened__title {
+text-transform: uppercase;
+    padding-bottom: 15px;
+}
+.taskOpened__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.taskOpened__top h3 {
+    font-weight: 300;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.taskOpened__buttons input {
+width: 30px;
+height: 30px;
+}
+.taskOpened__buttons {
+    display: flex;
+    align-items: center;
+}
+.buttons__more {
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+
+}
+.buttons__more a {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons__more:hover {
+    opacity: 70%;
+}
+.taskOpened__info {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ECECEC;
+}
+.task__borderBottom {
+    border-bottom: 1px solid #ECECEC;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+
+}
+.taskOpened__asignTo a {
+    display: flex;
+    align-items: center;
+}
+.taskOpened__info img {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+.taskOpened__info a {
+    text-decoration: none;
+    color: black;
+}
+.description p {
+line-height: 1.5;
+    padding-bottom: 20px;
+}
+.description h4 {
+    font-weight: 300;
+}
+.task__files {
+    display: flex;
+}
+.task__file {
+    display: flex;
+}
+.files__pdf {
+    width: 40px;
+    height: 40px;
+    background-color: #FFE2E2;
+    border-radius: 8px;
+    text-align: center;
+}
