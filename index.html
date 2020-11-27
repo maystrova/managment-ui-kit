@@ -256,57 +256,99 @@
             </div>
 
             <div class="taskOpened">
-                <header class="taskOpened__top">
-                    <div class="taskOpened__head">
-                    <h3>Find top 5 customer requests</h3>
-                    <span>Added by Kristin A. yesterday at 12:44 pm</span>
-                    </div>
-                    <div class="taskOpened__buttons">
-                        <input type="checkbox" checked>
-                        <button class="buttons__more"><a href="#"><img src="./navigation/dots.svg" alt="more"></a></button>
-                    </div>
-                </header>
-                <div class="taskOpened__info task__borderBottom">
-                    <div class="taskOpened__asignTo">
-                        <div class="taskOpened__title"><span>Asign to</span></div>
-                        <a href="#"><img src="./base/userpic1.png" alt="pic">Linzell Bowman</a>
-                    </div>
-                    <div class="DueOn">
-                        <div class="taskOpened__title"><span>Due on</span></div>
-                        <span>Tue, Dec 25</span>
-                    </div>
-                    <div class="taskTag">
+                <div class="taskOpened__header">
+                    <header class="taskOpened__top">
+                        <div class="taskOpened__head">
+                            <h3>Find top 5 customer requests</h3>
+                            <span>Added by Kristin A. yesterday at 12:44 pm</span>
+                        </div>
+                        <div class="taskOpened__buttons">
+                            <input type="checkbox" checked>
+                            <button class="buttons__more"><a href="#"><img src="./navigation/dots.svg" alt="more"></a>
+                            </button>
+                        </div>
+                    </header>
+                    <div class="taskOpened__info task__borderBottom">
+                        <div class="taskOpened__asignTo">
+                            <div class="taskOpened__title"><span>Asign to</span></div>
+                            <a href="#"><img src="./base/userpic1.png" alt="pic">Linzell Bowman</a>
+                        </div>
+                        <div class="DueOn">
+                            <div class="taskOpened__title"><span>Due on</span></div>
+                            <span>Tue, Dec 25</span>
+                        </div>
+                        <div class="taskTag">
 
-                        <div class="taskOpened__title"><span>Tag</span></div>
-                        <a class="task__tag tag tag_violet">Marketing</a>
-                    </div>
-                    <div class="followers">
-                        <div class="taskOpened__title"><span>Followers</span></div>
-                        <a href=""><img src="./task/userpic2.png" alt="pic"></a>
-                        <a href=""><img src="./task/userpic3.png" alt="pic"></a>
-                        <a href=""><img src="./task/userpic4.png" alt="pic"></a>
-                        <a href=""><img src="./task/plus.svg" alt="pic"></a>
+                            <div class="taskOpened__title"><span>Tag</span></div>
+                            <a class="task__tag tag tag_violet">Marketing</a>
+                        </div>
+                        <div class="followers">
+                            <div class="taskOpened__title"><span>Followers</span></div>
+                            <a href=""><img src="./task/userpic2.png" alt="pic"></a>
+                            <a href=""><img src="./task/userpic3.png" alt="pic"></a>
+                            <a href=""><img src="./task/userpic4.png" alt="pic"></a>
+                            <a href=""><img src="./task/plus.svg" alt="pic"></a>
+                        </div>
                     </div>
                 </div>
-                <div class="description task__borderBottom">
+                <div class="description">
                     <h4 class="taskOpened__title">Description</h4>
-                    <p>Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.
+                    <p>Task Descriptions are used during project planning, project execution and project control. During
+                        project planning the task descriptions are used for scope planning and creating estimates.
+                        During project execution the task description is used by those doing the activities to ensure
+                        they are doing the work correctly.
                     </p>
                     <div class="task__files">
                         <div class="task__file">
                             <div class="files__pdf"><span>PDF</span></div>
-                            <span>Redesign Brief 2019.pdf</span>
-                            <div><span>159 KB</span>
-                                <span class="task__delete">Delete</span></div>
+                            <div>
+                                <div class="file__name">
+                                    <span>Redesign Brief 2019.pdf</span>
+                                </div>
+                                <div><span class="file__weight">159 KB</span>
+                                    <span class="file__delete">Delete</span></div>
+                            </div>
                         </div>
                         <div class="task__file">
-                            <img src="./task/fileIcon.svg" alt="file">
-                            <span>Header.png</span>
-                            <div><span>129 KB</span>
-                                <span class="task__delete">Delete</span></div>
+                            <div class="files__pdf"><img src="./task/fileIcon.svg" alt="file"></div>
+                            <div>
+                                <div class="file__name">
+                                    <span>Header.png</span>
+                                </div>
+                                <div><span class="file__weight">129 KB</span>
+                                    <span class="file__delete">Delete</span></div>
+                            </div>
                         </div>
+
                     </div>
 
+                </div>
+                <div class="discussion">
+                    <h4>Discussion</h4>
+                    <div class="addComment">
+                        <img src="./task/commentpic.png" alt="userpic">
+                        <input type="text" class="commentArea" value="" placeholder="Add a comment...">
+                    </div>
+                    <div class="discussion__comment">
+                        <img class="discussion__commentPic" src="./task/commentpic2.png" alt="usepic">
+                        <div>
+                            <div class="discussion__commentContent"><h5>Helena Brauer, Designer</h5>
+                                <span>Yesterday at 12:37pm</span></div>
+                            <div>
+                                <span>During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="discussion__comment">
+                        <img class="discussion__commentPic" src="./task/commentpic3.png" alt="usepic">
+                        <div>
+                            <div class="discussion__commentContent"><h5>Prescott MacCaffery, Developer</h5>
+                                <span>Yesterday at 12:37pm</span></div>
+                            <div>
+                                <span><span class="comment__mention">@Helena</span> Software quality assurance activity in which one or several humans check a program mainly </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
