@@ -1,0 +1,21 @@
+.Avatar {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.Avatar img {
+    display: block;
+    width: 100%;
+}
+
+.Avatar_x-small {
+    width: 24px;
+}
+
+.Avatar_medium {
+    width: 24px;
+}
+
+.Avatar_large {
+    width: 48px;
+}

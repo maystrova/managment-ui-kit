@@ -74,14 +74,6 @@
 
 .avatar a {
     margin-right: 5px;
-    display: inline-block;
-}
-
-.avatar img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: block;
 }
 
 .chatAvatar {
@@ -93,19 +85,7 @@
     display: flex;
 }
 
-.headerButton {
-    padding: 0 15px;
-    border-radius: 12px;
-    border: none;
-    height: 30px;
+.headerButtons button {
     margin-right: 5px;
 }
 
-.headerButton_share {
-    background-color: #EAEAEA;
-}
-
-.headerButton_chat {
-    background-color: #FFF8DD;
-    color: #FFC200;
-}
