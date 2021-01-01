@@ -6,8 +6,6 @@ const Header = () => {
     return (
         <header className="Header">
             Header
-            <Button title="Кнопка"/>
-            <Button title="Кнопка 2"/>
         </header>
     )
 }

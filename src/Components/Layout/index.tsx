@@ -2,13 +2,19 @@ import React from 'react'
 import './style.css'
 import {Sidebar} from '../Sidebar'
 import {Header} from "../Header";
+import {Button} from '../Button'
+import {Tag} from '../Tag'
+import {Avatar} from "../Avatar";
 
-import '../html/style.css'
-import '../html/base/style.css'
-import '../html/header/style.css'
-import '../html/navigation/style.css'
-import '../html/tag/style.css'
-import '../html/task/style.css'
+import '../../html/style.css'
+import '../../html/base/style.css'
+import '../../html/header/style.css'
+import '../../html/navigation/style.css'
+import '../../html/task/style.css'
+
+import projectIcon from '../../html/navigation/navigation-icon.svg'
+import avatarHeader from '../Avatar/pics/avatar.png'
+
 
 const Layout = () => {
     return (
@@ -16,9 +22,9 @@ const Layout = () => {
             <aside className="navigation">
                 <div className="navigation__head">
 
-                    <span><img src="../html/navigation/navigation-icon.svg" alt="icon"/> Projectus</span>
+                    <span><img src="../../html/navigation/navigation-icon.svg" alt="icon"/> Projectus</span>
 
-                    <button><img src="../html/navigation/search-icon.svg" alt="icon"/></button>
+                    <button><img src={projectIcon} alt="icon"/></button>
 
 
                 </div>
@@ -133,13 +139,13 @@ const Layout = () => {
                         </div>
                         <div className="mainMenu__creators">
                             <div className="avatar">
-                                <a href=""><img src="header/avatar.png" alt="Avatar"/></a>
-                                <a href=""><img src="header/avatar.png" alt="Avatar"/></a>
-                                <a href=""><img src="header/avatar.png" alt="Avatar"/></a>
+                                <Avatar size={"medium"} src={avatarHeader}/>
+                                <Avatar size={"medium"} src={avatarHeader}/>
+                                <Avatar size={"medium"} src={avatarHeader}/>
                             </div>
                             <div className="headerButtons">
-                                <button className="headerButton headerButton_share">Share</button>
-                                <button className="headerButton headerButton_chat">💬Chat</button>
+                                <Button text="Share"/>
+                                <Button backgroundColor="#FFF8DD" color="#FFC200" text="💬 Chat"/>
                             </div>
                         </div>
                     </div>
@@ -157,7 +163,7 @@ const Layout = () => {
                         <div className="backlog">
                             <div className="backlog__title">
                                 <h3>Backlog</h3>
-                                <button className="button_green backlog__button">+ Add Task</button>
+                                <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
                             </div>
                             <div className="backlog__item taskItem_grey">
                                 <div>
@@ -169,8 +175,10 @@ const Layout = () => {
                                     <span>E-mail after registration so that I can confirm my address</span>
 
                                     <div className="taskItem__footer"><img src="./base/userpic1.png" alt="userpic"/>
-                                        <a className="tag tag_orange" href="#">Development</a>
+
+                                        <Tag text="Development" type="development"/>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -186,7 +194,7 @@ const Layout = () => {
 
                                     <div className="taskItem__footer">
                                         <img src="./base/userpic2.png" alt="userpic"/>
-                                        <a className="tag tag_violet" href="#">Marketing</a>
+                                        <Tag text='Marketing' type="marketing"/>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +210,7 @@ const Layout = () => {
 
                                     <div className="taskItem__footer">
                                         <img src="./base/userpic2.png" alt="userpic"/>
-                                        <a className="tag tag_blue" href="#">Design</a>
+                                        <Tag text='Design' type="design"/>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +219,7 @@ const Layout = () => {
                         <div className="backlog">
                             <div className="backlog__title">
                                 <h3>To Do</h3>
-                                <button className="button_green backlog__button">+ Add Task</button>
+                                <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
                             </div>
                             <div className="backlog__item taskItem_grey">
                                 <div>
@@ -224,7 +232,8 @@ const Layout = () => {
 
                                     <div className="taskItem__footer">
                                         <img src="./base/userpic4.png" alt="userpic"/>
-                                        <a className="tag tag_blue" href="#">Design</a>
+                                        <Tag text='Design' type="design"/>
+
                                     </div>
                                 </div>
 
@@ -241,7 +250,8 @@ const Layout = () => {
 
                                     <div className="taskItem__footer">
                                         <img src="./base/userpic5.png" alt="userpic"/>
-                                        <a className="tag tag_violet" href="#">Marketing</a>
+                                        <Tag text='Marketing' type="marketing"/>
+
                                     </div>
                                 </div>
                             </div>
@@ -257,7 +267,8 @@ const Layout = () => {
 
                                     <div className="taskItem__footer">
                                         <img src="./base/userpic6.png" alt="userpic"/>
-                                        <a className="tag tag_blue" href="#">Design</a>
+                                        <Tag text='Design' type="design"/>
+
                                     </div>
                                 </div>
                             </div>
@@ -290,7 +301,7 @@ const Layout = () => {
                                 <div className="taskTag">
 
                                     <div className="taskOpened__title"><span>Tag</span></div>
-                                    <a className="task__tag tag tag_violet">Marketing</a>
+                                    <Tag text='Marketing' type="marketing"/>
                                 </div>
                                 <div className="followers">
                                     <div className="taskOpened__title"><span>Followers</span></div>
