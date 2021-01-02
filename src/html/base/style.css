@@ -48,12 +48,9 @@
     margin: 10px 0;
 }
 
-.taskItem__footer img {
-    margin-right: 10px;
-    border: 2px solid white;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
+.taskItem__avatar {
+    margin-right: 8px;
+    display: flex;
 }
 
 .backlog__check {
