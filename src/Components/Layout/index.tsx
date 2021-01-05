@@ -50,6 +50,7 @@ import commentAvatar1 from '../Layout/pics/commentpic.png'
 
 import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
+import {TasksList} from "../TasksList";
 
 
 const Layout = () => {
@@ -194,29 +195,31 @@ const Layout = () => {
 
                 <div className="content">
                     <div className="base">
-                        <div className="backlog">
-                            <div className="backlog__title">
-                                <h3>Backlog</h3>
-                                <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
-                            </div>
+                        <TasksList title={'Backlog'} tasks={backlogTasks}/>
+                        {/*<div className="backlog">*/}
+                        {/*    <div className="backlog__title">*/}
+                        {/*        <h3>Backlog</h3>*/}
+                        {/*        <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>*/}
+                        {/*    </div>*/}
 
-                            {backlogTasks.map((task) => {
-                                return <TaskCard title={task.title} user={task.user} taskType={task.type} taskTypeText={task.type}/>
-                            })}
+                        {/*    {backlogTasks.map((task) => {*/}
+                        {/*        return <TaskCard title={task.title} user={task.user} taskType={task.type} taskTypeText={task.type}/>*/}
+                        {/*    })}*/}
 
-                        </div>
+                        {/*</div>*/}
 
-                        <div className="backlog">
-                            <div className="backlog__title">
-                                <h3>To Do</h3>
-                                <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
-                            </div>
+                        <TasksList title={'To Do'} tasks={todoTasks}/>
+                        {/*<div className="backlog">*/}
+                        {/*    <div className="backlog__title">*/}
+                        {/*        <h3>To Do</h3>*/}
+                        {/*        <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>*/}
+                        {/*    </div>*/}
 
-                            {todoTasks.map((task) => {
-                                return <TaskCard title={task.title} user={task.user} taskType={task.type} taskTypeText={task.type}/>
-                            })}
+                        {/*    {todoTasks.map((task) => {*/}
+                        {/*        return <TaskCard title={task.title} user={task.user} taskType={task.type} taskTypeText={task.type}/>*/}
+                        {/*    })}*/}
 
-                        </div>
+                        {/*</div>*/}
                     </div>
 
                     <div className="taskOpened">

@@ -1,0 +1,13 @@
+.tasksList {
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 30px;
+    margin-right: 20px;
+    width: 463px;
+}
+.tasksList__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
