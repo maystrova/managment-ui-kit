@@ -1,0 +1,26 @@
+.taskCard {
+    height: 122px;
+    background-color: #F7F6F3;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.taskCard__header {
+    padding: 20px 20px 0 20px;
+    display: flex;
+}
+
+.taskCard__checkbox {
+    margin-right: 10px;
+}
+
+.taskCard__footer {
+    padding: 10px 20px 20px 60px;
+    display: flex;
+    align-items: center;
+}
+
+.taskCard__user {
+    margin-right: 10px;
+    display: inline-flex;
+}

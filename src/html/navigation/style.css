@@ -30,11 +30,15 @@
 
 .navigation__userInfo {
     background-color: #202020;
-    height: 80px;
     display: flex;
     align-items: center;
     font-weight: 100;
     padding: 10px;
+}
+
+.navigation__avatar {
+    flex: 0 0 48px;
+    display: inline-flex;
 }
 
 .navigation__greyText {
@@ -45,10 +49,13 @@
 .navigation__userInfo button {
     background: transparent;
     border: none;
+    cursor: pointer;
+    outline: none;
 }
 
 .navigation__user {
     padding-left: 15px;
+    flex: 1 1;
 }
 
 .navigation__stats {
@@ -104,7 +111,7 @@
     width: 100%;
 }
 
-.navigation__link__img {
+.navigation__link img {
     margin-right: 10px;
 }
 
