@@ -8,7 +8,7 @@ import {Avatar} from "../Avatar"
 import {TaskCard} from '../TaskCard'
 import {Checkbox} from "../Checkbox";
 
-import {backlogTasks} from "./tasks";
+import {backlogTasks, todoTasks} from "./tasks";
 
 import '../../html/style.css'
 import '../../html/base/style.css'
@@ -211,12 +211,11 @@ const Layout = () => {
                                 <h3>To Do</h3>
                                 <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
                             </div>
-                            <TaskCard title={`An option to search in current projects or in all projects`}
-                                      user={userAvatar9} taskType={`design`} taskTypeText={'Design'}/>
-                            <TaskCard title={`Account for teams and personal in bottom style`} user={userAvatar5}
-                                      taskType={`marketing`} taskTypeText={'Marketing'}/>
-                            <TaskCard title={`Listing on Product Hunt so that we can reach as many potential users`}
-                                      user={userAvatar6} taskType={`design`} taskTypeText={'Design'}/>
+
+                            {todoTasks.map((task) => {
+                                return <TaskCard title={task.title} user={task.user} taskType={task.type} taskTypeText={task.type}/>
+                            })}
+
                         </div>
                     </div>
 

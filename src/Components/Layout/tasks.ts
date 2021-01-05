@@ -1,6 +1,9 @@
 import userAvatar1 from '../Layout/pics/userpic1.png'
 import userAvatar7 from '../Layout/pics/userpic7.png'
 import userAvatar8 from '../Layout/pics/userpic8.png'
+import userAvatar9 from '../Layout/pics/userpic9.png'
+import userAvatar5 from '../Layout/pics/userpic5.png'
+import userAvatar6 from '../Layout/pics/userpic6.png'
 
 export type Task = {
     title: string,
@@ -22,3 +25,18 @@ export const backlogTasks: Task[] = [{
     user: userAvatar8,
     type: 'design'
 }]
+
+export const todoTasks: Task[] = [{
+    title: `An option to search in current projects or in all projects`,
+    user: userAvatar9,
+    type: 'design'
+}, {
+        title: `Account for teams and personal in bottom style`,
+        user: userAvatar5,
+        type: 'marketing'
+    }, {
+    title: `Listing on Product Hunt so that we can reach as many potential users`,
+    user: userAvatar6,
+    type: 'design'
+},
+]
