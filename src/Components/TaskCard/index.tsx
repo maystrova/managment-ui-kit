@@ -13,11 +13,20 @@ interface TaskCardProps {
 
 const TaskCard = ({title, user, taskType, taskTypeText}: TaskCardProps) => {
     return (
-        <div className="TaskCard">
-            <Checkbox/>
-            <p>{title}</p>
-            <Avatar src={user} size="x-small"/>
-            <Tag type={taskType} text={taskTypeText}/>
+        <div className="taskCard">
+            <header className="taskCard__header">
+                <div className="taskCard__checkbox">
+                    <Checkbox/>
+                </div>
+                <p>{title}</p>
+            </header>
+            
+            <footer className='taskCard__footer'>
+                <div className="taskCard__user">
+                    <Avatar src={user} size="x-small"/>
+                </div>
+                <Tag type={taskType} text={taskTypeText}/>
+            </footer>
         </div>
     )
 }

@@ -22,55 +22,6 @@
     font-size: 20px;
 }
 
-.backlog__item {
-    display: flex;
-    justify-content: center;
-    height: 122px;
-    padding: 30px 20px;
-    margin-bottom: 10px;
-}
-
-.backlog__taskTag {
-    padding-left: 10px;
-}
-
-.taskItem_grey {
-    background-color: #F7F6F3;
-}
-
-.taskItem_yellow {
-    background-color: #FFF8DD;
-}
-
-.taskItem__footer {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.taskItem__avatar {
-    margin-right: 8px;
-    display: flex;
-}
-
-.backlog__check {
-    width: 30px;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-
-}
-
-.backlog__check img {
-    width: 12px;
-    height: 9px;
-}
-
-.button_white {
-    background-color: #FFFFFF;
-}
 
 
-.backlog__item {
-    border-radius: 10px;
-}
+

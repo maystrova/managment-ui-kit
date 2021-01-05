@@ -226,39 +226,10 @@ const Layout = () => {
                             {/*    </div>*/}
 
                             {/*</div>*/}
-                            <TaskCard title={`E-mail after registration so that I can confirm my address`} user={userAvatar1} taskType={`Development`} taskTypeText={'Development'}/>
+                            <TaskCard title={`E-mail after registration so that I can confirm my address`} user={userAvatar1} taskType={`development`} taskTypeText={'Development'}/>
+                            <TaskCard title={`Find top 5 customers and get reviews from them`} user={userAvatar7} taskType={`marketing`} taskTypeText={'Marketing'}/>
+                            <TaskCard title={`Two-factor authentication to make my private data more secure`} user={userAvatar8} taskType={`design`} taskTypeText={'Design'}/>
 
-                            <div className="backlog__item taskItem_yellow">
-                                <div>
-                                    <button className="button_white backlog__check">
-                                        <img src="./base/checkgrey.svg" alt="check"/>
-                                    </button>
-                                </div>
-                                <div className="backlog__taskTag">
-                                    <span>Find top 5 customers and get reviews from them</span>
-
-                                    <div className="taskItem__footer">
-                                        <Avatar size={"x-small"} src={userAvatar7}/>
-                                        <Tag text='Marketing' type="marketing"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="backlog__item taskItem_grey">
-                                <div>
-                                    <button className="button_white backlog__check">
-                                        <img src="./base/checkgrey.svg" alt="check"/>
-                                    </button>
-                                </div>
-                                <div className="backlog__taskTag">
-                                    <span>Two-factor authentication to make my private data more secure</span>
-
-                                    <div className="taskItem__footer">
-                                        <Avatar size={"x-small"} src={userAvatar7}/>
-                                        <Tag text='Design' type="design"/>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <div className="backlog">
@@ -266,57 +237,10 @@ const Layout = () => {
                                 <h3>To Do</h3>
                                 <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
                             </div>
-                            <div className="backlog__item taskItem_grey">
-                                <div>
-                                    <button className="button_white backlog__check">
-                                        <img src="./base/checkgrey.svg" alt="check"/>
-                                    </button>
-                                </div>
-                                <div className="backlog__taskTag">
-                                    <span>An option to search in current projects or in all projects </span>
+                            <TaskCard title={`An option to search in current projects or in all projects`} user={userAvatar9} taskType={`design`} taskTypeText={'Design'}/>
+                            <TaskCard title={`Account for teams and personal in bottom style`} user={userAvatar5} taskType={`marketing`} taskTypeText={'Marketing'}/>
+                            <TaskCard title={`Listing on Product Hunt so that we can reach as many potential users`} user={userAvatar6} taskType={`design`} taskTypeText={'Design'}/>
 
-                                    <div className="taskItem__footer">
-                                        <Avatar size={"x-small"} src={userAvatar6}/>
-                                        <Tag text='Design' type="design"/>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div className="backlog__item taskItem_yellow">
-                                <div>
-                                    <button className="button_white backlog__check">
-                                        <img src="#" alt="check"/>
-                                    </button>
-                                </div>
-                                <div className="backlog__taskTag">
-                                    <span>Account for teams and personal in bottom style</span>
-
-                                    <div className="taskItem__footer">
-                                        <Avatar size={"x-small"} src={userAvatar8}/>
-                                        <Tag text='Marketing' type="marketing"/>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="backlog__item taskItem_grey">
-                                <div>
-                                    <button className="button_white backlog__check">
-                                        <img src="./base/checkgrey.svg" alt="check"/>
-                                    </button>
-                                </div>
-                                <div className="backlog__taskTag">
-                                    <span>Listing on Product Hunt so that we can reach as many potential users</span>
-
-                                    <div className="taskItem__footer">
-                                        <Avatar size={"x-small"} src={userAvatar9}/>
-                                        <Tag text='Design' type="design"/>
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
