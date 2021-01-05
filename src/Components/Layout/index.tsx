@@ -44,20 +44,10 @@ import userAvatar8 from '../Layout/pics/userpic8.png'
 import userAvatar9 from '../Layout/pics/userpic9.png'
 
 
-
-
-
 import commentAvatar1 from '../Layout/pics/commentpic.png'
 
 import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
-
-
-
-
-
-
-
 
 
 const Layout = () => {
@@ -207,28 +197,13 @@ const Layout = () => {
                                 <h3>Backlog</h3>
                                 <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
                             </div>
-                            {/*<div className="backlog__item taskItem_grey">*/}
-                            {/*    <div>*/}
-                            {/*        <button className="button_green backlog__check">*/}
-                            {/*            <img src="./base/check.svg" alt="check"/>*/}
-                            {/*        </button>*/}
-                            {/*    </div>*/}
-                            {/*    <div className="backlog__taskTag">*/}
-                            {/*        <span>E-mail after registration so that I can confirm my address</span>*/}
 
-                            {/*        <div className="taskItem__footer">*/}
-                            {/*            <div className="taskItem__avatar">*/}
-                            {/*                <Avatar size={"x-small"} src={userAvatar1}/>*/}
-                            {/*            </div>*/}
-                            {/*            <Tag text="Development" type="development"/>*/}
-                            {/*        </div>*/}
-
-                            {/*    </div>*/}
-
-                            {/*</div>*/}
-                            <TaskCard title={`E-mail after registration so that I can confirm my address`} user={userAvatar1} taskType={`development`} taskTypeText={'Development'}/>
-                            <TaskCard title={`Find top 5 customers and get reviews from them`} user={userAvatar7} taskType={`marketing`} taskTypeText={'Marketing'}/>
-                            <TaskCard title={`Two-factor authentication to make my private data more secure`} user={userAvatar8} taskType={`design`} taskTypeText={'Design'}/>
+                            <TaskCard title={`E-mail after registration so that I can confirm my address`}
+                                      user={userAvatar1} taskType={`development`} taskTypeText={'Development'}/>
+                            <TaskCard title={`Find top 5 customers and get reviews from them`} user={userAvatar7}
+                                      taskType={`marketing`} taskTypeText={'Marketing'}/>
+                            <TaskCard title={`Two-factor authentication to make my private data more secure`}
+                                      user={userAvatar8} taskType={`design`} taskTypeText={'Design'}/>
 
                         </div>
 
@@ -237,9 +212,12 @@ const Layout = () => {
                                 <h3>To Do</h3>
                                 <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
                             </div>
-                            <TaskCard title={`An option to search in current projects or in all projects`} user={userAvatar9} taskType={`design`} taskTypeText={'Design'}/>
-                            <TaskCard title={`Account for teams and personal in bottom style`} user={userAvatar5} taskType={`marketing`} taskTypeText={'Marketing'}/>
-                            <TaskCard title={`Listing on Product Hunt so that we can reach as many potential users`} user={userAvatar6} taskType={`design`} taskTypeText={'Design'}/>
+                            <TaskCard title={`An option to search in current projects or in all projects`}
+                                      user={userAvatar9} taskType={`design`} taskTypeText={'Design'}/>
+                            <TaskCard title={`Account for teams and personal in bottom style`} user={userAvatar5}
+                                      taskType={`marketing`} taskTypeText={'Marketing'}/>
+                            <TaskCard title={`Listing on Product Hunt so that we can reach as many potential users`}
+                                      user={userAvatar6} taskType={`design`} taskTypeText={'Design'}/>
 
                         </div>
                     </div>
@@ -327,7 +305,7 @@ const Layout = () => {
                             <div className="discussion__comment">
 
                                 <div className="discussion__commentPic">
-                                <Avatar size={"large"} src={commentAvatar3}/>
+                                    <Avatar size={"large"} src={commentAvatar3}/>
                                 </div>
                                 <div>
                                     <div className="discussion__commentContent">
@@ -342,7 +320,7 @@ const Layout = () => {
                             <div className="discussion__comment">
 
                                 <div className="discussion__commentPic">
-                                <Avatar size={"large"} src={commentAvatar2}/>
+                                    <Avatar size={"large"} src={commentAvatar2}/>
                                 </div>
                                 <div>
                                     <div className="discussion__commentContent"><h5>Prescott MacCaffery,
