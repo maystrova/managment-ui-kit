@@ -1,26 +1,4 @@
-.base {
-    width: 445px;
-    background-color: #fff;
-    border-radius: 6px;
-    margin-right: 40px;
-}
 
-.backlog {
-    font-weight: 100;
-    padding: 20px;
-}
-
-.backlog__title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.backlog__title h3 {
-    font-weight: 300;
-    font-size: 20px;
-}
 
 
 

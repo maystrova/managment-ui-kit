@@ -1,10 +1,12 @@
 import React from "react";
 import './style.css';
 
+export type TagType = 'development' | 'marketing' | 'design'
+
 interface TagProps {
     href?: string
     text: string
-    type: 'development' | 'marketing' | 'design'
+    type: TagType
 }
 
 const Tag = ({type, text, href = '#'}: TagProps) => {

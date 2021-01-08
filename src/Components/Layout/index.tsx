@@ -7,6 +7,12 @@ import {Tag} from '../Tag'
 import {Avatar} from "../Avatar"
 import {TaskCard} from '../TaskCard'
 import {Checkbox} from "../Checkbox";
+import {Task} from '../Task'
+import {TasksList} from "../TasksList";
+import {AddFile} from '../AddFile'
+import {Comment} from '../Comment'
+
+import {backlogTasks, todoTasks} from "./tasks";
 
 import '../../html/style.css'
 import '../../html/base/style.css'
@@ -42,10 +48,7 @@ import userAvatar6 from '../Layout/pics/userpic6.png'
 import userAvatar7 from '../Layout/pics/userpic7.png'
 import userAvatar8 from '../Layout/pics/userpic8.png'
 import userAvatar9 from '../Layout/pics/userpic9.png'
-
-
 import commentAvatar1 from '../Layout/pics/commentpic.png'
-
 import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 
@@ -191,148 +194,135 @@ const Layout = () => {
                 </header>
 
                 <div className="content">
-                    <div className="base">
-                        <div className="backlog">
-                            <div className="backlog__title">
-                                <h3>Backlog</h3>
-                                <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
-                            </div>
-
-                            <TaskCard title={`E-mail after registration so that I can confirm my address`}
-                                      user={userAvatar1} taskType={`development`} taskTypeText={'Development'}/>
-                            <TaskCard title={`Find top 5 customers and get reviews from them`} user={userAvatar7}
-                                      taskType={`marketing`} taskTypeText={'Marketing'}/>
-                            <TaskCard title={`Two-factor authentication to make my private data more secure`}
-                                      user={userAvatar8} taskType={`design`} taskTypeText={'Design'}/>
-
-                        </div>
-
-                        <div className="backlog">
-                            <div className="backlog__title">
-                                <h3>To Do</h3>
-                                <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
-                            </div>
-                            <TaskCard title={`An option to search in current projects or in all projects`}
-                                      user={userAvatar9} taskType={`design`} taskTypeText={'Design'}/>
-                            <TaskCard title={`Account for teams and personal in bottom style`} user={userAvatar5}
-                                      taskType={`marketing`} taskTypeText={'Marketing'}/>
-                            <TaskCard title={`Listing on Product Hunt so that we can reach as many potential users`}
-                                      user={userAvatar6} taskType={`design`} taskTypeText={'Design'}/>
-
-                        </div>
+                    <div className="tasksListBase">
+                        <TasksList title={'Backlog'} tasks={backlogTasks}/>
+                        <TasksList title={'To Do'} tasks={todoTasks}/>
                     </div>
 
-                    <div className="taskOpened">
-                        <div className="taskOpened__header">
-                            <header className="taskOpened__top">
-                                <div className="taskOpened__head">
-                                    <h3>Find top 5 customer requests</h3>
-                                    <span>Added by Kristin A. yesterday at 12:44 pm</span>
-                                </div>
-                                <div className="taskOpened__buttons">
-                                    <input type="checkbox" checked/>
-                                    <button className="buttons__more"><a href="#"><img src="./navigation/dots.svg"
-                                                                                       alt="more"/></a>
-                                    </button>
-                                </div>
-                            </header>
-                            <div className="taskOpened__info task__borderBottom">
-                                <div className="taskOpened__asignTo">
-                                    <div className="taskOpened__title"><span>Asign to</span></div>
-                                    <a href="#"><Avatar size={"small"} src={userAvatar1}/>Linzell Bowman</a>
-                                </div>
-                                <div className="DueOn">
-                                    <div className="taskOpened__title"><span>Due on</span></div>
-                                    <span>Tue, Dec 25</span>
-                                </div>
-                                <div className="taskTag">
+                    {/*<div className="taskOpened">*/}
+                    {/*    <div className="taskOpened__header">*/}
+                    {/*        <header className="taskOpened__top">*/}
+                    {/*            <div className="taskOpened__head">*/}
+                    {/*                <h3>Find top 5 customer requests</h3>*/}
+                    {/*                <span>Added by Kristin A. yesterday at 12:44 pm</span>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="taskOpened__buttons">*/}
+                    {/*                <input type="checkbox" checked/>*/}
+                    {/*                <button className="buttons__more"><a href="#"><img src="./navigation/dots.svg"*/}
+                    {/*                                                                   alt="more"/></a>*/}
+                    {/*                </button>*/}
+                    {/*            </div>*/}
+                    {/*        </header>*/}
+                    {/*        <div className="taskOpened__info task__borderBottom">*/}
+                    {/*            <div className="taskOpened__asignTo">*/}
+                    {/*                <div className="taskOpened__title"><span>Asign to</span></div>*/}
+                    {/*                <a href="#"><Avatar size={"small"} src={userAvatar1}/>Linzell Bowman</a>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="DueOn">*/}
+                    {/*                <div className="taskOpened__title"><span>Due on</span></div>*/}
+                    {/*                <span>Tue, Dec 25</span>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="taskTag">*/}
 
-                                    <div className="taskOpened__title"><span>Tag</span></div>
-                                    <Tag text='Marketing' type="marketing"/>
-                                </div>
-                                <div className="followers">
-                                    <div className="taskOpened__title">
-                                        <span>Followers</span>
-                                    </div>
-                                    <a href=""><Avatar size={"small"} src={userAvatar2}/></a>
-                                    <a href=""><Avatar size={"small"} src={userAvatar3}/></a>
-                                    <a href=""><Avatar size={"small"} src={userAvatar4}/></a>
-                                    <a href=""><img src="./task/plus.svg" alt="pic"/></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="description">
-                            <h4 className="taskOpened__title">Description</h4>
-                            <p>Task Descriptions are used during project planning, project execution and project
-                                control. During
-                                project planning the task descriptions are used for scope planning and creating
-                                estimates.
-                                During project execution the task description is used by those doing the activities to
-                                ensure
-                                they are doing the work correctly.
-                            </p>
-                            <div className="task__files">
-                                <div className="task__file">
-                                    <div className="files__pdf"><span>PDF</span></div>
-                                    <div>
-                                        <div className="file__name">
-                                            <span>Redesign Brief 2019.pdf</span>
-                                        </div>
-                                        <div><span className="file__weight">159 KB</span>
-                                            <span className="file__delete">Delete</span></div>
-                                    </div>
-                                </div>
-                                <div className="task__file">
-                                    <div className="files__pdf"><img src="./task/fileIcon.svg" alt="file"/></div>
-                                    <div>
-                                        <div className="file__name">
-                                            <span>Header.png</span>
-                                        </div>
-                                        <div><span className="file__weight">129 KB</span>
-                                            <span className="file__delete">Delete</span></div>
-                                    </div>
-                                </div>
+                    {/*                <div className="taskOpened__title"><span>Tag</span></div>*/}
+                    {/*                <Tag text='Marketing' type="marketing"/>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="followers">*/}
+                    {/*                <div className="taskOpened__title">*/}
+                    {/*                    <span>Followers</span>*/}
+                    {/*                </div>*/}
+                    {/*                <a href=""><Avatar size={"small"} src={userAvatar2}/></a>*/}
+                    {/*                <a href=""><Avatar size={"small"} src={userAvatar3}/></a>*/}
+                    {/*                <a href=""><Avatar size={"small"} src={userAvatar4}/></a>*/}
+                    {/*                <a href=""><img src="./task/plus.svg" alt="pic"/></a>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="description">*/}
+                    {/*        <h4 className="taskOpened__title">Description</h4>*/}
+                    {/*        <p>Task Descriptions are used during project planning, project execution and project*/}
+                    {/*            control. During*/}
+                    {/*            project planning the task descriptions are used for scope planning and creating*/}
+                    {/*            estimates.*/}
+                    {/*            During project execution the task description is used by those doing the activities to*/}
+                    {/*            ensure*/}
+                    {/*            they are doing the work correctly.*/}
+                    {/*        </p>*/}
+                    {/*        <div className="task__files">*/}
+                    {/*            <div className="task__file">*/}
+                    {/*                <div className="files__pdf"><span>PDF</span></div>*/}
+                    {/*                <div>*/}
+                    {/*                    <div className="file__name">*/}
+                    {/*                        <span>Redesign Brief 2019.pdf</span>*/}
+                    {/*                    </div>*/}
+                    {/*                    <div><span className="file__weight">159 KB</span>*/}
+                    {/*                        <span className="file__delete">Delete</span></div>*/}
+                    {/*                </div>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="task__file">*/}
+                    {/*                <div className="files__pdf"><img src="./task/fileIcon.svg" alt="file"/></div>*/}
+                    {/*                <div>*/}
+                    {/*                    <div className="file__name">*/}
+                    {/*                        <span>Header.png</span>*/}
+                    {/*                    </div>*/}
+                    {/*                    <div><span className="file__weight">129 KB</span>*/}
+                    {/*                        <span className="file__delete">Delete</span></div>*/}
+                    {/*                </div>*/}
+                    {/*            </div>*/}
 
-                            </div>
+                    {/*        </div>*/}
 
-                        </div>
-                        <div className="discussion">
-                            <h4>Discussion</h4>
-                            <div className="addComment">
-                                <Avatar size={"large"} src={commentAvatar1}/>
-                                <input type="text" className="commentArea" value="" placeholder="Add a comment..."/>
-                            </div>
-                            <div className="discussion__comment">
+                    {/*    </div>*/}
+                    {/*    <div className="discussion">*/}
+                    {/*        <h4>Discussion</h4>*/}
+                    {/*        <div className="addComment">*/}
+                    {/*            <Avatar size={"large"} src={commentAvatar1}/>*/}
+                    {/*            <input type="text" className="commentArea" value="" placeholder="Add a comment..."/>*/}
+                    {/*        </div>*/}
+                    {/*        <div className="discussion__comment">*/}
 
-                                <div className="discussion__commentPic">
-                                    <Avatar size={"large"} src={commentAvatar3}/>
-                                </div>
-                                <div>
-                                    <div className="discussion__commentContent">
-                                        <h5>Helena Brauer, Designer</h5>
-                                        <span>Yesterday at 12:37pm</span>
-                                    </div>
-                                    <div>
-                                        <span>During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="discussion__comment">
+                    {/*            <div className="discussion__commentPic">*/}
+                    {/*                <Avatar size={"large"} src={commentAvatar3}/>*/}
+                    {/*            </div>*/}
+                    {/*            <div>*/}
+                    {/*                <div className="discussion__commentContent">*/}
+                    {/*                    <h5>Helena Brauer, Designer</h5>*/}
+                    {/*                    <span>Yesterday at 12:37pm</span>*/}
+                    {/*                </div>*/}
+                    {/*                <div>*/}
+                    {/*                    <span>During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes</span>*/}
+                    {/*                </div>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*        <div className="discussion__comment">*/}
 
-                                <div className="discussion__commentPic">
-                                    <Avatar size={"large"} src={commentAvatar2}/>
-                                </div>
-                                <div>
-                                    <div className="discussion__commentContent"><h5>Prescott MacCaffery,
-                                        Developer</h5>
-                                        <span>Yesterday at 12:37pm</span></div>
-                                    <div>
-                                        <span><span className="comment__mention">@Helena</span> Software quality assurance activity in which one or several humans check a program mainly </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {/*            <div className="discussion__commentPic">*/}
+                    {/*                <Avatar size={"large"} src={commentAvatar2}/>*/}
+                    {/*            </div>*/}
+                    {/*            <div>*/}
+                    {/*                <div className="discussion__commentContent"><h5>Prescott MacCaffery,*/}
+                    {/*                    Developer</h5>*/}
+                    {/*                    <span>Yesterday at 12:37pm</span></div>*/}
+                    {/*                <div>*/}
+                    {/*                    <span><span className="comment__mention">@Helena</span> Software quality assurance activity in which one or several humans check a program mainly </span>*/}
+                    {/*                </div>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+
+                    <Task task = {{
+                        title: 'Find top 5 customer requests',
+                        addedBy: 'Kristin A',
+                        createdAt: '07.01.2020',
+                        isChecked: false,
+                        assignTo: 'Linzell Bowman',
+                        dueOn: 'Tue, Dec 25',
+                        tag:'marketing',
+                        followers: ['', '', '', ''],
+                        description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
+                        discussion: ['', '']
+                    }}/>
                 </div>
             </div>
         </div>
