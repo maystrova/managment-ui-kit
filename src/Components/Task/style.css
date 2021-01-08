@@ -1,0 +1,19 @@
+.task {
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 30px;
+}
+.task__header {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.task__information {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2;
+}
+.task__information h5 {
+    text-transform: uppercase;
+}

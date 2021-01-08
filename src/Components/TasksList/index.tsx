@@ -1,7 +1,7 @@
 import React from "react";
 import './style.css'
 import {Button} from "../Button";
-import {backlogTasks, Task} from "../Layout/tasks";
+import {Task} from "../Layout/tasks";
 import {TaskCard} from "../TaskCard";
 
 interface TasksListProps {

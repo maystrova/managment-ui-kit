@@ -34,7 +34,7 @@ export const todoTasks: Task[] = [{
         title: `Account for teams and personal in bottom style`,
         user: userAvatar5,
         type: 'marketing'
-    }, {
+}, {
     title: `Listing on Product Hunt so that we can reach as many potential users`,
     user: userAvatar6,
     type: 'design'
