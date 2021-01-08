@@ -7,7 +7,6 @@ import {TaskCard} from "../TaskCard";
 interface TasksListProps {
     title: string
     tasks: Task[]
-
 }
 
 const TasksList = ({title, tasks}: TasksListProps) => {
