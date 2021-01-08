@@ -11,7 +11,6 @@ export type Task = {
     type: string
 }
 
-
 export const backlogTasks: Task[] = [{
     title: 'E-mail after registration so that I can confirm my address',
     user: userAvatar1,
