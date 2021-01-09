@@ -15,7 +15,6 @@ import {Comment} from '../Comment'
 import {backlogTasks, todoTasks} from "./tasks";
 
 import '../../html/style.css'
-import '../../html/base/style.css'
 import '../../html/header/style.css'
 import '../../html/navigation/style.css'
 import '../../html/task/style.css'
@@ -198,118 +197,6 @@ const Layout = () => {
                         <TasksList title={'Backlog'} tasks={backlogTasks}/>
                         <TasksList title={'To Do'} tasks={todoTasks}/>
                     </div>
-
-                    {/*<div className="taskOpened">*/}
-                    {/*    <div className="taskOpened__header">*/}
-                    {/*        <header className="taskOpened__top">*/}
-                    {/*            <div className="taskOpened__head">*/}
-                    {/*                <h3>Find top 5 customer requests</h3>*/}
-                    {/*                <span>Added by Kristin A. yesterday at 12:44 pm</span>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="taskOpened__buttons">*/}
-                    {/*                <input type="checkbox" checked/>*/}
-                    {/*                <button className="buttons__more"><a href="#"><img src="./navigation/dots.svg"*/}
-                    {/*                                                                   alt="more"/></a>*/}
-                    {/*                </button>*/}
-                    {/*            </div>*/}
-                    {/*        </header>*/}
-                    {/*        <div className="taskOpened__info task__borderBottom">*/}
-                    {/*            <div className="taskOpened__asignTo">*/}
-                    {/*                <div className="taskOpened__title"><span>Asign to</span></div>*/}
-                    {/*                <a href="#"><Avatar size={"small"} src={userAvatar1}/>Linzell Bowman</a>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="DueOn">*/}
-                    {/*                <div className="taskOpened__title"><span>Due on</span></div>*/}
-                    {/*                <span>Tue, Dec 25</span>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="taskTag">*/}
-
-                    {/*                <div className="taskOpened__title"><span>Tag</span></div>*/}
-                    {/*                <Tag text='Marketing' type="marketing"/>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="followers">*/}
-                    {/*                <div className="taskOpened__title">*/}
-                    {/*                    <span>Followers</span>*/}
-                    {/*                </div>*/}
-                    {/*                <a href=""><Avatar size={"small"} src={userAvatar2}/></a>*/}
-                    {/*                <a href=""><Avatar size={"small"} src={userAvatar3}/></a>*/}
-                    {/*                <a href=""><Avatar size={"small"} src={userAvatar4}/></a>*/}
-                    {/*                <a href=""><img src="./task/plus.svg" alt="pic"/></a>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="description">*/}
-                    {/*        <h4 className="taskOpened__title">Description</h4>*/}
-                    {/*        <p>Task Descriptions are used during project planning, project execution and project*/}
-                    {/*            control. During*/}
-                    {/*            project planning the task descriptions are used for scope planning and creating*/}
-                    {/*            estimates.*/}
-                    {/*            During project execution the task description is used by those doing the activities to*/}
-                    {/*            ensure*/}
-                    {/*            they are doing the work correctly.*/}
-                    {/*        </p>*/}
-                    {/*        <div className="task__files">*/}
-                    {/*            <div className="task__file">*/}
-                    {/*                <div className="files__pdf"><span>PDF</span></div>*/}
-                    {/*                <div>*/}
-                    {/*                    <div className="file__name">*/}
-                    {/*                        <span>Redesign Brief 2019.pdf</span>*/}
-                    {/*                    </div>*/}
-                    {/*                    <div><span className="file__weight">159 KB</span>*/}
-                    {/*                        <span className="file__delete">Delete</span></div>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="task__file">*/}
-                    {/*                <div className="files__pdf"><img src="./task/fileIcon.svg" alt="file"/></div>*/}
-                    {/*                <div>*/}
-                    {/*                    <div className="file__name">*/}
-                    {/*                        <span>Header.png</span>*/}
-                    {/*                    </div>*/}
-                    {/*                    <div><span className="file__weight">129 KB</span>*/}
-                    {/*                        <span className="file__delete">Delete</span></div>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-
-                    {/*        </div>*/}
-
-                    {/*    </div>*/}
-                    {/*    <div className="discussion">*/}
-                    {/*        <h4>Discussion</h4>*/}
-                    {/*        <div className="addComment">*/}
-                    {/*            <Avatar size={"large"} src={commentAvatar1}/>*/}
-                    {/*            <input type="text" className="commentArea" value="" placeholder="Add a comment..."/>*/}
-                    {/*        </div>*/}
-                    {/*        <div className="discussion__comment">*/}
-
-                    {/*            <div className="discussion__commentPic">*/}
-                    {/*                <Avatar size={"large"} src={commentAvatar3}/>*/}
-                    {/*            </div>*/}
-                    {/*            <div>*/}
-                    {/*                <div className="discussion__commentContent">*/}
-                    {/*                    <h5>Helena Brauer, Designer</h5>*/}
-                    {/*                    <span>Yesterday at 12:37pm</span>*/}
-                    {/*                </div>*/}
-                    {/*                <div>*/}
-                    {/*                    <span>During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes</span>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*        <div className="discussion__comment">*/}
-
-                    {/*            <div className="discussion__commentPic">*/}
-                    {/*                <Avatar size={"large"} src={commentAvatar2}/>*/}
-                    {/*            </div>*/}
-                    {/*            <div>*/}
-                    {/*                <div className="discussion__commentContent"><h5>Prescott MacCaffery,*/}
-                    {/*                    Developer</h5>*/}
-                    {/*                    <span>Yesterday at 12:37pm</span></div>*/}
-                    {/*                <div>*/}
-                    {/*                    <span><span className="comment__mention">@Helena</span> Software quality assurance activity in which one or several humans check a program mainly </span>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
 
                     <Task task = {{
                         title: 'Find top 5 customer requests',

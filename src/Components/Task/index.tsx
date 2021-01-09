@@ -26,11 +26,14 @@ const Task = ({task}: TaskProps) => {
             <Checkbox/>
         </div>
     </header>
-        <div className='task__information'>
+        <div className='task__information borderBottom'>
             <div className='task__information-asignTo'>
                 <h5>Asign to</h5>
-                <Avatar size={"x-small"} src={userAvatar1}/>
-                <span>{task.assignTo}</span>
+                <div className='task__information-asignTo-user'>
+                    <Avatar size={"x-small"} src={userAvatar1}/>
+                    <span className='task__information-asignTo-name'>{task.assignTo}</span>
+                </div>
+
             </div>
             <div className='task__information-date'>
                 <h5>Due on</h5>
@@ -46,14 +49,15 @@ const Task = ({task}: TaskProps) => {
             </div>
         </div>
 
-        <div className="task__description">
-            <h4 className="task__title">Description</h4>
+        <div className="task__description borderBottom">
+            <h5 className="task__title">Description</h5>
             <p>{task.description}
             </p>
         </div>
-        <div className="task__comments">
-            {task.discussion.map((comment) => <Comment title={'Helena Brauer, Designer'} date={'Yesterday at 12:37pm'} text={'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes'}/>,
-                <Comment title={'Prescott MacCaffery, Developer'} date={'Yesterday at 12:37pm'} text={'Software quality assurance activity in which one or several humans check a program mainly'}/>) }
+        <div className="task__discussion">
+            <h5>Discussion</h5>
+            {task.discussion.map((comment) => <Comment name={'Helena Brauer'} profession={'Designer'} date={'Yesterday at 12:37pm'} text={'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes'}/>,
+                <Comment name={'Prescott MacCaffery'} profession={'Developer'} date={'Yesterday at 12:37pm'} text={'Software quality assurance activity in which one or several humans check a program mainly'}/>) }
         </div>
     </div>
     )
