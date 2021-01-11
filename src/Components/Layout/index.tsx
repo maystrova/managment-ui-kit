@@ -198,17 +198,20 @@ const Layout = () => {
                         <TasksList title={'To Do'} tasks={todoTasks}/>
                     </div>
 
-                    <Task task = {{
+                    <Task task={{
                         title: 'Find top 5 customer requests',
                         addedBy: 'Kristin A',
                         createdAt: '07.01.2020',
                         isChecked: false,
                         assignTo: 'Linzell Bowman',
                         dueOn: 'Tue, Dec 25',
-                        tag:'marketing',
-                        followers: ['', '', '', ''],
+                        tag: 'marketing',
+                        followers: [userAvatar2, userAvatar3, userAvatar4, userAvatar5],
                         description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
-                        discussion: ['', '']
+                        discussions: [
+                            {name: 'Helena Brauer', profession: 'Designer', date: 'Yesterday at 12:37pm', text: 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes', avatar: commentAvatar3},
+                            {name: 'Prescott MacCaffery,', profession: 'Developer', date: 'Yesterday at 12:37pm', text: '@Helena Software quality assurance activity in which one or several humans check a program mainly', avatar: commentAvatar2}
+                            ]
                     }}/>
                 </div>
             </div>

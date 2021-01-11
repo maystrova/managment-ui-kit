@@ -16,50 +16,59 @@ interface TaskProps {
 
 const Task = ({task}: TaskProps) => {
     return (
-    <div className='task'>
-    <header className='task__header'>
-        <div>
-    <h2>{task.title}</h2>
-    <span>Added by {task.addedBy} {task.createdAt}</span>
-        </div>
-        <div>
-            <Checkbox/>
-        </div>
-    </header>
-        <div className='task__information borderBottom'>
-            <div className='task__information-asignTo'>
-                <h5>Asign to</h5>
-                <div className='task__information-asignTo-user'>
-                    <Avatar size={"x-small"} src={userAvatar1}/>
-                    <span className='task__information-asignTo-name'>{task.assignTo}</span>
+        <div className='task'>
+            <header className='task__header'>
+                <div>
+                    <h2>{task.title}</h2>
+                    <span>Added by {task.addedBy} {task.createdAt}</span>
                 </div>
+                <div>
+                    <Checkbox/>
+                </div>
+            </header>
+            <div className='task__information'>
+                <div className='task__information-asignTo'>
+                    <h5>Asign to</h5>
+                    <div className='task__information-asignTo-user'>
+                        <Avatar size={"x-small"} src={userAvatar1}/>
+                        <span className='task__information-asignTo-name'>{task.assignTo}</span>
+                    </div>
 
+                </div>
+                <div className='task__information-date'>
+                    <h5>Due on</h5>
+                    <div>{task.dueOn}</div>
+                </div>
+                <div className='task__information-tag'>
+                    <h5>Tag</h5>
+                    <Tag text={task.tag} type={task.tag}/>
+                </div>
+                <div className="task__information-followers">
+                    <h5>Followers</h5>
+                    {task.followers.map((follower) => <Avatar size={"x-small"} src={follower}/>)}
+                </div>
             </div>
-            <div className='task__information-date'>
-                <h5>Due on</h5>
-                <div>{task.dueOn}</div>
-            </div>
-            <div className='task__information-tag'>
-                <h5>Tag</h5>
-                <Tag text={task.tag} type={task.tag}/>
-            </div>
-            <div className="task__information-followers">
-                <h5>Followers</h5>
-                {task.followers.map((follower) => <Avatar size={"x-small"} src={userAvatar2}/>)}
-            </div>
-        </div>
 
-        <div className="task__description borderBottom">
-            <h5 className="task__title">Description</h5>
-            <p>{task.description}
-            </p>
+            <div className="task__description">
+                <h5 className="task__title">Description</h5>
+                <p>{task.description}
+                </p>
+            </div>
+            <div className="task__discussion">
+                <h5>Discussion</h5>
+                <div className='task__discussion-comments'>
+                    {task.discussions.map(({name, profession, date, text, avatar}) => (
+                        <Comment
+                            name={name}
+                            profession={profession}
+                            date={date}
+                            text={text}
+                            avatar={avatar}
+                        />
+                    ))}
+                </div>
+            </div>
         </div>
-        <div className="task__discussion">
-            <h5>Discussion</h5>
-            {task.discussion.map((comment) => <Comment name={'Helena Brauer'} profession={'Designer'} date={'Yesterday at 12:37pm'} text={'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes'}/>,
-                <Comment name={'Prescott MacCaffery'} profession={'Developer'} date={'Yesterday at 12:37pm'} text={'Software quality assurance activity in which one or several humans check a program mainly'}/>) }
-        </div>
-    </div>
     )
 }
 
