@@ -1,5 +1,13 @@
 import {TagType} from "../Tag";
 
+export type DiscussionType = {
+    name: string,
+    profession: string,
+    date: string,
+    text: string,
+    avatar: string
+}
+
 export type TaskType = {
     title: string
     addedBy: string
@@ -10,5 +18,5 @@ export type TaskType = {
     tag: TagType
     followers: string[]
     description: string
-    discussion: string[]
+    discussions: DiscussionType[]
 }
