@@ -9,6 +9,7 @@ import userAvatar3 from "../Layout/pics/userpic3.png";
 import userAvatar4 from "../Layout/pics/userpic4.png";
 import {Comment} from "../Comment";
 import {TaskType} from "./types";
+import {AddComment} from "../AddComment";
 
 interface TaskProps {
     task: TaskType
@@ -56,6 +57,7 @@ const Task = ({task}: TaskProps) => {
             </div>
             <div className="task__discussion">
                 <h5>Discussion</h5>
+                <AddComment/>
                 <div className='task__discussion-comments'>
                     {task.discussions.map(({name, profession, date, text, avatar}) => (
                         <Comment
