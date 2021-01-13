@@ -5,7 +5,7 @@ interface ButtonProps {
     backgroundColor?: string,
     color?: string,
     text: string
-    size?: 'medium' | 'large'
+    size?: 'small' | 'medium' | 'large'
 }
 
 const Button = ({backgroundColor, color, text, size}: ButtonProps) => {

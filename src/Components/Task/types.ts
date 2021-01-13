@@ -12,6 +12,13 @@ export type UserType = {
     avatar: string
 }
 
+export type FileType = {
+    preview: string
+    title: string
+    format: string
+    size: string
+}
+
 export type TaskType = {
     title: string
     addedBy: string
@@ -24,4 +31,5 @@ export type TaskType = {
     description: string
     discussions: DiscussionType[]
     user: UserType
+    files: FileType []
 }

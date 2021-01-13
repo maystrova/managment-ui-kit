@@ -50,6 +50,7 @@ import userAvatar9 from '../Layout/pics/userpic9.png'
 import commentAvatar1 from '../Layout/pics/commentpic.png'
 import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
+import filePreview from '../Layout/pics/file.png'
 
 
 const Layout = () => {
@@ -224,7 +225,21 @@ const Layout = () => {
                                 avatar: commentAvatar2
                             }
                         ],
-                        user: {avatar: ownerAvatar}
+                        user: {avatar: ownerAvatar},
+                        files: [
+                            {
+                                title: 'Redesign Brief',
+                                format: '.pdf',
+                                preview: filePreview,
+                                size: '159 kb'
+                            },
+                            {
+                                title: 'Header',
+                                format: '.png',
+                                preview: filePreview,
+                                size: '129 kb'
+                            }
+                        ]
 
                     }
                     }/>

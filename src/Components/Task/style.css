@@ -7,24 +7,30 @@
 .task__header {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 
 }
 .task__information {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #ECECEC;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
 }
-h5 {
+h4 {
     text-transform: uppercase;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 }
 .task__description {
     border-bottom: 1px solid #ECECEC;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+}
+.task__description-content {
+    padding-bottom: 30px;
+}
+.task__description-files {
+    display: flex;
 }
 
 .task__discussion-comment {
