@@ -4,9 +4,6 @@ import {Checkbox} from "../Checkbox";
 import {Avatar} from "../Avatar";
 import userAvatar1 from "../Layout/pics/userpic1.png";
 import {Tag} from "../Tag";
-import userAvatar2 from "../Layout/pics/userpic2.png";
-import userAvatar3 from "../Layout/pics/userpic3.png";
-import userAvatar4 from "../Layout/pics/userpic4.png";
 import {Comment} from "../Comment";
 import {TaskType} from "./types";
 import {AddComment} from "../AddComment";
@@ -57,7 +54,9 @@ const Task = ({task}: TaskProps) => {
             </div>
             <div className="task__discussion">
                 <h5>Discussion</h5>
-                <AddComment/>
+                <div className='task__discussion-addComment'>
+                    <AddComment userpic={task.user.avatar}/>
+                </div>
                 <div className='task__discussion-comments'>
                     {task.discussions.map(({name, profession, date, text, avatar}) => (
                         <Comment

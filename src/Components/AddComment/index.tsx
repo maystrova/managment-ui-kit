@@ -1,16 +1,15 @@
 import React from "react";
 import './style.css'
 import {Avatar} from "../Avatar";
-import userAvatar1 from '../Layout/pics/userpic1.png'
 
 interface AddCommentProps {
-    user: string
+    userpic: string
 }
 
-const AddComment = () => {
+const AddComment = ({userpic}: AddCommentProps) => {
     return(
         <div className='addComment'>
-            <Avatar size={"large"} src={userAvatar1}/>
+            <Avatar size={"large"} src={userpic}/>
             <input type="text" className='addComment-area' placeholder='Add a comment...'/>
         </div>
     )

@@ -8,6 +8,10 @@ export type DiscussionType = {
     avatar: string
 }
 
+export type UserType = {
+    avatar: string
+}
+
 export type TaskType = {
     title: string
     addedBy: string
@@ -19,4 +23,5 @@ export type TaskType = {
     followers: string[]
     description: string
     discussions: DiscussionType[]
+    user: UserType
 }
