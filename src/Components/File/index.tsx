@@ -1,10 +1,10 @@
 import React from "react";
 import './style.css';
-import {FileType} from "../Task/types";
+import {FileType} from "../File/type";
 import {Button} from "../Button";
 
 
-const AddFile = ({preview, title, format, size}: FileType) => {
+const File = ({preview, title, format, size}: FileType) => {
     return (
      <div className='addFile'>
          <div className='addFile__preview'>
@@ -23,4 +23,4 @@ const AddFile = ({preview, title, format, size}: FileType) => {
 }
 
 
-export {AddFile}
+export {File}

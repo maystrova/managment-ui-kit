@@ -7,7 +7,8 @@ import {Tag} from "../Tag";
 import {Comment} from "../Comment";
 import {TaskType} from "./types";
 import {AddComment} from "../AddComment";
-import {AddFile} from "../AddFile";
+import {File} from "../File";
+import {FileType} from "../File/type";
 
 interface TaskProps {
     task: TaskType
@@ -54,7 +55,7 @@ const Task = ({task}: TaskProps) => {
                 </p>
                 <div className="task__description-files">
                     {task.files.map(({title, preview, format, size}) => (
-                        <AddFile
+                        <File
                             preview={preview}
                             title={title}
                             format={format}

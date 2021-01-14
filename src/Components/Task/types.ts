@@ -1,4 +1,5 @@
 import {TagType} from "../Tag";
+import {FileType} from "../File/type";
 
 export type DiscussionType = {
     name: string,
@@ -10,13 +11,6 @@ export type DiscussionType = {
 
 export type UserType = {
     avatar: string
-}
-
-export type FileType = {
-    preview: string
-    title: string
-    format: string
-    size: string
 }
 
 export type TaskType = {

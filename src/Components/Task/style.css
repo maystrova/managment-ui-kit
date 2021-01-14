@@ -4,12 +4,14 @@
     padding: 30px;
     line-height: 1.5;
 }
+
 .task__header {
     display: flex;
     justify-content: space-between;
     padding-bottom: 30px;
 
 }
+
 .task__information {
     display: flex;
     justify-content: space-between;
@@ -17,18 +19,22 @@
     margin-bottom: 40px;
     padding-bottom: 40px;
 }
+
 h4 {
     text-transform: uppercase;
     padding-bottom: 20px;
 }
+
 .task__description {
     border-bottom: 1px solid #ECECEC;
     margin-bottom: 40px;
     padding-bottom: 40px;
 }
+
 .task__description-content {
     padding-bottom: 30px;
 }
+
 .task__description-files {
     display: flex;
 }
@@ -43,13 +49,16 @@ h4 {
     padding: 40px;
     position: relative;
 }
+
 .task__information-asignTo-user {
     display: flex;
     align-items: center;
 }
+
 .task__information-asignTo-name {
     margin-left: 5px;
 }
+
 .task__information-followers a {
     margin-right: 5px;
 }

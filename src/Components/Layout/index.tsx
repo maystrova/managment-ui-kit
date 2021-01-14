@@ -9,7 +9,7 @@ import {TaskCard} from '../TaskCard'
 import {Checkbox} from "../Checkbox";
 import {Task} from '../Task'
 import {TasksList} from "../TasksList";
-import {AddFile} from '../AddFile'
+import {File} from '../File'
 import {Comment} from '../Comment'
 
 import {backlogTasks, todoTasks} from "./tasks";
@@ -226,8 +226,7 @@ const Layout = () => {
                             }
                         ],
                         user: {avatar: ownerAvatar},
-                        files: [
-                            {
+                        files: [{
                                 title: 'Redesign Brief',
                                 format: '.pdf',
                                 preview: filePreview,
@@ -238,11 +237,8 @@ const Layout = () => {
                                 format: '.png',
                                 preview: filePreview,
                                 size: '129 kb'
-                            }
-                        ]
-
-                    }
-                    }/>
+                            }]
+                    }}/>
                 </div>
             </div>
         </div>

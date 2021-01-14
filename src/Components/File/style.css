@@ -3,10 +3,12 @@
     display: flex;
     align-items: center;
 }
+
 .addFile__preview {
     display: inline-flex;
     margin-right: 10px;
 }
+
 .addFile__information-size {
     text-transform: uppercase;
     opacity: 70%;
