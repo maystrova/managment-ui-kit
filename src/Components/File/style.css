@@ -1,0 +1,17 @@
+.addFile {
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.addFile__preview {
+    display: inline-flex;
+    margin-right: 10px;
+}
+
+.addFile__information-size {
+    text-transform: uppercase;
+    opacity: 70%;
+    font-weight: 100;
+}
+

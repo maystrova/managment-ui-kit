@@ -1,4 +1,5 @@
 import {TagType} from "../Tag";
+import {FileType} from "../File/type";
 
 export type DiscussionType = {
     name: string,
@@ -24,4 +25,5 @@ export type TaskType = {
     description: string
     discussions: DiscussionType[]
     user: UserType
+    files: FileType []
 }
