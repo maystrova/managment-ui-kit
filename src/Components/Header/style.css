@@ -2,3 +2,32 @@
     background-color: white;
     padding: 25px 15px 0;
 }
+
+.Header__titleRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.Header__titleRow-title {
+    display: flex;
+}
+
+.Header__titleRow-socialMedia {
+    display: flex;
+}
+
+.Header__menu a {
+    color: black;
+    opacity: 70%;
+    margin-right: 20px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.Header__menu a:hover {
+    border-bottom-color: #FFC200;
+    transition: border-bottom-color 300ms ease-in-out;
+}

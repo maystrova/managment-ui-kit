@@ -9,8 +9,8 @@ interface IconProps {
 
 const Icon = ( {size, alt = 'icon', src}: IconProps ) => {
     return (
-        <div className={`Icon Icon__${size}`}>
-            <img src={src} alt={alt}/>
+        <div>
+            <img className={`Icon Icon__${size}`} src={src} alt={alt}/>
         </div>
     )
 }
