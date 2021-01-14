@@ -11,6 +11,11 @@
 
 .Header__titleRow-title {
     display: flex;
+    align-items: center;
+}
+
+.Header__titleRow-title h1 {
+    margin-left: 10px;
 }
 
 .Header__titleRow-socialMedia {
