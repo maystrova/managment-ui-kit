@@ -16,23 +16,24 @@ const Header = ({header}: HeaderProps) => {
         <header className="Header">
             <div className='Header__titleRow'>
                 <div className="Header__titleRow-title">
-                <Icon size={"large"} src={header.icon}/>
-                <h1>Website Redesign</h1>
+                    <Icon size={"large"} src={header.icon}/>
+                    <h1>{header.title}</h1>
                 </div>
                 <div className="Header__titleRow-socialMedia">
-                    {header.creators.map((creator) => <Avatar size={"small"} src={creator}/>)}
-                    <div className="Header__titleRow-buttons">
-                        <Button text="Share"/>
-                        <Button backgroundColor="#FFF8DD" color="#FFC200" text="💬 Chat"/>
+                    {header.creators.map((creator) => <div className='Header__titleRow-socialMedia-avatar'><Avatar
+                        size={"small"} src={creator}/></div>)}
+                    <div className="Header__titleRow-socialMedia-buttons">
+                        <div className='Header__titleRow-socialMedia-button'>
+                            <Button text="Share"/>
+                        </div>
+                        <div className='Header__titleRow-socialMedia-button'>
+                            <Button backgroundColor="#FFF8DD" color="#FFC200" text="💬 Chat"/>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="Header__menu">
-                <a href="">Tasks</a>
-                <a href="">Kanban</a>
-                <a href="">Activity</a>
-                <a href="">Calendar</a>
-                <a href="">Files</a>
+                {header.menu.map((item) => <a className='Header__menu-item' href="#">{item}</a>)}
             </div>
         </header>
     )

@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
+    align-items: center;
 }
 
 .Header__titleRow-title {
@@ -20,9 +21,24 @@
 
 .Header__titleRow-socialMedia {
     display: flex;
+    align-items: center;
 }
 
-.Header__menu a {
+.Header__titleRow-socialMedia-avatar {
+    margin-left: 5px;
+}
+
+.Header__titleRow-socialMedia-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.Header__titleRow-socialMedia-button {
+    margin-left: 10px;
+}
+
+
+.Header__menu-item {
     color: black;
     opacity: 70%;
     margin-right: 20px;
@@ -32,7 +48,7 @@
     display: inline-block;
 }
 
-.Header__menu a:hover {
+.Header__menu-item:hover {
     border-bottom-color: #FFC200;
     transition: border-bottom-color 300ms ease-in-out;
 }

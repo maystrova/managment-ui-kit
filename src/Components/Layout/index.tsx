@@ -167,8 +167,10 @@ const Layout = () => {
 
                 <Header header={{
                     creators: [userAvatar2, userAvatar3, userAvatar4],
-                    icon: redesignIcon
-                } }/>
+                    icon: redesignIcon,
+                    title: 'Website Redesign',
+                    menu: ['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']
+                }}/>
 
                 <div className="content">
                     <div className="tasksListBase">
@@ -204,11 +206,11 @@ const Layout = () => {
                         ],
                         user: {avatar: ownerAvatar},
                         files: [{
-                                title: 'Redesign Brief',
-                                format: '.pdf',
-                                preview: filePreview,
-                                size: '159 kb'
-                            },
+                            title: 'Redesign Brief',
+                            format: '.pdf',
+                            preview: filePreview,
+                            size: '159 kb'
+                        },
                             {
                                 title: 'Header',
                                 format: '.png',
