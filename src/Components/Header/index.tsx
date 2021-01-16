@@ -1,11 +1,41 @@
 import React from "react";
 import './style.css'
 import {Button} from "../Button";
+import {Icon} from "../Icon";
+import {Avatar} from "../Avatar";
+import {HeaderType} from './types'
 
-const Header = () => {
+interface HeaderProps {
+    creators: string[]
+    icon: string
+    title: string
+    menu: string[]
+}
+
+const Header = ({creators, icon, menu, title}: HeaderProps) => {
     return (
         <header className="Header">
-            Header
+            <div className='Header__titleRow'>
+                <div className="Header__titleRow-title">
+                    <Icon size={"large"} src={icon}/>
+                    <h1>{title}</h1>
+                </div>
+                <div className="Header__titleRow-socialMedia">
+                    {creators.map((creator) => <div className='Header__titleRow-socialMedia-avatar'><Avatar
+                        size={"small"} src={creator}/></div>)}
+                    <div className="Header__titleRow-socialMedia-buttons">
+                        <div className='Header__titleRow-socialMedia-button'>
+                            <Button text="Share"/>
+                        </div>
+                        <div className='Header__titleRow-socialMedia-button'>
+                            <Button backgroundColor="#FFF8DD" color="#FFC200" text="💬 Chat"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="Header__menu">
+                {menu.map((item) => <a className='Header__menu-item' href="#">{item}</a>)}
+            </div>
         </header>
     )
 }

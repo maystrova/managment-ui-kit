@@ -15,7 +15,6 @@ import {Comment} from '../Comment'
 import {backlogTasks, todoTasks} from "./tasks";
 
 import '../../html/style.css'
-import '../../html/header/style.css'
 import '../../html/navigation/style.css'
 import '../../html/task/style.css'
 
@@ -165,33 +164,10 @@ const Layout = () => {
             </aside>
 
             <div className="main">
-                <header className="mainMenu">
-                    <div className="mainMenu__titleRow">
-                        <div className="mainMenu__name">
-                            <img src={redesignIcon} alt="icon"/>
-                            <h1>Website Redesign</h1>
-                            <button>🖊️</button>
-                        </div>
-                        <div className="mainMenu__creators">
-                            <div className="avatar">
-                                <Avatar size={"medium"} src={avatarHeader}/>
-                                <Avatar size={"medium"} src={avatarHeader}/>
-                                <Avatar size={"medium"} src={avatarHeader}/>
-                            </div>
-                            <div className="headerButtons">
-                                <Button text="Share"/>
-                                <Button backgroundColor="#FFF8DD" color="#FFC200" text="💬 Chat"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mainMenu__additionalMenu">
-                        <a href="">Tasks</a>
-                        <a href="">Kanban</a>
-                        <a href="">Activity</a>
-                        <a href="">Calendar</a>
-                        <a href="">Files</a>
-                    </div>
-                </header>
+                <Header
+                    icon={redesignIcon} creators={[userAvatar2, userAvatar3, userAvatar4]}
+                    title={'Website Redesign'}
+                    menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}/>
 
                 <div className="content">
                     <div className="tasksListBase">
@@ -227,11 +203,11 @@ const Layout = () => {
                         ],
                         user: {avatar: ownerAvatar},
                         files: [{
-                                title: 'Redesign Brief',
-                                format: '.pdf',
-                                preview: filePreview,
-                                size: '159 kb'
-                            },
+                            title: 'Redesign Brief',
+                            format: '.pdf',
+                            preview: filePreview,
+                            size: '159 kb'
+                        },
                             {
                                 title: 'Header',
                                 format: '.png',

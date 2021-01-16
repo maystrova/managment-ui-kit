@@ -2,3 +2,53 @@
     background-color: white;
     padding: 25px 15px 0;
 }
+
+.Header__titleRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.Header__titleRow-title {
+    display: flex;
+    align-items: center;
+}
+
+.Header__titleRow-title h1 {
+    margin-left: 10px;
+}
+
+.Header__titleRow-socialMedia {
+    display: flex;
+    align-items: center;
+}
+
+.Header__titleRow-socialMedia-avatar {
+    margin-left: 5px;
+}
+
+.Header__titleRow-socialMedia-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.Header__titleRow-socialMedia-button {
+    margin-left: 10px;
+}
+
+
+.Header__menu-item {
+    color: black;
+    opacity: 70%;
+    margin-right: 20px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.Header__menu-item:hover {
+    border-bottom-color: #FFC200;
+    transition: border-bottom-color 300ms ease-in-out;
+}
