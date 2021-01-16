@@ -2,25 +2,26 @@ import React from "react";
 import './style.css'
 import {Button} from "../Button";
 import {Icon} from "../Icon";
-import projectIcon from '../Layout/pics/navigation-icon.svg'
-import userAvatar2 from '../Layout/pics/userpic2.png'
 import {Avatar} from "../Avatar";
 import {HeaderType} from './types'
 
 interface HeaderProps {
-    header: HeaderType
+    creators: string[]
+    icon: string
+    title: string
+    menu: string[]
 }
 
-const Header = ({header}: HeaderProps) => {
+const Header = ({creators, icon, menu, title}: HeaderProps) => {
     return (
         <header className="Header">
             <div className='Header__titleRow'>
                 <div className="Header__titleRow-title">
-                    <Icon size={"large"} src={header.icon}/>
-                    <h1>{header.title}</h1>
+                    <Icon size={"large"} src={icon}/>
+                    <h1>{title}</h1>
                 </div>
                 <div className="Header__titleRow-socialMedia">
-                    {header.creators.map((creator) => <div className='Header__titleRow-socialMedia-avatar'><Avatar
+                    {creators.map((creator) => <div className='Header__titleRow-socialMedia-avatar'><Avatar
                         size={"small"} src={creator}/></div>)}
                     <div className="Header__titleRow-socialMedia-buttons">
                         <div className='Header__titleRow-socialMedia-button'>
@@ -33,7 +34,7 @@ const Header = ({header}: HeaderProps) => {
                 </div>
             </div>
             <div className="Header__menu">
-                {header.menu.map((item) => <a className='Header__menu-item' href="#">{item}</a>)}
+                {menu.map((item) => <a className='Header__menu-item' href="#">{item}</a>)}
             </div>
         </header>
     )

@@ -164,13 +164,10 @@ const Layout = () => {
             </aside>
 
             <div className="main">
-
-                <Header header={{
-                    creators: [userAvatar2, userAvatar3, userAvatar4],
-                    icon: redesignIcon,
-                    title: 'Website Redesign',
-                    menu: ['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']
-                }}/>
+                <Header
+                    icon={redesignIcon} creators={[userAvatar2, userAvatar3, userAvatar4]}
+                    title={'Website Redesign'}
+                    menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}/>
 
                 <div className="content">
                     <div className="tasksListBase">
