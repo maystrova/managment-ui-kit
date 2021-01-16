@@ -165,7 +165,10 @@ const Layout = () => {
 
             <div className="main">
 
-                <Header icon={redesignIcon}/>
+                <Header header={{
+                    creators: [userAvatar2, userAvatar3, userAvatar4],
+                    icon: redesignIcon
+                } }/>
 
                 <div className="content">
                     <div className="tasksListBase">

@@ -5,21 +5,22 @@ import {Icon} from "../Icon";
 import projectIcon from '../Layout/pics/navigation-icon.svg'
 import userAvatar2 from '../Layout/pics/userpic2.png'
 import {Avatar} from "../Avatar";
+import {HeaderType} from './types'
 
 interface HeaderProps {
-    icon: string
+    header: HeaderType
 }
 
-const Header = ({icon}: HeaderProps) => {
+const Header = ({header}: HeaderProps) => {
     return (
         <header className="Header">
             <div className='Header__titleRow'>
                 <div className="Header__titleRow-title">
-                <Icon size={"large"} src={icon}/>
+                <Icon size={"large"} src={header.icon}/>
                 <h1>Website Redesign</h1>
                 </div>
                 <div className="Header__titleRow-socialMedia">
-                  <Avatar size={"small"} src={userAvatar2}/>
+                    {header.creators.map((creator) => <Avatar size={"small"} src={creator}/>)}
                     <div className="Header__titleRow-buttons">
                         <Button text="Share"/>
                         <Button backgroundColor="#FFF8DD" color="#FFC200" text="💬 Chat"/>

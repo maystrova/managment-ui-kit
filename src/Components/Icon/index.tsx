@@ -1,5 +1,6 @@
 import React from 'react'
 import './style.css'
+import {HeaderType} from "../Header/types";
 
 interface IconProps {
     size: 'small' | 'large'
