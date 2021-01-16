@@ -28,23 +28,6 @@
     margin-right: 10px;
 }
 
-.navigation__userInfo {
-    background-color: #202020;
-    display: flex;
-    align-items: center;
-    font-weight: 100;
-    padding: 10px;
-}
-
-.navigation__avatar {
-    flex: 0 0 48px;
-    display: inline-flex;
-}
-
-.navigation__greyText {
-    font-size: 13px;
-    color: grey;
-}
 
 .navigation__userInfo button {
     background: transparent;

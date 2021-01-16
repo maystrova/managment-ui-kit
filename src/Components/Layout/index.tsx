@@ -50,6 +50,7 @@ import commentAvatar1 from '../Layout/pics/commentpic.png'
 import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
+import {UserInfo} from "../UserInfo";
 
 
 const Layout = () => {
@@ -64,16 +65,8 @@ const Layout = () => {
 
 
                 </div>
-                <div className="navigation__userInfo">
-                    <div className="navigation__avatar">
-                        <Avatar size={"large"} src={ownerAvatar}/>
-                    </div>
-                    <div className="navigation__user">
-                        <div className="navigation__whiteText">Emilee Simchenko</div>
-                        <div className="navigation__greyText">Product Owner</div>
-                    </div>
-                    <button><img src={dotsIcon} alt="more"/></button>
-                </div>
+
+                <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'} more={dotsIcon}/>
 
                 <div className="navigation__stats">
                     <div className="navigation__completed">
