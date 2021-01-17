@@ -51,6 +51,7 @@ import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
 import {UserInfo} from "../UserInfo";
+import {List} from "../List";
 
 
 const Layout = () => {
@@ -66,7 +67,7 @@ const Layout = () => {
 
                 </div>
 
-                <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'}/>
+
 
                 <div className="navigation__stats">
                     <div className="navigation__completed">
@@ -81,15 +82,17 @@ const Layout = () => {
                     </div>
                     <div className="navigation__open"></div>
                 </div>
-                <div className="navigation__menu">
-                    <h4 className="navigation__greyText menu__title">Menu</h4>
-                    <ul className="navigation__list">
-                        <li><a className="navigation__link" href="">Home</a></li>
-                        <li><a className="navigation__link" href="">My Tasks</a></li>
-                        <li><a className="navigation__link" href="">Notifications<span
-                            className="navigation__counter">3</span></a></li>
-                    </ul>
-                </div>
+                {/*<div className="navigation__menu">*/}
+                {/*    <h4 className="navigation__greyText menu__title">Menu</h4>*/}
+                {/*    <ul className="navigation__list">*/}
+                {/*        <li><a className="navigation__link" href="">Home</a></li>*/}
+                {/*        <li><a className="navigation__link" href="">My Tasks</a></li>*/}
+                {/*        <li><a className="navigation__link" href="">Notifications<span*/}
+                {/*            className="navigation__counter">3</span></a></li>*/}
+                {/*    </ul>*/}
+                {/*</div>*/}
+                
+
 
                 <div className="navigation__menu">
                     <h4 className="navigation__greyText menu__title">Projects</h4>
