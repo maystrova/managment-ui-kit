@@ -66,7 +66,7 @@ const Layout = () => {
 
                 </div>
 
-                <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'} more={dotsIcon}/>
+                <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'}/>
 
                 <div className="navigation__stats">
                     <div className="navigation__completed">

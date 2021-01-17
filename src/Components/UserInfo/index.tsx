@@ -2,15 +2,15 @@ import React from 'react'
 import './style.css'
 import {Avatar} from "../Avatar";
 import {Icon} from "../Icon";
+import dotsIcon from '../Layout/pics/dots.svg'
 
 interface UserInfoProps {
     avatar: string
     name: string
     profession: string
-    more: string
 }
 
-const UserInfo = ({avatar, name, profession, more}: UserInfoProps) => {
+const UserInfo = ({avatar, name, profession}: UserInfoProps) => {
     return (
         <div className='UserInfo'>
             <div className='UserInfo__information'>
@@ -24,7 +24,7 @@ const UserInfo = ({avatar, name, profession, more}: UserInfoProps) => {
             </div>
             <div className='UserInfo__more'>
                 <a href="#">
-                    <Icon size={"small"} src={more}/>
+                    <Icon size={"small"} src={dotsIcon}/>
                 </a>
             </div>
         </div>
