@@ -1,0 +1,38 @@
+.List {
+    padding: 15px;
+    line-height: 2.5;
+    margin-bottom: 15px;
+}
+
+.List__title {
+    text-transform: uppercase;
+    color: #878787;
+}
+
+.List__items li {
+    list-style-type: none;
+}
+
+.List__items-link {
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    /*border-left: 3px solid transparent;*/
+}
+
+.List__items-block {
+    padding: 0;
+}
+
+.List__items-count {
+    width: 20px;
+    height: 20px;
+    background-color: #FFC200;
+    color: black;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 15px;
+}

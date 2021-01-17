@@ -3,3 +3,32 @@
     width: 270px;
     color: white;
 }
+
+.Sidebar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 15px;
+    text-transform: uppercase;
+}
+
+.Sidebar__header-title {
+    display: inline-flex;
+}
+
+.Sidebar__header-icon {
+    margin-right: 10px;
+}
+
+.Sidebar__footer {
+    padding: 15px;
+    line-height: 1.7;
+}
+
+.Sidebar__footer-link {
+    color: #FFC200;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    padding-bottom: 3px;
+    border-bottom-color: #ffc200ad;
+}

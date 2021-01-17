@@ -1,62 +1,4 @@
-.navigation {
-    background-color: black;
-    width: 270px;
-    color: white;
-}
 
-.navigation__head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 15px;
-    text-transform: uppercase;
-}
-
-.navigation__head button {
-    background: transparent;
-    border: none;
-    padding: 0;
-    outline: none;
-}
-
-.navigation__head span {
-    display: flex;
-    align-items: center;
-}
-
-.navigation__head > span > img {
-    margin-right: 10px;
-}
-
-.navigation__userInfo {
-    background-color: #202020;
-    display: flex;
-    align-items: center;
-    font-weight: 100;
-    padding: 10px;
-}
-
-.navigation__avatar {
-    flex: 0 0 48px;
-    display: inline-flex;
-}
-
-.navigation__greyText {
-    font-size: 13px;
-    color: grey;
-}
-
-.navigation__userInfo button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.navigation__user {
-    padding-left: 15px;
-    flex: 1 1;
-}
 
 .navigation__stats {
     display: flex;
@@ -68,52 +10,6 @@
     font-size: 21px;
 }
 
-.navigation__list {
-    list-style-type: none;
-    padding: 0;
-
-}
-
-.menu__title {
-    text-transform: uppercase;
-    font-weight: 100;
-    padding: 30px;
-}
-
-.navigation__list li {
-
-    /*padding-bottom: 20px;*/
-    font-weight: 100;
-
-}
-
-.navigation__counter {
-    width: 20px;
-    height: 20px;
-    background-color: #FFC200;
-    color: black;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    margin-left: 15px;
-}
-
-.navigation__link {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    height: 40px;
-    padding: 0 10px 0 27px;
-    border-left: 3px solid transparent;
-    width: 100%;
-}
-
-.navigation__link img {
-    margin-right: 10px;
-}
 
 .addProject {
 
@@ -139,22 +35,4 @@
     justify-content: space-between;
 }
 
-.team img + img {
-    margin-left: 5px;
-}
 
-
-.navigation__invite {
-    padding: 30px;
-    font-weight: 100;
-    line-height: 1.7;
-}
-
-.navigation__invite a {
-    color: #FFC200;
-    text-decoration: none;
-    border-bottom: 1px solid;
-    padding-bottom: 3px;
-    border-bottom-color: #ffc200ad;
-
-}

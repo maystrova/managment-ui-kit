@@ -1,9 +1,8 @@
 import React from 'react'
 import './style.css'
-import {HeaderType} from "../Header/types";
 
 interface IconProps {
-    size: 'small' | 'large'
+    size: 'x-small' | 'small' | 'large'
     alt?: string
     src: string
 }

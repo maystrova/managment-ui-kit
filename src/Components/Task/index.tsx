@@ -28,7 +28,7 @@ const Task = ({task}: TaskProps) => {
             </header>
             <div className='task__information'>
                 <div className='task__information-asignTo'>
-                    <h4>Asign to</h4>
+                    <h4 className='task__title'>Asign to</h4>
                     <div className='task__information-asignTo-user'>
                         <Avatar size={"x-small"} src={userAvatar1}/>
                         <span className='task__information-asignTo-name'>{task.assignTo}</span>
@@ -36,21 +36,21 @@ const Task = ({task}: TaskProps) => {
 
                 </div>
                 <div className='task__information-date'>
-                    <h4>Due on</h4>
+                    <h4 className='task__title'>Due on</h4>
                     <div>{task.dueOn}</div>
                 </div>
                 <div className='task__information-tag'>
-                    <h4>Tag</h4>
+                    <h4 className='task__title'>Tag</h4>
                     <Tag text={task.tag} type={task.tag}/>
                 </div>
                 <div className="task__information-followers">
-                    <h4>Followers</h4>
+                    <h4 className='task__title'>Followers</h4>
                     {task.followers.map((follower) => <Avatar size={"x-small"} src={follower}/>)}
                 </div>
             </div>
 
             <div className="task__description">
-                <h4 className="task__description-title">Description</h4>
+                <h4 className="task__description-title task__title">Description</h4>
                 <p className='task__description-content'>{task.description}
                 </p>
                 <div className="task__description-files">
@@ -66,7 +66,7 @@ const Task = ({task}: TaskProps) => {
             </div>
 
             <div className="task__discussion">
-                <h4>Discussion</h4>
+                <h4 className='task__title'>Discussion</h4>
                 <div className='task__discussion-addComment'>
                     <AddComment userpic={task.user.avatar}/>
                 </div>
