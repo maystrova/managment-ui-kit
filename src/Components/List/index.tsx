@@ -15,6 +15,7 @@ const List = ({items, addition, title}: ListType) => {
                                 {item.icon && <img src={item.icon} alt=""/>}
                                 {item.title}
                                 {item.avatars?.map((avatar) => <img src={avatar} alt=""/>)}
+                                {item.count && <span className='List__items-count'>3</span>}
                             </a>
                         </li>
                     ))}

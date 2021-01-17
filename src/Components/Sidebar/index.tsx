@@ -11,11 +11,9 @@ interface SidebarProps {
     icon: string
     title: string
     search: string
-    invitation: string
-    text: string
 }
 
-const Sidebar = ({icon, title, search, invitation, text}: SidebarProps) => {
+const Sidebar = ({icon, title, search}: SidebarProps) => {
     return <aside className="Sidebar">
         <header className='Sidebar__header'>
             <div className='Sidebar__header-title'>
@@ -27,10 +25,10 @@ const Sidebar = ({icon, title, search, invitation, text}: SidebarProps) => {
         <Icon size={"x-small"} src={search}/>
         </header>
         <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'}/>
-        <List title={'Menu'} items={[{title:'Home', avatars: [ownerAvatar]}, {title: 'My Tasks'}, {title: 'Notifications'}]}/>
+        <List title={'Menu'} items={[{title:'Home'}, {title: 'My Tasks'}, {title: 'Notifications', count: '3'}]}/>
 
         <div className="Sidebar__footer">
-            <a className='Sidebar__footer-link' href="#">{invitation}</a>{text}
+            <span><a className='Sidebar__footer-link' href="#">Invite your team</a> and start collaborating!</span>
         </div>
     </aside>
 }

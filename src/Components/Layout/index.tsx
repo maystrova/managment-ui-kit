@@ -57,16 +57,7 @@ const Layout = () => {
     return (
         <div className="container">
 
-            <Sidebar title={'Projectus'} icon={projectIcon} search={searchIcon} invitation={'Invite your team '} text={'and start collaborating!'}/>
-            {/*<aside className="navigation">*/}
-            {/*    <div className="navigation__head">*/}
-
-            {/*        <span><img src={projectIcon} alt="icon"/> Projectus</span>*/}
-
-            {/*        <button><img src={searchIcon} alt="icon"/></button>*/}
-
-
-            {/*    </div>*/}
+            <Sidebar title={'Projectus'} icon={projectIcon} search={searchIcon}/>
 
 
 
@@ -154,9 +145,6 @@ const Layout = () => {
                 {/*    </ul>*/}
                 {/*    <h5 className="addProject"><a href="">+ Add a Team</a></h5>*/}
                 {/*</div>*/}
-            {/*    <footer className="navigation__invite">*/}
-            {/*        <a href="#">Invite your team </a>and start collaborating!*/}
-            {/*    </footer>*/}
 
 
             {/*</aside>*/}

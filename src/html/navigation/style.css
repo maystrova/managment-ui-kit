@@ -11,21 +11,6 @@
 }
 
 
-
-.navigation__counter {
-    width: 20px;
-    height: 20px;
-    background-color: #FFC200;
-    color: black;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    margin-left: 15px;
-}
-
-
 .addProject {
 
     font-weight: 100;
@@ -50,18 +35,4 @@
     justify-content: space-between;
 }
 
-.team img + img {
-    margin-left: 5px;
-}
 
-
-.navigation__invite {
-    padding: 30px;
-    font-weight: 100;
-
-}
-
-.navigation__invite a {
-
-
-}
