@@ -1,5 +1,4 @@
 import React from 'react'
-import './style.css'
 import {Sidebar} from '../Sidebar'
 import {Header} from "../Header";
 import {Button} from '../Button'

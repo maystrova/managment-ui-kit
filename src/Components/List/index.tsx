@@ -1,16 +1,27 @@
 import React from 'react'
 import './style.css'
-import {ListType} from "./types";
 
-const List = (lists: ListType) => {
+import {ListType} from './types';
+
+const List = ({items, addition, title}: ListType) => {
     return (
         <div className='List'>
-        <span className="List__title">{lists.title}</span>
+            <span className="List__title">{title}</span>
             <div className='List__items'>
-            {lists.items.map((item) => (<ul className='List__items-block'><li><a className='List__items-link' href="#">{lists.icon}{item}{lists.members}</a></li></ul>))}
+                <ul className='List__items-block'>
+                    {items.map((item) => (
+                        <li>
+                            <a className='List__items-link' href="#">
+                                {item.icon && <img src={item.icon} alt=""/>}
+                                {item.title}
+                                {item.avatars?.map((avatar) => <img src={avatar} alt=""/>)}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
             </div>
             <div className='List__items-addition'>
-                <a href="#">{lists.addition}</a>
+                <a href="#">{addition}</a>
             </div>
         </div>
     )

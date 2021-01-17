@@ -1,8 +1,13 @@
 
+type SidebarItem = {
+    icon?: string
+    count?: string
+    title: string
+    avatars?: string[]
+}
+
 export type ListType = {
     title: string
-    items: string[]
-    icon?: string
+    items: SidebarItem[]
     addition?: string
-    members?: string[]
 }

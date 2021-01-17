@@ -1,10 +1,11 @@
 import React from "react";
 import './style.css'
 import {List} from "../List";
-import ownerAvatar from "../Layout/pics/userpic.svg";
 import {UserInfo} from "../UserInfo";
 import {Icon} from "../Icon";
-import {ListType} from "../List/types";
+
+import ownerAvatar from "../Layout/pics/userpic.svg";
+
 
 interface SidebarProps {
     icon: string
@@ -26,7 +27,7 @@ const Sidebar = ({icon, title, search, invitation, text}: SidebarProps) => {
         <Icon size={"x-small"} src={search}/>
         </header>
         <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'}/>
-        <List title={'Menu'} items={['Home', 'My Tasks', 'Notifications' ]}/>
+        <List title={'Menu'} items={[{title:'Home', avatars: [ownerAvatar]}, {title: 'My Tasks'}, {title: 'Notifications'}]}/>
 
         <div className="Sidebar__footer">
             <a className='Sidebar__footer-link' href="#">{invitation}</a>{text}
