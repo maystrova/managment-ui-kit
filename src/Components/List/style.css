@@ -1,0 +1,25 @@
+.List {
+    padding: 15px;
+    line-height: 2.5;
+    margin-bottom: 15px;
+}
+
+.List__title {
+    text-transform: uppercase;
+    color: #878787;
+}
+
+.List__items li {
+    list-style-type: none;
+}
+
+.List__items-link {
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    /*border-left: 3px solid transparent;*/
+}
+
+.List__items-block {
+    padding: 0;
+}

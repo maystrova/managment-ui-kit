@@ -57,107 +57,110 @@ import {List} from "../List";
 const Layout = () => {
     return (
         <div className="container">
-            <aside className="navigation">
-                <div className="navigation__head">
 
-                    <span><img src={projectIcon} alt="icon"/> Projectus</span>
+            <Sidebar title={'Projectus'} icon={projectIcon} search={searchIcon} invitation={'Invite your team '} text={'and start collaborating!'}/>
+            {/*<aside className="navigation">*/}
+            {/*    <div className="navigation__head">*/}
 
-                    <button><img src={searchIcon} alt="icon"/></button>
+            {/*        <span><img src={projectIcon} alt="icon"/> Projectus</span>*/}
 
-
-                </div>
-
+            {/*        <button><img src={searchIcon} alt="icon"/></button>*/}
 
 
-                <div className="navigation__stats">
-                    <div className="navigation__completed">
-                        <span className="navigation__whiteText">372</span><br/>
-                        <span className="navigation__greyText">Completed Tasks</span>
+            {/*    </div>*/}
 
-                    </div>
-                    <div className="navigation__open">
-                        <span className="navigation__whiteText">1</span><br/>
-                        <span className="navigation__greyText">Open Tasks</span>
 
-                    </div>
-                    <div className="navigation__open"></div>
-                </div>
-                {/*<div className="navigation__menu">*/}
-                {/*    <h4 className="navigation__greyText menu__title">Menu</h4>*/}
-                {/*    <ul className="navigation__list">*/}
-                {/*        <li><a className="navigation__link" href="">Home</a></li>*/}
-                {/*        <li><a className="navigation__link" href="">My Tasks</a></li>*/}
-                {/*        <li><a className="navigation__link" href="">Notifications<span*/}
-                {/*            className="navigation__counter">3</span></a></li>*/}
-                {/*    </ul>*/}
+
+                {/*<div className="navigation__stats">*/}
+                {/*    <div className="navigation__completed">*/}
+                {/*        <span className="navigation__whiteText">372</span><br/>*/}
+                {/*        <span className="navigation__greyText">Completed Tasks</span>*/}
+
+                {/*    </div>*/}
+                {/*    <div className="navigation__open">*/}
+                {/*        <span className="navigation__whiteText">1</span><br/>*/}
+                {/*        <span className="navigation__greyText">Open Tasks</span>*/}
+
+                {/*    </div>*/}
+                {/*    /!*<div className="navigation__open"></div>*!/*/}
                 {/*</div>*/}
-                
+                {/*/!*<div className="navigation__menu">*!/*/}
+                {/*/!*    <h4 className="navigation__greyText menu__title">Menu</h4>*!/*/}
+                {/*/!*    <ul className="navigation__list">*!/*/}
+                {/*/!*        <li><a className="navigation__link" href="">Home</a></li>*!/*/}
+                {/*/!*        <li><a className="navigation__link" href="">My Tasks</a></li>*!/*/}
+                {/*/!*        <li><a className="navigation__link" href="">Notifications<span*!/*/}
+                {/*/!*            className="navigation__counter">3</span></a></li>*!/*/}
+                {/*/!*    </ul>*!/*/}
+                {/*/!*</div>*!/*/}
 
 
-                <div className="navigation__menu">
-                    <h4 className="navigation__greyText menu__title">Projects</h4>
-                    <ul className="navigation__list">
-                        <li><a className="navigation__link" href=""><img className="navigation__link__img"
-                                                                         src={dashboardIcon} alt=""/>Dashboard
-                            UI
-                            Kit</a></li>
-                        <li><a className="navigation__link" href=""><img className="navigation__link__img"
-                                                                         src={crmIcon}
-                                                                         alt=""/>CRM System</a></li>
-                        <li><a className="navigation__link" href=""><img className="navigation__link__img"
-                                                                         src={redesignIcon} alt=""/>Website
-                            Redesign</a>
-                        </li>
-                        <li><a className="navigation__link" href=""><img className="navigation__link__img"
-                                                                         src={communicationIcon} alt=""/>Communication
-                            Tool</a></li>
-
-                    </ul>
-                    <h5 className="addProject"><a href="">+ Add a Project</a></h5>
-                </div>
-
-                <div className="navigation__menu">
-                    <h4 className="navigation__greyText menu__title">Teams</h4>
-                    <ul className="navigation__list">
-                        <li>
-                            <a className="navigation__link team" href="">
-                                <span>Designers</span>
-                                <span className="teamMembers">
-                                    <Avatar size={"x-small"} src={designerAvatar1}/>
-                                    <Avatar size={"x-small"} src={designerAvatar2}/>
-                                    <Avatar size={"x-small"} src={designerAvatar3}/>
-                                </span>
-                            </a>
-                        </li>
-                        <li><a className="navigation__link team" href="">
-                            <span>Backend</span>
-                            <span><Avatar size={"x-small"} src={backenderAvatar1}/>
-                            <Avatar size={"x-small"} src={backenderAvatar2}/>
-                            </span>
-                        </a>
-                        </li>
-                        <li>
-                            <a className="navigation__link team" href="">
-                                <span>Frontend</span>
-                                <span className="teamMembers">
-                                    <Avatar size={"x-small"} src={frontenderAvatar1}/>
-                                    <Avatar size={"x-small"} src={frontenderAvatar2}/>
-                                    <Avatar size={"x-small"} src={frontenderAvatar3}/>
-                                    <Avatar size={"x-small"} src={frontenderAvatar4}/>
-                                </span>
-                            </a>
-                        </li>
 
 
-                    </ul>
-                    <h5 className="addProject"><a href="">+ Add a Team</a></h5>
-                </div>
-                <footer className="navigation__invite">
-                    <a href="#">Invite your team </a>and start collaborating!
-                </footer>
+                {/*<div className="navigation__menu">*/}
+                {/*    <h4 className="navigation__greyText menu__title">Projects</h4>*/}
+                {/*    <ul className="navigation__list">*/}
+                {/*        <li><a className="navigation__link" href=""><img className="navigation__link__img"*/}
+                {/*                                                         src={dashboardIcon} alt=""/>Dashboard*/}
+                {/*            UI*/}
+                {/*            Kit</a></li>*/}
+                {/*        <li><a className="navigation__link" href=""><img className="navigation__link__img"*/}
+                {/*                                                         src={crmIcon}*/}
+                {/*                                                         alt=""/>CRM System</a></li>*/}
+                {/*        <li><a className="navigation__link" href=""><img className="navigation__link__img"*/}
+                {/*                                                         src={redesignIcon} alt=""/>Website*/}
+                {/*            Redesign</a>*/}
+                {/*        </li>*/}
+                {/*        <li><a className="navigation__link" href=""><img className="navigation__link__img"*/}
+                {/*                                                         src={communicationIcon} alt=""/>Communication*/}
+                {/*            Tool</a></li>*/}
+
+                {/*    </ul>*/}
+                {/*    <h5 className="addProject"><a href="">+ Add a Project</a></h5>*/}
+                {/*</div>*/}
+
+                {/*<div className="navigation__menu">*/}
+                {/*    <h4 className="navigation__greyText menu__title">Teams</h4>*/}
+                {/*    <ul className="navigation__list">*/}
+                {/*        <li>*/}
+                {/*            <a className="navigation__link team" href="">*/}
+                {/*                <span>Designers</span>*/}
+                {/*                <span className="teamMembers">*/}
+                {/*                    <Avatar size={"x-small"} src={designerAvatar1}/>*/}
+                {/*                    <Avatar size={"x-small"} src={designerAvatar2}/>*/}
+                {/*                    <Avatar size={"x-small"} src={designerAvatar3}/>*/}
+                {/*                </span>*/}
+                {/*            </a>*/}
+                {/*        </li>*/}
+                {/*        <li><a className="navigation__link team" href="">*/}
+                {/*            <span>Backend</span>*/}
+                {/*            <span><Avatar size={"x-small"} src={backenderAvatar1}/>*/}
+                {/*            <Avatar size={"x-small"} src={backenderAvatar2}/>*/}
+                {/*            </span>*/}
+                {/*        </a>*/}
+                {/*        </li>*/}
+                {/*        <li>*/}
+                {/*            <a className="navigation__link team" href="">*/}
+                {/*                <span>Frontend</span>*/}
+                {/*                <span className="teamMembers">*/}
+                {/*                    <Avatar size={"x-small"} src={frontenderAvatar1}/>*/}
+                {/*                    <Avatar size={"x-small"} src={frontenderAvatar2}/>*/}
+                {/*                    <Avatar size={"x-small"} src={frontenderAvatar3}/>*/}
+                {/*                    <Avatar size={"x-small"} src={frontenderAvatar4}/>*/}
+                {/*                </span>*/}
+                {/*            </a>*/}
+                {/*        </li>*/}
 
 
-            </aside>
+                {/*    </ul>*/}
+                {/*    <h5 className="addProject"><a href="">+ Add a Team</a></h5>*/}
+                {/*</div>*/}
+            {/*    <footer className="navigation__invite">*/}
+            {/*        <a href="#">Invite your team </a>and start collaborating!*/}
+            {/*    </footer>*/}
+
+
+            {/*</aside>*/}
 
             <div className="main">
                 <Header

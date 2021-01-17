@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 
 interface IconProps {
-    size: 'small' | 'large'
+    size: 'x-small' | 'small' | 'large'
     alt?: string
     src: string
 }
