@@ -29,7 +29,7 @@ const Task = ({task}: TaskProps) => {
                 <div className='task__information-asignTo'>
                     <h4 className='task__title'>Asign to</h4>
                     <div className='task__information-asignTo-user'>
-                        <Avatar size={"x-small"} src={userAvatar1}/>
+                        <Avatar size={"x-small"} src={task.user.avatar}/>
                         <span className='task__information-asignTo-name'>{task.assignTo}</span>
                     </div>
 
@@ -72,6 +72,7 @@ const Task = ({task}: TaskProps) => {
                 <div className='task__discussion-comments'>
                     {task.discussions.map(({name, profession, date, text, avatar}) => (
                         <Comment
+                            key={name}
                             name={name}
                             profession={profession}
                             date={date}

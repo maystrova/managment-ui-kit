@@ -1,14 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Sidebar} from '../Sidebar'
 import {Header} from "../Header";
 import {Task} from '../Task'
+import {TaskType} from '../Task/types'
 import {TasksList} from "../TasksList";
 
 import {backlogTasks, todoTasks} from "./tasks";
 
 import '../../html/style.css'
 import '../../html/task/style.css'
-
 
 import projectIcon from '../Layout/pics/navigation-icon.svg'
 import searchIcon from '../Layout/pics/search-icon.svg'
@@ -34,7 +34,6 @@ import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
 import {ListType} from "../List/types";
-
 
 const sidebarLists: ListType[] = [
     {
@@ -70,8 +69,48 @@ const sidebarLists: ListType[] = [
 
 ]
 
-
 const Layout = () => {
+    const [task, setTask] = useState<TaskType>({
+        title: 'Find top 5 customer requests',
+        addedBy: 'Kristin A',
+        createdAt: '07.01.2020',
+        isChecked: false,
+        assignTo: 'Linzell Bowman',
+        dueOn: 'Tue, Dec 25',
+        tag: 'marketing',
+        followers: [userAvatar2, userAvatar3, userAvatar4, userAvatar5],
+        description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
+        discussions: [
+            {
+                name: 'Helena Brauer',
+                profession: 'Designer',
+                date: 'Yesterday at 12:37pm',
+                text: 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
+                avatar: commentAvatar3
+            },
+            {
+                name: 'Prescott MacCaffery,',
+                profession: 'Developer',
+                date: 'Yesterday at 12:37pm',
+                text: '@Helena Software quality assurance activity in which one or several humans check a program mainly',
+                avatar: commentAvatar2
+            }
+        ],
+        user: {avatar: ownerAvatar},
+        files: [{
+            title: 'Redesign Brief',
+            format: '.pdf',
+            preview: filePreview,
+            size: '159 kb'
+        },
+            {
+                title: 'Header',
+                format: '.png',
+                preview: filePreview,
+                size: '129 kb'
+            }]
+    })
+
     return (
         <div className="container">
 
@@ -87,50 +126,11 @@ const Layout = () => {
 
                 <div className="content">
                     <div className="tasksListBase">
-                        <TasksList title={'Backlog'} tasks={backlogTasks}/>
-                        <TasksList title={'To Do'} tasks={todoTasks}/>
+                        <TasksList title={'Backlog'} tasks={backlogTasks} onTaskSelected={(task) => setTask(task)}/>
+                        <TasksList title={'To Do'} tasks={todoTasks} onTaskSelected={(task) => setTask(task)}/>
                     </div>
 
-                    <Task task={{
-                        title: 'Find top 5 customer requests',
-                        addedBy: 'Kristin A',
-                        createdAt: '07.01.2020',
-                        isChecked: false,
-                        assignTo: 'Linzell Bowman',
-                        dueOn: 'Tue, Dec 25',
-                        tag: 'marketing',
-                        followers: [userAvatar2, userAvatar3, userAvatar4, userAvatar5],
-                        description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
-                        discussions: [
-                            {
-                                name: 'Helena Brauer',
-                                profession: 'Designer',
-                                date: 'Yesterday at 12:37pm',
-                                text: 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
-                                avatar: commentAvatar3
-                            },
-                            {
-                                name: 'Prescott MacCaffery,',
-                                profession: 'Developer',
-                                date: 'Yesterday at 12:37pm',
-                                text: '@Helena Software quality assurance activity in which one or several humans check a program mainly',
-                                avatar: commentAvatar2
-                            }
-                        ],
-                        user: {avatar: ownerAvatar},
-                        files: [{
-                            title: 'Redesign Brief',
-                            format: '.pdf',
-                            preview: filePreview,
-                            size: '159 kb'
-                        },
-                            {
-                                title: 'Header',
-                                format: '.png',
-                                preview: filePreview,
-                                size: '129 kb'
-                            }]
-                    }}/>
+                    <Task task={task}/>
                 </div>
             </div>
         </div>
