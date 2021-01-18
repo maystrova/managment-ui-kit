@@ -3,17 +3,21 @@ import './style.css'
 import {List} from "../List";
 import {UserInfo} from "../UserInfo";
 import {Icon} from "../Icon";
-
 import ownerAvatar from "../Layout/pics/userpic.svg";
+import {ListType} from "../List/types";
+import {Statistics} from "../Statistics";
+import {StatisticsProps} from "../Statistics";
 
 
 interface SidebarProps {
     icon: string
     title: string
     search: string
+    lists: ListType[]
+    statistics: StatisticsProps
 }
 
-const Sidebar = ({icon, title, search}: SidebarProps) => {
+const Sidebar = ({icon, title, search, lists, statistics}: SidebarProps) => {
     return <aside className="Sidebar">
         <header className='Sidebar__header'>
             <div className='Sidebar__header-title'>
@@ -25,7 +29,8 @@ const Sidebar = ({icon, title, search}: SidebarProps) => {
         <Icon size={"x-small"} src={search}/>
         </header>
         <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'}/>
-        <List title={'Menu'} items={[{title:'Home'}, {title: 'My Tasks'}, {title: 'Notifications', count: '3'}]}/>
+        <Statistics completed={statistics.completed} opened={statistics.opened}/>
+        {lists.map( (list) => ( <List title={list.title} items={list.items} addition={list.addition} />))}
 
         <div className="Sidebar__footer">
             <span><a className='Sidebar__footer-link' href="#">Invite your team</a> and start collaborating!</span>
