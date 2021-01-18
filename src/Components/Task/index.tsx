@@ -8,7 +8,6 @@ import {Comment} from "../Comment";
 import {TaskType} from "./types";
 import {AddComment} from "../AddComment";
 import {File} from "../File";
-import {FileType} from "../File/type";
 
 interface TaskProps {
     task: TaskType
