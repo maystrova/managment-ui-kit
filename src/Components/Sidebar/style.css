@@ -32,3 +32,7 @@
     padding-bottom: 3px;
     border-bottom-color: #ffc200ad;
 }
+
+.Sidebar__footer-link:hover {
+    opacity: 80%;
+}
