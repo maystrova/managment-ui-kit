@@ -6,6 +6,7 @@ interface ButtonProps {
     color?: string,
     text: string
     size?: 'small' | 'medium' | 'large'
+    onClick?: boolean
 }
 
 const Button = ({backgroundColor, color, text, size}: ButtonProps) => {

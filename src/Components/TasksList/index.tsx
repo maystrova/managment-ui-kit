@@ -3,6 +3,8 @@ import './style.css'
 import {Button} from "../Button";
 import {TaskType} from "../Task/types";
 import {TaskCard} from "../TaskCard";
+import {ModalWindow} from "../ModalWindow";
+import {ModalWindowProps} from "../ModalWindow";
 
 interface TasksListProps {
     title: string
@@ -10,12 +12,12 @@ interface TasksListProps {
     onTaskSelected: (task: TaskType) => void
 }
 
-const TasksList = ({title, tasks, onTaskSelected}: TasksListProps) => {
+const TasksList = ({title, tasks, onTaskSelected,}: TasksListProps) => {
     return (
         <div className='tasksList'>
             <header className='tasksList__header'>
                 <h2>{title}</h2>
-                <Button text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
+                <Button onClick={true} text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
             </header>
 
             {tasks.map((task) => {
