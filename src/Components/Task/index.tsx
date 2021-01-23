@@ -5,15 +5,26 @@ import {Avatar} from "../Avatar";
 import userAvatar1 from "../Layout/pics/userpic1.png";
 import {Tag} from "../Tag";
 import {Comment} from "../Comment";
-import {TaskType} from "./types";
+import {DiscussionType, TaskType} from "./types";
 import {AddComment} from "../AddComment";
 import {File} from "../File";
 
 interface TaskProps {
-    task: TaskType
+    task: TaskType,
+    onTaskUpdated: (task: TaskType) => void
 }
 
-const Task = ({task}: TaskProps) => {
+const Task = ({task, onTaskUpdated}: TaskProps) => {
+    const onCommentAdded = (comment: DiscussionType, task: TaskType): void => {
+        const newDiscussions = [comment, ...task.discussions]
+
+        const newTask: TaskType = {
+            ...task,
+            discussions: newDiscussions
+        }
+
+        onTaskUpdated(newTask)
+    }
     return (
         <div className='task'>
             <header className='task__header'>
@@ -67,7 +78,7 @@ const Task = ({task}: TaskProps) => {
             <div className="task__discussion">
                 <h4 className='task__title'>Discussion</h4>
                 <div className='task__discussion-addComment'>
-                    <AddComment userpic={task.user.avatar}/>
+                    <AddComment onCommentAdded={(comment) => onCommentAdded(comment, task)} userpic={task.user.avatar}/>
                 </div>
                 <div className='task__discussion-comments'>
                     {task.discussions.map(({name, profession, date, text, avatar}) => (

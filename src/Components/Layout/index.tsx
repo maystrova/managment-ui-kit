@@ -27,6 +27,7 @@ import crmIcon from '../Layout/pics/crm.svg'
 import redesignIcon from '../Layout/pics/website.svg'
 import communicationIcon from '../Layout/pics/communication.svg'
 import userAvatar2 from '../Layout/pics/userpic2.png'
+import userAvatar1 from '../Layout/pics/userpic1.png'
 import userAvatar3 from '../Layout/pics/userpic3.png'
 import userAvatar4 from '../Layout/pics/userpic4.png'
 import userAvatar5 from '../Layout/pics/userpic5.png'
@@ -96,7 +97,7 @@ const Layout = () => {
                 avatar: commentAvatar2
             }
         ],
-        user: {avatar: ownerAvatar},
+        user: {avatar: userAvatar1},
         files: [{
             title: 'Redesign Brief',
             format: '.pdf',
@@ -130,7 +131,7 @@ const Layout = () => {
                         <TasksList title={'To Do'} tasks={todoTasks} onTaskSelected={(task) => setTask(task)}/>
                     </div>
 
-                    <Task task={task}/>
+                    <Task task={task} onTaskUpdated={(newTask) => setTask(newTask)}/>
                 </div>
             </div>
         </div>
