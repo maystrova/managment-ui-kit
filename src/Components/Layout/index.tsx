@@ -35,6 +35,7 @@ import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
 import {ListType} from "../List/types";
+import {ModalWindow} from "../ModalWindow";
 
 const sidebarLists: ListType[] = [
     {
@@ -112,6 +113,9 @@ const Layout = () => {
             }]
     })
 
+    const [isShowModal, setShowModal] = useState<boolean>(false)
+
+
     return (
         <div className="container">
 
@@ -127,13 +131,15 @@ const Layout = () => {
 
                 <div className="content">
                     <div className="tasksListBase">
-                        <TasksList title={'Backlog'} tasks={backlogTasks} onTaskSelected={(task) => setTask(task)}/>
-                        <TasksList title={'To Do'} tasks={todoTasks} onTaskSelected={(task) => setTask(task)}/>
+                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'Backlog'} tasks={backlogTasks} onTaskSelected={(task) => setTask(task)}/>
+                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'To Do'} tasks={todoTasks} onTaskSelected={(task) => setTask(task)}/>
                     </div>
+
 
                     <Task task={task} onTaskUpdated={(newTask) => setTask(newTask)}/>
                 </div>
             </div>
+            <ModalWindow title={'Create a Task'} isOpen={isShowModal} onCancel={() => setShowModal(false)} onSubmit={() => {}}/>
         </div>
     )
 }

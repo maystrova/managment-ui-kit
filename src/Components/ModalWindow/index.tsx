@@ -4,37 +4,35 @@ import {Button} from "../Button";
 
 export interface ModalWindowProps {
     title: string
-    description: string
     isOpen: boolean
     onCancel: () => void
     onSubmit: () => void
 }
 
 
-const ModalWindow = ({title, description, onCancel, onSubmit, isOpen}: ModalWindowProps) => {
+const ModalWindow = ({title, onCancel, onSubmit, isOpen}: ModalWindowProps) => {
 
+   if(!isOpen) return null
 
-    if (isOpen === true) {
     return (
         <div className="AddTask">
-        <div className='ModalOverlay'>
+        <div className='ModalOverlay' onClick={onCancel}>
             <div className='ModalWindow'>
                 <header className='ModalHeader'>
                     <div className="ModalHeader__title">{title}</div>
-                    <div className='ModalHeader__close' onClick={onCancel}>&times</div>
+                    <div className='ModalHeader__close' onClick={onCancel}>&#10008;</div>
                 </header>
                 <div className="ModalBody">
-                    {description}
                 </div>
                 <footer className="ModalFooter">
-                    <button onClick={onCancel}>Cancel</button>
-                    <button onClick={onSubmit}>Submit</button>
+                    <Button backgroundColor={'#EAEAEA'} size={"medium"} onClick={onCancel} text={'Cancel'}/>
+                    <Button backgroundColor={'#EAEAEA'} size={"medium"} onClick={onSubmit} text={'Submit'}/>
                 </footer>
             </div>
         </div>
         </div>
     )
-}
+
 
 
 }

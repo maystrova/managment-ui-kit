@@ -10,14 +10,17 @@ interface TasksListProps {
     title: string
     tasks: TaskType[]
     onTaskSelected: (task: TaskType) => void
+    onCreatedTaskClicked: () => void
+
+
 }
 
-const TasksList = ({title, tasks, onTaskSelected,}: TasksListProps) => {
+const TasksList = ({title, tasks, onTaskSelected, onCreatedTaskClicked}: TasksListProps) => {
     return (
         <div className='tasksList'>
             <header className='tasksList__header'>
                 <h2>{title}</h2>
-                <Button onClick={true} text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
+                <Button onClick={() => onCreatedTaskClicked()} text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
             </header>
 
             {tasks.map((task) => {
