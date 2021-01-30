@@ -15,7 +15,7 @@ interface TaskProps {
 }
 
 const Task = ({task, onTaskUpdated}: TaskProps) => {
-    const onCommentAdded = (comment: DiscussionType, task: TaskType): void => {
+    const onCommentAdd = (comment: DiscussionType, task: TaskType): void => {
         const newDiscussions = [comment, ...task.discussions]
 
         const newTask: TaskType = {
@@ -25,6 +25,16 @@ const Task = ({task, onTaskUpdated}: TaskProps) => {
 
         onTaskUpdated(newTask)
     }
+
+    const onFileDelete = (task: TaskType, fileIdForDelete: number): void => {
+    const newTask: TaskType = {
+        ...task,
+        files: task.files.filter((file) => file.id !== fileIdForDelete)
+    }
+    onTaskUpdated(newTask)
+    }
+
+
     return (
         <div className='task'>
             <header className='task__header'>
@@ -64,12 +74,15 @@ const Task = ({task, onTaskUpdated}: TaskProps) => {
                 <p className='task__description-content'>{task.description}
                 </p>
                 <div className="task__description-files">
-                    {task.files.map(({title, preview, format, size}) => (
+                    {task.files.map((file) => (
                         <File
-                            preview={preview}
-                            title={title}
-                            format={format}
-                            size={size}
+                            key={file.title}
+                            title={file.title}
+                            preview={file.preview}
+                            format={file.format}
+                            size={file.size}
+                            onFileDelete={(fileId) => {onFileDelete(task, fileId)}}
+                            id={file.id}
                         />
                     ))}
                 </div>
@@ -78,7 +91,7 @@ const Task = ({task, onTaskUpdated}: TaskProps) => {
             <div className="task__discussion">
                 <h4 className='task__title'>Discussion</h4>
                 <div className='task__discussion-addComment'>
-                    <AddComment onCommentAdded={(comment) => onCommentAdded(comment, task)} userpic={task.user.avatar}/>
+                    <AddComment onCommentAdded={(comment) => onCommentAdd(comment, task)} userpic={task.user.avatar}/>
                 </div>
                 <div className='task__discussion-comments'>
                     {task.discussions.map(({name, profession, date, text, avatar}) => (

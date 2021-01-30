@@ -10,9 +10,10 @@ interface HeaderProps {
     icon: string
     title: string
     menu: string[]
+    onShare: () => void
 }
 
-const Header = ({creators, icon, menu, title}: HeaderProps) => {
+const Header = ({creators, icon, menu, title, onShare}: HeaderProps) => {
     return (
         <header className="Header">
             <div className='Header__titleRow'>
@@ -25,7 +26,7 @@ const Header = ({creators, icon, menu, title}: HeaderProps) => {
                         size={"small"} src={creator}/></div>)}
                     <div className="Header__titleRow-socialMedia-buttons">
                         <div className='Header__titleRow-socialMedia-button'>
-                            <Button text="Share"/>
+                            <Button onClick={onShare} text="Share"/>
                         </div>
                         <div className='Header__titleRow-socialMedia-button'>
                             <Button backgroundColor="#FFF8DD" color="#FFC200" text="💬 Chat"/>

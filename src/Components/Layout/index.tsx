@@ -4,6 +4,7 @@ import {Header} from "../Header";
 import {Task} from '../Task'
 import {TaskType} from '../Task/types'
 import {TasksList} from "../TasksList";
+import {FileType} from "../File/type";
 
 import {backlogTasks, todoTasks} from "./tasks";
 
@@ -36,6 +37,7 @@ import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
 import {ListType} from "../List/types";
 import {ModalWindow} from "../ModalWindow";
+import {File} from "../File";
 
 const sidebarLists: ListType[] = [
     {
@@ -103,14 +105,17 @@ const Layout = () => {
             title: 'Redesign Brief',
             format: '.pdf',
             preview: filePreview,
-            size: '159 kb'
+            size: '159 kb',
+            id:1
         },
             {
                 title: 'Header',
                 format: '.png',
                 preview: filePreview,
-                size: '129 kb'
+                size: '129 kb',
+                id:2
             }]
+
     })
 
     const [isShowModal, setShowModal] = useState<boolean>(false)
@@ -127,7 +132,9 @@ const Layout = () => {
                 <Header
                     icon={redesignIcon} creators={[userAvatar2, userAvatar3, userAvatar4]}
                     title={'Website Redesign'}
-                    menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}/>
+                    menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}
+                    onShare={() => setShowModal(true)}
+                />
 
                 <div className="content">
                     <div className="tasksListBase">

@@ -50,13 +50,15 @@ export const backlogTasks: TaskType[] = [{
         title: 'Redesign Brief',
         format: '.pdf',
         preview: filePreview,
-        size: '159 kb'
+        size: '159 kb',
+        id: 3,
     },
         {
             title: 'Header',
             format: '.png',
             preview: filePreview,
-            size: '129 kb'
+            size: '129 kb',
+            id: 4,
         }]
 }, {
     title: 'Find top 5 customers and get reviews from them',
@@ -89,13 +91,15 @@ export const backlogTasks: TaskType[] = [{
         title: 'Redesign Brief',
         format: '.pdf',
         preview: filePreview,
-        size: '159 kb'
+        size: '159 kb',
+        id: 1,
     },
         {
             title: 'Header',
             format: '.png',
             preview: filePreview,
-            size: '129 kb'
+            size: '129 kb',
+            id: 2,
         }]
 }, {
     title: 'Two-factor authentication to make my private data more secure',
@@ -128,13 +132,15 @@ export const backlogTasks: TaskType[] = [{
         title: 'Redesign Brief',
         format: '.pdf',
         preview: filePreview,
-        size: '159 kb'
+        size: '159 kb',
+        id: 1,
     },
         {
             title: 'Header',
             format: '.png',
             preview: filePreview,
-            size: '129 kb'
+            size: '129 kb',
+            id: 1000,
         }]
 }]
 
@@ -169,13 +175,15 @@ export const todoTasks: TaskType[] = [{
         title: 'Redesign Brief',
         format: '.pdf',
         preview: filePreview,
-        size: '159 kb'
+        size: '159 kb',
+        id: 99999,
     },
         {
             title: 'Header',
             format: '.png',
             preview: filePreview,
-            size: '129 kb'
+            size: '129 kb',
+            id: 234234,
         }]
 }, {
     title: `Account for teams and personal in bottom style`,
@@ -208,13 +216,15 @@ export const todoTasks: TaskType[] = [{
         title: 'Redesign Brief',
         format: '.pdf',
         preview: filePreview,
-        size: '159 kb'
+        size: '159 kb',
+        id: 3245,
     },
         {
             title: 'Header',
             format: '.png',
             preview: filePreview,
-            size: '129 kb'
+            size: '129 kb',
+            id: 2345235465,
         }]
 }, {
     title: `Listing on Product Hunt so that we can reach as many potential users`,
@@ -247,13 +257,15 @@ export const todoTasks: TaskType[] = [{
         title: 'Redesign Brief',
         format: '.pdf',
         preview: filePreview,
-        size: '159 kb'
+        size: '159 kb',
+        id: 345
     },
         {
             title: 'Header',
             format: '.png',
             preview: filePreview,
-            size: '129 kb'
+            size: '129 kb',
+            id: 2345742345,
         }]
 },
 ]

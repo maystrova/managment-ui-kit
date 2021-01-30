@@ -3,4 +3,5 @@ export type FileType = {
     title: string
     format: string
     size: string
+    id: number
 }
