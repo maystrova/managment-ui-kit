@@ -30,7 +30,7 @@ const Sidebar = ({icon, title, search, lists, statistics}: SidebarProps) => {
         </header>
         <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'}/>
         <Statistics completed={statistics.completed} opened={statistics.opened}/>
-        {lists.map( (list) => ( <List title={list.title} items={list.items} addition={list.addition} />))}
+        {lists.map( (list) => ( <List title={list.title} items={list.items} addition={list.addition} key={list.title} />))}
 
         <div className="Sidebar__footer">
             <span><a className='Sidebar__footer-link' href="#">Invite your team</a> and start collaborating!</span>

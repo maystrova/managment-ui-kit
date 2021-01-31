@@ -3,8 +3,6 @@ import './style.css'
 import {Button} from "../Button";
 import {TaskType} from "../Task/types";
 import {TaskCard} from "../TaskCard";
-import {ModalWindow} from "../ModalWindow";
-import {ModalWindowProps} from "../ModalWindow";
 
 interface TasksListProps {
     title: string
@@ -20,7 +18,8 @@ const TasksList = ({title, tasks, onTaskSelected, onCreatedTaskClicked}: TasksLi
         <div className='tasksList'>
             <header className='tasksList__header'>
                 <h2>{title}</h2>
-                <Button onClick={() => onCreatedTaskClicked()} text="+ Add Task" backgroundColor="#CEF9C6" color="#1D201C" size="large"/>
+                <Button onClick={() => onCreatedTaskClicked()} text="+ Add Task" backgroundColor="#CEF9C6"
+                        color="#1D201C" size="large"/>
             </header>
 
             {tasks.map((task) => {
@@ -37,7 +36,8 @@ const TasksList = ({title, tasks, onTaskSelected, onCreatedTaskClicked}: TasksLi
                               followers={task.followers}
                               isChecked={task.isChecked}
                               tag={task.tag}
-                              onClick={()=> onTaskSelected(task)}
+                              onClick={() => onTaskSelected(task)}
+                              key={title}
                     />
                 )
             })}

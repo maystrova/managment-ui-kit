@@ -26,6 +26,17 @@ const Task = ({task, onTaskUpdated}: TaskProps) => {
         onTaskUpdated(newTask)
     }
 
+    const onTaskAdd = (task: TaskType, title: string, description: string): void => {
+
+        const newTask: TaskType = {
+            ...task,
+            title,
+            description,
+        }
+
+        console.log(newTask)
+    }
+
     const onFileDelete = (task: TaskType, fileIdForDelete: number): void => {
     const newTask: TaskType = {
         ...task,

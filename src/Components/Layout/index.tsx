@@ -4,7 +4,6 @@ import {Header} from "../Header";
 import {Task} from '../Task'
 import {TaskType} from '../Task/types'
 import {TasksList} from "../TasksList";
-import {FileType} from "../File/type";
 
 import {backlogTasks, todoTasks} from "./tasks";
 
@@ -13,7 +12,6 @@ import '../../html/task/style.css'
 
 import projectIcon from '../Layout/pics/navigation-icon.svg'
 import searchIcon from '../Layout/pics/search-icon.svg'
-import ownerAvatar from '../Layout/pics/userpic.svg'
 import designerAvatar1 from '../Layout/pics/designers1.svg'
 import designerAvatar2 from '../Layout/pics/designers2.svg'
 import designerAvatar3 from '../Layout/pics/designers3.svg'
@@ -36,8 +34,7 @@ import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
 import {ListType} from "../List/types";
-import {ModalWindow} from "../ModalWindow";
-import {File} from "../File";
+import {AddTask} from "../AddTask";
 
 const sidebarLists: ListType[] = [
     {
@@ -106,14 +103,14 @@ const Layout = () => {
             format: '.pdf',
             preview: filePreview,
             size: '159 kb',
-            id:1
+            id: 1
         },
             {
                 title: 'Header',
                 format: '.png',
                 preview: filePreview,
                 size: '129 kb',
-                id:2
+                id: 2
             }]
 
     })
@@ -138,15 +135,19 @@ const Layout = () => {
 
                 <div className="content">
                     <div className="tasksListBase">
-                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'Backlog'} tasks={backlogTasks} onTaskSelected={(task) => setTask(task)}/>
-                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'To Do'} tasks={todoTasks} onTaskSelected={(task) => setTask(task)}/>
+                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'Backlog'}
+                                   tasks={backlogTasks} onTaskSelected={(task) => setTask(task)}/>
+                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'To Do'} tasks={todoTasks}
+                                   onTaskSelected={(task) => setTask(task)}/>
                     </div>
 
 
                     <Task task={task} onTaskUpdated={(newTask) => setTask(newTask)}/>
                 </div>
             </div>
-            <ModalWindow title={'Create a Task'} isOpen={isShowModal} onCancel={() => setShowModal(false)} onSubmit={() => {}}/>
+            <AddTask isOpen={isShowModal} onCancel={() => setShowModal(false)} onSubmit={(fieldsForCreateTask) => {
+                console.log(fieldsForCreateTask)
+            }}/>
         </div>
     )
 }
