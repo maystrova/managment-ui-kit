@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './style.css'
 import {Button} from "../Button";
 
-interface FieldsForCreateTask {
+export interface FieldsForCreateTask {
     title: string,
     description: string
 }
@@ -14,7 +14,7 @@ export interface ModalWindowProps {
 }
 
 
-const AddTask = ({onCancel, onSubmit, isOpen}: ModalWindowProps) => {
+const AddTask = ({onCancel, onSubmit, isOpen,}: ModalWindowProps) => {
     const [fieldsForCreateTask, setFieldsForCreateTask] = useState<FieldsForCreateTask>({title: '', description: ''})
 
     if (!isOpen) return null

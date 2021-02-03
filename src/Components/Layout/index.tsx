@@ -34,7 +34,7 @@ import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
 import {ListType} from "../List/types";
-import {AddTask} from "../AddTask";
+import {AddTask, FieldsForCreateTask} from "../AddTask";
 
 const sidebarLists: ListType[] = [
     {
@@ -116,6 +116,27 @@ const Layout = () => {
     })
 
     const [isShowModal, setShowModal] = useState<boolean>(false)
+    const [backlogTasksList, setBacklogTasksList] = useState<TaskType[]>(backlogTasks)
+
+    console.log('backlogTasksList', backlogTasksList)
+
+    const addNewTaskToList = (task: TaskType, fieldsForCreateTask: FieldsForCreateTask, tasksList: TaskType[]): void => {
+        console.log('task', task)
+        console.log('fieldsForCreateTask', fieldsForCreateTask)
+        console.log('tasksList', tasksList)
+
+        const newTask = {
+            ...task,
+            title: fieldsForCreateTask.title,
+            description: fieldsForCreateTask.description,
+        }
+
+        const newTasks = [...tasksList, newTask]
+        console.log('newTasks', newTasks)
+        setBacklogTasksList(newTasks)
+        setShowModal(false)
+    }
+
 
 
     return (
@@ -136,7 +157,7 @@ const Layout = () => {
                 <div className="content">
                     <div className="tasksListBase">
                         <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'Backlog'}
-                                   tasks={backlogTasks} onTaskSelected={(task) => setTask(task)}/>
+                                   tasks={backlogTasksList} onTaskSelected={(task) => setTask(task)}/>
                         <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'To Do'} tasks={todoTasks}
                                    onTaskSelected={(task) => setTask(task)}/>
                     </div>
@@ -145,9 +166,7 @@ const Layout = () => {
                     <Task task={task} onTaskUpdated={(newTask) => setTask(newTask)}/>
                 </div>
             </div>
-            <AddTask isOpen={isShowModal} onCancel={() => setShowModal(false)} onSubmit={(fieldsForCreateTask) => {
-                console.log(fieldsForCreateTask)
-            }}/>
+            <AddTask isOpen={isShowModal} onCancel={() => setShowModal(false)} onSubmit={(fieldsForCreateTask) => addNewTaskToList(task,fieldsForCreateTask, backlogTasksList)}/>
         </div>
     )
 }

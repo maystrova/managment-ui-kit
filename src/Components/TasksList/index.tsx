@@ -38,6 +38,7 @@ const TasksList = ({title, tasks, onTaskSelected, onCreatedTaskClicked}: TasksLi
                               tag={task.tag}
                               onClick={() => onTaskSelected(task)}
                               key={title}
+
                     />
                 )
             })}

@@ -7,6 +7,8 @@ import ownerAvatar from "../Layout/pics/userpic.svg";
 import {ListType} from "../List/types";
 import {Statistics} from "../Statistics";
 import {StatisticsProps} from "../Statistics";
+import searchIcon from '../Layout/pics/search-icon.svg'
+
 
 
 interface SidebarProps {
@@ -26,7 +28,11 @@ const Sidebar = ({icon, title, search, lists, statistics}: SidebarProps) => {
                 </div>
                 <h3>{title}</h3>
             </div>
-        <Icon size={"x-small"} src={search}/>
+            <div className='Sidebar__header-search'>
+                <button>
+        <Icon size={"x-small"} src={searchIcon}/>
+                </button>
+            </div>
         </header>
         <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'}/>
         <Statistics completed={statistics.completed} opened={statistics.opened}/>
