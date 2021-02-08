@@ -3,6 +3,10 @@
     background-color: #F7F6F3;
     border-radius: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+.taskCard:hover {
+    background-color: #FFF8DD;
 }
 
 .taskCard__header {

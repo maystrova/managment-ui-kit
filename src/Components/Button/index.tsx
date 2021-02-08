@@ -6,11 +6,12 @@ interface ButtonProps {
     color?: string,
     text: string
     size?: 'small' | 'medium' | 'large'
+    onClick?: () => void
 }
 
-const Button = ({backgroundColor, color, text, size}: ButtonProps) => {
+const Button = ({backgroundColor, color, text, size, onClick}: ButtonProps) => {
     return (
-        <button className={`Button Button_${size}`} style={{backgroundColor: backgroundColor, color: color}}>{text}</button>
+        <button className={`Button Button_${size}`} onClick={onClick} style={{backgroundColor: backgroundColor, color: color}}>{text}</button>
     )
 }
 

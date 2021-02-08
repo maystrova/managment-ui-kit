@@ -19,7 +19,12 @@
     width: 100%;
     display: flex;
     align-items: center;
-    /*border-left: 3px solid transparent;*/
+}
+
+.List__items-link:hover {
+  background-color: #202020;
+    border-right: #FFC200 solid;
+
 }
 
 .List__items-link-icon {
@@ -50,4 +55,8 @@
 .List__items-addition {
     text-decoration: none;
     color: #FFC200;
+}
+
+.List__items-addition:hover {
+    opacity: 80%;
 }

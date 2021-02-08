@@ -5,15 +5,38 @@ import {Avatar} from "../Avatar";
 import userAvatar1 from "../Layout/pics/userpic1.png";
 import {Tag} from "../Tag";
 import {Comment} from "../Comment";
-import {TaskType} from "./types";
+import {DiscussionType, TaskType} from "./types";
 import {AddComment} from "../AddComment";
 import {File} from "../File";
 
 interface TaskProps {
-    task: TaskType
+    task: TaskType,
+    onTaskUpdated: (task: TaskType) => void
 }
 
-const Task = ({task}: TaskProps) => {
+const Task = ({task, onTaskUpdated}: TaskProps) => {
+    const onCommentAdd = (comment: DiscussionType, task: TaskType): void => {
+        const newDiscussions = [comment, ...task.discussions]
+
+        const newTask: TaskType = {
+            ...task,
+            discussions: newDiscussions
+        }
+
+        onTaskUpdated(newTask)
+    }
+
+
+
+    const onFileDelete = (task: TaskType, fileIdForDelete: number): void => {
+    const newTask: TaskType = {
+        ...task,
+        files: task.files.filter((file) => file.id !== fileIdForDelete)
+    }
+    onTaskUpdated(newTask)
+    }
+
+
     return (
         <div className='task'>
             <header className='task__header'>
@@ -29,7 +52,7 @@ const Task = ({task}: TaskProps) => {
                 <div className='task__information-asignTo'>
                     <h4 className='task__title'>Asign to</h4>
                     <div className='task__information-asignTo-user'>
-                        <Avatar size={"x-small"} src={userAvatar1}/>
+                        <Avatar size={"x-small"} src={task.user.avatar}/>
                         <span className='task__information-asignTo-name'>{task.assignTo}</span>
                     </div>
 
@@ -53,12 +76,15 @@ const Task = ({task}: TaskProps) => {
                 <p className='task__description-content'>{task.description}
                 </p>
                 <div className="task__description-files">
-                    {task.files.map(({title, preview, format, size}) => (
+                    {task.files.map((file) => (
                         <File
-                            preview={preview}
-                            title={title}
-                            format={format}
-                            size={size}
+                            key={file.title}
+                            title={file.title}
+                            preview={file.preview}
+                            format={file.format}
+                            size={file.size}
+                            onFileDelete={(fileId) => {onFileDelete(task, fileId)}}
+                            id={file.id}
                         />
                     ))}
                 </div>
@@ -67,11 +93,12 @@ const Task = ({task}: TaskProps) => {
             <div className="task__discussion">
                 <h4 className='task__title'>Discussion</h4>
                 <div className='task__discussion-addComment'>
-                    <AddComment userpic={task.user.avatar}/>
+                    <AddComment onCommentAdded={(comment) => onCommentAdd(comment, task)} userpic={task.user.avatar}/>
                 </div>
                 <div className='task__discussion-comments'>
                     {task.discussions.map(({name, profession, date, text, avatar}) => (
                         <Comment
+                            key={name}
                             name={name}
                             profession={profession}
                             date={date}
