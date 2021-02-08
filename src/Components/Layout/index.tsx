@@ -117,13 +117,11 @@ const Layout = () => {
 
     const [isShowModal, setShowModal] = useState<boolean>(false)
     const [backlogTasksList, setBacklogTasksList] = useState<TaskType[]>(backlogTasks)
+    const [toDoTasksList, setToDoTasksList] = useState<TaskType[]>(todoTasks)
 
-    console.log('backlogTasksList', backlogTasksList)
 
     const addNewTaskToList = (task: TaskType, fieldsForCreateTask: FieldsForCreateTask, tasksList: TaskType[]): void => {
-        console.log('task', task)
-        console.log('fieldsForCreateTask', fieldsForCreateTask)
-        console.log('tasksList', tasksList)
+
 
         const newTask = {
             ...task,
@@ -132,9 +130,10 @@ const Layout = () => {
         }
 
         const newTasks = [...tasksList, newTask]
-        console.log('newTasks', newTasks)
         setBacklogTasksList(newTasks)
+        setToDoTasksList(newTasks)
         setShowModal(false)
+
     }
 
 
@@ -158,7 +157,7 @@ const Layout = () => {
                     <div className="tasksListBase">
                         <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'Backlog'}
                                    tasks={backlogTasksList} onTaskSelected={(task) => setTask(task)}/>
-                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'To Do'} tasks={todoTasks}
+                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'To Do'} tasks={toDoTasksList}
                                    onTaskSelected={(task) => setTask(task)}/>
                     </div>
 
