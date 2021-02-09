@@ -9,17 +9,16 @@ import {Statistics} from "../Statistics";
 import {StatisticsProps} from "../Statistics";
 import searchIcon from '../Layout/pics/search-icon.svg'
 
-
-
 interface SidebarProps {
     icon: string
     title: string
     search: string
     lists: ListType[]
     statistics: StatisticsProps
+    onItemAddClick: () => void
 }
 
-const Sidebar = ({icon, title, search, lists, statistics}: SidebarProps) => {
+const Sidebar = ({icon, title, search, lists, statistics, onItemAddClick}: SidebarProps) => {
     return <aside className="Sidebar">
         <header className='Sidebar__header'>
             <div className='Sidebar__header-title'>
@@ -28,15 +27,15 @@ const Sidebar = ({icon, title, search, lists, statistics}: SidebarProps) => {
                 </div>
                 <h3>{title}</h3>
             </div>
+            <input type="search" />
             <div className='Sidebar__header-search'>
-                <button>
-        <Icon size={"x-small"} src={searchIcon}/>
-                </button>
+                <Icon size={"x-small"} src={searchIcon}/>
             </div>
         </header>
         <UserInfo avatar={ownerAvatar} name={'Emilee Simchenko'} profession={'Product Owner'}/>
         <Statistics completed={statistics.completed} opened={statistics.opened}/>
-        {lists.map( (list) => ( <List title={list.title} items={list.items} addition={list.addition} key={list.title} />))}
+        {lists.map( (list) => (
+            <List id={list.id} onAdditionalClick={() => {onItemAddClick()}} title={list.title} items={list.items} addition={list.addition} key={list.title} />))}
 
         <div className="Sidebar__footer">
             <span><a className='Sidebar__footer-link' href="#">Invite your team</a> and start collaborating!</span>

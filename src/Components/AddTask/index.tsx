@@ -36,6 +36,7 @@ const AddTask = ({onCancel, onSubmit, isOpen,}: ModalWindowProps) => {
                                    title: event.target.value,
                                    description: fieldsForCreateTask.description
                                })
+
                            }}/>
                     <input className='AddTask__addDescription AddTask__addText' type="text" value={fieldsForCreateTask.description}
                            placeholder={'Add a description...'}
@@ -48,8 +49,11 @@ const AddTask = ({onCancel, onSubmit, isOpen,}: ModalWindowProps) => {
                 </div>
                 <footer className="AddTask__ModalFooter">
                     <Button backgroundColor={'#EAEAEA'} size={"medium"} onClick={onCancel} text={'Cancel'}/>
-                    <Button backgroundColor={'#EAEAEA'} size={"medium"} onClick={() => onSubmit(fieldsForCreateTask)}
-                            text={'Add'}/>
+                    <Button backgroundColor={'rgb(206, 249, 198)'} size={"medium"} onClick={() => {
+                        onSubmit(fieldsForCreateTask)
+                        setFieldsForCreateTask({title: '', description: ''})
+                    }}
+                            text={'Add a Task'}/>
                 </footer>
             </div>
         </div>

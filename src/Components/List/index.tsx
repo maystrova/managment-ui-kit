@@ -3,7 +3,11 @@ import './style.css'
 
 import {ListType} from './types'
 
-const List = ({items, addition, title}: ListType) => {
+interface ListProps extends ListType {
+    onAdditionalClick: () => void
+}
+
+const List = ({items, addition, title, onAdditionalClick}: ListProps) => {
     return (
         <div className='List'>
             <span className="List__title">{title}</span>
@@ -22,7 +26,8 @@ const List = ({items, addition, title}: ListType) => {
                 </ul>
             </div>
             <div>
-                <a  className='List__items-addition' href="#">{addition}</a>
+                <button onClick={() => {onAdditionalClick()}} className='List__items-addition'>{addition}</button>
+
             </div>
         </div>
     )

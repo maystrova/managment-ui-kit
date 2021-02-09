@@ -33,21 +33,23 @@ import userAvatar5 from '../Layout/pics/userpic5.png'
 import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
-import {ListType} from "../List/types";
+import {ListType, SidebarItem} from "../List/types";
 import {AddTask, FieldsForCreateTask} from "../AddTask";
+import {AddProject, FieldsForCreateProject} from "../AddProject";
 
 const sidebarLists: ListType[] = [
     {
         title: 'Menu',
+        id: 'menu',
         items: [
             {title: 'Home'},
             {title: 'My Tasks'},
             {title: 'Notifications', count: '3'}
         ]
     },
-
     {
         title: 'Projects',
+        id: 'projects',
         addition: '+ Add a Project',
         items: [
             {title: 'Dashboard UI Kit', icon: dashboardIcon},
@@ -56,9 +58,9 @@ const sidebarLists: ListType[] = [
             {title: 'Communication Tool', icon: communicationIcon}
         ]
     },
-
     {
         title: 'Teams',
+        id: 'teams',
         addition: '+ Add a Team',
         items: [
             {title: 'Designers', avatars: [designerAvatar1, designerAvatar2, designerAvatar3]},
@@ -115,13 +117,13 @@ const Layout = () => {
 
     })
 
-    const [isShowModal, setShowModal] = useState<boolean>(false)
+    const [isShowAddTask, setShowAddTask] = useState<boolean>(false)
+    const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
     const [backlogTasksList, setBacklogTasksList] = useState<TaskType[]>(backlogTasks)
     const [toDoTasksList, setToDoTasksList] = useState<TaskType[]>(todoTasks)
-
+    const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
     const addNewTaskToList = (task: TaskType, fieldsForCreateTask: FieldsForCreateTask, tasksList: TaskType[]): void => {
-
 
         const newTask = {
             ...task,
@@ -132,40 +134,78 @@ const Layout = () => {
         const newTasks = [...tasksList, newTask]
         setBacklogTasksList(newTasks)
         setToDoTasksList(newTasks)
-        setShowModal(false)
+        setShowAddTask(false)
+
 
     }
 
+    const addNewProjectToList = (currentSidebarItems: ListType[], fieldsForCreateProject: FieldsForCreateProject, idForSidebarList: string): void => {
+
+        const newProject: SidebarItem = {
+            title: fieldsForCreateProject.title,
+            avatars: [],
+            icon: '',
+            count: undefined
+        }
+
+        const newSidebarList: ListType[] = currentSidebarItems.map((list) => {
+            if (list.id === idForSidebarList) {
+                return {...list, items: [...list.items, newProject]}
+            }
+            return list
+        })
+
+        console.log(newSidebarList)
+
+        setProjectsList(newSidebarList)
+    }
 
 
     return (
         <div className="container">
 
-            <Sidebar title={'Projectus'} icon={projectIcon} search={searchIcon} lists={sidebarLists} statistics={
-                {completed: 372, opened: 11}
-            }/>
+            <Sidebar
+                onItemAddClick={() => setShowAddProject(true)}
+                title={'Projectus'}
+                icon={projectIcon}
+                search={searchIcon}
+                lists={sidebarItems}
+                statistics={
+                    {completed: 372, opened: 11}
+                }/>
 
             <div className="main">
                 <Header
                     icon={redesignIcon} creators={[userAvatar2, userAvatar3, userAvatar4]}
                     title={'Website Redesign'}
                     menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}
-                    onShare={() => setShowModal(true)}
+                    onShare={() => setShowAddTask(true)}
                 />
 
                 <div className="content">
                     <div className="tasksListBase">
-                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'Backlog'}
-                                   tasks={backlogTasksList} onTaskSelected={(task) => setTask(task)}/>
-                        <TasksList onCreatedTaskClicked={() => setShowModal(true)} title={'To Do'} tasks={toDoTasksList}
-                                   onTaskSelected={(task) => setTask(task)}/>
+                        <TasksList
+                            onCreatedTaskClicked={() => setShowAddTask(true)}
+                            title={'Backlog'}
+                            tasks={backlogTasksList}
+                            onTaskSelected={(task) => setTask(task)}
+                        />
+
+                        <TasksList
+                            onCreatedTaskClicked={() => setShowAddTask(true)}
+                            title={'To Do'}
+                            tasks={toDoTasksList}
+                            onTaskSelected={(task) => setTask(task)}/>
                     </div>
 
 
                     <Task task={task} onTaskUpdated={(newTask) => setTask(newTask)}/>
                 </div>
             </div>
-            <AddTask isOpen={isShowModal} onCancel={() => setShowModal(false)} onSubmit={(fieldsForCreateTask) => addNewTaskToList(task,fieldsForCreateTask, backlogTasksList)}/>
+            <AddTask isOpen={isShowAddTask} onCancel={() => setShowAddTask(false)}
+                     onSubmit={(fieldsForCreateTask) => addNewTaskToList(task, fieldsForCreateTask, backlogTasksList,)}/>
+            <AddProject isOpen={isShowAddProject} onCancel={() => setShowAddProject(false)}
+                        onSubmit={(fieldsForCreateProject, id) => addNewProjectToList(sidebarItems, fieldsForCreateProject, id)}/>
         </div>
     )
 }

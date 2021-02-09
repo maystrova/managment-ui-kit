@@ -1,5 +1,5 @@
 
-type SidebarItem = {
+export type SidebarItem = {
     icon?: string
     count?: string
     title: string
@@ -7,6 +7,7 @@ type SidebarItem = {
 }
 
 export type ListType = {
+    id: string
     title: string
     items: SidebarItem[]
     addition?: string

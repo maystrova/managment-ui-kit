@@ -67,7 +67,7 @@ const Task = ({task, onTaskUpdated}: TaskProps) => {
                 </div>
                 <div className="task__information-followers">
                     <h4 className='task__title'>Followers</h4>
-                    {task.followers.map((follower) => <Avatar size={"x-small"} src={follower}/>)}
+                    {task.followers.map((follower) => <Avatar size={"x-small"} src={follower} key={follower}/>)}
                 </div>
             </div>
 
