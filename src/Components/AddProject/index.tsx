@@ -39,7 +39,7 @@ const AddProject = ({onCancel, onSubmit, isOpen}: AddProjectProps) => {
                 <footer className="AddProject__ModalFooter">
                     <Button backgroundColor={'#EAEAEA'} onClick={onCancel} size={"medium"} text={'Cancel'}/>
                     <Button backgroundColor={'rgb(206, 249, 198)'} size={"medium"} text={'Add a Project'} onClick={() => {
-                        onSubmit(fieldsForAddProject, 'projects')
+                        onSubmit(fieldsForAddProject, ('projects') || ('teams'))
                         setFieldsForCreateProject({title: ''})
                     }}/>
                 </footer>

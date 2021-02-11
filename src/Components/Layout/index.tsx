@@ -36,6 +36,7 @@ import filePreview from '../Layout/pics/file.png'
 import {ListType, SidebarItem} from "../List/types";
 import {AddTask, FieldsForCreateTask} from "../AddTask";
 import {AddProject, FieldsForCreateProject} from "../AddProject";
+import {Share} from "../Share";
 
 const sidebarLists: ListType[] = [
     {
@@ -122,6 +123,7 @@ const Layout = () => {
     const [backlogTasksList, setBacklogTasksList] = useState<TaskType[]>(backlogTasks)
     const [toDoTasksList, setToDoTasksList] = useState<TaskType[]>(todoTasks)
     const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
+    const [isShowShare, setIsShowShare] = useState<boolean>(false)
 
     const addNewTaskToList = (task: TaskType, fieldsForCreateTask: FieldsForCreateTask, tasksList: TaskType[]): void => {
 
@@ -144,7 +146,7 @@ const Layout = () => {
         const newProject: SidebarItem = {
             title: fieldsForCreateProject.title,
             avatars: [],
-            icon: '',
+            icon: crmIcon,
             count: undefined
         }
 
@@ -155,9 +157,9 @@ const Layout = () => {
             return list
         })
 
-        console.log(newSidebarList)
 
         setProjectsList(newSidebarList)
+        setShowAddProject(false)
     }
 
 
@@ -179,7 +181,7 @@ const Layout = () => {
                     icon={redesignIcon} creators={[userAvatar2, userAvatar3, userAvatar4]}
                     title={'Website Redesign'}
                     menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}
-                    onShare={() => setShowAddTask(true)}
+                    onShareWindowOpen={() => setIsShowShare(true)}
                 />
 
                 <div className="content">
@@ -206,6 +208,7 @@ const Layout = () => {
                      onSubmit={(fieldsForCreateTask) => addNewTaskToList(task, fieldsForCreateTask, backlogTasksList,)}/>
             <AddProject isOpen={isShowAddProject} onCancel={() => setShowAddProject(false)}
                         onSubmit={(fieldsForCreateProject, id) => addNewProjectToList(sidebarItems, fieldsForCreateProject, id)}/>
+                        <Share isOpen={isShowShare} onCancel={() => setIsShowShare(false)}/>
         </div>
     )
 }
