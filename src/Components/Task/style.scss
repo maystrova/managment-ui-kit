@@ -1,0 +1,63 @@
+.Task {
+	background-color: #ffffff;
+	border-radius: 6px;
+	padding: 30px;
+	line-height: 1.5;
+
+	&__Header {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 30px;
+	}
+
+	&__Information {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid #ececec;
+		margin-bottom: 40px;
+		padding-bottom: 40px;
+
+		&-asignTo-user {
+			display: flex;
+			align-items: center;
+		}
+
+		&-asignTo-name {
+			margin-left: 5px;
+		}
+	}
+
+	&__Title {
+		text-transform: uppercase;
+		padding-bottom: 20px;
+	}
+
+	&__Description {
+		border-bottom: 1px solid #ececec;
+		margin-bottom: 40px;
+		padding-bottom: 40px;
+
+		&-content {
+			padding-bottom: 30px;
+		}
+
+		&-files {
+			display: flex;
+		}
+	}
+
+	&__Discussion-comment {
+		height: 112px;
+		border-radius: 10px;
+		background-color: #f7f6f3;
+		border: none;
+		align-items: center;
+		margin: 0 0 20px 25px;
+		padding: 40px;
+		position: relative;
+	}
+}
+
+.Task__Information-followers a {
+	margin-right: 5px;
+}

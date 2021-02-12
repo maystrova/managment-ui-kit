@@ -1,0 +1,21 @@
+.AddTask {
+	&__addDescription {
+		height: 100px;
+	}
+
+	&__addText {
+		width: 100%;
+		border: none;
+		background-color: #eaeaea;
+		border-radius: 6px;
+		padding: 15px;
+		margin-bottom: 10px;
+		outline: none;
+	}
+
+	&__ModalFooter {
+		display: flex;
+		justify-content: space-between;
+		padding: 20px;
+	}
+}

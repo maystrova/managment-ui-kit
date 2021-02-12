@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import './style.scss'
 import { Button } from '../Button'
 
 export interface ModalWindowProps {
@@ -22,7 +22,7 @@ const ModalWindow = ({
 	return (
 		<div className='Modal'>
 			<div className='Modal__Overlay' onClick={onCancel}></div>
-			<div className='ModalWindow'>
+			<div className='Modal__Window'>
 				<header className='Modal__Header'>
 					<div className='Modal__Header-title'>{title}</div>
 					<div className='Modal__Header-close' onClick={onCancel}>

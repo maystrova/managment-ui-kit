@@ -1,0 +1,25 @@
+.Tag {
+	text-transform: uppercase;
+	font-size: 12px;
+	border-radius: 10px;
+	display: inline-block;
+	height: 24px;
+	padding: 0 10px;
+	line-height: 24px;
+	text-decoration: none;
+
+	&_development {
+		background-color: #fff1e2;
+		color: #ed6400;
+	}
+
+	&_marketing {
+		background-color: #f5f0ff;
+		color: #764ced;
+	}
+
+	&_design {
+		background-color: #e3efff;
+		color: #1975d0;
+	}
+}

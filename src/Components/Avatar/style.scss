@@ -1,0 +1,32 @@
+.Avatar {
+	border-radius: 50%;
+	overflow: hidden;
+	display: inline-block;
+
+	&:hover {
+		opacity: 80%;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+	}
+
+	&_x-small {
+		width: 20px;
+		height: 20px;
+	}
+
+	&_small {
+		width: 30px;
+		height: 30px;
+	}
+
+	&_medium {
+		width: 20px;
+	}
+
+	&_large {
+		width: 48px;
+	}
+}

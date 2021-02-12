@@ -1,44 +1,46 @@
-import React, {useState} from "react";
-import './style.css'
-import {Avatar} from "../Avatar";
-import {DiscussionType} from "../Task/types";
+import React, { useState } from 'react'
+import './style.scss'
+import { Avatar } from '../Avatar'
+import { DiscussionType } from '../Task/types'
 import vasyaUser from '../Layout/pics/vasya.png'
 
-
 interface AddCommentProps {
-    userpic: string
-    onCommentAdded: (comment: DiscussionType) => void
+	userpic: string
+	onCommentAdded: (comment: DiscussionType) => void
 }
 
-const AddComment = ({userpic, onCommentAdded}: AddCommentProps) => {
-    const [comment, setComment] = useState<string>('')
+const AddComment = ({ userpic, onCommentAdded }: AddCommentProps) => {
+	const [comment, setComment] = useState<string>('')
 
-    return(
-        <div className='addComment'>
-            <Avatar size={"large"} src={userpic}/>
-            <input  value={comment} onKeyDown={
-                (event) => {
-                    // console.log(event.key)
+	return (
+		<div className='addComment'>
+			<Avatar size={'large'} src={userpic} />
+			<input
+				value={comment}
+				onKeyDown={event => {
+					// console.log(event.key)
 
-                    if(event.key === 'Enter') {
-                        onCommentAdded({
-                            name: 'Vasya',
-                            profession: 'Cat',
-                            date: 'Today',
-                            text: comment,
-                            avatar: vasyaUser
-                        })
+					if (event.key === 'Enter') {
+						onCommentAdded({
+							name: 'Vasya',
+							profession: 'Cat',
+							date: 'Today',
+							text: comment,
+							avatar: vasyaUser,
+						})
 
-                        setComment('')
-                    }
-                }
-            } type="text" className='addComment-area' placeholder='Add a comment...' onChange={
-                (event) => {
-                   setComment(event.target.value)
-                }
-            } />
-        </div>
-    )
+						setComment('')
+					}
+				}}
+				type='text'
+				className='addComment-area'
+				placeholder='Add a comment...'
+				onChange={event => {
+					setComment(event.target.value)
+				}}
+			/>
+		</div>
+	)
 }
 
-export {AddComment}
+export { AddComment }
