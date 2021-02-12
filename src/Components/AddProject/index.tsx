@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './style.css'
+import './style.scss'
 import { Button } from '../Button'
 import { ModalWindow, ModalWindowProps } from '../ModalWindow'
 

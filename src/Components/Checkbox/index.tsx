@@ -1,10 +1,8 @@
-import React from "react";
-import './style.css';
+import React from 'react'
+import './style.scss'
 
 const Checkbox = () => {
-    return (
-        <input type="checkbox" className={`checkbox`}/>
-    )
+	return <input type='checkbox' className={`Checkbox`} />
 }
 
-export {Checkbox}
+export { Checkbox }

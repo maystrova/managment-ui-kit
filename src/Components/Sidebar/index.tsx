@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import './style.scss'
 import { List } from '../List'
 import { UserInfo } from '../UserInfo'
 import { Icon } from '../Icon'
@@ -29,14 +29,14 @@ const Sidebar = ({
 }: SidebarProps) => {
 	return (
 		<aside className='Sidebar'>
-			<header className='Sidebar__header'>
-				<div className='Sidebar__header-title'>
-					<div className='Sidebar__header-icon'>
+			<header className='Sidebar__Header'>
+				<div className='Sidebar__Header-title'>
+					<div className='Sidebar__Header-icon'>
 						<Icon size={'small'} src={icon} />
 					</div>
 					<h3>{title}</h3>
 				</div>
-				<div className='Sidebar__header-search'>
+				<div className='Sidebar__Header-search'>
 					<Icon size={'x-small'} src={searchIcon} />
 				</div>
 			</header>
@@ -59,9 +59,9 @@ const Sidebar = ({
 				/>
 			))}
 
-			<div className='Sidebar__footer'>
+			<div className='Sidebar__Footer'>
 				<span>
-					<a className='Sidebar__footer-link' href='#'>
+					<a className='Sidebar__Footer-link' href='#'>
 						Invite your team
 					</a>{' '}
 					and start collaborating!

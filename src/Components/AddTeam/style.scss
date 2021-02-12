@@ -6,10 +6,9 @@
 	padding: 15px;
 	margin-bottom: 10px;
 	outline: none;
-}
 
-.AddTeam__ModalFooter {
-	display: flex;
-	justify-content: space-between;
+	&__ModalFooter {
+		display: flex;
+		justify-content: space-between;
+	}
 }
-

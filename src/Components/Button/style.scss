@@ -1,0 +1,25 @@
+.Button {
+	padding: 0 15px;
+	border-radius: 12px;
+	border: none;
+	height: 30px;
+	background-color: #eaeaea;
+	color: black;
+	cursor: pointer;
+	outline: none;
+
+	&:hover {
+		opacity: 80%;
+	}
+
+	&_large {
+		padding: 0 20px;
+		border-radius: 16px;
+	}
+
+	&_small {
+		color: #ff1000;
+		background: transparent;
+		height: auto;
+	}
+}

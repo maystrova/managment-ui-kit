@@ -1,0 +1,16 @@
+.File {
+	margin-right: 30px;
+	display: flex;
+	align-items: center;
+
+	&__Preview {
+		display: inline-flex;
+		margin-right: 10px;
+	}
+
+	&__Information-size {
+		text-transform: uppercase;
+		opacity: 70%;
+		font-weight: 100;
+	}
+}

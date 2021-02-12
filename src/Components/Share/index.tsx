@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import './style.scss'
 import { Icon } from '../Icon'
 import googleIcon from '../Layout/pics/google.png'
 import facebookIcon from '../Layout/pics/facebook.png'
