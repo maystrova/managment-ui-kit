@@ -1,4 +1,4 @@
-.AddProject__AddTitle {
+.AddTeam__AddTitle {
 	width: 100%;
 	border: none;
 	background-color: #eaeaea;
@@ -8,7 +8,8 @@
 	outline: none;
 }
 
-.AddProject__ModalFooter {
+.AddTeam__ModalFooter {
 	display: flex;
 	justify-content: space-between;
 }
+

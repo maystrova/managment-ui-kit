@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
-import {Sidebar} from '../Sidebar'
-import {Header} from "../Header";
-import {Task} from '../Task'
-import {TaskType} from '../Task/types'
-import {TasksList} from "../TasksList";
+import React, { useState } from 'react'
+import { Sidebar } from '../Sidebar'
+import { Header } from '../Header'
+import { Task } from '../Task'
+import { TaskType } from '../Task/types'
+import { TasksList } from '../TasksList'
 
-import {backlogTasks, todoTasks} from "./tasks";
+import { backlogTasks, SIDEBAR_LIST, todoTasks } from './tasks'
 
 import '../../html/style.css'
 import '../../html/task/style.css'
@@ -33,184 +33,250 @@ import userAvatar5 from '../Layout/pics/userpic5.png'
 import commentAvatar3 from '../Layout/pics/commentpic2.png'
 import commentAvatar2 from '../Layout/pics/commentpic3.png'
 import filePreview from '../Layout/pics/file.png'
-import {ListType, SidebarItem} from "../List/types";
-import {AddTask, FieldsForCreateTask} from "../AddTask";
-import {AddProject, FieldsForCreateProject} from "../AddProject";
-import {Share} from "../Share";
+import { ListType, SidebarItem } from '../List/types'
+import { AddTask, FieldsForCreateTask } from '../AddTask'
+import { AddProject, FieldsForCreateProject } from '../AddProject'
+import { Share } from '../Share'
+import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 
 const sidebarLists: ListType[] = [
-    {
-        title: 'Menu',
-        id: 'menu',
-        items: [
-            {title: 'Home'},
-            {title: 'My Tasks'},
-            {title: 'Notifications', count: '3'}
-        ]
-    },
-    {
-        title: 'Projects',
-        id: 'projects',
-        addition: '+ Add a Project',
-        items: [
-            {title: 'Dashboard UI Kit', icon: dashboardIcon},
-            {title: 'CRM System', icon: crmIcon},
-            {title: 'Website Redesign', icon: redesignIcon},
-            {title: 'Communication Tool', icon: communicationIcon}
-        ]
-    },
-    {
-        title: 'Teams',
-        id: 'teams',
-        addition: '+ Add a Team',
-        items: [
-            {title: 'Designers', avatars: [designerAvatar1, designerAvatar2, designerAvatar3]},
-            {title: 'Backend', avatars: [backenderAvatar1, backenderAvatar2]},
-            {title: 'Frontend', avatars: [frontenderAvatar1, frontenderAvatar2, frontenderAvatar3, frontenderAvatar4]}
-        ]
-    }
-
-
+	{
+		title: 'Menu',
+		id: SIDEBAR_LIST.MENU,
+		items: [
+			{ title: 'Home' },
+			{ title: 'My Tasks' },
+			{ title: 'Notifications', count: '3' },
+		],
+	},
+	{
+		title: 'Projects',
+		id: SIDEBAR_LIST.PROJECTS,
+		addition: '+ Add a Project',
+		items: [
+			{ title: 'Dashboard UI Kit', icon: dashboardIcon },
+			{ title: 'CRM System', icon: crmIcon },
+			{ title: 'Website Redesign', icon: redesignIcon },
+			{ title: 'Communication Tool', icon: communicationIcon },
+		],
+	},
+	{
+		title: 'Teams',
+		id: SIDEBAR_LIST.TEAMS,
+		addition: '+ Add a Team',
+		items: [
+			{
+				title: 'Designers',
+				avatars: [designerAvatar1, designerAvatar2, designerAvatar3],
+			},
+			{ title: 'Backend', avatars: [backenderAvatar1, backenderAvatar2] },
+			{
+				title: 'Frontend',
+				avatars: [
+					frontenderAvatar1,
+					frontenderAvatar2,
+					frontenderAvatar3,
+					frontenderAvatar4,
+				],
+			},
+		],
+	},
 ]
 
 const Layout = () => {
-    const [task, setTask] = useState<TaskType>({
-        title: 'Find top 5 customer requests',
-        addedBy: 'Kristin A',
-        createdAt: '07.01.2020',
-        isChecked: false,
-        assignTo: 'Linzell Bowman',
-        dueOn: 'Tue, Dec 25',
-        tag: 'marketing',
-        followers: [userAvatar2, userAvatar3, userAvatar4, userAvatar5],
-        description: 'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
-        discussions: [
-            {
-                name: 'Helena Brauer',
-                profession: 'Designer',
-                date: 'Yesterday at 12:37pm',
-                text: 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
-                avatar: commentAvatar3
-            },
-            {
-                name: 'Prescott MacCaffery,',
-                profession: 'Developer',
-                date: 'Yesterday at 12:37pm',
-                text: '@Helena Software quality assurance activity in which one or several humans check a program mainly',
-                avatar: commentAvatar2
-            }
-        ],
-        user: {avatar: userAvatar1},
-        files: [{
-            title: 'Redesign Brief',
-            format: '.pdf',
-            preview: filePreview,
-            size: '159 kb',
-            id: 1
-        },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 2
-            }]
+	const [task, setTask] = useState<TaskType>({
+		title: 'Find top 5 customer requests',
+		addedBy: 'Kristin A',
+		createdAt: '07.01.2020',
+		isChecked: false,
+		assignTo: 'Linzell Bowman',
+		dueOn: 'Tue, Dec 25',
+		tag: 'marketing',
+		followers: [userAvatar2, userAvatar3, userAvatar4, userAvatar5],
+		description:
+			'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
+		discussions: [
+			{
+				name: 'Helena Brauer',
+				profession: 'Designer',
+				date: 'Yesterday at 12:37pm',
+				text:
+					'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
+				avatar: commentAvatar3,
+			},
+			{
+				name: 'Prescott MacCaffery,',
+				profession: 'Developer',
+				date: 'Yesterday at 12:37pm',
+				text:
+					'@Helena Software quality assurance activity in which one or several humans check a program mainly',
+				avatar: commentAvatar2,
+			},
+		],
+		user: { avatar: userAvatar1 },
+		files: [
+			{
+				title: 'Redesign Brief',
+				format: '.pdf',
+				preview: filePreview,
+				size: '159 kb',
+				id: 1,
+			},
+			{
+				title: 'Header',
+				format: '.png',
+				preview: filePreview,
+				size: '129 kb',
+				id: 2,
+			},
+		],
+	})
 
-    })
+	const [isShowModal, setShowModal] = useState<boolean>(false)
+	const [isShowAddTask, setShowAddTask] = useState<boolean>(false)
+	const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
+	const [isShowAddTeam, setShowAddTeam] = useState<boolean>(false)
+	const [isShowShare, setShowShare] = useState<boolean>(false)
 
-    const [isShowAddTask, setShowAddTask] = useState<boolean>(false)
-    const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
-    const [backlogTasksList, setBacklogTasksList] = useState<TaskType[]>(backlogTasks)
-    const [toDoTasksList, setToDoTasksList] = useState<TaskType[]>(todoTasks)
-    const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
-    const [isShowShare, setIsShowShare] = useState<boolean>(false)
+	const [backlogTasksList, setBacklogTasksList] = useState<TaskType[]>(
+		backlogTasks,
+	)
+	const [toDoTasksList, setToDoTasksList] = useState<TaskType[]>(todoTasks)
+	const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
-    const addNewTaskToList = (task: TaskType, fieldsForCreateTask: FieldsForCreateTask, tasksList: TaskType[]): void => {
+	const addNewTaskToList = (
+		task: TaskType,
+		fieldsForCreateTask: FieldsForCreateTask,
+		tasksList: TaskType[],
+	): void => {
+		const newTask = {
+			...task,
+			title: fieldsForCreateTask.title,
+			description: fieldsForCreateTask.description,
+		}
 
-        const newTask = {
-            ...task,
-            title: fieldsForCreateTask.title,
-            description: fieldsForCreateTask.description,
-        }
+		const newTasks = [...tasksList, newTask]
+		setBacklogTasksList(newTasks)
+		setToDoTasksList(newTasks)
+		setShowAddTask(false)
+	}
 
-        const newTasks = [...tasksList, newTask]
-        setBacklogTasksList(newTasks)
-        setToDoTasksList(newTasks)
-        setShowAddTask(false)
+	const addNewProjectToList = (
+		currentSidebarItems: ListType[],
+		fieldsForCreateProject: FieldsForCreateProject,
+		idForSidebarList: string,
+	): void => {
+		const newProject: SidebarItem = {
+			title: fieldsForCreateProject.title,
+			avatars: [],
+			icon: crmIcon,
+			count: undefined,
+		}
 
+		const newSidebarList: ListType[] = currentSidebarItems.map(list => {
+			if (list.id === idForSidebarList) {
+				return { ...list, items: [...list.items, newProject] }
+			}
+			return list
+		})
 
-    }
+		setProjectsList(newSidebarList)
+		setShowAddProject(false)
+	}
 
-    const addNewProjectToList = (currentSidebarItems: ListType[], fieldsForCreateProject: FieldsForCreateProject, idForSidebarList: string): void => {
+	const addNewTeamToList = (
+		currentSidebarItems: ListType[],
+		fieldsForCreateTeam: FieldsForCreateTeam,
+		idForSidebarList: string,
+	): void => {
+		const newTeam: SidebarItem = {
+			title: fieldsForCreateTeam.title,
+			avatars: [],
+			icon: undefined,
+			count: undefined,
+		}
 
-        const newProject: SidebarItem = {
-            title: fieldsForCreateProject.title,
-            avatars: [],
-            icon: crmIcon,
-            count: undefined
-        }
+		const newSidebarList: ListType[] = currentSidebarItems.map(list => {
+			if (list.id === idForSidebarList) {
+				return { ...list, items: [...list.items, newTeam] }
+			}
+			return list
+		})
+		setProjectsList(newSidebarList)
+		setShowAddTeam(false)
+	}
 
-        const newSidebarList: ListType[] = currentSidebarItems.map((list) => {
-            if (list.id === idForSidebarList) {
-                return {...list, items: [...list.items, newProject]}
-            }
-            return list
-        })
+	return (
+		<div className='container'>
+			<Sidebar
+				onItemAddClick={listId => {
+					if (listId === SIDEBAR_LIST.PROJECTS) {
+						setShowAddProject(true)
+					} else if (listId === SIDEBAR_LIST.TEAMS) {
+						setShowAddTeam(true)
+					}
+				}}
+				title={'Projectus'}
+				icon={projectIcon}
+				search={searchIcon}
+				lists={sidebarItems}
+				statistics={{ completed: 372, opened: 11 }}
+			/>
 
+			<div className='main'>
+				<Header
+					icon={redesignIcon}
+					creators={[userAvatar2, userAvatar3, userAvatar4]}
+					title={'Website Redesign'}
+					menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}
+					onShareWindowOpen={() => setShowShare(true)}
+				/>
 
-        setProjectsList(newSidebarList)
-        setShowAddProject(false)
-    }
+				<div className='content'>
+					<div className='tasksListBase'>
+						<TasksList
+							onCreatedTaskClicked={() => setShowAddTask(true)}
+							title={'Backlog'}
+							tasks={backlogTasksList}
+							onTaskSelected={task => setTask(task)}
+						/>
 
+						<TasksList
+							onCreatedTaskClicked={() => setShowAddTask(true)}
+							title={'To Do'}
+							tasks={toDoTasksList}
+							onTaskSelected={task => setTask(task)}
+						/>
+					</div>
 
-    return (
-        <div className="container">
+					<Task task={task} onTaskUpdated={newTask => setTask(newTask)} />
+				</div>
+			</div>
+			<AddTask
+				isOpen={isShowAddTask}
+				onCancel={() => setShowAddTask(false)}
+				onSubmit={fieldsForCreateTask =>
+					addNewTaskToList(task, fieldsForCreateTask, backlogTasksList)
+				}
+			/>
+			<AddProject
+				isOpen={isShowAddProject}
+				onCancel={() => setShowAddProject(false)}
+				onSubmit={(fieldsForCreateProject, id) =>
+					addNewProjectToList(sidebarItems, fieldsForCreateProject, id)
+				}
+			/>
+			<AddTeam
+				isOpen={isShowAddTeam}
+				onCancel={() => setShowAddTeam(false)}
+				onSubmit={(fieldsForCreateTeam, id) =>
+					addNewTeamToList(sidebarItems, fieldsForCreateTeam, id)
+				}
+			/>
 
-            <Sidebar
-                onItemAddClick={() => setShowAddProject(true)}
-                title={'Projectus'}
-                icon={projectIcon}
-                search={searchIcon}
-                lists={sidebarItems}
-                statistics={
-                    {completed: 372, opened: 11}
-                }/>
-
-            <div className="main">
-                <Header
-                    icon={redesignIcon} creators={[userAvatar2, userAvatar3, userAvatar4]}
-                    title={'Website Redesign'}
-                    menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}
-                    onShareWindowOpen={() => setIsShowShare(true)}
-                />
-
-                <div className="content">
-                    <div className="tasksListBase">
-                        <TasksList
-                            onCreatedTaskClicked={() => setShowAddTask(true)}
-                            title={'Backlog'}
-                            tasks={backlogTasksList}
-                            onTaskSelected={(task) => setTask(task)}
-                        />
-
-                        <TasksList
-                            onCreatedTaskClicked={() => setShowAddTask(true)}
-                            title={'To Do'}
-                            tasks={toDoTasksList}
-                            onTaskSelected={(task) => setTask(task)}/>
-                    </div>
-
-
-                    <Task task={task} onTaskUpdated={(newTask) => setTask(newTask)}/>
-                </div>
-            </div>
-            <AddTask isOpen={isShowAddTask} onCancel={() => setShowAddTask(false)}
-                     onSubmit={(fieldsForCreateTask) => addNewTaskToList(task, fieldsForCreateTask, backlogTasksList,)}/>
-            <AddProject isOpen={isShowAddProject} onCancel={() => setShowAddProject(false)}
-                        onSubmit={(fieldsForCreateProject, id) => addNewProjectToList(sidebarItems, fieldsForCreateProject, id)}/>
-                        <Share isOpen={isShowShare} onCancel={() => setIsShowShare(false)}/>
-        </div>
-    )
+			<Share isOpen={isShowShare} onCancel={() => setShowShare(false)} />
+		</div>
+	)
 }
 
-export {Layout}
+export { Layout }

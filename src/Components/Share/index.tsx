@@ -1,39 +1,46 @@
-import React from "react";
+import React from 'react'
 import './style.css'
-import {Icon} from "../Icon";
+import { Icon } from '../Icon'
 import googleIcon from '../Layout/pics/google.png'
 import facebookIcon from '../Layout/pics/facebook.png'
 import youtubeIcon from '../Layout/pics/youtube.png'
+import { ModalWindow } from '../ModalWindow'
 
-
-
-export interface ShareProps {
-    isOpen: boolean
-    onCancel: () => void
+interface ShareProps {
+	isOpen: boolean
+	onCancel: () => void
 }
 
-const Share = ({isOpen, onCancel}: ShareProps) => {
-
-    if (!isOpen) return null
-
-    return (
-        <div className='Share'>
-            <div className="Share__ModalOverlay" onClick={onCancel}></div>
-            <div className="Share__ModalWindow">
-                <header className="Share__ModalHeader">
-                    <div className="Share__ModalHeader-title">Share your Project!</div>
-                    <div className="Share__ModalHeader-close" onClick={onCancel}>&#10008;</div>
-                </header>
-                <div className="Share__ModalBody">
-                    <button className='Share__google'><a href="www.google.com"><Icon src={googleIcon} size={"large"}/></a></button>
-                    <button className='Share__fb'><a href="www.facebook.com"><Icon size={"large"} src={facebookIcon}/></a></button>
-                    <button className='Share__youTube'><a href="www.youtube.com"><Icon size={"large"} src={youtubeIcon}/></a></button>
-                </div>
-                <footer className="Share__footer"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam beatae cupiditate, earum eum expedita explicabo fugiat hic in iure maxime natus pariatur quo quod rem repellat repellendus sit suscipit vero vitae. A at aut deleniti enim, exercitationem illo laboriosam, molestias natus officiis optio perferendis repellat. Itaque quas sequi voluptatem?</p></footer>
-            </div>
-        </div>
-    )
+const Share = ({ isOpen, onCancel }: ShareProps) => {
+	return (
+		<ModalWindow
+			isOpen={isOpen}
+			onCancel={onCancel}
+			title={'Share your Project!'}
+			footer={
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cumque
+					distinctio expedita minus nemo nostrum nulla provident quas qui
+					similique. Ab accusamus accusantium alias dolore eaque eos esse
+					expedita fugiat ipsum iure laudantium minima neque nihil nobis
+					numquam, officiis pariatur possimus recusandae reiciendis rem
+					reprehenderit, sed vitae. Illo, sint tempore.
+				</p>
+			}
+		>
+			<div className='Share__ModalBody'>
+				<a className='Share__google' href='www.google.com'>
+					<Icon src={googleIcon} size={'large'} />
+				</a>
+				<a className='Share__fb' href='www.facebook.com'>
+					<Icon size={'large'} src={facebookIcon} />
+				</a>
+				<a className='Share__youTube' href='www.youtube.com'>
+					<Icon size={'large'} src={youtubeIcon} />
+				</a>
+			</div>
+		</ModalWindow>
+	)
 }
 
-
-export {Share}
+export { Share }

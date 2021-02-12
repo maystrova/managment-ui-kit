@@ -1,14 +1,15 @@
+import { SIDEBAR_LIST } from '../Layout/tasks'
 
 export type SidebarItem = {
-    icon?: string
-    count?: string
-    title: string
-    avatars?: string[]
+	icon?: string
+	count?: string
+	title: string
+	avatars?: string[]
 }
 
 export type ListType = {
-    id: string
-    title: string
-    items: SidebarItem[]
-    addition?: string
+	id: SIDEBAR_LIST
+	title: string
+	items: SidebarItem[]
+	addition?: string
 }
