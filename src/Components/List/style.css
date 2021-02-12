@@ -53,8 +53,12 @@
 }
 
 .List__items-addition {
-    text-decoration: none;
     color: #FFC200;
+    background: none;
+    border: none;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
 }
 
 .List__items-addition:hover {

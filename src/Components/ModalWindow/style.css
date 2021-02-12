@@ -1,0 +1,48 @@
+.Modal {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Modal__Overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	opacity: 1;
+	z-index: 1;
+}
+
+.ModalWindow {
+	width: 600px;
+	border-radius: 5px;
+	background: #fff;
+	z-index: 1;
+	position: relative;
+	padding: 20px;
+}
+
+.Modal__Header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.Modal__Body {
+	margin-bottom: 20px;
+}
+
+.Modal__Header-close {
+	cursor: pointer;
+}
+
+.Modal__Header-title {
+	font-size: 1.5rem;
+}

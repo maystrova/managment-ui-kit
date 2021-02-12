@@ -5,15 +5,15 @@ import {Icon} from "../Icon";
 import {Avatar} from "../Avatar";
 import {HeaderType} from './types'
 
-interface HeaderProps {
+ export interface HeaderProps {
     creators: string[]
     icon: string
     title: string
     menu: string[]
-    onShare: () => void
+    onShareWindowOpen: () => void
 }
 
-const Header = ({creators, icon, menu, title, onShare}: HeaderProps) => {
+const Header = ({creators, icon, menu, title, onShareWindowOpen}: HeaderProps) => {
     return (
         <header className="Header">
             <div className='Header__titleRow'>
@@ -26,7 +26,7 @@ const Header = ({creators, icon, menu, title, onShare}: HeaderProps) => {
                         size={"small"} src={creator}/></div>)}
                     <div className="Header__titleRow-socialMedia-buttons">
                         <div className='Header__titleRow-socialMedia-button'>
-                            <Button onClick={onShare} text="Share"/>
+                            <Button onClick={onShareWindowOpen} text="Share"/>
                         </div>
                         <div className='Header__titleRow-socialMedia-button'>
                             <Button backgroundColor="#FFF8DD" color="#FFC200" text="💬 Chat"/>

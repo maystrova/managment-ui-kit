@@ -1,0 +1,15 @@
+.AddTeam__AddTitle {
+	width: 100%;
+	border: none;
+	background-color: #eaeaea;
+	border-radius: 6px;
+	padding: 15px;
+	margin-bottom: 10px;
+	outline: none;
+}
+
+.AddTeam__ModalFooter {
+	display: flex;
+	justify-content: space-between;
+}
+
