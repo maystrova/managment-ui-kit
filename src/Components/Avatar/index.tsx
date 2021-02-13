@@ -1,19 +1,26 @@
 import React from 'react'
-import './style.scss'
+import { StyledAvatar, StyledAvatarImage } from './style'
+
+enum AVATAR_SIZE {
+    X_SMALL = 'x-small',
+    SMALL = 'small',
+    MEDIUM = 'medium',
+    LARGE = 'large',
+}
 
 interface AvatarProps {
-	size: 'x-small' | 'small' | 'medium' | 'large'
-	href?: string
-	src: string
-	alt?: string
+    size: AVATAR_SIZE
+    href?: string
+    src: string
+    alt?: string
 }
 
 const Avatar = ({ size, href = '#', alt = 'userpic', src }: AvatarProps) => {
-	return (
-		<a className={`Avatar Avatar_${size}`} href={href}>
-			<img className='Avatar__image' src={src} alt={alt} />
-		</a>
-	)
+    return (
+        <StyledAvatar size={size} href={href}>
+            <StyledAvatarImage src={src} alt={alt} />
+        </StyledAvatar>
+    )
 }
 
-export { Avatar }
+export { Avatar, AVATAR_SIZE }
