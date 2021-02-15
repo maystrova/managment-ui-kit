@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import './style.scss'
 import { Button } from '../Button'
 import { ModalWindow } from '../ModalWindow'
+import { StyledAddModalFooter, StyledAddModalTitle } from '../AddProject/style'
 
 export interface FieldsForCreateTeam {
     title: string
@@ -22,7 +22,7 @@ const AddTeam = ({ isOpen, onCancel, onSubmit }: AddTeamsProps) => {
     return (
         <ModalWindow
             footer={
-                <div className='AddTeam__ModalFooter'>
+                <StyledAddModalFooter>
                     <Button
                         backgroundColor={'#EAEAEA'}
                         onClick={onCancel}
@@ -36,15 +36,14 @@ const AddTeam = ({ isOpen, onCancel, onSubmit }: AddTeamsProps) => {
                             setFieldsForCreateTeam({ title: '' })
                         }}
                     />
-                </div>
+                </StyledAddModalFooter>
             }
             isOpen={isOpen}
             onCancel={onCancel}
             title={'Add your Team!'}
         >
-            <div className='AddTeam__ModalBody'>
-                <input
-                    className='AddTeam__AddTitle'
+            <div>
+                <StyledAddModalTitle
                     type='text'
                     placeholder='Add a Team name'
                     onKeyDown={event => {

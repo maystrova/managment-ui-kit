@@ -1,8 +1,8 @@
 import React from 'react'
-import './style.scss'
+import { StyledCheckbox } from './style'
 
 const Checkbox = () => {
-	return <input type='checkbox' className={`Checkbox`} />
+    return <StyledCheckbox type='checkbox' className={`Checkbox`} />
 }
 
 export { Checkbox }

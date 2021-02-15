@@ -1,24 +1,29 @@
 import React from 'react'
-import './style.scss'
+import {
+    StyledStatistics,
+    StyledStatisticsCompleted,
+    StyledStatisticsCount,
+    StyledStatisticsTitle,
+} from './style'
 
 export interface StatisticsProps {
-	completed: number
-	opened: number
+    completed: number
+    opened: number
 }
 
 const Statistics = ({ completed, opened }: StatisticsProps) => {
-	return (
-		<div className='Statistics'>
-			<div className='Statistics__Completed'>
-				<div className='Statistics__Count'>{completed}</div>
-				<div className='Statistics__Title'>Completed Tasks</div>
-			</div>
-			<div className='Statistics__Opened'>
-				<div className='Statistics__Count'>{opened}</div>
-				<div className='Statistics__Title'>Opened Tasks</div>
-			</div>
-		</div>
-	)
+    return (
+        <StyledStatistics>
+            <StyledStatisticsCompleted>
+                <StyledStatisticsCount>{completed}</StyledStatisticsCount>
+                <StyledStatisticsTitle>Completed Tasks</StyledStatisticsTitle>
+            </StyledStatisticsCompleted>
+            <div>
+                <StyledStatisticsCount>{opened}</StyledStatisticsCount>
+                <StyledStatisticsTitle>Opened Tasks</StyledStatisticsTitle>
+            </div>
+        </StyledStatistics>
+    )
 }
 
 export { Statistics }

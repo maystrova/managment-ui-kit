@@ -1,9 +1,16 @@
 import React from 'react'
-import './style.scss'
 import { Checkbox } from '../Checkbox'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Tag } from '../Tag'
 import { TaskType } from '../Task/types'
+import {
+    StyledTaskCard,
+    StyledTaskCardCheckbox,
+    StyledTaskCardFooter,
+    StyledTaskCardHeader,
+    StyledTaskCardUser,
+    StyledTaskCardDescription,
+} from './style'
 
 interface TaskCardProps extends TaskType {
     onClick: () => void
@@ -25,21 +32,21 @@ const TaskCard = ({
     onClick,
 }: TaskCardProps) => {
     return (
-        <div className='TaskCard' onClick={onClick}>
-            <header className='TaskCard__Header'>
-                <div className='TaskCard__Checkbox'>
+        <StyledTaskCard onClick={onClick}>
+            <StyledTaskCardHeader>
+                <StyledTaskCardCheckbox>
                     <Checkbox />
-                </div>
-                <p>{title}</p>
-            </header>
+                </StyledTaskCardCheckbox>
+                <StyledTaskCardDescription>{title}</StyledTaskCardDescription>
+            </StyledTaskCardHeader>
 
-            <footer className='TaskCard__Footer'>
-                <div className='TaskCard__User'>
+            <StyledTaskCardFooter>
+                <StyledTaskCardUser>
                     <Avatar src={user.avatar} size={AVATAR_SIZE.X_SMALL} />
-                </div>
+                </StyledTaskCardUser>
                 <Tag type={tag} text={tag} />
-            </footer>
-        </div>
+            </StyledTaskCardFooter>
+        </StyledTaskCard>
     )
 }
 

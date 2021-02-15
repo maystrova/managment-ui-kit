@@ -1,8 +1,13 @@
 import React from 'react'
-import './style.scss'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Icon, ICON_SIZE } from '../Icon'
 import dotsIcon from '../Layout/pics/dots.svg'
+import {
+    StyledUser,
+    StyledUserAvatar,
+    StyledUserInformation,
+    StyledUserProfession,
+} from './style'
 
 interface UserInfoProps {
     avatar: string
@@ -12,24 +17,22 @@ interface UserInfoProps {
 
 const UserInfo = ({ avatar, name, profession }: UserInfoProps) => {
     return (
-        <div className='UserInfo'>
-            <div className='UserInfo__Information'>
-                <div className='UserInfo__Avatar'>
+        <StyledUser>
+            <StyledUserInformation>
+                <StyledUserAvatar>
                     <Avatar size={AVATAR_SIZE.LARGE} src={avatar} />
+                </StyledUserAvatar>
+                <div>
+                    <div>{name}</div>
+                    <StyledUserProfession>{profession}</StyledUserProfession>
                 </div>
-                <div className='UserInfo__Information-person'>
-                    <div className='UserInfo__Information-name'>{name}</div>
-                    <div className='UserInfo__Information-profession'>
-                        {profession}
-                    </div>
-                </div>
-            </div>
-            <div className='UserInfo__More'>
+            </StyledUserInformation>
+            <div>
                 <a href='#'>
                     <Icon size={ICON_SIZE.SMALL} src={dotsIcon} />
                 </a>
             </div>
-        </div>
+        </StyledUser>
     )
 }
 

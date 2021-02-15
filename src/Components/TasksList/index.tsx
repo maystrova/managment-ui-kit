@@ -1,8 +1,8 @@
 import React from 'react'
-import './style.scss'
 import { Button, BUTTON_SIZE } from '../Button'
 import { TaskType } from '../Task/types'
 import { TaskCard } from '../TaskCard'
+import { StyledTasksList, StyledTasksListHeader } from './style'
 
 interface TasksListProps {
     title: string
@@ -18,8 +18,8 @@ const TasksList = ({
     onCreatedTaskClicked,
 }: TasksListProps) => {
     return (
-        <div className='TasksList'>
-            <header className='TasksList__Header'>
+        <StyledTasksList>
+            <StyledTasksListHeader>
                 <h2>{title}</h2>
                 <Button
                     onClick={() => onCreatedTaskClicked()}
@@ -28,7 +28,7 @@ const TasksList = ({
                     color='#1D201C'
                     size={BUTTON_SIZE.LARGE}
                 />
-            </header>
+            </StyledTasksListHeader>
 
             {tasks.map(task => {
                 return (
@@ -50,7 +50,7 @@ const TasksList = ({
                     />
                 )
             })}
-        </div>
+        </StyledTasksList>
     )
 }
 

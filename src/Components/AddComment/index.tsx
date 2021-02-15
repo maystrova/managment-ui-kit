@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import './style.scss'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { DiscussionType } from '../Task/types'
 import vasyaUser from '../Layout/pics/vasya.png'
+import { StyledAddComment, StyledCommentAria } from './style'
 
 interface AddCommentProps {
     userpic: string
@@ -13,9 +13,9 @@ const AddComment = ({ userpic, onCommentAdded }: AddCommentProps) => {
     const [comment, setComment] = useState<string>('')
 
     return (
-        <div className='addComment'>
+        <StyledAddComment>
             <Avatar size={AVATAR_SIZE.LARGE} src={userpic} />
-            <input
+            <StyledCommentAria
                 value={comment}
                 onKeyDown={event => {
                     // console.log(event.key)
@@ -33,13 +33,12 @@ const AddComment = ({ userpic, onCommentAdded }: AddCommentProps) => {
                     }
                 }}
                 type='text'
-                className='addComment-area'
                 placeholder='Add a comment...'
                 onChange={event => {
                     setComment(event.target.value)
                 }}
             />
-        </div>
+        </StyledAddComment>
     )
 }
 

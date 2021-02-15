@@ -1,25 +1,29 @@
 import React from 'react'
-import './style.scss'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { DiscussionType } from '../Task/types'
+import {
+    StyledComment,
+    StyledCommentAvatar,
+    StyledCommentHeader,
+    StyledCommentName,
+} from './style'
 
 const Comment = ({ name, profession, date, text, avatar }: DiscussionType) => {
     return (
-        <div className='Comment'>
-            <div className='Comment__Avatar'>
+        <StyledComment>
+            <StyledCommentAvatar>
                 <Avatar size={AVATAR_SIZE.LARGE} src={avatar} />
-            </div>
-            <div className='Comment__Header'>
+            </StyledCommentAvatar>
+            <StyledCommentHeader>
                 <span>
-                    <span className='Comment__Header-name'>{name}</span>,{' '}
-                    {profession}
+                    <StyledCommentName>{name}</StyledCommentName>, {profession}
                 </span>
                 <span>{date}</span>
-            </div>
-            <div className='Comment__Content'>
+            </StyledCommentHeader>
+            <div>
                 <p>{text}</p>
             </div>
-        </div>
+        </StyledComment>
     )
 }
 

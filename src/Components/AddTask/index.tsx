@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
-import './style.scss'
-import { Button, BUTTON_SIZE } from '../Button'
+import { Button } from '../Button'
 import { ModalWindow } from '../ModalWindow'
+import {
+    StyledAddTaskFooter,
+    StyledAddTaskTitle,
+    StyledAddTaskDescription,
+} from './style'
 
 export interface FieldsForCreateTask {
     title: string
@@ -23,7 +27,7 @@ const AddTask = ({ onCancel, onSubmit, isOpen }: ModalWindowProps) => {
     return (
         <ModalWindow
             footer={
-                <footer className='AddTask__ModalFooter'>
+                <StyledAddTaskFooter>
                     <Button
                         backgroundColor={'#EAEAEA'}
                         onClick={onCancel}
@@ -40,15 +44,14 @@ const AddTask = ({ onCancel, onSubmit, isOpen }: ModalWindowProps) => {
                         }}
                         text={'Add a Task'}
                     />
-                </footer>
+                </StyledAddTaskFooter>
             }
             isOpen={isOpen}
             onCancel={onCancel}
             title={'Add a Task'}
         >
-            <div className='AddTask__ModalBody'>
-                <input
-                    className='AddTask__addTitle AddTask__addText'
+            <div>
+                <StyledAddTaskTitle
                     type='text'
                     placeholder={'Add a title...'}
                     value={fieldsForCreateTask.title}
@@ -59,8 +62,7 @@ const AddTask = ({ onCancel, onSubmit, isOpen }: ModalWindowProps) => {
                         })
                     }}
                 />
-                <input
-                    className='AddTask__addDescription AddTask__addText'
+                <StyledAddTaskDescription
                     type='text'
                     value={fieldsForCreateTask.description}
                     placeholder={'Add a description...'}

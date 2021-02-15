@@ -1,5 +1,4 @@
 import React from 'react'
-import './style.scss'
 import { List } from '../List'
 import { UserInfo } from '../UserInfo'
 import { Icon, ICON_SIZE } from '../Icon'
@@ -8,6 +7,15 @@ import { ListType } from '../List/types'
 import { Statistics, StatisticsProps } from '../Statistics'
 import searchIcon from '../Layout/pics/search-icon.svg'
 import { SIDEBAR_LIST } from '../Layout/tasks'
+import {
+    StyledSidebar,
+    StyledSidebarFooter,
+    StyledSidebarFooterInvite,
+    StyledSidebarHeader,
+    StyledSidebarHeaderMain,
+    StyledSidebarHeaderTitle,
+    StyledSidebarIcon,
+} from './style'
 
 interface SidebarProps {
     icon: string
@@ -27,18 +35,18 @@ const Sidebar = ({
     onItemAddClick,
 }: SidebarProps) => {
     return (
-        <aside className='Sidebar'>
-            <header className='Sidebar__Header'>
-                <div className='Sidebar__Header-title'>
-                    <div className='Sidebar__Header-icon'>
+        <StyledSidebar>
+            <StyledSidebarHeader>
+                <StyledSidebarHeaderMain>
+                    <StyledSidebarIcon>
                         <Icon size={ICON_SIZE.SMALL} src={icon} />
-                    </div>
-                    <h3>{title}</h3>
-                </div>
-                <div className='Sidebar__Header-search'>
+                    </StyledSidebarIcon>
+                    <StyledSidebarHeaderTitle>{title}</StyledSidebarHeaderTitle>
+                </StyledSidebarHeaderMain>
+                <div>
                     <Icon size={ICON_SIZE.X_SMALL} src={searchIcon} />
                 </div>
-            </header>
+            </StyledSidebarHeader>
             <UserInfo
                 avatar={ownerAvatar}
                 name={'Emilee Simchenko'}
@@ -61,15 +69,15 @@ const Sidebar = ({
                 />
             ))}
 
-            <div className='Sidebar__Footer'>
+            <StyledSidebarFooter>
                 <span>
-                    <a className='Sidebar__Footer-link' href='#'>
+                    <StyledSidebarFooterInvite href='#'>
                         Invite your team
-                    </a>{' '}
+                    </StyledSidebarFooterInvite>{' '}
                     and start collaborating!
                 </span>
-            </div>
-        </aside>
+            </StyledSidebarFooter>
+        </StyledSidebar>
     )
 }
 

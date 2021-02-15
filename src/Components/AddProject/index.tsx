@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import './style.scss'
 import { Button } from '../Button'
-import { ModalWindow, ModalWindowProps } from '../ModalWindow'
+import { ModalWindow } from '../ModalWindow'
+import { StyledAddModalFooter, StyledAddModalTitle } from './style'
 
 export interface FieldsForCreateProject {
     title: string
@@ -25,7 +25,7 @@ const AddProject = ({ onCancel, onSubmit, isOpen }: AddProjectProps) => {
     return (
         <ModalWindow
             footer={
-                <div className='AddProject__ModalFooter'>
+                <StyledAddModalFooter>
                     <Button
                         backgroundColor={'#EAEAEA'}
                         onClick={onCancel}
@@ -39,20 +39,19 @@ const AddProject = ({ onCancel, onSubmit, isOpen }: AddProjectProps) => {
                             setFieldsForCreateProject({ title: '' })
                         }}
                     />
-                </div>
+                </StyledAddModalFooter>
             }
             isOpen={isOpen}
             onCancel={onCancel}
             title={'Add a Project'}
         >
-            <div className='AddProject__ModalBody'>
-                <input
+            <div>
+                <StyledAddModalTitle
                     onKeyDown={event => {
                         if (event.key === 'Enter') {
                             onSubmit(fieldsForAddProject, 'projects')
                         }
                     }}
-                    className='AddProject__AddTitle'
                     type='text'
                     placeholder={'Add a Project Name'}
                     value={fieldsForAddProject.title}

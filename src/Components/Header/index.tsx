@@ -1,8 +1,18 @@
 import React from 'react'
-import './style.scss'
 import { Button } from '../Button'
 import { Icon, ICON_SIZE } from '../Icon'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
+import {
+    StyledHeader,
+    StyledHeaderButton,
+    StyledHeaderButtons,
+    StyledHeaderMenuItem,
+    StyledHeaderRow,
+    StyledHeaderSocialMedia,
+    StyledHeaderTitle,
+    StyledHeaderTopic,
+    StyledHeaderUser,
+} from './style'
 
 export interface HeaderProps {
     creators: string[]
@@ -20,40 +30,38 @@ const Header = ({
     onShareWindowOpen,
 }: HeaderProps) => {
     return (
-        <header className='Header'>
-            <div className='Header__TitleRow'>
-                <div className='Header__TitleRow-main'>
+        <StyledHeader>
+            <StyledHeaderRow>
+                <StyledHeaderTopic>
                     <Icon size={ICON_SIZE.LARGE} src={icon} />
-                    <h1 className='Header__TitleRow-title'>{title}</h1>
-                </div>
-                <div className='Header__TitleRow-socialMedia'>
+                    <StyledHeaderTitle>{title}</StyledHeaderTitle>
+                </StyledHeaderTopic>
+                <StyledHeaderSocialMedia>
                     {creators.map(creator => (
-                        <div className='Header__titleRow-socialMedia-avatar'>
+                        <StyledHeaderUser>
                             <Avatar size={AVATAR_SIZE.SMALL} src={creator} />
-                        </div>
+                        </StyledHeaderUser>
                     ))}
-                    <div className='Header__TitleRow-socialMedia-buttons'>
-                        <div className='Header__TitleRow-socialMedia-button'>
+                    <StyledHeaderButtons>
+                        <StyledHeaderButton>
                             <Button onClick={onShareWindowOpen} text='Share' />
-                        </div>
-                        <div className='Header__TitleRow-socialMedia-button'>
+                        </StyledHeaderButton>
+                        <StyledHeaderButton>
                             <Button
                                 backgroundColor='#FFF8DD'
                                 color='#FFC200'
                                 text='💬 Chat'
                             />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='Header__Menu'>
+                        </StyledHeaderButton>
+                    </StyledHeaderButtons>
+                </StyledHeaderSocialMedia>
+            </StyledHeaderRow>
+            <div>
                 {menu.map(item => (
-                    <a className='Header__Menu-item' href='#'>
-                        {item}
-                    </a>
+                    <StyledHeaderMenuItem href='#'>{item}</StyledHeaderMenuItem>
                 ))}
             </div>
-        </header>
+        </StyledHeader>
     )
 }
 

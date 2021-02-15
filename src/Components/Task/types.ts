@@ -1,11 +1,11 @@
-import {TagType} from "../Tag";
-import {FileType} from "../File/type";
+import { TAG_TYPE } from '../Tag'
+import { FileType } from '../File/type'
 
 export type DiscussionType = {
-    name: string,
-    profession: string,
-    date: string,
-    text: string,
+    name: string
+    profession: string
+    date: string
+    text: string
     avatar: string
 }
 
@@ -20,10 +20,10 @@ export type TaskType = {
     isChecked: boolean
     assignTo: string
     dueOn: string
-    tag: TagType
+    tag: TAG_TYPE
     followers: string[]
     description: string
     discussions: DiscussionType[]
     user: UserType
-    files: FileType []
+    files: FileType[]
 }

@@ -1,39 +1,46 @@
 import React from 'react'
-import './style.scss'
-import { Button } from '../Button'
+import {
+    StyledModal,
+    StyledModalBody,
+    StyledModalClose,
+    StyledModalHeader,
+    StyledModalOverlay,
+    StyledModalTitle,
+    StyledModalWindow,
+} from './style'
 
 export interface ModalWindowProps {
-	isOpen: boolean
-	onCancel: () => void
-	title: string
-	children: React.ReactChild | React.ReactChildren
-	footer?: React.ReactChild | React.ReactChildren
+    isOpen: boolean
+    onCancel: () => void
+    title: string
+    children: React.ReactChild | React.ReactChildren
+    footer?: React.ReactChild | React.ReactChildren
 }
 
 const ModalWindow = ({
-	isOpen,
-	onCancel,
-	title,
-	children,
-	footer,
+    isOpen,
+    onCancel,
+    title,
+    children,
+    footer,
 }: ModalWindowProps) => {
-	if (!isOpen) return null
+    if (!isOpen) return null
 
-	return (
-		<div className='Modal'>
-			<div className='Modal__Overlay' onClick={onCancel}></div>
-			<div className='Modal__Window'>
-				<header className='Modal__Header'>
-					<div className='Modal__Header-title'>{title}</div>
-					<div className='Modal__Header-close' onClick={onCancel}>
-						&#10008;
-					</div>
-				</header>
-				<div className='Modal__Body'>{children}</div>
-				<footer className='Modal__Footer'>{footer}</footer>
-			</div>
-		</div>
-	)
+    return (
+        <StyledModal>
+            <StyledModalOverlay onClick={onCancel}></StyledModalOverlay>
+            <StyledModalWindow>
+                <StyledModalHeader>
+                    <StyledModalTitle>{title}</StyledModalTitle>
+                    <StyledModalClose onClick={onCancel}>
+                        &#10008;
+                    </StyledModalClose>
+                </StyledModalHeader>
+                <StyledModalBody>{children}</StyledModalBody>
+                <footer>{footer}</footer>
+            </StyledModalWindow>
+        </StyledModal>
+    )
 }
 
 export { ModalWindow }

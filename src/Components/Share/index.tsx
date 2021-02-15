@@ -1,10 +1,10 @@
 import React from 'react'
-import './style.scss'
 import { Icon, ICON_SIZE } from '../Icon'
 import googleIcon from '../Layout/pics/google.png'
 import facebookIcon from '../Layout/pics/facebook.png'
 import youtubeIcon from '../Layout/pics/youtube.png'
 import { ModalWindow } from '../ModalWindow'
+import { StyledShare } from './style'
 
 interface ShareProps {
     isOpen: boolean
@@ -29,17 +29,17 @@ const Share = ({ isOpen, onCancel }: ShareProps) => {
                 </p>
             }
         >
-            <div className='Share__ModalBody'>
-                <a className='Share__google' href='www.google.com'>
+            <StyledShare>
+                <a href='#'>
                     <Icon src={googleIcon} size={ICON_SIZE.LARGE} />
                 </a>
-                <a className='Share__fb' href='www.facebook.com'>
+                <a href='#'>
                     <Icon size={ICON_SIZE.LARGE} src={facebookIcon} />
                 </a>
-                <a className='Share__youTube' href='www.youtube.com'>
+                <a href='#'>
                     <Icon size={ICON_SIZE.LARGE} src={youtubeIcon} />
                 </a>
-            </div>
+            </StyledShare>
         </ModalWindow>
     )
 }
