@@ -1,121 +1,140 @@
 import React from 'react'
-import './style.scss'
 import { Checkbox } from '../Checkbox'
-import { Avatar } from '../Avatar'
-import userAvatar1 from '../Layout/pics/userpic1.png'
-import { Tag } from '../Tag'
+import { Avatar, AVATAR_SIZE } from '../Avatar'
+import { Tag, TAG_TYPE } from '../Tag'
 import { Comment } from '../Comment'
 import { DiscussionType, TaskType } from './types'
 import { AddComment } from '../AddComment'
 import { File } from '../File'
+import {
+    StyledTask,
+    StyledTaskDescription,
+    StyledTaskDescriptionText,
+    StyledTaskFiles,
+    StyledTaskHeader,
+    StyledTaskInformation,
+    StyledTaskTitle,
+    StyledTaskUser,
+    StyledTaskUserName,
+    StyledTaskHeaderTitle,
+} from './style'
 
 interface TaskProps {
-	task: TaskType
-	onTaskUpdated: (task: TaskType) => void
+    task: TaskType
+    onTaskUpdated: (task: TaskType) => void
 }
 
 const Task = ({ task, onTaskUpdated }: TaskProps) => {
-	const onCommentAdd = (comment: DiscussionType, task: TaskType): void => {
-		const newDiscussions = [comment, ...task.discussions]
+    const onCommentAdd = (comment: DiscussionType, task: TaskType): void => {
+        const newDiscussions = [comment, ...task.discussions]
 
-		const newTask: TaskType = {
-			...task,
-			discussions: newDiscussions,
-		}
+        const newTask: TaskType = {
+            ...task,
+            discussions: newDiscussions,
+        }
 
-		onTaskUpdated(newTask)
-	}
+        onTaskUpdated(newTask)
+    }
 
-	const onFileDelete = (task: TaskType, fileIdForDelete: number): void => {
-		const newTask: TaskType = {
-			...task,
-			files: task.files.filter(file => file.id !== fileIdForDelete),
-		}
-		onTaskUpdated(newTask)
-	}
+    const onFileDelete = (task: TaskType, fileIdForDelete: number): void => {
+        const newTask: TaskType = {
+            ...task,
+            files: task.files.filter(file => file.id !== fileIdForDelete),
+        }
+        onTaskUpdated(newTask)
+    }
 
-	return (
-		<div className='Task'>
-			<header className='Task__Header'>
-				<div>
-					<h2>{task.title}</h2>
-					<span>
-						Added by {task.addedBy} {task.createdAt}
-					</span>
-				</div>
-				<div>
-					<Checkbox />
-				</div>
-			</header>
-			<div className='Task__Information'>
-				<div className='Task__Information-asignTo'>
-					<h4 className='Task__Title'>Asign to</h4>
-					<div className='Task__Information-asignTo-user'>
-						<Avatar size={'x-small'} src={task.user.avatar} />
-						<span className='Task__Information-asignTo-name'>
-							{task.assignTo}
-						</span>
-					</div>
-				</div>
-				<div className='Task__Information-date'>
-					<h4 className='Task__Title'>Due on</h4>
-					<div>{task.dueOn}</div>
-				</div>
-				<div className='Task__Information-tag'>
-					<h4 className='Task__Title'>Tag</h4>
-					<Tag text={task.tag} type={task.tag} />
-				</div>
-				<div className='Task__Information-followers'>
-					<h4 className='Task__Title'>Followers</h4>
-					{task.followers.map(follower => (
-						<Avatar size={'x-small'} src={follower} key={follower} />
-					))}
-				</div>
-			</div>
+    return (
+        <StyledTask>
+            <StyledTaskHeader>
+                <div>
+                    <StyledTaskHeaderTitle>{task.title}</StyledTaskHeaderTitle>
+                    <span>
+                        Added by {task.addedBy} {task.createdAt}
+                    </span>
+                </div>
+                <div>
+                    <Checkbox />
+                </div>
+            </StyledTaskHeader>
+            <StyledTaskInformation>
+                <div>
+                    <StyledTaskTitle>Asign to</StyledTaskTitle>
+                    <StyledTaskUser>
+                        <Avatar
+                            size={AVATAR_SIZE.X_SMALL}
+                            src={task.user.avatar}
+                        />
+                        <StyledTaskUserName>{task.assignTo}</StyledTaskUserName>
+                    </StyledTaskUser>
+                </div>
+                <div>
+                    <StyledTaskTitle>Due on</StyledTaskTitle>
+                    <div>{task.dueOn}</div>
+                </div>
+                <div>
+                    <StyledTaskTitle>Tag</StyledTaskTitle>
+                    <Tag text={task.tag} type={task.tag} />
+                </div>
+                <div>
+                    <StyledTaskTitle>Followers</StyledTaskTitle>
+                    {task.followers.map(follower => (
+                        <Avatar
+                            size={AVATAR_SIZE.X_SMALL}
+                            src={follower}
+                            key={follower}
+                        />
+                    ))}
+                </div>
+            </StyledTaskInformation>
 
-			<div className='Task__Description'>
-				<h4 className='Task__Description-title Task__Title'>Description</h4>
-				<p className='Task__Description-content'>{task.description}</p>
-				<div className='Task__Description-files'>
-					{task.files.map(file => (
-						<File
-							key={file.title}
-							title={file.title}
-							preview={file.preview}
-							format={file.format}
-							size={file.size}
-							onFileDelete={fileId => {
-								onFileDelete(task, fileId)
-							}}
-							id={file.id}
-						/>
-					))}
-				</div>
-			</div>
+            <StyledTaskDescription>
+                <StyledTaskTitle>Description</StyledTaskTitle>
+                <StyledTaskDescriptionText>
+                    {task.description}
+                </StyledTaskDescriptionText>
+                <StyledTaskFiles>
+                    {task.files.map(file => (
+                        <File
+                            key={file.title}
+                            title={file.title}
+                            preview={file.preview}
+                            format={file.format}
+                            size={file.size}
+                            onFileDelete={fileId => {
+                                onFileDelete(task, fileId)
+                            }}
+                            id={file.id}
+                        />
+                    ))}
+                </StyledTaskFiles>
+            </StyledTaskDescription>
 
-			<div className='Task__Discussion'>
-				<h4 className='Task__Title'>Discussion</h4>
-				<div className='Task__Discussion-addComment'>
-					<AddComment
-						onCommentAdded={comment => onCommentAdd(comment, task)}
-						userpic={task.user.avatar}
-					/>
-				</div>
-				<div className='Task__Discussion-comments'>
-					{task.discussions.map(({ name, profession, date, text, avatar }) => (
-						<Comment
-							key={name}
-							name={name}
-							profession={profession}
-							date={date}
-							text={text}
-							avatar={avatar}
-						/>
-					))}
-				</div>
-			</div>
-		</div>
-	)
+            <div>
+                <StyledTaskTitle>Discussion</StyledTaskTitle>
+                <div>
+                    <AddComment
+                        onCommentAdded={comment => onCommentAdd(comment, task)}
+                        userpic={task.user.avatar}
+                    />
+                </div>
+                <div>
+                    {task.discussions.map(
+                        ({ name, profession, date, text, avatar }) => (
+                            <Comment
+                                key={name}
+                                name={name}
+                                profession={profession}
+                                date={date}
+                                text={text}
+                                avatar={avatar}
+                            />
+                        ),
+                    )}
+                </div>
+            </div>
+        </StyledTask>
+    )
 }
 
 export { Task }

@@ -1,46 +1,45 @@
 import React, { useState } from 'react'
-import './style.scss'
-import { Avatar } from '../Avatar'
+import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { DiscussionType } from '../Task/types'
 import vasyaUser from '../Layout/pics/vasya.png'
+import { StyledAddComment, StyledCommentAria } from './style'
 
 interface AddCommentProps {
-	userpic: string
-	onCommentAdded: (comment: DiscussionType) => void
+    userpic: string
+    onCommentAdded: (comment: DiscussionType) => void
 }
 
 const AddComment = ({ userpic, onCommentAdded }: AddCommentProps) => {
-	const [comment, setComment] = useState<string>('')
+    const [comment, setComment] = useState<string>('')
 
-	return (
-		<div className='addComment'>
-			<Avatar size={'large'} src={userpic} />
-			<input
-				value={comment}
-				onKeyDown={event => {
-					// console.log(event.key)
+    return (
+        <StyledAddComment>
+            <Avatar size={AVATAR_SIZE.LARGE} src={userpic} />
+            <StyledCommentAria
+                value={comment}
+                onKeyDown={event => {
+                    // console.log(event.key)
 
-					if (event.key === 'Enter') {
-						onCommentAdded({
-							name: 'Vasya',
-							profession: 'Cat',
-							date: 'Today',
-							text: comment,
-							avatar: vasyaUser,
-						})
+                    if (event.key === 'Enter') {
+                        onCommentAdded({
+                            name: 'Vasya',
+                            profession: 'Cat',
+                            date: 'Today',
+                            text: comment,
+                            avatar: vasyaUser,
+                        })
 
-						setComment('')
-					}
-				}}
-				type='text'
-				className='addComment-area'
-				placeholder='Add a comment...'
-				onChange={event => {
-					setComment(event.target.value)
-				}}
-			/>
-		</div>
-	)
+                        setComment('')
+                    }
+                }}
+                type='text'
+                placeholder='Add a comment...'
+                onChange={event => {
+                    setComment(event.target.value)
+                }}
+            />
+        </StyledAddComment>
+    )
 }
 
 export { AddComment }

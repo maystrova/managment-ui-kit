@@ -1,78 +1,81 @@
 import React, { useState } from 'react'
-import './style.scss'
 import { Button } from '../Button'
 import { ModalWindow } from '../ModalWindow'
+import {
+    StyledAddTaskFooter,
+    StyledAddTaskTitle,
+    StyledAddTaskDescription,
+} from './style'
 
 export interface FieldsForCreateTask {
-	title: string
-	description: string
+    title: string
+    description: string
 }
 
 export interface ModalWindowProps {
-	isOpen: boolean
-	onCancel: () => void
-	onSubmit: (fieldsForCreateTask: FieldsForCreateTask) => void
+    isOpen: boolean
+    onCancel: () => void
+    onSubmit: (fieldsForCreateTask: FieldsForCreateTask) => void
 }
 
 const AddTask = ({ onCancel, onSubmit, isOpen }: ModalWindowProps) => {
-	const [
-		fieldsForCreateTask,
-		setFieldsForCreateTask,
-	] = useState<FieldsForCreateTask>({ title: '', description: '' })
+    const [
+        fieldsForCreateTask,
+        setFieldsForCreateTask,
+    ] = useState<FieldsForCreateTask>({ title: '', description: '' })
 
-	return (
-		<ModalWindow
-			footer={
-				<footer className='AddTask__ModalFooter'>
-					<Button
-						backgroundColor={'#EAEAEA'}
-						size={'medium'}
-						onClick={onCancel}
-						text={'Cancel'}
-					/>
-					<Button
-						backgroundColor={'rgb(206, 249, 198)'}
-						size={'medium'}
-						onClick={() => {
-							onSubmit(fieldsForCreateTask)
-							setFieldsForCreateTask({ title: '', description: '' })
-						}}
-						text={'Add a Task'}
-					/>
-				</footer>
-			}
-			isOpen={isOpen}
-			onCancel={onCancel}
-			title={'Add a Task'}
-		>
-			<div className='AddTask__ModalBody'>
-				<input
-					className='AddTask__addTitle AddTask__addText'
-					type='text'
-					placeholder={'Add a title...'}
-					value={fieldsForCreateTask.title}
-					onChange={event => {
-						setFieldsForCreateTask({
-							title: event.target.value,
-							description: fieldsForCreateTask.description,
-						})
-					}}
-				/>
-				<input
-					className='AddTask__addDescription AddTask__addText'
-					type='text'
-					value={fieldsForCreateTask.description}
-					placeholder={'Add a description...'}
-					onChange={event => {
-						setFieldsForCreateTask({
-							description: event.target.value,
-							title: fieldsForCreateTask.title,
-						})
-					}}
-				/>
-			</div>
-		</ModalWindow>
-	)
+    return (
+        <ModalWindow
+            footer={
+                <StyledAddTaskFooter>
+                    <Button
+                        backgroundColor={'#EAEAEA'}
+                        onClick={onCancel}
+                        text={'Cancel'}
+                    />
+                    <Button
+                        backgroundColor={'rgb(206, 249, 198)'}
+                        onClick={() => {
+                            onSubmit(fieldsForCreateTask)
+                            setFieldsForCreateTask({
+                                title: '',
+                                description: '',
+                            })
+                        }}
+                        text={'Add a Task'}
+                    />
+                </StyledAddTaskFooter>
+            }
+            isOpen={isOpen}
+            onCancel={onCancel}
+            title={'Add a Task'}
+        >
+            <div>
+                <StyledAddTaskTitle
+                    type='text'
+                    placeholder={'Add a title...'}
+                    value={fieldsForCreateTask.title}
+                    onChange={event => {
+                        setFieldsForCreateTask({
+                            title: event.target.value,
+                            description: fieldsForCreateTask.description,
+                        })
+                    }}
+                />
+                <StyledAddTaskDescription
+                    type='text'
+                    value={fieldsForCreateTask.description}
+                    placeholder={'Add a description...'}
+                    onChange={event => {
+                        setFieldsForCreateTask({
+                            description: event.target.value,
+                            title: fieldsForCreateTask.title,
+                        })
+                    }}
+                />
+            </div>
+        </ModalWindow>
+    )
 }
 
 export { AddTask }

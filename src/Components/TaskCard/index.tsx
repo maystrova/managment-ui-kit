@@ -1,46 +1,53 @@
 import React from 'react'
-import './style.scss'
 import { Checkbox } from '../Checkbox'
-import { Avatar } from '../Avatar'
+import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Tag } from '../Tag'
 import { TaskType } from '../Task/types'
+import {
+    StyledTaskCard,
+    StyledTaskCardCheckbox,
+    StyledTaskCardFooter,
+    StyledTaskCardHeader,
+    StyledTaskCardUser,
+    StyledTaskCardDescription,
+} from './style'
 
 interface TaskCardProps extends TaskType {
-	onClick: () => void
+    onClick: () => void
 }
 
 const TaskCard = ({
-	title,
-	user,
-	files,
-	discussions,
-	description,
-	assignTo,
-	followers,
-	tag,
-	dueOn,
-	createdAt,
-	addedBy,
-	isChecked,
-	onClick,
+    title,
+    user,
+    files,
+    discussions,
+    description,
+    assignTo,
+    followers,
+    tag,
+    dueOn,
+    createdAt,
+    addedBy,
+    isChecked,
+    onClick,
 }: TaskCardProps) => {
-	return (
-		<div className='TaskCard' onClick={onClick}>
-			<header className='TaskCard__Header'>
-				<div className='TaskCard__Checkbox'>
-					<Checkbox />
-				</div>
-				<p>{title}</p>
-			</header>
+    return (
+        <StyledTaskCard onClick={onClick}>
+            <StyledTaskCardHeader>
+                <StyledTaskCardCheckbox>
+                    <Checkbox />
+                </StyledTaskCardCheckbox>
+                <StyledTaskCardDescription>{title}</StyledTaskCardDescription>
+            </StyledTaskCardHeader>
 
-			<footer className='TaskCard__Footer'>
-				<div className='TaskCard__User'>
-					<Avatar src={user.avatar} size='x-small' />
-				</div>
-				<Tag type={tag} text={tag} />
-			</footer>
-		</div>
-	)
+            <StyledTaskCardFooter>
+                <StyledTaskCardUser>
+                    <Avatar src={user.avatar} size={AVATAR_SIZE.X_SMALL} />
+                </StyledTaskCardUser>
+                <Tag type={tag} text={tag} />
+            </StyledTaskCardFooter>
+        </StyledTaskCard>
+    )
 }
 
 export { TaskCard }

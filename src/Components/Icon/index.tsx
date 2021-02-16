@@ -1,18 +1,24 @@
 import React from 'react'
-import './style.scss'
+import { StyledIcon } from './style'
+
+enum ICON_SIZE {
+    X_SMALL = 'x-small',
+    SMALL = 'small',
+    LARGE = 'large',
+}
 
 interface IconProps {
-	size: 'x-small' | 'small' | 'large'
-	alt?: string
-	src: string
+    size: ICON_SIZE
+    alt?: string
+    src: string
 }
 
 const Icon = ({ size, alt = 'icon', src }: IconProps) => {
-	return (
-		<div>
-			<img className={`Icon Icon__${size}`} src={src} alt={alt} />
-		</div>
-	)
+    return (
+        <div>
+            <StyledIcon size={size} src={src} alt={alt} />
+        </div>
+    )
 }
 
-export { Icon }
+export { Icon, ICON_SIZE }

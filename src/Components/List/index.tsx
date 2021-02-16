@@ -1,54 +1,65 @@
 import React from 'react'
-import './style.scss'
 
 import { ListType } from './types'
+import {
+    StyledList,
+    StyledListAdd,
+    StyledListItem,
+    StyledListItems,
+    StyledListItemsAvatar,
+    StyledListItemsBlock,
+    StyledListItemsCount,
+    StyledListItemsIcon,
+    StyledListTitle,
+} from './style'
 
 interface ListProps extends ListType {
-	onAdditionalClick: () => void
+    onAdditionalClick: () => void
 }
 
 const List = ({ items, addition, title, onAdditionalClick }: ListProps) => {
-	return (
-		<div className='List'>
-			<span className='List__Title'>{title}</span>
-			<div className='List__Items'>
-				<ul className='List__Items-block'>
-					{items.map(item => (
-						<li className='List__Items-string'>
-							<a className='List__Items-link' href='#'>
-								{item.icon && (
-									<img
-										className='List__Items-link-icon'
-										src={item.icon}
-										alt='icon'
-									/>
-								)}
-								{item.title}
-								{item.avatars?.map(avatar => (
-									<img
-										className='List__Items-link-avatar'
-										src={avatar}
-										alt='avatar'
-									/>
-								))}
-								{item.count && <span className='List__Items-count'>3</span>}
-							</a>
-						</li>
-					))}
-				</ul>
-			</div>
-			<div>
-				<button
-					onClick={() => {
-						onAdditionalClick()
-					}}
-					className='List__Items-addition'
-				>
-					{addition}
-				</button>
-			</div>
-		</div>
-	)
+    return (
+        <StyledList>
+            <StyledListTitle>{title}</StyledListTitle>
+            <div>
+                <StyledListItemsBlock>
+                    {items.map(item => (
+                        <StyledListItems>
+                            <StyledListItem href='#'>
+                                {item.icon && (
+                                    <StyledListItemsIcon
+                                        src={item.icon}
+                                        alt='icon'
+                                    />
+                                )}
+                                {item.title}
+                                {item.avatars?.map(avatar => (
+                                    <StyledListItemsAvatar
+                                        src={avatar}
+                                        alt='avatar'
+                                    />
+                                ))}
+                                {item.count && (
+                                    <StyledListItemsCount>
+                                        3
+                                    </StyledListItemsCount>
+                                )}
+                            </StyledListItem>
+                        </StyledListItems>
+                    ))}
+                </StyledListItemsBlock>
+            </div>
+            <div>
+                <StyledListAdd
+                    onClick={() => {
+                        onAdditionalClick()
+                    }}
+                >
+                    {addition}
+                </StyledListAdd>
+            </div>
+        </StyledList>
+    )
 }
 
 export { List }

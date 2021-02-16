@@ -1,20 +1,24 @@
 import React from 'react'
-import './style.scss'
+import { StyledTag } from './style'
 
-export type TagType = 'development' | 'marketing' | 'design'
+enum TAG_TYPE {
+    DEVELOPMENT = 'development',
+    MARKETING = 'marketing',
+    DESIGN = 'design',
+}
 
 interface TagProps {
-	href?: string
-	text: string
-	type: TagType
+    href?: string
+    text: string
+    type: TAG_TYPE
 }
 
 const Tag = ({ type, text, href = '#' }: TagProps) => {
-	return (
-		<a className={`Tag Tag_${type}`} href={href}>
-			{text}
-		</a>
-	)
+    return (
+        <StyledTag type={type} href={href}>
+            {text}
+        </StyledTag>
+    )
 }
 
-export { Tag }
+export { Tag, TAG_TYPE }
