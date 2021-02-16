@@ -105,7 +105,7 @@ const Layout = () => {
                 avatar: commentAvatar3,
             },
             {
-                name: 'Prescott MacCaffery,',
+                name: 'Prescott MacCaffery',
                 profession: 'Developer',
                 date: 'Yesterday at 12:37pm',
                 text:

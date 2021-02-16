@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
 const StyledComment = styled.div`
-    height: 112px;
     border-radius: 10px;
     background-color: #f7f6f3;
     border: none;
     align-items: center;
-    margin: 0 0 30px 25px;
+    margin: 0 0 20px 25px;
     padding: 20px 35px;
     position: relative;
 `

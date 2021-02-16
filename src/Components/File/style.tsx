@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const StyledFile = styled.div`
     margin-right: 30px;
@@ -13,7 +13,6 @@ const StyledFilePreview = styled.div`
 const StyledFileSizeInfo = styled.span`
     text-transform: uppercase;
     opacity: 70%;
-    font-weight: 100;
 `
 
 export { StyledFile, StyledFilePreview, StyledFileSizeInfo }

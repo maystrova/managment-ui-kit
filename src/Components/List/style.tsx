@@ -1,9 +1,8 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const StyledList = styled.div`
     padding: 15px;
     line-height: 2.5;
-    margin-bottom: 15px;
 `
 
 const StyledListTitle = styled.span`
@@ -49,7 +48,6 @@ const StyledListItemsCount = styled.span`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
     margin-left: 15px;
 `
 

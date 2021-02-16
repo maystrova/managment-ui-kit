@@ -2,13 +2,12 @@ import styled from 'styled-components'
 
 const StyledHeader = styled.div`
     background-color: white;
-    padding: 25px 15px 0;
+    padding: 0 20px;
 `
 
 const StyledHeaderRow = styled.div`
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
     align-items: center;
 `
 

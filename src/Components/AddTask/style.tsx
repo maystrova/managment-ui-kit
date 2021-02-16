@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StyledAddTaskDescription = styled.input`
     height: 100px;
-    width: 100%;
+    width: 95%;
     border: none;
     background-color: #eaeaea;
     border-radius: 6px;
@@ -12,7 +12,7 @@ const StyledAddTaskDescription = styled.input`
 `
 
 const StyledAddTaskTitle = styled.input`
-    width: 100%;
+    width: 95%;
     border: none;
     background-color: #eaeaea;
     border-radius: 6px;
@@ -24,7 +24,6 @@ const StyledAddTaskTitle = styled.input`
 const StyledAddTaskFooter = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 20px;
 `
 
 export { StyledAddTaskDescription, StyledAddTaskFooter, StyledAddTaskTitle }

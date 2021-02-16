@@ -19,9 +19,8 @@ const StyledSidebarHeaderMain = styled.div`
     align-items: center;
 `
 
-const StyledSidebarHeaderTitle = styled.div`
+const StyledSidebarHeaderTitle = styled.h3`
     margin: 0;
-    font-size: 1.2em;
 `
 
 const StyledSidebarIcon = styled.div`

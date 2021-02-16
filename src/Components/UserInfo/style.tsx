@@ -5,7 +5,6 @@ const StyledUser = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: 100;
     padding: 15px;
     margin-bottom: 20px;
 `

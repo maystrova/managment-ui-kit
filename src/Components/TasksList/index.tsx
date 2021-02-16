@@ -2,7 +2,11 @@ import React from 'react'
 import { Button, BUTTON_SIZE } from '../Button'
 import { TaskType } from '../Task/types'
 import { TaskCard } from '../TaskCard'
-import { StyledTasksList, StyledTasksListHeader } from './style'
+import {
+    StyledTasksList,
+    StyledTasksListHeader,
+    StyledTaskListHeaderTitle,
+} from './style'
 
 interface TasksListProps {
     title: string
@@ -20,7 +24,7 @@ const TasksList = ({
     return (
         <StyledTasksList>
             <StyledTasksListHeader>
-                <h2>{title}</h2>
+                <StyledTaskListHeaderTitle>{title}</StyledTaskListHeaderTitle>
                 <Button
                     onClick={() => onCreatedTaskClicked()}
                     text='+ Add Task'

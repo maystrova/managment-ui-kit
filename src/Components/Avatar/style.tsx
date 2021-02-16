@@ -39,7 +39,6 @@ const StyledAvatar = styled.a`
         props.size === AVATAR_SIZE.LARGE &&
         css`
             width: 48px;
-            height: 48px;
         `}
 `
 

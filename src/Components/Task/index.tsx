@@ -16,6 +16,7 @@ import {
     StyledTaskTitle,
     StyledTaskUser,
     StyledTaskUserName,
+    StyledTaskHeaderTitle,
 } from './style'
 
 interface TaskProps {
@@ -47,7 +48,7 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
         <StyledTask>
             <StyledTaskHeader>
                 <div>
-                    <h2>{task.title}</h2>
+                    <StyledTaskHeaderTitle>{task.title}</StyledTaskHeaderTitle>
                     <span>
                         Added by {task.addedBy} {task.createdAt}
                     </span>

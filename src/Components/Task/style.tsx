@@ -13,12 +13,16 @@ const StyledTaskHeader = styled.div`
     padding-bottom: 30px;
 `
 
+const StyledTaskHeaderTitle = styled.h2`
+    margin: 0;
+`
+
 const StyledTaskInformation = styled.div`
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #ececec;
-    margin-bottom: 40px;
-    padding-bottom: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
 `
 
 const StyledTaskUser = styled.div`
@@ -32,7 +36,6 @@ const StyledTaskUserName = styled.span`
 
 const StyledTaskTitle = styled.h4`
     text-transform: uppercase;
-    padding-bottom: 20px;
 `
 
 const StyledTaskDescription = styled.div`
@@ -59,4 +62,5 @@ export {
     StyledTaskDescription,
     StyledTaskDescriptionText,
     StyledTaskFiles,
+    StyledTaskHeaderTitle,
 }

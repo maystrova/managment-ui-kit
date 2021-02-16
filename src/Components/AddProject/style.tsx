@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const StyledAddModalTitle = styled.input`
-    width: 100%;
+    width: 95%;
     border: none;
     background-color: #eaeaea;
     border-radius: 6px;
