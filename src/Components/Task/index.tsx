@@ -1,7 +1,7 @@
 import React from 'react'
 import { Checkbox } from '../Checkbox'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
-import { Tag, TAG_TYPE } from '../Tag'
+import { Tag } from '../Tag'
 import { Comment } from '../Comment'
 import { DiscussionType, TaskType } from './types'
 import { AddComment } from '../AddComment'

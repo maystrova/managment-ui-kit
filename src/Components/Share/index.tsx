@@ -30,13 +30,13 @@ const Share = ({ isOpen, onCancel }: ShareProps) => {
             }
         >
             <StyledShare>
-                <a href='#'>
+                <a href='https://google.com/'>
                     <Icon src={googleIcon} size={ICON_SIZE.LARGE} />
                 </a>
-                <a href='#'>
+                <a href='https://facebook.com/'>
                     <Icon size={ICON_SIZE.LARGE} src={facebookIcon} />
                 </a>
-                <a href='#'>
+                <a href='https://youtube.com/'>
                     <Icon size={ICON_SIZE.LARGE} src={youtubeIcon} />
                 </a>
             </StyledShare>

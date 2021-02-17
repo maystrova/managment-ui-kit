@@ -28,7 +28,7 @@ const UserInfo = ({ avatar, name, profession }: UserInfoProps) => {
                 </div>
             </StyledUserInformation>
             <div>
-                <a href='#'>
+                <a href='https://maystrova.com'>
                     <Icon size={ICON_SIZE.SMALL} src={dotsIcon} />
                 </a>
             </div>
