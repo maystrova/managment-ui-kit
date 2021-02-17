@@ -140,6 +140,7 @@ const Layout = () => {
     const [backlogTasksList, setBacklogTasksList] = useState<TaskType[]>(
         backlogTasks,
     )
+
     const [toDoTasksList, setToDoTasksList] = useState<TaskType[]>(todoTasks)
     const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
