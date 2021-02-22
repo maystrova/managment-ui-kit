@@ -13,9 +13,16 @@ interface AvatarProps {
     href?: string
     src: string
     alt?: string
+    id?: string
 }
 
-const Avatar = ({ size, href = '#', alt = 'userpic', src }: AvatarProps) => {
+const Avatar = ({
+    size,
+    href = '#',
+    alt = 'userpic',
+    src,
+    id,
+}: AvatarProps) => {
     return (
         <StyledAvatar size={size} href={href}>
             <StyledAvatarImage src={src} alt={alt} />

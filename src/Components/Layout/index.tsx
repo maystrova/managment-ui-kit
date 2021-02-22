@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { firebase } from 'services/firebase'
 import { Sidebar } from '../Sidebar'
 import { Header } from '../Header'
-import { Task } from '../Task'
+import { Task } from 'Components/Task'
 import { TaskType } from '../Task/types'
 import { TasksList } from '../TasksList'
 import { GlobalStyle } from './style'
@@ -44,40 +45,73 @@ const sidebarLists: ListType[] = [
         title: 'Menu',
         id: SIDEBAR_LIST.MENU,
         items: [
-            { title: 'Home' },
-            { title: 'My Tasks' },
-            { title: 'Notifications', count: '3' },
+            { title: 'Home', id: 'home' },
+            { title: 'My Tasks', id: 'mytasks' },
+            {
+                title: 'Notifications',
+                id: 'notifications',
+                count: { count: '3', id: 'countfbefbe' },
+            },
         ],
     },
     {
         title: 'Projects',
         id: SIDEBAR_LIST.PROJECTS,
-        addition: '+ Add a Project',
+        addition: { title: '+ Add a Project', id: 'addaproject' },
         items: [
-            { title: 'Dashboard UI Kit', icon: dashboardIcon },
-            { title: 'CRM System', icon: crmIcon },
-            { title: 'Website Redesign', icon: redesignIcon },
-            { title: 'Communication Tool', icon: communicationIcon },
+            {
+                title: 'Dashboard UI Kit',
+                icon: { icon: dashboardIcon, id: 'dashboard' },
+                id: '124415',
+            },
+            {
+                title: 'CRM System',
+                icon: { icon: crmIcon, id: 'crmicon' },
+                id: '12335',
+            },
+            {
+                title: 'Website Redesign',
+                icon: { icon: redesignIcon, id: 'redesignicon' },
+                id: '36352354',
+            },
+            {
+                title: 'Communication Tool',
+                icon: { icon: communicationIcon, id: 'communicationicon' },
+                id: '363452',
+            },
         ],
     },
     {
         title: 'Teams',
         id: SIDEBAR_LIST.TEAMS,
-        addition: '+ Add a Team',
+        addition: { title: '+ Add a Team', id: 'addateam' },
         items: [
             {
                 title: 'Designers',
-                avatars: [designerAvatar1, designerAvatar2, designerAvatar3],
+                avatars: [
+                    { avatar: designerAvatar1, id: 'design1' },
+                    { avatar: designerAvatar2, id: 'design2' },
+                    { avatar: designerAvatar3, id: 'design3' },
+                ],
+                id: '12356',
             },
-            { title: 'Backend', avatars: [backenderAvatar1, backenderAvatar2] },
+            {
+                title: 'Backend',
+                avatars: [
+                    { avatar: backenderAvatar1, id: 'backend1' },
+                    { avatar: backenderAvatar2, id: 'backend2' },
+                ],
+                id: '465484783',
+            },
             {
                 title: 'Frontend',
                 avatars: [
-                    frontenderAvatar1,
-                    frontenderAvatar2,
-                    frontenderAvatar3,
-                    frontenderAvatar4,
+                    { avatar: frontenderAvatar1, id: 'frontend1' },
+                    { avatar: frontenderAvatar2, id: 'frontend2' },
+                    { avatar: frontenderAvatar3, id: 'frontend3' },
+                    { avatar: frontenderAvatar4, id: 'frontend4' },
                 ],
+                id: '9876543',
             },
         ],
     },
@@ -161,6 +195,12 @@ const Layout = () => {
         setShowAddTask(false)
     }
 
+    const getUniqueId = (title: string): string => {
+        const timestamp = Date.now()
+
+        return `${title.replace(' ', '_')}_${timestamp}`
+    }
+
     const addNewProjectToList = (
         currentSidebarItems: ListType[],
         fieldsForCreateProject: FieldsForCreateProject,
@@ -169,8 +209,9 @@ const Layout = () => {
         const newProject: SidebarItem = {
             title: fieldsForCreateProject.title,
             avatars: [],
-            icon: crmIcon,
+            icon: { icon: crmIcon },
             count: undefined,
+            id: getUniqueId(fieldsForCreateProject.title),
         }
 
         const newSidebarList: ListType[] = currentSidebarItems.map(list => {
@@ -194,6 +235,7 @@ const Layout = () => {
             avatars: [],
             icon: undefined,
             count: undefined,
+            id: getUniqueId(fieldsForCreateTeam.title),
         }
 
         const newSidebarList: ListType[] = currentSidebarItems.map(list => {
@@ -206,10 +248,17 @@ const Layout = () => {
         setShowAddTeam(false)
     }
 
+    const authorization = () => {
+        new firebase.auth.GoogleAuthProvider()
+    }
+
+    const isUserAuthorize: boolean = false
+
     return (
         <StyledLayout>
             <GlobalStyle />
             <Sidebar
+                onLogin={() => authorization}
                 onItemAddClick={listId => {
                     if (listId === SIDEBAR_LIST.PROJECTS) {
                         setShowAddProject(true)
@@ -222,14 +271,25 @@ const Layout = () => {
                 search={searchIcon}
                 lists={sidebarItems}
                 statistics={{ completed: 372, opened: 11 }}
+                isUserAuthorize={isUserAuthorize}
             />
 
             <StyledLayoutMain>
                 <Header
                     icon={redesignIcon}
-                    creators={[userAvatar2, userAvatar3, userAvatar4]}
+                    creators={[
+                        { avatar: userAvatar2, id: 'useravatar2' },
+                        { avatar: userAvatar3, id: 'useravatar3' },
+                        { avatar: userAvatar4, id: 'useravatar4' },
+                    ]}
                     title={'Website Redesign'}
-                    menu={['Tasks', 'Kanban', 'Activity', 'Calendar', 'Files']}
+                    menu={[
+                        { title: 'Tasks', id: '345' },
+                        { title: 'Kanban', id: '5555564' },
+                        { title: 'Activity', id: '3434343' },
+                        { title: 'Calendar', id: '34343' },
+                        { title: 'Files', id: '343488888' },
+                    ]}
                     onShareWindowOpen={() => setShowShare(true)}
                 />
 

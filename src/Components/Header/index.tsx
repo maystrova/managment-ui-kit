@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '../Button'
 import { Icon, ICON_SIZE } from '../Icon'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
+import { HeaderCreatorType, HeaderMenuType } from './types'
 import {
     StyledHeader,
     StyledHeaderButton,
@@ -15,10 +16,10 @@ import {
 } from './style'
 
 export interface HeaderProps {
-    creators: string[]
+    creators: HeaderCreatorType[]
     icon: string
     title: string
-    menu: string[]
+    menu: HeaderMenuType[]
     onShareWindowOpen: () => void
 }
 
@@ -38,8 +39,11 @@ const Header = ({
                 </StyledHeaderTopic>
                 <StyledHeaderSocialMedia>
                     {creators.map(creator => (
-                        <StyledHeaderUser>
-                            <Avatar size={AVATAR_SIZE.SMALL} src={creator} />
+                        <StyledHeaderUser key={creator.id}>
+                            <Avatar
+                                size={AVATAR_SIZE.SMALL}
+                                src={creator.avatar}
+                            />
                         </StyledHeaderUser>
                     ))}
                     <StyledHeaderButtons>
@@ -58,7 +62,9 @@ const Header = ({
             </StyledHeaderRow>
             <div>
                 {menu.map(item => (
-                    <StyledHeaderMenuItem href='#'>{item}</StyledHeaderMenuItem>
+                    <StyledHeaderMenuItem key={item.id} href='#'>
+                        {item.title}
+                    </StyledHeaderMenuItem>
                 ))}
             </div>
         </StyledHeader>

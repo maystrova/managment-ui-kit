@@ -50,7 +50,7 @@ const TasksList = ({
                         isChecked={task.isChecked}
                         tag={task.tag}
                         onClick={() => onTaskSelected(task)}
-                        key={title}
+                        key={task.title}
                     />
                 )
             })}
