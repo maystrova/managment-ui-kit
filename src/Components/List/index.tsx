@@ -26,7 +26,6 @@ const List = ({ items, addition, title, onAdditionalClick, id }: ListProps) => {
             <div>
                 <StyledListItemsBlock key={id}>
                     {items.map(item => {
-                        console.log('item', item.id)
                         return (
                             <StyledListItems key={item.id}>
                                 <StyledListItem href='#'>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { firebase } from 'services/firebase'
 import { Sidebar } from '../Sidebar'
 import { Header } from '../Header'
@@ -39,6 +39,7 @@ import { Share } from '../Share'
 import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
 import { StyledLayout, StyledLayoutContent, StyledLayoutMain } from './style'
+import { User } from '../../services/user'
 
 const sidebarLists: ListType[] = [
     {
@@ -165,7 +166,7 @@ const Layout = () => {
             },
         ],
     })
-
+    const [user, setUser] = useState<User | null>(null)
     const [isShowAddTask, setShowAddTask] = useState<boolean>(false)
     const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
     const [isShowAddTeam, setShowAddTeam] = useState<boolean>(false)
@@ -248,17 +249,63 @@ const Layout = () => {
         setShowAddTeam(false)
     }
 
-    const authorization = () => {
-        new firebase.auth.GoogleAuthProvider()
+    const authorization = async () => {
+        const authProvider = new firebase.auth.GoogleAuthProvider()
+
+        await firebase
+            .auth()
+            .signInWithPopup(authProvider)
+            .then(result => {
+                /** @type {firebase.auth.OAuthCredential} */
+                var credential = result.credential
+
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                // var token = credential.accessToken
+                // The signed-in user info.
+                var user = result.user
+                const preparedUser: User = {
+                    fullName: user?.displayName ? user.displayName : 'User',
+                    avatarUrl: user?.photoURL ? user.photoURL : '',
+                    email: user?.email ? user.email : 'example@email.com',
+                }
+
+                window.localStorage.setItem(
+                    'user',
+                    JSON.stringify(preparedUser),
+                )
+
+                setUser(preparedUser)
+                // ...
+            })
+            .catch(error => {
+                // Handle Errors here.
+                var errorCode = error.code
+                var errorMessage = error.message
+                // The email of the user's account used.
+                var email = error.email
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential
+                // ...
+            })
     }
 
-    const isUserAuthorize: boolean = false
+    const getUser = async (): Promise<void> => {
+        const storageUser = await window.localStorage.getItem('user')
+
+        if (storageUser) {
+            setUser(JSON.parse(storageUser))
+        }
+    }
+
+    useEffect(() => {
+        getUser()
+    }, [])
 
     return (
         <StyledLayout>
             <GlobalStyle />
             <Sidebar
-                onLogin={() => authorization}
+                onLogin={() => authorization()}
                 onItemAddClick={listId => {
                     if (listId === SIDEBAR_LIST.PROJECTS) {
                         setShowAddProject(true)
@@ -271,7 +318,7 @@ const Layout = () => {
                 search={searchIcon}
                 lists={sidebarItems}
                 statistics={{ completed: 372, opened: 11 }}
-                isUserAuthorize={isUserAuthorize}
+                user={user}
             />
 
             <StyledLayoutMain>
