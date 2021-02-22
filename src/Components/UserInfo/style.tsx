@@ -7,6 +7,7 @@ const StyledUser = styled.div`
     align-items: center;
     padding: 15px;
     margin-bottom: 20px;
+    height: 50px;
 `
 
 const StyledUserInformation = styled.div`

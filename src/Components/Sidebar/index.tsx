@@ -16,6 +16,7 @@ import {
     StyledSidebarHeaderTitle,
     StyledSidebarIcon,
 } from './style'
+import { Login } from '../Login'
 
 interface SidebarProps {
     icon: string
@@ -24,6 +25,8 @@ interface SidebarProps {
     lists: ListType[]
     statistics: StatisticsProps
     onItemAddClick: (listId: SIDEBAR_LIST) => void
+    isUserAuthorize: boolean
+    onLogin: () => void
 }
 
 const Sidebar = ({
@@ -33,6 +36,8 @@ const Sidebar = ({
     lists,
     statistics,
     onItemAddClick,
+    isUserAuthorize,
+    onLogin,
 }: SidebarProps) => {
     return (
         <StyledSidebar>
@@ -47,11 +52,16 @@ const Sidebar = ({
                     <Icon size={ICON_SIZE.X_SMALL} src={searchIcon} />
                 </div>
             </StyledSidebarHeader>
-            <UserInfo
-                avatar={ownerAvatar}
-                name={'Emilee Simchenko'}
-                profession={'Product Owner'}
-            />
+            {isUserAuthorize ? (
+                <UserInfo
+                    avatar={ownerAvatar}
+                    name={'Emilee Simchenko'}
+                    profession={'Product Owner'}
+                />
+            ) : (
+                <Login onButtonClick={onLogin} />
+            )}
+
             <Statistics
                 completed={statistics.completed}
                 opened={statistics.opened}
