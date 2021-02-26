@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, BUTTON_SIZE } from '../Button'
-import { TASK_TYPE, TaskType } from '../Task/types'
+import { TaskType } from '../Task/types'
 import { TaskCard } from '../TaskCard'
 import {
     StyledTasksList,
