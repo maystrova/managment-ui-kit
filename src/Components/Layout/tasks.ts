@@ -4,7 +4,7 @@ import userAvatar8 from '../Layout/pics/userpic8.png'
 import userAvatar9 from '../Layout/pics/userpic9.png'
 import userAvatar5 from '../Layout/pics/userpic5.png'
 import userAvatar6 from '../Layout/pics/userpic6.png'
-import { TaskType } from '../Task/types'
+import { TASK_TYPE, TaskType } from '../Task/types'
 import userAvatar2 from './pics/userpic2.png'
 import userAvatar3 from './pics/userpic3.png'
 import userAvatar4 from './pics/userpic4.png'
@@ -25,11 +25,12 @@ export enum SIDEBAR_LIST {
     MENU = 'menu',
 }
 
-export const backlogTasks: TaskType[] = [
+export const tasks: TaskType[] = [
     {
         title: 'E-mail after registration so that I can confirm my address',
         user: { avatar: userAvatar1 },
         tag: TAG_TYPE.DEVELOPMENT,
+        type: TASK_TYPE.BACKLOG,
         addedBy: 'Kristin A',
         createdAt: '07.01.2020',
         isChecked: false,
@@ -77,6 +78,7 @@ export const backlogTasks: TaskType[] = [
         title: 'Find top 5 customers and get reviews from them',
         user: { avatar: userAvatar7 },
         tag: TAG_TYPE.MARKETING,
+        type: TASK_TYPE.BACKLOG,
         addedBy: 'Sophie J.',
         createdAt: '05.04.2020',
         isChecked: false,
@@ -124,6 +126,7 @@ export const backlogTasks: TaskType[] = [
         title: 'Two-factor authentication to make my private data more secure',
         user: { avatar: userAvatar8 },
         tag: TAG_TYPE.DESIGN,
+        type: TASK_TYPE.BACKLOG,
         addedBy: 'Chris P.',
         createdAt: '01.01.2020',
         isChecked: false,
@@ -167,13 +170,11 @@ export const backlogTasks: TaskType[] = [
             },
         ],
     },
-]
-
-export const todoTasks: TaskType[] = [
     {
         title: `An option to search in current projects or in all projects`,
         user: { avatar: userAvatar9 },
         tag: TAG_TYPE.DESIGN,
+        type: TASK_TYPE.TODO,
         addedBy: 'John A.',
         createdAt: '07.01.2020',
         isChecked: false,
@@ -221,6 +222,8 @@ export const todoTasks: TaskType[] = [
         title: `Account for teams and personal in bottom style`,
         user: { avatar: userAvatar5 },
         tag: TAG_TYPE.MARKETING,
+        type: TASK_TYPE.TODO,
+
         addedBy: 'Sally G',
         createdAt: '15.03.2020',
         isChecked: false,
@@ -268,6 +271,7 @@ export const todoTasks: TaskType[] = [
         title: `Listing on Product Hunt so that we can reach as many potential users`,
         user: { avatar: userAvatar6 },
         tag: TAG_TYPE.DESIGN,
+        type: TASK_TYPE.TODO,
         addedBy: 'Holly Page',
         createdAt: '08.06.2020',
         isChecked: false,

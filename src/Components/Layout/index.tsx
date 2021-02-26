@@ -3,11 +3,16 @@ import { firebase } from 'services/firebase'
 import { Sidebar } from '../Sidebar'
 import { Header } from '../Header'
 import { Task } from 'Components/Task'
-import { TaskType } from '../Task/types'
+import { TASK_TYPE, TaskType } from '../Task/types'
 import { TasksList } from '../TasksList'
-import { GlobalStyle } from './style'
+import {
+    GlobalStyle,
+    StyledLayout,
+    StyledLayoutContent,
+    StyledLayoutMain,
+} from './style'
 
-import { backlogTasks, SIDEBAR_LIST, todoTasks } from './tasks'
+import { SIDEBAR_LIST, tasks } from './tasks'
 
 import projectIcon from '../Layout/pics/navigation-icon.svg'
 import searchIcon from '../Layout/pics/search-icon.svg'
@@ -38,8 +43,8 @@ import { AddProject, FieldsForCreateProject } from '../AddProject'
 import { Share } from '../Share'
 import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
-import { StyledLayout, StyledLayoutContent, StyledLayoutMain } from './style'
 import { User } from '../../services/user'
+import { createTask, getAllTasks } from '../../services/task'
 
 const sidebarLists: ListType[] = [
     {
@@ -118,82 +123,98 @@ const sidebarLists: ListType[] = [
     },
 ]
 
+const DEFAULT_TASK = {
+    title: 'Find top 5 customer requests',
+    addedBy: 'Kristin A',
+    createdAt: '07.01.2020',
+    isChecked: false,
+    assignTo: 'Linzell Bowman',
+    dueOn: 'Tue, Dec 25',
+    type: TASK_TYPE.BACKLOG,
+    tag: TAG_TYPE.MARKETING,
+    followers: [userAvatar2, userAvatar3, userAvatar4, userAvatar5],
+    description:
+        'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
+    discussions: [
+        {
+            name: 'Helena Brauer',
+            profession: 'Designer',
+            date: 'Yesterday at 12:37pm',
+            text:
+                'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
+            avatar: commentAvatar3,
+        },
+        {
+            name: 'Prescott MacCaffery',
+            profession: 'Developer',
+            date: 'Yesterday at 12:37pm',
+            text:
+                '@Helena Software quality assurance activity in which one or several humans check a program mainly',
+            avatar: commentAvatar2,
+        },
+    ],
+    user: { avatar: userAvatar1 },
+    files: [
+        {
+            title: 'Redesign Brief',
+            format: '.pdf',
+            preview: filePreview,
+            size: '159 kb',
+            id: 1,
+        },
+        {
+            title: 'Header',
+            format: '.png',
+            preview: filePreview,
+            size: '129 kb',
+            id: 2,
+        },
+    ],
+}
+
+interface CreationTask {
+    isModalOpen: boolean
+    taskTypeForCreation: TASK_TYPE
+}
+
 const Layout = () => {
-    const [task, setTask] = useState<TaskType>({
-        title: 'Find top 5 customer requests',
-        addedBy: 'Kristin A',
-        createdAt: '07.01.2020',
-        isChecked: false,
-        assignTo: 'Linzell Bowman',
-        dueOn: 'Tue, Dec 25',
-        tag: TAG_TYPE.MARKETING,
-        followers: [userAvatar2, userAvatar3, userAvatar4, userAvatar5],
-        description:
-            'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
-        discussions: [
-            {
-                name: 'Helena Brauer',
-                profession: 'Designer',
-                date: 'Yesterday at 12:37pm',
-                text:
-                    'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
-                avatar: commentAvatar3,
-            },
-            {
-                name: 'Prescott MacCaffery',
-                profession: 'Developer',
-                date: 'Yesterday at 12:37pm',
-                text:
-                    '@Helena Software quality assurance activity in which one or several humans check a program mainly',
-                avatar: commentAvatar2,
-            },
-        ],
-        user: { avatar: userAvatar1 },
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 1,
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 2,
-            },
-        ],
-    })
     const [user, setUser] = useState<User | null>(null)
-    const [isShowAddTask, setShowAddTask] = useState<boolean>(false)
+    const [task, setTask] = useState<TaskType | null>(null)
+    const [isShowAddTask, setShowAddTask] = useState<CreationTask>({
+        isModalOpen: false,
+        taskTypeForCreation: TASK_TYPE.BACKLOG,
+    })
     const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
     const [isShowAddTeam, setShowAddTeam] = useState<boolean>(false)
     const [isShowShare, setShowShare] = useState<boolean>(false)
 
-    const [backlogTasksList, setBacklogTasksList] = useState<TaskType[]>(
-        backlogTasks,
-    )
+    const [tasksList, setTasksList] = useState<TaskType[]>([])
 
-    const [toDoTasksList, setToDoTasksList] = useState<TaskType[]>(todoTasks)
     const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
-    const addNewTaskToList = (
+    const addNewTaskToList = async (
         task: TaskType,
         fieldsForCreateTask: FieldsForCreateTask,
         tasksList: TaskType[],
-    ): void => {
-        const newTask = {
+        taskType: TASK_TYPE,
+    ): Promise<void> => {
+        const newTask: TaskType = {
             ...task,
             title: fieldsForCreateTask.title,
             description: fieldsForCreateTask.description,
+            type: taskType,
+        }
+
+        if (user) {
+            await createTask(newTask, user)
         }
 
         const newTasks = [...tasksList, newTask]
-        setBacklogTasksList(newTasks)
-        setToDoTasksList(newTasks)
-        setShowAddTask(false)
+        setTasksList(newTasks)
+        setShowAddTask({
+            isModalOpen: false,
+            taskTypeForCreation: TASK_TYPE.BACKLOG,
+        })
     }
 
     const getUniqueId = (title: string): string => {
@@ -267,19 +288,16 @@ const Layout = () => {
                     fullName: user?.displayName ? user.displayName : 'User',
                     avatarUrl: user?.photoURL ? user.photoURL : '',
                     email: user?.email ? user.email : 'example@email.com',
+                    id: user?.uid ? user?.uid : 'empty_id',
                 }
-
-                // const removeTask = (): void => {
-                //     if (user) {
-                //         setTask()
-                //     }
-                // }
 
                 window.localStorage.setItem(
                     'user',
                     JSON.stringify(preparedUser),
                 )
 
+                setTask(null)
+                setTasksList([])
                 setUser(preparedUser)
                 // ...
             })
@@ -300,6 +318,9 @@ const Layout = () => {
 
         if (storageUser) {
             setUser(JSON.parse(storageUser))
+        } else {
+            setTask(DEFAULT_TASK)
+            setTasksList(tasks)
         }
     }
 
@@ -312,6 +333,22 @@ const Layout = () => {
     useEffect(() => {
         getUser()
     }, [])
+
+    const setServerTasks = async (user: User): Promise<void> => {
+        const clientTasks = await getAllTasks(user)
+        setTasksList(clientTasks)
+    }
+
+    useEffect(() => {
+        if (user) {
+            setServerTasks(user)
+        }
+    }, [user])
+
+    const toDoTasks = tasksList.filter(task => task.type === TASK_TYPE.TODO)
+    const backlogTasks = tasksList.filter(
+        task => task.type === TASK_TYPE.BACKLOG,
+    )
 
     return (
         <StyledLayout>
@@ -356,34 +393,52 @@ const Layout = () => {
                 <StyledLayoutContent>
                     <div>
                         <TasksList
-                            onCreatedTaskClicked={() => setShowAddTask(true)}
+                            onCreatedTaskClicked={() =>
+                                setShowAddTask({
+                                    isModalOpen: true,
+                                    taskTypeForCreation: TASK_TYPE.BACKLOG,
+                                })
+                            }
                             title={'Backlog'}
-                            tasks={backlogTasksList}
+                            tasks={backlogTasks}
                             onTaskSelected={task => setTask(task)}
                         />
 
                         <TasksList
-                            onCreatedTaskClicked={() => setShowAddTask(true)}
+                            onCreatedTaskClicked={() =>
+                                setShowAddTask({
+                                    isModalOpen: true,
+                                    taskTypeForCreation: TASK_TYPE.TODO,
+                                })
+                            }
                             title={'To Do'}
-                            tasks={toDoTasksList}
+                            tasks={toDoTasks}
                             onTaskSelected={task => setTask(task)}
                         />
                     </div>
 
-                    <Task
-                        task={task}
-                        onTaskUpdated={newTask => setTask(newTask)}
-                    />
+                    {task && (
+                        <Task
+                            task={task}
+                            onTaskUpdated={newTask => setTask(newTask)}
+                        />
+                    )}
                 </StyledLayoutContent>
             </StyledLayoutMain>
             <AddTask
-                isOpen={isShowAddTask}
-                onCancel={() => setShowAddTask(false)}
+                isOpen={isShowAddTask.isModalOpen}
+                onCancel={() =>
+                    setShowAddTask({
+                        isModalOpen: false,
+                        taskTypeForCreation: TASK_TYPE.BACKLOG,
+                    })
+                }
                 onSubmit={fieldsForCreateTask =>
                     addNewTaskToList(
-                        task,
+                        DEFAULT_TASK,
                         fieldsForCreateTask,
-                        backlogTasksList,
+                        tasksList,
+                        isShowAddTask.taskTypeForCreation,
                     )
                 }
             />

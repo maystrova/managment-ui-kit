@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, BUTTON_SIZE } from '../Button'
-import { TaskType } from '../Task/types'
+import { TASK_TYPE, TaskType } from '../Task/types'
 import { TaskCard } from '../TaskCard'
 import {
     StyledTasksList,
@@ -51,6 +51,7 @@ const TasksList = ({
                         tag={task.tag}
                         onClick={() => onTaskSelected(task)}
                         key={task.title}
+                        type={task.type}
                     />
                 )
             })}
