@@ -17,6 +17,7 @@ import {
     StyledSidebarIcon,
 } from './style'
 import { Login } from '../Login'
+import { User } from '../../services/user'
 
 interface SidebarProps {
     icon: string
@@ -25,8 +26,9 @@ interface SidebarProps {
     lists: ListType[]
     statistics: StatisticsProps
     onItemAddClick: (listId: SIDEBAR_LIST) => void
-    isUserAuthorize: boolean
     onLogin: () => void
+    user: User | null
+    onLogOut: () => void
 }
 
 const Sidebar = ({
@@ -36,9 +38,12 @@ const Sidebar = ({
     lists,
     statistics,
     onItemAddClick,
-    isUserAuthorize,
     onLogin,
+    user,
+    onLogOut,
 }: SidebarProps) => {
+    const isUserAuthorize: boolean = Boolean(user)
+
     return (
         <StyledSidebar>
             <StyledSidebarHeader>
@@ -52,11 +57,12 @@ const Sidebar = ({
                     <Icon size={ICON_SIZE.X_SMALL} src={searchIcon} />
                 </div>
             </StyledSidebarHeader>
-            {isUserAuthorize ? (
+            {isUserAuthorize && user ? (
                 <UserInfo
-                    avatar={ownerAvatar}
-                    name={'Emilee Simchenko'}
-                    profession={'Product Owner'}
+                    avatar={user?.avatarUrl}
+                    name={user?.fullName}
+                    email={user?.email}
+                    onButtonClick={onLogOut}
                 />
             ) : (
                 <Login onButtonClick={onLogin} />

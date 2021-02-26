@@ -11,13 +11,11 @@ const StyledLogin = styled.div`
 `
 
 const StyledLoginButton = styled.button`
-    width: 60px;
-    height: 30px;
-    border-radius: 20px;
-    border: none;
-    background-color: #eaeaea;
     outline: none;
     cursor: pointer;
+    border: none;
+    background: none;
+    color: white;
 
     &:hover {
         opacity: 80%;

@@ -1,17 +1,19 @@
 import firebase from 'firebase/app'
 import 'firebase/analytics'
 import 'firebase/auth'
-// import 'firebase/firestore'
+import 'firebase/database'
+
 const firebaseConfig = {
-    apiKey: 'API_KEY',
-    authDomain: 'PROJECT_ID.firebaseapp.com',
-    databaseURL: 'https://PROJECT_ID.firebaseio.com',
-    projectId: 'PROJECT_ID',
-    storageBucket: 'PROJECT_ID.appspot.com',
-    messagingSenderId: 'SENDER_ID',
-    appId: 'APP_ID',
-    measurementId: 'G-MEASUREMENT_ID',
+    apiKey: 'AIzaSyAPJ5faexS3EHAauj76ozYpuKRQEfxnG7A',
+    authDomain: 'managment-ui-kit.firebaseapp.com',
+    projectId: 'managment-ui-kit',
+    storageBucket: 'managment-ui-kit.appspot.com',
+    messagingSenderId: '374889405472',
+    appId: '1:374889405472:web:a3a42c5ee04b43d047f045',
+    measurementId: 'G-4WDHR87S74',
+    databaseUrl: 'https://managment-ui-kit-default-rtdb.firebaseio.com/',
 }
 firebase.initializeApp(firebaseConfig)
+const database = firebase.database().ref()
 
-export { firebase }
+export { firebase, database }

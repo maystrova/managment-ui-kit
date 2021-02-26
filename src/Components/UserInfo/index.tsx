@@ -6,16 +6,19 @@ import {
     StyledUser,
     StyledUserAvatar,
     StyledUserInformation,
-    StyledUserProfession,
+    StyledUserEmail,
+    StyledButtonLogout,
+    StyledLogOut,
 } from './style'
 
 interface UserInfoProps {
     avatar: string
     name: string
-    profession: string
+    email: string
+    onButtonClick: () => void
 }
 
-const UserInfo = ({ avatar, name, profession }: UserInfoProps) => {
+const UserInfo = ({ avatar, name, email, onButtonClick }: UserInfoProps) => {
     return (
         <StyledUser>
             <StyledUserInformation>
@@ -24,14 +27,15 @@ const UserInfo = ({ avatar, name, profession }: UserInfoProps) => {
                 </StyledUserAvatar>
                 <div>
                     <div>{name}</div>
-                    <StyledUserProfession>{profession}</StyledUserProfession>
+                    <StyledUserEmail>{email}</StyledUserEmail>
                 </div>
             </StyledUserInformation>
-            <div>
-                <a href='https://maystrova.com'>
-                    <Icon size={ICON_SIZE.SMALL} src={dotsIcon} />
-                </a>
-            </div>
+            <StyledLogOut>
+                <StyledButtonLogout onClick={onButtonClick}>
+                    {/*<Icon size={ICON_SIZE.SMALL} src={dotsIcon} />*/}
+                    Log Out
+                </StyledButtonLogout>
+            </StyledLogOut>
         </StyledUser>
     )
 }
