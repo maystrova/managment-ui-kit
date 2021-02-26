@@ -40,7 +40,6 @@ import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
 import { StyledLayout, StyledLayoutContent, StyledLayoutMain } from './style'
 import { User } from '../../services/user'
-import set = Reflect.set
 
 const sidebarLists: ListType[] = [
     {
