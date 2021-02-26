@@ -40,6 +40,7 @@ import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
 import { StyledLayout, StyledLayoutContent, StyledLayoutMain } from './style'
 import { User } from '../../services/user'
+import set = Reflect.set
 
 const sidebarLists: ListType[] = [
     {
@@ -269,6 +270,12 @@ const Layout = () => {
                     email: user?.email ? user.email : 'example@email.com',
                 }
 
+                // const removeTask = (): void => {
+                //     if (user) {
+                //         setTask()
+                //     }
+                // }
+
                 window.localStorage.setItem(
                     'user',
                     JSON.stringify(preparedUser),
@@ -297,6 +304,12 @@ const Layout = () => {
         }
     }
 
+    const logOut = async (): Promise<void> => {
+        await window.localStorage.removeItem('user')
+
+        setUser(null)
+    }
+
     useEffect(() => {
         getUser()
     }, [])
@@ -306,6 +319,7 @@ const Layout = () => {
             <GlobalStyle />
             <Sidebar
                 onLogin={() => authorization()}
+                onLogOut={logOut}
                 onItemAddClick={listId => {
                     if (listId === SIDEBAR_LIST.PROJECTS) {
                         setShowAddProject(true)

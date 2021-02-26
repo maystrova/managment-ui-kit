@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/analytics'
 import 'firebase/auth'
+import 'firebase/database'
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAPJ5faexS3EHAauj76ozYpuKRQEfxnG7A',
@@ -10,7 +11,9 @@ const firebaseConfig = {
     messagingSenderId: '374889405472',
     appId: '1:374889405472:web:a3a42c5ee04b43d047f045',
     measurementId: 'G-4WDHR87S74',
+    databaseUrl: 'https://managment-ui-kit-default-rtdb.firebaseio.com/',
 }
 firebase.initializeApp(firebaseConfig)
+const database = firebase.database().ref()
 
-export { firebase }
+export { firebase, database }

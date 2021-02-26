@@ -28,6 +28,7 @@ interface SidebarProps {
     onItemAddClick: (listId: SIDEBAR_LIST) => void
     onLogin: () => void
     user: User | null
+    onLogOut: () => void
 }
 
 const Sidebar = ({
@@ -39,6 +40,7 @@ const Sidebar = ({
     onItemAddClick,
     onLogin,
     user,
+    onLogOut,
 }: SidebarProps) => {
     const isUserAuthorize: boolean = Boolean(user)
 
@@ -59,7 +61,8 @@ const Sidebar = ({
                 <UserInfo
                     avatar={user?.avatarUrl}
                     name={user?.fullName}
-                    profession={user?.email}
+                    email={user?.email}
+                    onButtonClick={onLogOut}
                 />
             ) : (
                 <Login onButtonClick={onLogin} />
