@@ -13,6 +13,11 @@ export type UserType = {
     avatar: string
 }
 
+export enum TASK_TYPE {
+    BACKLOG = 'backlog',
+    TODO = 'todo',
+}
+
 export type TaskType = {
     title: string
     addedBy: string
@@ -26,4 +31,5 @@ export type TaskType = {
     discussions: DiscussionType[]
     user: UserType
     files: FileType[]
+    type: TASK_TYPE
 }

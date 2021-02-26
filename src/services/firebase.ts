@@ -14,6 +14,5 @@ const firebaseConfig = {
     databaseUrl: 'https://managment-ui-kit-default-rtdb.firebaseio.com/',
 }
 firebase.initializeApp(firebaseConfig)
-const database = firebase.database().ref()
 
-export { firebase, database }
+export { firebase }

@@ -51,6 +51,7 @@ const TasksList = ({
                         tag={task.tag}
                         onClick={() => onTaskSelected(task)}
                         key={task.title}
+                        type={task.type}
                     />
                 )
             })}
