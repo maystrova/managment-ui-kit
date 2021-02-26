@@ -278,7 +278,6 @@ const Layout = () => {
             .signInWithPopup(authProvider)
             .then(result => {
                 /** @type {firebase.auth.OAuthCredential} */
-                var credential = result.credential
                 var user = result.user
                 const preparedUser: User = {
                     fullName: user?.displayName ? user.displayName : 'User',
