@@ -1,17 +1,6 @@
 import styled from 'styled-components'
 
-const StyledAddTaskDescription = styled.input`
-    height: 100px;
-    width: 95%;
-    border: none;
-    background-color: #eaeaea;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 10px;
-    outline: none;
-`
-
-const StyledAddTaskTitle = styled.input`
+const StyledAddTask = styled.input`
     width: 95%;
     border: none;
     background-color: #eaeaea;
@@ -26,4 +15,4 @@ const StyledAddTaskFooter = styled.div`
     justify-content: space-between;
 `
 
-export { StyledAddTaskDescription, StyledAddTaskFooter, StyledAddTaskTitle }
+export { StyledAddTask, StyledAddTaskFooter }

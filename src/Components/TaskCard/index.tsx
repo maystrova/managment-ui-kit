@@ -4,6 +4,7 @@ import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Tag } from '../Tag'
 import { TaskType } from '../Task/types'
 import {
+    StyledTaskCardWrapper,
     StyledTaskCard,
     StyledTaskCardCheckbox,
     StyledTaskCardFooter,
@@ -14,6 +15,7 @@ import {
 
 interface TaskCardProps extends TaskType {
     onClick: () => void
+    onChecked: (isChecked: boolean) => void
 }
 
 const TaskCard = ({
@@ -30,23 +32,37 @@ const TaskCard = ({
     addedBy,
     isChecked,
     onClick,
+    id,
+    onChecked,
 }: TaskCardProps) => {
     return (
-        <StyledTaskCard onClick={onClick}>
-            <StyledTaskCardHeader>
-                <StyledTaskCardCheckbox>
-                    <Checkbox />
-                </StyledTaskCardCheckbox>
-                <StyledTaskCardDescription>{title}</StyledTaskCardDescription>
-            </StyledTaskCardHeader>
+        <StyledTaskCardWrapper>
+            <StyledTaskCardCheckbox>
+                <Checkbox
+                    isChecked={isChecked}
+                    onChange={isChecked => {
+                        if (id) {
+                            onChecked(isChecked)
+                        }
+                    }}
+                />
+            </StyledTaskCardCheckbox>
 
-            <StyledTaskCardFooter>
-                <StyledTaskCardUser>
-                    <Avatar src={user.avatar} size={AVATAR_SIZE.X_SMALL} />
-                </StyledTaskCardUser>
-                <Tag type={tag} text={tag} />
-            </StyledTaskCardFooter>
-        </StyledTaskCard>
+            <StyledTaskCard onClick={onClick}>
+                <StyledTaskCardHeader>
+                    <StyledTaskCardDescription>
+                        {title}
+                    </StyledTaskCardDescription>
+                </StyledTaskCardHeader>
+
+                <StyledTaskCardFooter>
+                    <StyledTaskCardUser>
+                        <Avatar src={user.avatar} size={AVATAR_SIZE.X_SMALL} />
+                    </StyledTaskCardUser>
+                    <Tag type={tag} text={tag} />
+                </StyledTaskCardFooter>
+            </StyledTaskCard>
+        </StyledTaskCardWrapper>
     )
 }
 

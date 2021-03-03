@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from '../Button'
 import { ModalWindow } from '../ModalWindow'
-import {
-    StyledAddTaskFooter,
-    StyledAddTaskTitle,
-    StyledAddTaskDescription,
-} from './style'
+import { StyledAddTaskFooter, StyledAddTask } from './style'
 
 export interface FieldsForCreateTask {
     title: string
@@ -51,7 +47,7 @@ const AddTask = ({ onCancel, onSubmit, isOpen }: ModalWindowProps) => {
             title={'Add a Task'}
         >
             <div>
-                <StyledAddTaskTitle
+                <StyledAddTask
                     type='text'
                     placeholder={'Add a title...'}
                     value={fieldsForCreateTask.title}
@@ -62,7 +58,7 @@ const AddTask = ({ onCancel, onSubmit, isOpen }: ModalWindowProps) => {
                         })
                     }}
                 />
-                <StyledAddTaskDescription
+                <StyledAddTask
                     type='text'
                     value={fieldsForCreateTask.description}
                     placeholder={'Add a description...'}

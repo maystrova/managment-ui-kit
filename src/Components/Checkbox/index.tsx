@@ -1,8 +1,22 @@
 import React from 'react'
 import { StyledCheckbox } from './style'
 
-const Checkbox = () => {
-    return <StyledCheckbox type='checkbox' className={`Checkbox`} />
+interface CheckboxProps {
+    isChecked: boolean
+    onChange: (isChecked: boolean) => void
+}
+
+const Checkbox = ({ isChecked, onChange }: CheckboxProps) => {
+    return (
+        <StyledCheckbox
+            type='checkbox'
+            className={`Checkbox`}
+            checked={isChecked}
+            onChange={event => {
+                onChange(event.target.checked)
+            }}
+        />
+    )
 }
 
 export { Checkbox }
