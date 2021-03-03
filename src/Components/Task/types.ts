@@ -32,4 +32,5 @@ export type TaskType = {
     user: UserType
     files: FileType[]
     type: TASK_TYPE
+    id?: string
 }

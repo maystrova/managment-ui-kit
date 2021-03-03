@@ -44,7 +44,7 @@ import { Share } from '../Share'
 import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
 import { User } from '../../services/user'
-import { createTask, getAllTasks } from '../../services/task'
+import { createTask, getAllTasks, updateTask } from '../../services/task'
 
 const sidebarLists: ListType[] = [
     {
@@ -336,6 +336,18 @@ const Layout = () => {
         task => task.type === TASK_TYPE.BACKLOG,
     )
 
+    const editTask = async (task: TaskType) => {
+        if (user) {
+            await updateTask(task, user)
+            await setServerTasks(user)
+        }
+    }
+
+    const updateOpenedTask = async (task: TaskType) => {
+        await editTask(task)
+        setTask(task)
+    }
+
     return (
         <StyledLayout>
             <GlobalStyle />
@@ -385,6 +397,7 @@ const Layout = () => {
                                     taskTypeForCreation: TASK_TYPE.BACKLOG,
                                 })
                             }
+                            onTaskChecked={editTask}
                             title={'Backlog'}
                             tasks={backlogTasks}
                             onTaskSelected={task => setTask(task)}
@@ -397,6 +410,7 @@ const Layout = () => {
                                     taskTypeForCreation: TASK_TYPE.TODO,
                                 })
                             }
+                            onTaskChecked={editTask}
                             title={'To Do'}
                             tasks={toDoTasks}
                             onTaskSelected={task => setTask(task)}
@@ -404,10 +418,7 @@ const Layout = () => {
                     </div>
 
                     {task && (
-                        <Task
-                            task={task}
-                            onTaskUpdated={newTask => setTask(newTask)}
-                        />
+                        <Task task={task} onTaskUpdated={updateOpenedTask} />
                     )}
                 </StyledLayoutContent>
             </StyledLayoutMain>

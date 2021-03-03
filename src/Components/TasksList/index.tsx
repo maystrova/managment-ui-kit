@@ -13,6 +13,7 @@ interface TasksListProps {
     tasks: TaskType[]
     onTaskSelected: (task: TaskType) => void
     onCreatedTaskClicked: () => void
+    onTaskChecked: (task: TaskType) => void
 }
 
 const TasksList = ({
@@ -20,6 +21,7 @@ const TasksList = ({
     tasks,
     onTaskSelected,
     onCreatedTaskClicked,
+    onTaskChecked,
 }: TasksListProps) => {
     return (
         <StyledTasksList>
@@ -50,8 +52,12 @@ const TasksList = ({
                         isChecked={task.isChecked}
                         tag={task.tag}
                         onClick={() => onTaskSelected(task)}
-                        key={task.title}
+                        key={task.id}
                         type={task.type}
+                        id={task.id}
+                        onChecked={isChecked => {
+                            onTaskChecked({ ...task, isChecked: isChecked })
+                        }}
                     />
                 )
             })}

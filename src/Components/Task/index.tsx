@@ -44,6 +44,17 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
         onTaskUpdated(newTask)
     }
 
+    const onTaskUpdate = (
+        task: TaskType,
+        currentCheckedValue: boolean,
+    ): void => {
+        const newTask: TaskType = {
+            ...task,
+            isChecked: currentCheckedValue,
+        }
+        onTaskUpdated(newTask)
+    }
+
     return (
         <StyledTask>
             <StyledTaskHeader>
@@ -54,7 +65,10 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                     </span>
                 </div>
                 <div>
-                    <Checkbox />
+                    <Checkbox
+                        onChange={isChecked => onTaskUpdate(task, isChecked)}
+                        isChecked={task.isChecked}
+                    />
                 </div>
             </StyledTaskHeader>
             <StyledTaskInformation>

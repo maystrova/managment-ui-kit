@@ -6,7 +6,9 @@ const createTask = async (task: TaskType, user: User) => {
     await firebase.database().ref(`users/${user.id}/tasks/`).push(task)
 }
 
-const updateTask = () => {}
+const updateTask = async (task: TaskType, user: User) => {
+    await firebase.database().ref(`users/${user.id}/tasks/${task.id}`).set(task)
+}
 
 const getAllTasks = async (user: User): Promise<TaskType[]> => {
     const serverTasksRef = firebase.database().ref(`users/${user.id}/tasks/`)
@@ -14,7 +16,10 @@ const getAllTasks = async (user: User): Promise<TaskType[]> => {
     const snapshot = await serverTasksRef.once('value')
 
     const serverTasks = snapshot.val()
-    return Object.values(serverTasks)
+    return Object.keys(serverTasks).map(taskId => ({
+        ...serverTasks[taskId],
+        id: taskId,
+    }))
 }
 
 export { createTask, updateTask, getAllTasks }
