@@ -15,6 +15,7 @@ const StyledTaskHeader = styled.div`
 
 const StyledTaskHeaderTitle = styled.h2`
     margin: 0;
+    cursor: pointer;
 `
 
 const StyledTaskInformation = styled.div`
@@ -52,6 +53,15 @@ const StyledTaskFiles = styled.div`
     display: flex;
 `
 
+const StyledEditForm = styled.input`
+    padding: 5px 12px;
+    line-height: 20px;
+    vertical-align: middle;
+    outline: none;
+    border: 2px solid #eaeaea;
+    border-radius: 6px;
+`
+
 export {
     StyledTask,
     StyledTaskHeader,
@@ -63,4 +73,5 @@ export {
     StyledTaskDescriptionText,
     StyledTaskFiles,
     StyledTaskHeaderTitle,
+    StyledEditForm,
 }

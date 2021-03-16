@@ -1,16 +1,12 @@
 import styled from 'styled-components'
 
-const StyledTaskCardWrapper = styled.div`
-    position: relative;
-`
+const StyledTaskCardWrapper = styled.div``
 
 const StyledTaskCard = styled.div`
     background-color: #f7f6f3;
     border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;
-    z-index: 1;
-    position: relative;
 
     &:hover {
         background-color: #fff8dd;
@@ -18,19 +14,20 @@ const StyledTaskCard = styled.div`
 `
 
 const StyledTaskCardHeader = styled.div`
-    padding: 20px 20px 0 60px;
+    padding: 20px 20px 10px;
     display: flex;
+    align-items: center;
 `
 
 const StyledTaskCardCheckbox = styled.div`
-    position: absolute;
-    left: 16px;
-    top: 16px;
-    z-index: 2;
+    margin-right: 10px;
 `
 
 const StyledTaskCardDescription = styled.div`
-    margin-bottom: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `
 
 const StyledTaskCardFooter = styled.div`

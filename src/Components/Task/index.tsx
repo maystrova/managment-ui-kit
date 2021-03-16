@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Checkbox } from '../Checkbox'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Tag } from '../Tag'
@@ -17,6 +17,7 @@ import {
     StyledTaskUser,
     StyledTaskUserName,
     StyledTaskHeaderTitle,
+    StyledEditForm,
 } from './style'
 
 interface TaskProps {
@@ -25,6 +26,9 @@ interface TaskProps {
 }
 
 const Task = ({ task, onTaskUpdated }: TaskProps) => {
+    const [showEdit, setShowEdit] = useState<boolean>(false)
+    const [titleEdit, setTitleEdit] = useState<string>(task.title)
+
     const onCommentAdd = (comment: DiscussionType, task: TaskType): void => {
         const newDiscussions = [comment, ...task.discussions]
 
@@ -55,11 +59,43 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
         onTaskUpdated(newTask)
     }
 
+    const onEditTitleShow = (): void => {
+        setShowEdit(true)
+    }
+
+    const onTitleEdit = (title: string, task: TaskType): void => {
+        const newTask: TaskType = {
+            ...task,
+            title: titleEdit,
+        }
+        onTaskUpdated(newTask)
+    }
+
     return (
         <StyledTask>
             <StyledTaskHeader>
                 <div>
-                    <StyledTaskHeaderTitle>{task.title}</StyledTaskHeaderTitle>
+                    <StyledTaskHeaderTitle onClick={onEditTitleShow}>
+                        {!showEdit && task.title}
+                        {showEdit && (
+                            <StyledEditForm
+                                type='text'
+                                placeholder={titleEdit}
+                                value={titleEdit}
+                                onChange={event =>
+                                    setTitleEdit(event.target.value)
+                                }
+                                onKeyDown={event => {
+                                    if (event.key === 'Enter') {
+                                        onTitleEdit(titleEdit, task)
+                                        setShowEdit(false)
+                                    } else if (event.keyCode == 27) {
+                                        setShowEdit(false)
+                                    }
+                                }}
+                            />
+                        )}
+                    </StyledTaskHeaderTitle>
                     <span>
                         Added by {task.addedBy} {task.createdAt}
                     </span>

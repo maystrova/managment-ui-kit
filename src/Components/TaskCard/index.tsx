@@ -36,20 +36,19 @@ const TaskCard = ({
     onChecked,
 }: TaskCardProps) => {
     return (
-        <StyledTaskCardWrapper>
-            <StyledTaskCardCheckbox>
-                <Checkbox
-                    isChecked={isChecked}
-                    onChange={isChecked => {
-                        if (id) {
-                            onChecked(isChecked)
-                        }
-                    }}
-                />
-            </StyledTaskCardCheckbox>
-
-            <StyledTaskCard onClick={onClick}>
+        <StyledTaskCardWrapper onClick={onClick}>
+            <StyledTaskCard>
                 <StyledTaskCardHeader>
+                    <StyledTaskCardCheckbox>
+                        <Checkbox
+                            isChecked={isChecked}
+                            onChange={isChecked => {
+                                if (id) {
+                                    onChecked(isChecked)
+                                }
+                            }}
+                        />
+                    </StyledTaskCardCheckbox>
                     <StyledTaskCardDescription>
                         {title}
                     </StyledTaskCardDescription>

@@ -3,6 +3,7 @@ import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { DiscussionType } from '../Task/types'
 import vasyaUser from '../Layout/pics/vasya.png'
 import { StyledAddComment, StyledCommentAria } from './style'
+import { UserInfo } from '../UserInfo'
 
 interface AddCommentProps {
     userpic: string
@@ -18,13 +19,11 @@ const AddComment = ({ userpic, onCommentAdded }: AddCommentProps) => {
             <StyledCommentAria
                 value={comment}
                 onKeyDown={event => {
-                    // console.log(event.key)
-
                     if (event.key === 'Enter') {
                         onCommentAdded({
-                            name: 'Vasya',
-                            profession: 'Cat',
-                            date: 'Today',
+                            name: UserInfo.name,
+                            profession: 'UserInfo',
+                            date: `${Date.now()}`,
                             text: comment,
                             avatar: vasyaUser,
                         })

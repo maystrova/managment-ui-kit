@@ -45,6 +45,7 @@ import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
 import { User } from '../../services/user'
 import { createTask, getAllTasks, updateTask } from '../../services/task'
+import { Editing } from '../Editing'
 
 const sidebarLists: ListType[] = [
     {
@@ -184,6 +185,9 @@ const Layout = () => {
         isModalOpen: false,
         taskTypeForCreation: TASK_TYPE.BACKLOG,
     })
+    const [isShowEdit, setShowEdit] = useState<boolean>(false)
+    const [isEditTask, setEditTask] = useState<boolean>(false)
+
     const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
     const [isShowAddTeam, setShowAddTeam] = useState<boolean>(false)
     const [isShowShare, setShowShare] = useState<boolean>(false)
@@ -216,6 +220,8 @@ const Layout = () => {
             taskTypeForCreation: TASK_TYPE.BACKLOG,
         })
     }
+
+    const editTaskTitle = async (task: TaskType) => {}
 
     const getUniqueId = (title: string): string => {
         const timestamp = Date.now()
