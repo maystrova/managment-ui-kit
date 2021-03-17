@@ -47,17 +47,16 @@ const StyledTaskDescription = styled.div`
 
 const StyledTaskDescriptionText = styled.p`
     padding-bottom: 30px;
+    cursor: pointer;
 `
 
 const StyledTaskFiles = styled.div`
     display: flex;
 `
 
-const StyledEdit = styled.div`
-    //align-items: center;
-`
+const StyledEdit = styled.div``
 
-const StyledEditForm = styled.input`
+const StyledEditTitleForm = styled.input`
     padding: 5px 12px;
     line-height: 20px;
     vertical-align: middle;
@@ -66,6 +65,18 @@ const StyledEditForm = styled.input`
     border-radius: 6px;
     font-size: 20px;
     margin-right: 20px;
+`
+
+const StyledEditDescriptionForm = styled.textarea`
+    padding: 5px 12px;
+    line-height: 20px;
+    vertical-align: middle;
+    outline: none;
+    border: 2px solid #eaeaea;
+    border-radius: 6px;
+    font-size: 15px;
+    margin-right: 20px;
+    resize: none;
 `
 
 export {
@@ -79,6 +90,7 @@ export {
     StyledTaskDescriptionText,
     StyledTaskFiles,
     StyledTaskHeaderTitle,
-    StyledEditForm,
+    StyledEditTitleForm,
     StyledEdit,
+    StyledEditDescriptionForm,
 }

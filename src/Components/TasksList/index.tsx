@@ -14,6 +14,7 @@ interface TasksListProps {
     onTaskSelected: (task: TaskType) => void
     onCreatedTaskClicked: () => void
     onTaskChecked: (task: TaskType) => void
+    isAuthorized: boolean
 }
 
 const TasksList = ({
@@ -22,18 +23,21 @@ const TasksList = ({
     onTaskSelected,
     onCreatedTaskClicked,
     onTaskChecked,
+    isAuthorized,
 }: TasksListProps) => {
     return (
         <StyledTasksList>
             <StyledTasksListHeader>
                 <StyledTaskListHeaderTitle>{title}</StyledTaskListHeaderTitle>
-                <Button
-                    onClick={() => onCreatedTaskClicked()}
-                    text='+ Add Task'
-                    backgroundColor='#CEF9C6'
-                    color='#1D201C'
-                    size={BUTTON_SIZE.LARGE}
-                />
+                {isAuthorized && (
+                    <Button
+                        onClick={() => onCreatedTaskClicked()}
+                        text='+ Add Task'
+                        backgroundColor='#CEF9C6'
+                        color='#1D201C'
+                        size={BUTTON_SIZE.LARGE}
+                    />
+                )}
             </StyledTasksListHeader>
 
             {tasks.map(task => {
