@@ -53,6 +53,10 @@ const StyledTaskFiles = styled.div`
     display: flex;
 `
 
+const StyledEdit = styled.div`
+    //align-items: center;
+`
+
 const StyledEditForm = styled.input`
     padding: 5px 12px;
     line-height: 20px;
@@ -60,6 +64,8 @@ const StyledEditForm = styled.input`
     outline: none;
     border: 2px solid #eaeaea;
     border-radius: 6px;
+    font-size: 20px;
+    margin-right: 20px;
 `
 
 export {
@@ -74,4 +80,5 @@ export {
     StyledTaskFiles,
     StyledTaskHeaderTitle,
     StyledEditForm,
+    StyledEdit,
 }

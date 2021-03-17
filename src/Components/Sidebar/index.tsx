@@ -58,6 +58,7 @@ const Sidebar = ({
             </StyledSidebarHeader>
             {isUserAuthorize && user ? (
                 <UserInfo
+                    key={user?.id}
                     avatar={user?.avatarUrl}
                     name={user?.fullName}
                     email={user?.email}

@@ -7,18 +7,20 @@ import { DiscussionType, TaskType } from './types'
 import { AddComment } from '../AddComment'
 import { File } from '../File'
 import {
+    StyledEdit,
+    StyledEditForm,
     StyledTask,
     StyledTaskDescription,
     StyledTaskDescriptionText,
     StyledTaskFiles,
     StyledTaskHeader,
+    StyledTaskHeaderTitle,
     StyledTaskInformation,
     StyledTaskTitle,
     StyledTaskUser,
     StyledTaskUserName,
-    StyledTaskHeaderTitle,
-    StyledEditForm,
 } from './style'
+import { Button, BUTTON_SIZE } from '../Button'
 
 interface TaskProps {
     task: TaskType
@@ -71,29 +73,49 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
         onTaskUpdated(newTask)
     }
 
+    const onSaveClick = () => {
+        onTitleEdit(titleEdit, task)
+        setShowEdit(false)
+    }
+    console.log('showEdits', showEdit)
     return (
         <StyledTask>
             <StyledTaskHeader>
                 <div>
-                    <StyledTaskHeaderTitle onClick={onEditTitleShow}>
-                        {!showEdit && task.title}
+                    <StyledTaskHeaderTitle>
+                        {!showEdit && (
+                            <span onClick={onEditTitleShow}>{task.title}</span>
+                        )}
                         {showEdit && (
-                            <StyledEditForm
-                                type='text'
-                                placeholder={titleEdit}
-                                value={titleEdit}
-                                onChange={event =>
-                                    setTitleEdit(event.target.value)
-                                }
-                                onKeyDown={event => {
-                                    if (event.key === 'Enter') {
-                                        onTitleEdit(titleEdit, task)
-                                        setShowEdit(false)
-                                    } else if (event.keyCode == 27) {
-                                        setShowEdit(false)
+                            <StyledEdit>
+                                <StyledEditForm
+                                    type='text'
+                                    placeholder={titleEdit}
+                                    value={titleEdit}
+                                    onChange={event =>
+                                        setTitleEdit(event.target.value)
                                     }
-                                }}
-                            />
+                                    onKeyDown={event => {
+                                        if (event.key === 'Enter') {
+                                            onTitleEdit(titleEdit, task)
+                                            setShowEdit(false)
+                                        } else if (event.keyCode == 27) {
+                                            setShowEdit(false)
+                                        }
+                                    }}
+                                />
+                                <Button
+                                    text={'Save'}
+                                    size={BUTTON_SIZE.MEDIUM}
+                                    onClick={onSaveClick}
+                                />
+                                <Button
+                                    text={'Cancel'}
+                                    backgroundColor={'white'}
+                                    size={BUTTON_SIZE.MEDIUM}
+                                    onClick={() => setShowEdit(false)}
+                                />
+                            </StyledEdit>
                         )}
                     </StyledTaskHeaderTitle>
                     <span>
@@ -172,7 +194,7 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                     {task.discussions.map(
                         ({ name, profession, date, text, avatar }) => (
                             <Comment
-                                key={name}
+                                key={text}
                                 name={name}
                                 profession={profession}
                                 date={date}

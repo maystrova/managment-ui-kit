@@ -45,7 +45,6 @@ import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
 import { User } from '../../services/user'
 import { createTask, getAllTasks, updateTask } from '../../services/task'
-import { Editing } from '../Editing'
 
 const sidebarLists: ListType[] = [
     {
