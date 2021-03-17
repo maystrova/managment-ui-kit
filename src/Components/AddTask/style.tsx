@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const StyledAddTaskTitle = styled.input`
-    width: 95%;
+    width: 100%;
     border: none;
     background-color: #eaeaea;
     border-radius: 6px;
@@ -11,7 +11,7 @@ const StyledAddTaskTitle = styled.input`
 `
 
 const StyledAddTaskDescription = styled.textarea`
-    width: 95%;
+    width: 100%;
     border: none;
     background-color: #eaeaea;
     border-radius: 6px;
