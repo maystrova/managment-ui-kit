@@ -21,7 +21,7 @@ const AddComment = ({ userpic, onCommentAdded }: AddCommentProps) => {
                 onKeyDown={event => {
                     if (event.key === 'Enter') {
                         onCommentAdded({
-                            name: UserInfo.name,
+                            name: 'Vasya',
                             profession: 'UserInfo',
                             date: `${Date.now()}`,
                             text: comment,
