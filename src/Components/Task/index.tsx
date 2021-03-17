@@ -77,7 +77,7 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
         onTitleEdit(titleEdit, task)
         setShowEdit(false)
     }
-    console.log('showEdits', showEdit)
+
     return (
         <StyledTask>
             <StyledTaskHeader>
