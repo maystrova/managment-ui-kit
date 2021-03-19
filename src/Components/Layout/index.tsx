@@ -43,7 +43,7 @@ import { AddProject, FieldsForCreateProject } from '../AddProject'
 import { Share } from '../Share'
 import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
-import { User } from '../../services/user'
+import { getUser, User } from '../../services/user'
 import { createTask, getAllTasks, updateTask } from '../../services/task'
 
 const sidebarLists: ListType[] = [
@@ -304,11 +304,11 @@ const Layout = () => {
             .catch(() => {})
     }
 
-    const getUser = async (): Promise<void> => {
-        const storageUser = await window.localStorage.getItem('user')
+    const getStateUser = async (): Promise<void> => {
+        const storageUser = await getUser()
 
         if (storageUser) {
-            setUser(JSON.parse(storageUser))
+            setUser(storageUser)
         } else {
             setTask(DEFAULT_TASK)
             setTasksList(tasks)
@@ -322,7 +322,7 @@ const Layout = () => {
     }
 
     useEffect(() => {
-        getUser()
+        getStateUser()
     }, [])
 
     const setServerTasks = async (user: User): Promise<void> => {
@@ -406,6 +406,7 @@ const Layout = () => {
                             title={'Backlog'}
                             tasks={backlogTasks}
                             onTaskSelected={task => setTask(task)}
+                            isAuthorized={Boolean(user?.id)}
                         />
 
                         <TasksList
@@ -419,6 +420,7 @@ const Layout = () => {
                             title={'To Do'}
                             tasks={toDoTasks}
                             onTaskSelected={task => setTask(task)}
+                            isAuthorized={Boolean(user?.id)}
                         />
                     </div>
 

@@ -8,7 +8,7 @@ import { AddComment } from '../AddComment'
 import { File } from '../File'
 import {
     StyledEdit,
-    StyledEditForm,
+    StyledEditTitleForm,
     StyledTask,
     StyledTaskDescription,
     StyledTaskDescriptionText,
@@ -19,8 +19,10 @@ import {
     StyledTaskTitle,
     StyledTaskUser,
     StyledTaskUserName,
+    StyledEditDescriptionForm,
 } from './style'
 import { Button, BUTTON_SIZE } from '../Button'
+import { KEY } from '../../services/keys'
 
 interface TaskProps {
     task: TaskType
@@ -28,8 +30,14 @@ interface TaskProps {
 }
 
 const Task = ({ task, onTaskUpdated }: TaskProps) => {
-    const [showEdit, setShowEdit] = useState<boolean>(false)
+    const [showTitleEdit, setShowTitleEdit] = useState<boolean>(false)
+    const [showDescriptionEdit, setShowDescriptionEdit] = useState<boolean>(
+        false,
+    )
     const [titleEdit, setTitleEdit] = useState<string>(task.title)
+    const [descriptionEdit, setDescriptionEdit] = useState<string>(
+        task.description,
+    )
 
     const onCommentAdd = (comment: DiscussionType, task: TaskType): void => {
         const newDiscussions = [comment, ...task.discussions]
@@ -62,7 +70,10 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
     }
 
     const onEditTitleShow = (): void => {
-        setShowEdit(true)
+        setShowTitleEdit(true)
+    }
+    const onEditDescriptionShow = (): void => {
+        setShowDescriptionEdit(true)
     }
 
     const onTitleEdit = (title: string, task: TaskType): void => {
@@ -73,9 +84,23 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
         onTaskUpdated(newTask)
     }
 
+    const onDescriptionEdit = (description: string, task: TaskType): void => {
+        const newTask: TaskType = {
+            ...task,
+            description: descriptionEdit,
+        }
+        onTaskUpdated(newTask)
+    }
+
     const onSaveClick = () => {
-        onTitleEdit(titleEdit, task)
-        setShowEdit(false)
+        {
+            showTitleEdit && onTitleEdit(titleEdit, task)
+            setShowTitleEdit(false)
+        }
+        {
+            showDescriptionEdit && onDescriptionEdit(titleEdit, task)
+            setShowDescriptionEdit(false)
+        }
     }
 
     return (
@@ -83,12 +108,12 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
             <StyledTaskHeader>
                 <div>
                     <StyledTaskHeaderTitle>
-                        {!showEdit && (
+                        {!showTitleEdit && (
                             <span onClick={onEditTitleShow}>{task.title}</span>
                         )}
-                        {showEdit && (
+                        {showTitleEdit && (
                             <StyledEdit>
-                                <StyledEditForm
+                                <StyledEditTitleForm
                                     type='text'
                                     placeholder={titleEdit}
                                     value={titleEdit}
@@ -96,11 +121,11 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                                         setTitleEdit(event.target.value)
                                     }
                                     onKeyDown={event => {
-                                        if (event.key === 'Enter') {
+                                        if (event.key === KEY.ENTER) {
                                             onTitleEdit(titleEdit, task)
-                                            setShowEdit(false)
-                                        } else if (event.keyCode == 27) {
-                                            setShowEdit(false)
+                                            setShowTitleEdit(false)
+                                        } else if (event.keyCode == KEY.ESC) {
+                                            setShowTitleEdit(false)
                                         }
                                     }}
                                 />
@@ -113,7 +138,7 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                                     text={'Cancel'}
                                     backgroundColor={'white'}
                                     size={BUTTON_SIZE.MEDIUM}
-                                    onClick={() => setShowEdit(false)}
+                                    onClick={() => setShowTitleEdit(false)}
                                 />
                             </StyledEdit>
                         )}
@@ -163,7 +188,41 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
             <StyledTaskDescription>
                 <StyledTaskTitle>Description</StyledTaskTitle>
                 <StyledTaskDescriptionText>
-                    {task.description}
+                    {!showDescriptionEdit && (
+                        <span onClick={onEditDescriptionShow}>
+                            {task.description}
+                        </span>
+                    )}
+                    {showDescriptionEdit && (
+                        <StyledEdit>
+                            <StyledEditDescriptionForm
+                                placeholder={descriptionEdit}
+                                value={descriptionEdit}
+                                onChange={event =>
+                                    setDescriptionEdit(event.target.value)
+                                }
+                                onKeyDown={event => {
+                                    if (event.key === 'Enter') {
+                                        onDescriptionEdit(descriptionEdit, task)
+                                        setShowDescriptionEdit(false)
+                                    } else if (event.keyCode == 27) {
+                                        setShowDescriptionEdit(false)
+                                    }
+                                }}
+                            />
+                            <Button
+                                text={'Save'}
+                                size={BUTTON_SIZE.MEDIUM}
+                                onClick={onSaveClick}
+                            />
+                            <Button
+                                text={'Cancel'}
+                                backgroundColor={'white'}
+                                size={BUTTON_SIZE.MEDIUM}
+                                onClick={() => setShowDescriptionEdit(false)}
+                            />
+                        </StyledEdit>
+                    )}
                 </StyledTaskDescriptionText>
                 <StyledTaskFiles>
                     {task.files.map(file => (
