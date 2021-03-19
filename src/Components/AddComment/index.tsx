@@ -4,6 +4,7 @@ import { DiscussionType } from '../Task/types'
 import vasyaUser from '../Layout/pics/vasya.png'
 import { StyledAddComment, StyledCommentAria } from './style'
 import { UserInfo } from '../UserInfo'
+import { KEY } from '../../services/keys'
 
 interface AddCommentProps {
     userpic: string
@@ -19,7 +20,7 @@ const AddComment = ({ userpic, onCommentAdded }: AddCommentProps) => {
             <StyledCommentAria
                 value={comment}
                 onKeyDown={event => {
-                    if (event.key === 'Enter') {
+                    if (event.key === KEY.ENTER) {
                         onCommentAdded({
                             name: 'Vasya',
                             profession: 'UserInfo',

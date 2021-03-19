@@ -37,6 +37,7 @@ const StyledTaskUserName = styled.span`
 
 const StyledTaskTitle = styled.h4`
     text-transform: uppercase;
+    margin-bottom: 20px;
 `
 
 const StyledTaskDescription = styled.div`

@@ -22,6 +22,7 @@ import {
     StyledEditDescriptionForm,
 } from './style'
 import { Button, BUTTON_SIZE } from '../Button'
+import { KEY } from '../../services/keys'
 
 interface TaskProps {
     task: TaskType
@@ -120,10 +121,10 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                                         setTitleEdit(event.target.value)
                                     }
                                     onKeyDown={event => {
-                                        if (event.key === 'Enter') {
+                                        if (event.key === KEY.ENTER) {
                                             onTitleEdit(titleEdit, task)
                                             setShowTitleEdit(false)
-                                        } else if (event.keyCode == 27) {
+                                        } else if (event.keyCode == KEY.ESC) {
                                             setShowTitleEdit(false)
                                         }
                                     }}
