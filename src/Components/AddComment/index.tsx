@@ -5,28 +5,32 @@ import vasyaUser from '../Layout/pics/vasya.png'
 import { StyledAddComment, StyledCommentAria } from './style'
 import { UserInfo } from '../UserInfo'
 import { KEY } from '../../services/keys'
+import { User } from 'services/user'
 
 interface AddCommentProps {
-    userpic: string
+    user: User | null
     onCommentAdded: (comment: DiscussionType) => void
 }
 
-const AddComment = ({ userpic, onCommentAdded }: AddCommentProps) => {
+const AddComment = ({ user, onCommentAdded }: AddCommentProps) => {
     const [comment, setComment] = useState<string>('')
 
     return (
         <StyledAddComment>
-            <Avatar size={AVATAR_SIZE.LARGE} src={userpic} />
+            <Avatar
+                size={AVATAR_SIZE.LARGE}
+                src={user ? user.avatarUrl : vasyaUser}
+            />
             <StyledCommentAria
                 value={comment}
                 onKeyDown={event => {
                     if (event.key === KEY.ENTER) {
                         onCommentAdded({
-                            name: 'Vasya',
-                            profession: 'UserInfo',
-                            date: `${Date.now()}`,
+                            name: user ? user.fullName : 'User',
+                            profession: 'User',
+                            date: new Date(Date.now()).toDateString(),
                             text: comment,
-                            avatar: vasyaUser,
+                            avatar: user ? user.avatarUrl : vasyaUser,
                         })
 
                         setComment('')

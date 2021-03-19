@@ -3,7 +3,7 @@ import { Checkbox } from '../Checkbox'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Tag } from '../Tag'
 import { Comment } from '../Comment'
-import { DiscussionType, TaskType } from './types'
+import { DiscussionType, TaskType, UserType } from './types'
 import { AddComment } from '../AddComment'
 import { File } from '../File'
 import {
@@ -22,14 +22,16 @@ import {
     StyledEditDescriptionForm,
 } from './style'
 import { Button, BUTTON_SIZE } from '../Button'
-import { KEY } from '../../services/keys'
+import { KEY } from 'services/keys'
+import { User } from 'services/user'
 
 interface TaskProps {
     task: TaskType
     onTaskUpdated: (task: TaskType) => void
+    user: User | null
 }
 
-const Task = ({ task, onTaskUpdated }: TaskProps) => {
+const Task = ({ task, onTaskUpdated, user }: TaskProps) => {
     const [showTitleEdit, setShowTitleEdit] = useState<boolean>(false)
     const [showDescriptionEdit, setShowDescriptionEdit] = useState<boolean>(
         false,
@@ -103,6 +105,13 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
         }
     }
 
+    // const AuthorizedUserInfo: User = {
+    //     fullName: user.
+    //     avatarUrl: user?.photoURL ? user.photoURL : '',
+    //     email: user?.email ? user.email : 'example@email.com',
+    //     id: user?.uid ? user?.uid : 'empty_id',
+    // }
+
     return (
         <StyledTask>
             <StyledTaskHeader>
@@ -160,9 +169,11 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                     <StyledTaskUser>
                         <Avatar
                             size={AVATAR_SIZE.X_SMALL}
-                            src={task.user.avatar}
+                            src={user ? user.avatarUrl : task.user.avatar}
                         />
-                        <StyledTaskUserName>{task.assignTo}</StyledTaskUserName>
+                        <StyledTaskUserName>
+                            {user ? user.fullName : task.assignTo}
+                        </StyledTaskUserName>
                     </StyledTaskUser>
                 </div>
                 <div>
@@ -245,8 +256,8 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                 <StyledTaskTitle>Discussion</StyledTaskTitle>
                 <div>
                     <AddComment
+                        user={user}
                         onCommentAdded={comment => onCommentAdd(comment, task)}
-                        userpic={task.user.avatar}
                     />
                 </div>
                 <div>

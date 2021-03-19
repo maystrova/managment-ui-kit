@@ -220,8 +220,6 @@ const Layout = () => {
         })
     }
 
-    const editTaskTitle = async (task: TaskType) => {}
-
     const getUniqueId = (title: string): string => {
         const timestamp = Date.now()
 
@@ -425,7 +423,11 @@ const Layout = () => {
                     </div>
 
                     {task && (
-                        <Task task={task} onTaskUpdated={updateOpenedTask} />
+                        <Task
+                            task={task}
+                            onTaskUpdated={updateOpenedTask}
+                            user={user}
+                        />
                     )}
                 </StyledLayoutContent>
             </StyledLayoutMain>
