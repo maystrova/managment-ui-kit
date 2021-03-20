@@ -7,6 +7,7 @@ import {
     StyledTasksListHeader,
     StyledTaskListHeaderTitle,
 } from './style'
+import { User } from 'services/user'
 
 interface TasksListProps {
     title: string
@@ -14,7 +15,7 @@ interface TasksListProps {
     onTaskSelected: (task: TaskType) => void
     onCreatedTaskClicked: () => void
     onTaskChecked: (task: TaskType) => void
-    isAuthorized: boolean
+    user: User | null
 }
 
 const TasksList = ({
@@ -23,8 +24,10 @@ const TasksList = ({
     onTaskSelected,
     onCreatedTaskClicked,
     onTaskChecked,
-    isAuthorized,
+    user,
 }: TasksListProps) => {
+    const isAuthorized = Boolean(user?.id)
+
     return (
         <StyledTasksList>
             <StyledTasksListHeader>
@@ -43,6 +46,7 @@ const TasksList = ({
             {tasks.map(task => {
                 return (
                     <TaskCard
+                        authorizedUser={user}
                         title={task.title}
                         user={task.user}
                         addedBy={task.addedBy}

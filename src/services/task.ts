@@ -1,9 +1,24 @@
-import { TaskType } from 'Components/Task/types'
+import { DiscussionType, TaskType } from 'Components/Task/types'
 import { User } from 'services/user'
 import { firebase } from 'services/firebase'
 
 const createTask = async (task: TaskType, user: User) => {
     await firebase.database().ref(`users/${user.id}/tasks/`).push(task)
+}
+
+const createComment = async (
+    comment: DiscussionType,
+    user: User,
+    task: TaskType,
+) => {
+    await firebase
+        .database()
+        .ref(`users/${user.id}/tasks/${task.id}/discussions`)
+        .push(comment)
+}
+
+const taskStatistics = async (user: User, tasks: TaskType[]) => {
+    await firebase.database().ref(`users/${user.id}/tasks/${tasks}`).get()
 }
 
 const updateTask = async (task: TaskType, user: User) => {
@@ -22,4 +37,4 @@ const getAllTasks = async (user: User): Promise<TaskType[]> => {
     }))
 }
 
-export { createTask, updateTask, getAllTasks }
+export { createTask, updateTask, getAllTasks, createComment }

@@ -12,10 +12,12 @@ import {
     StyledTaskCardUser,
     StyledTaskCardDescription,
 } from './style'
+import { User } from 'services/user'
 
 interface TaskCardProps extends TaskType {
     onClick: () => void
     onChecked: (isChecked: boolean) => void
+    authorizedUser: User | null
 }
 
 const TaskCard = ({
@@ -34,7 +36,12 @@ const TaskCard = ({
     onClick,
     id,
     onChecked,
+    authorizedUser,
 }: TaskCardProps) => {
+    const avatar: string = authorizedUser
+        ? authorizedUser.avatarUrl
+        : user.avatar
+
     return (
         <StyledTaskCardWrapper onClick={onClick}>
             <StyledTaskCard>
@@ -56,7 +63,7 @@ const TaskCard = ({
 
                 <StyledTaskCardFooter>
                     <StyledTaskCardUser>
-                        <Avatar src={user.avatar} size={AVATAR_SIZE.X_SMALL} />
+                        <Avatar src={avatar} size={AVATAR_SIZE.X_SMALL} />
                     </StyledTaskCardUser>
                     <Tag type={tag} text={tag} />
                 </StyledTaskCardFooter>

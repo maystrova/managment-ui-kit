@@ -44,6 +44,7 @@ const StyledTaskDescription = styled.div`
     border-bottom: 1px solid #ececec;
     margin-bottom: 40px;
     padding-bottom: 40px;
+    word-break: break-all;
 `
 
 const StyledTaskDescriptionText = styled.p`

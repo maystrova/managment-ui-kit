@@ -3,11 +3,12 @@ import { Checkbox } from '../Checkbox'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Tag } from '../Tag'
 import { Comment } from '../Comment'
-import { DiscussionType, TaskType, UserType } from './types'
+import { DiscussionType, TaskType } from './types'
 import { AddComment } from '../AddComment'
 import { File } from '../File'
 import {
     StyledEdit,
+    StyledEditDescriptionForm,
     StyledEditTitleForm,
     StyledTask,
     StyledTaskDescription,
@@ -19,7 +20,6 @@ import {
     StyledTaskTitle,
     StyledTaskUser,
     StyledTaskUserName,
-    StyledEditDescriptionForm,
 } from './style'
 import { Button, BUTTON_SIZE } from '../Button'
 import { KEY } from 'services/keys'
@@ -104,13 +104,6 @@ const Task = ({ task, onTaskUpdated, user }: TaskProps) => {
             setShowDescriptionEdit(false)
         }
     }
-
-    // const AuthorizedUserInfo: User = {
-    //     fullName: user.
-    //     avatarUrl: user?.photoURL ? user.photoURL : '',
-    //     email: user?.email ? user.email : 'example@email.com',
-    //     id: user?.uid ? user?.uid : 'empty_id',
-    // }
 
     return (
         <StyledTask>
@@ -236,19 +229,22 @@ const Task = ({ task, onTaskUpdated, user }: TaskProps) => {
                     )}
                 </StyledTaskDescriptionText>
                 <StyledTaskFiles>
-                    {task.files.map(file => (
-                        <File
-                            key={file.title}
-                            title={file.title}
-                            preview={file.preview}
-                            format={file.format}
-                            size={file.size}
-                            onFileDelete={fileId => {
-                                onFileDelete(task, fileId)
-                            }}
-                            id={file.id}
-                        />
-                    ))}
+                    <Button text={'Add a File'} size={BUTTON_SIZE.MEDIUM} />
+                    {user
+                        ? null
+                        : task.files.map(file => (
+                              <File
+                                  key={file.title}
+                                  title={file.title}
+                                  preview={file.preview}
+                                  format={file.format}
+                                  size={file.size}
+                                  onFileDelete={fileId => {
+                                      onFileDelete(task, fileId)
+                                  }}
+                                  id={file.id}
+                              />
+                          ))}
                 </StyledTaskFiles>
             </StyledTaskDescription>
 

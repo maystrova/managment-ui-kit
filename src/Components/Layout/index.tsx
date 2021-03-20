@@ -184,8 +184,6 @@ const Layout = () => {
         isModalOpen: false,
         taskTypeForCreation: TASK_TYPE.BACKLOG,
     })
-    const [isShowEdit, setShowEdit] = useState<boolean>(false)
-    const [isEditTask, setEditTask] = useState<boolean>(false)
 
     const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
     const [isShowAddTeam, setShowAddTeam] = useState<boolean>(false)
@@ -195,6 +193,10 @@ const Layout = () => {
 
     const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
+    const completedTasksCount: number = tasksList.filter(task => task.isChecked)
+        .length
+    const openedTasksCount: number = tasksList.length - completedTasksCount
+
     const addNewTaskToList = async (
         task: TaskType,
         fieldsForCreateTask: FieldsForCreateTask,
@@ -203,7 +205,7 @@ const Layout = () => {
     ): Promise<void> => {
         const newTask: TaskType = {
             ...task,
-            title: fieldsForCreateTask.title,
+            title: fieldsForCreateTask.title || 'New Task',
             description: fieldsForCreateTask.description,
             type: taskType,
         }
@@ -368,7 +370,10 @@ const Layout = () => {
                 icon={projectIcon}
                 search={searchIcon}
                 lists={sidebarItems}
-                statistics={{ completed: 372, opened: 11 }}
+                statistics={{
+                    completed: completedTasksCount,
+                    opened: openedTasksCount,
+                }}
                 user={user}
             />
 
@@ -404,7 +409,7 @@ const Layout = () => {
                             title={'Backlog'}
                             tasks={backlogTasks}
                             onTaskSelected={task => setTask(task)}
-                            isAuthorized={Boolean(user?.id)}
+                            user={user}
                         />
 
                         <TasksList
@@ -418,7 +423,7 @@ const Layout = () => {
                             title={'To Do'}
                             tasks={toDoTasks}
                             onTaskSelected={task => setTask(task)}
-                            isAuthorized={Boolean(user?.id)}
+                            user={user}
                         />
                     </div>
 
