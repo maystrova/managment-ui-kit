@@ -47,6 +47,7 @@ export const tasks: TaskType[] = [
                 text:
                     'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
                 avatar: commentAvatar3,
+                id: '4674564',
             },
             {
                 name: 'Prescott MacCaffery,',
@@ -55,6 +56,7 @@ export const tasks: TaskType[] = [
                 text:
                     '@Helena Software quality assurance activity in which one or several humans check a program mainly',
                 avatar: commentAvatar2,
+                id: '234565745',
             },
         ],
         files: [
@@ -95,6 +97,7 @@ export const tasks: TaskType[] = [
                 text:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 avatar: userAvatar9,
+                id: '235363636362345',
             },
             {
                 name: 'Emma Watson,',
@@ -103,6 +106,7 @@ export const tasks: TaskType[] = [
                 text:
                     'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                 avatar: userAvatar2,
+                id: '62342352554333',
             },
         ],
         files: [
@@ -143,6 +147,7 @@ export const tasks: TaskType[] = [
                 text:
                     'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                 avatar: userAvatar5,
+                id: '00000000000',
             },
             {
                 name: 'Harold Lowder',
@@ -151,6 +156,7 @@ export const tasks: TaskType[] = [
                 text:
                     ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                 avatar: userAvatar8,
+                id: '111111111',
             },
         ],
         files: [
@@ -191,6 +197,7 @@ export const tasks: TaskType[] = [
                 text:
                     ' Cras semper auctor neque vitae tempus. Vitae suscipit tellus mauris a diam maecenas sed.',
                 avatar: userAvatar3,
+                id: '332323232332',
             },
             {
                 name: 'Ken Morby,',
@@ -199,6 +206,7 @@ export const tasks: TaskType[] = [
                 text:
                     'Orci ac auctor augue mauris. Amet facilisis magna etiam tempor orci eu lobortis elementum.',
                 avatar: userAvatar6,
+                id: '545454545454',
             },
         ],
         files: [
@@ -240,6 +248,7 @@ export const tasks: TaskType[] = [
                 text:
                     'Ultricies integer quis auctor elit sed vulputate. Ipsum suspendisse ultrices gravida dictum fusce.',
                 avatar: userAvatar5,
+                id: '090909090909009',
             },
             {
                 name: 'Alice Morgan,',
@@ -248,6 +257,7 @@ export const tasks: TaskType[] = [
                 text:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 avatar: userAvatar5,
+                id: '21211212121212',
             },
         ],
         files: [
@@ -288,6 +298,7 @@ export const tasks: TaskType[] = [
                 text:
                     'Tortor dignissim convallis aenean et tortor. Nunc aliquet bibendum enim facilisis.',
                 avatar: userAvatar3,
+                id: '8181818188181',
             },
             {
                 name: 'Dan Hole,',
@@ -296,6 +307,7 @@ export const tasks: TaskType[] = [
                 text:
                     'Sapien eget mi proin sed libero. Porta nibh venenatis cras sed felis eget.',
                 avatar: commentAvatar2,
+                id: '7272772727272',
             },
         ],
         files: [

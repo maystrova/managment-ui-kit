@@ -45,6 +45,8 @@ import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
 import { getUser, User } from '../../services/user'
 import { createTask, getAllTasks, updateTask } from '../../services/task'
+import { AddFile } from '../AddFile'
+import { FileType } from '../File/type'
 
 const sidebarLists: ListType[] = [
     {
@@ -143,6 +145,7 @@ const DEFAULT_TASK = {
             text:
                 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
             avatar: commentAvatar3,
+            id: '432455756',
         },
         {
             name: 'Prescott MacCaffery',
@@ -151,6 +154,7 @@ const DEFAULT_TASK = {
             text:
                 '@Helena Software quality assurance activity in which one or several humans check a program mainly',
             avatar: commentAvatar2,
+            id: '235345446754',
         },
     ],
     user: { avatar: userAvatar1 },
@@ -184,6 +188,7 @@ const Layout = () => {
         isModalOpen: false,
         taskTypeForCreation: TASK_TYPE.BACKLOG,
     })
+    const [showAddFile, setShowAddFile] = useState<boolean>(false)
 
     const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
     const [isShowAddTeam, setShowAddTeam] = useState<boolean>(false)
@@ -353,6 +358,15 @@ const Layout = () => {
         setTask(task)
     }
 
+    const addFilesToTask = async (task: TaskType, files: FileType[]) => {
+        const newTask: TaskType = {
+            ...task,
+            files: [...task.files, ...files],
+        }
+
+        await updateOpenedTask(newTask)
+    }
+
     return (
         <StyledLayout>
             <GlobalStyle />
@@ -432,6 +446,7 @@ const Layout = () => {
                             task={task}
                             onTaskUpdated={updateOpenedTask}
                             user={user}
+                            onFileAddClick={() => setShowAddFile(true)}
                         />
                     )}
                 </StyledLayoutContent>
@@ -473,6 +488,19 @@ const Layout = () => {
             />
 
             <Share isOpen={isShowShare} onCancel={() => setShowShare(false)} />
+            {showAddFile && (
+                <AddFile
+                    onCancel={() => {
+                        setShowAddFile(false)
+                    }}
+                    onSubmit={files => {
+                        if (task) {
+                            addFilesToTask(task, files)
+                            setShowAddFile(false)
+                        }
+                    }}
+                />
+            )}
         </StyledLayout>
     )
 }

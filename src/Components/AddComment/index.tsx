@@ -30,6 +30,7 @@ const AddComment = ({ user, onCommentAdded }: AddCommentProps) => {
                             date: new Date(Date.now()).toDateString(),
                             text: comment,
                             avatar: user ? user.avatarUrl : vasyaUser,
+                            id: `${Date.now()}`,
                         })
 
                         setComment('')

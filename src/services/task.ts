@@ -17,10 +17,6 @@ const createComment = async (
         .push(comment)
 }
 
-const taskStatistics = async (user: User, tasks: TaskType[]) => {
-    await firebase.database().ref(`users/${user.id}/tasks/${tasks}`).get()
-}
-
 const updateTask = async (task: TaskType, user: User) => {
     await firebase.database().ref(`users/${user.id}/tasks/${task.id}`).set(task)
 }
