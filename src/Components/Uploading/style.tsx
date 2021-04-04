@@ -67,7 +67,6 @@ const load5 = keyframes`
 `
 
 const StyledUploadingCircle = styled.div`
-    //margin: 50px auto;
     font-size: 25px;
     width: 1em;
     height: 1em;
