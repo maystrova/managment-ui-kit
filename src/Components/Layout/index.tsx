@@ -45,6 +45,8 @@ import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
 import { TAG_TYPE } from '../Tag'
 import { getUser, User } from '../../services/user'
 import { createTask, getAllTasks, updateTask } from '../../services/task'
+import { AddFile } from '../AddFile'
+import { FileType } from '../File/type'
 
 const sidebarLists: ListType[] = [
     {
@@ -143,6 +145,7 @@ const DEFAULT_TASK = {
             text:
                 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
             avatar: commentAvatar3,
+            id: '432455756',
         },
         {
             name: 'Prescott MacCaffery',
@@ -151,6 +154,7 @@ const DEFAULT_TASK = {
             text:
                 '@Helena Software quality assurance activity in which one or several humans check a program mainly',
             avatar: commentAvatar2,
+            id: '235345446754',
         },
     ],
     user: { avatar: userAvatar1 },
@@ -184,8 +188,7 @@ const Layout = () => {
         isModalOpen: false,
         taskTypeForCreation: TASK_TYPE.BACKLOG,
     })
-    const [isShowEdit, setShowEdit] = useState<boolean>(false)
-    const [isEditTask, setEditTask] = useState<boolean>(false)
+    const [showAddFile, setShowAddFile] = useState<boolean>(false)
 
     const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
     const [isShowAddTeam, setShowAddTeam] = useState<boolean>(false)
@@ -195,6 +198,10 @@ const Layout = () => {
 
     const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
+    const completedTasksCount: number = tasksList.filter(task => task.isChecked)
+        .length
+    const openedTasksCount: number = tasksList.length - completedTasksCount
+
     const addNewTaskToList = async (
         task: TaskType,
         fieldsForCreateTask: FieldsForCreateTask,
@@ -203,7 +210,7 @@ const Layout = () => {
     ): Promise<void> => {
         const newTask: TaskType = {
             ...task,
-            title: fieldsForCreateTask.title,
+            title: fieldsForCreateTask.title || 'New Task',
             description: fieldsForCreateTask.description,
             type: taskType,
         }
@@ -219,8 +226,6 @@ const Layout = () => {
             taskTypeForCreation: TASK_TYPE.BACKLOG,
         })
     }
-
-    const editTaskTitle = async (task: TaskType) => {}
 
     const getUniqueId = (title: string): string => {
         const timestamp = Date.now()
@@ -353,6 +358,15 @@ const Layout = () => {
         setTask(task)
     }
 
+    const addFilesToTask = async (task: TaskType, files: FileType[]) => {
+        const newTask: TaskType = {
+            ...task,
+            files: [...task.files, ...files],
+        }
+
+        await updateOpenedTask(newTask)
+    }
+
     return (
         <StyledLayout>
             <GlobalStyle />
@@ -370,7 +384,10 @@ const Layout = () => {
                 icon={projectIcon}
                 search={searchIcon}
                 lists={sidebarItems}
-                statistics={{ completed: 372, opened: 11 }}
+                statistics={{
+                    completed: completedTasksCount,
+                    opened: openedTasksCount,
+                }}
                 user={user}
             />
 
@@ -406,7 +423,7 @@ const Layout = () => {
                             title={'Backlog'}
                             tasks={backlogTasks}
                             onTaskSelected={task => setTask(task)}
-                            isAuthorized={Boolean(user?.id)}
+                            user={user}
                         />
 
                         <TasksList
@@ -420,12 +437,17 @@ const Layout = () => {
                             title={'To Do'}
                             tasks={toDoTasks}
                             onTaskSelected={task => setTask(task)}
-                            isAuthorized={Boolean(user?.id)}
+                            user={user}
                         />
                     </div>
 
                     {task && (
-                        <Task task={task} onTaskUpdated={updateOpenedTask} />
+                        <Task
+                            task={task}
+                            onTaskUpdated={updateOpenedTask}
+                            user={user}
+                            onFileAddClick={() => setShowAddFile(true)}
+                        />
                     )}
                 </StyledLayoutContent>
             </StyledLayoutMain>
@@ -466,6 +488,19 @@ const Layout = () => {
             />
 
             <Share isOpen={isShowShare} onCancel={() => setShowShare(false)} />
+            {showAddFile && (
+                <AddFile
+                    onCancel={() => {
+                        setShowAddFile(false)
+                    }}
+                    onSubmit={files => {
+                        if (task) {
+                            addFilesToTask(task, files)
+                            setShowAddFile(false)
+                        }
+                    }}
+                />
+            )}
         </StyledLayout>
     )
 }

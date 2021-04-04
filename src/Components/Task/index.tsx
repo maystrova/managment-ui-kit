@@ -8,6 +8,7 @@ import { AddComment } from '../AddComment'
 import { File } from '../File'
 import {
     StyledEdit,
+    StyledEditDescriptionForm,
     StyledEditTitleForm,
     StyledTask,
     StyledTaskDescription,
@@ -19,17 +20,23 @@ import {
     StyledTaskTitle,
     StyledTaskUser,
     StyledTaskUserName,
-    StyledEditDescriptionForm,
+    StyledTaskFile,
+    StyledAvatar,
+    StyledFollowers,
+    StyledTaskFilesList,
 } from './style'
 import { Button, BUTTON_SIZE } from '../Button'
-import { KEY } from '../../services/keys'
+import { KEY } from 'services/keys'
+import { User } from 'services/user'
 
 interface TaskProps {
     task: TaskType
     onTaskUpdated: (task: TaskType) => void
+    user: User | null
+    onFileAddClick: () => void
 }
 
-const Task = ({ task, onTaskUpdated }: TaskProps) => {
+const Task = ({ task, onTaskUpdated, user, onFileAddClick }: TaskProps) => {
     const [showTitleEdit, setShowTitleEdit] = useState<boolean>(false)
     const [showDescriptionEdit, setShowDescriptionEdit] = useState<boolean>(
         false,
@@ -38,7 +45,6 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
     const [descriptionEdit, setDescriptionEdit] = useState<string>(
         task.description,
     )
-
     const onCommentAdd = (comment: DiscussionType, task: TaskType): void => {
         const newDiscussions = [comment, ...task.discussions]
 
@@ -160,9 +166,11 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                     <StyledTaskUser>
                         <Avatar
                             size={AVATAR_SIZE.X_SMALL}
-                            src={task.user.avatar}
+                            src={user ? user.avatarUrl : task.user.avatar}
                         />
-                        <StyledTaskUserName>{task.assignTo}</StyledTaskUserName>
+                        <StyledTaskUserName>
+                            {user ? user.fullName : task.assignTo}
+                        </StyledTaskUserName>
                     </StyledTaskUser>
                 </div>
                 <div>
@@ -175,13 +183,17 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                 </div>
                 <div>
                     <StyledTaskTitle>Followers</StyledTaskTitle>
-                    {task.followers.map(follower => (
-                        <Avatar
-                            size={AVATAR_SIZE.X_SMALL}
-                            src={follower}
-                            key={follower}
-                        />
-                    ))}
+                    <StyledFollowers>
+                        {task.followers.map(follower => (
+                            <StyledAvatar>
+                                <Avatar
+                                    size={AVATAR_SIZE.X_SMALL}
+                                    src={follower}
+                                    key={follower}
+                                />
+                            </StyledAvatar>
+                        ))}
+                    </StyledFollowers>
                 </div>
             </StyledTaskInformation>
 
@@ -225,19 +237,29 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                     )}
                 </StyledTaskDescriptionText>
                 <StyledTaskFiles>
-                    {task.files.map(file => (
-                        <File
-                            key={file.title}
-                            title={file.title}
-                            preview={file.preview}
-                            format={file.format}
-                            size={file.size}
-                            onFileDelete={fileId => {
-                                onFileDelete(task, fileId)
-                            }}
-                            id={file.id}
-                        />
-                    ))}
+                    <StyledTaskFilesList>
+                        {task?.files &&
+                            task.files.map(file => (
+                                <StyledTaskFile>
+                                    <File
+                                        key={file.id}
+                                        title={file.title}
+                                        preview={file.preview}
+                                        format={file.format}
+                                        size={file.size}
+                                        onFileDelete={fileId => {
+                                            onFileDelete(task, fileId)
+                                        }}
+                                        id={file.id}
+                                    />
+                                </StyledTaskFile>
+                            ))}
+                    </StyledTaskFilesList>
+                    <Button
+                        onClick={onFileAddClick}
+                        text={'Add a File'}
+                        size={BUTTON_SIZE.MEDIUM}
+                    />
                 </StyledTaskFiles>
             </StyledTaskDescription>
 
@@ -245,20 +267,21 @@ const Task = ({ task, onTaskUpdated }: TaskProps) => {
                 <StyledTaskTitle>Discussion</StyledTaskTitle>
                 <div>
                     <AddComment
+                        user={user}
                         onCommentAdded={comment => onCommentAdd(comment, task)}
-                        userpic={task.user.avatar}
                     />
                 </div>
                 <div>
                     {task.discussions.map(
-                        ({ name, profession, date, text, avatar }) => (
+                        ({ name, profession, date, text, avatar, id }) => (
                             <Comment
-                                key={text}
+                                key={id}
                                 name={name}
                                 profession={profession}
                                 date={date}
                                 text={text}
                                 avatar={avatar}
+                                id={id}
                             />
                         ),
                     )}

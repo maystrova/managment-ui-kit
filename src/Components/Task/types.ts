@@ -7,6 +7,7 @@ export type DiscussionType = {
     date: string
     text: string
     avatar: string
+    id: string
 }
 
 export type UserType = {

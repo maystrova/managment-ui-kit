@@ -35,6 +35,10 @@ const StyledTaskUserName = styled.span`
     margin-left: 5px;
 `
 
+const StyledAvatar = styled.div`
+    margin-left: 5px;
+`
+
 const StyledTaskTitle = styled.h4`
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -44,6 +48,11 @@ const StyledTaskDescription = styled.div`
     border-bottom: 1px solid #ececec;
     margin-bottom: 40px;
     padding-bottom: 40px;
+    word-break: break-all;
+`
+
+const StyledFollowers = styled.div`
+    display: flex;
 `
 
 const StyledTaskDescriptionText = styled.p`
@@ -52,7 +61,18 @@ const StyledTaskDescriptionText = styled.p`
 `
 
 const StyledTaskFiles = styled.div`
-    display: flex;
+    & img {
+        width: 40px;
+        border-radius: 4px;
+    }
+`
+
+const StyledTaskFilesList = styled.div`
+    margin-bottom: 20px;
+`
+
+const StyledTaskFile = styled.div`
+    margin-bottom: 15px;
 `
 
 const StyledEdit = styled.div``
@@ -94,4 +114,8 @@ export {
     StyledEditTitleForm,
     StyledEdit,
     StyledEditDescriptionForm,
+    StyledTaskFile,
+    StyledAvatar,
+    StyledFollowers,
+    StyledTaskFilesList,
 }
