@@ -5,7 +5,6 @@ const StyledUploading = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    //height: 125px;
     margin: auto;
     transform: scale(0.6);
 `
