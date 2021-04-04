@@ -3,7 +3,7 @@ import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { DiscussionType } from '../Task/types'
 import vasyaUser from '../Layout/pics/vasya.png'
 import { StyledAddComment, StyledCommentAria } from './style'
-import { KEY } from '../../services/keys'
+import { KEY } from 'services/keys'
 import { User } from 'services/user'
 
 interface AddCommentProps {
