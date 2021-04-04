@@ -33,10 +33,10 @@ interface TaskProps {
     task: TaskType
     onTaskUpdated: (task: TaskType) => void
     user: User | null
-    onFileAddClick: () => void
+    onAddFileClick: () => void
 }
 
-const Task = ({ task, onTaskUpdated, user, onFileAddClick }: TaskProps) => {
+const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
     const [showTitleEdit, setShowTitleEdit] = useState<boolean>(false)
     const [showDescriptionEdit, setShowDescriptionEdit] = useState<boolean>(
         false,
@@ -109,6 +109,9 @@ const Task = ({ task, onTaskUpdated, user, onFileAddClick }: TaskProps) => {
         }
     }
 
+    const userAvatar = user ? user.avatarUrl : task.user.avatar
+    const userName = user ? user.fullName : task.assignTo
+
     return (
         <StyledTask>
             <StyledTaskHeader>
@@ -164,13 +167,8 @@ const Task = ({ task, onTaskUpdated, user, onFileAddClick }: TaskProps) => {
                 <div>
                     <StyledTaskTitle>Asign to</StyledTaskTitle>
                     <StyledTaskUser>
-                        <Avatar
-                            size={AVATAR_SIZE.X_SMALL}
-                            src={user ? user.avatarUrl : task.user.avatar}
-                        />
-                        <StyledTaskUserName>
-                            {user ? user.fullName : task.assignTo}
-                        </StyledTaskUserName>
+                        <Avatar size={AVATAR_SIZE.X_SMALL} src={userAvatar} />
+                        <StyledTaskUserName>{userName}</StyledTaskUserName>
                     </StyledTaskUser>
                 </div>
                 <div>
@@ -256,7 +254,7 @@ const Task = ({ task, onTaskUpdated, user, onFileAddClick }: TaskProps) => {
                             ))}
                     </StyledTaskFilesList>
                     <Button
-                        onClick={onFileAddClick}
+                        onClick={onAddFileClick}
                         text={'Add a File'}
                         size={BUTTON_SIZE.MEDIUM}
                     />

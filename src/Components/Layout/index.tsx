@@ -446,7 +446,7 @@ const Layout = () => {
                             task={task}
                             onTaskUpdated={updateOpenedTask}
                             user={user}
-                            onFileAddClick={() => setShowAddFile(true)}
+                            onAddFileClick={() => setShowAddFile(true)}
                         />
                     )}
                 </StyledLayoutContent>
