@@ -30,7 +30,13 @@ const AddTask = ({ onCancel, onSubmit, isOpen }: ModalWindowProps) => {
                 <StyledAddTaskFooter>
                     <Button
                         backgroundColor={'#EAEAEA'}
-                        onClick={onCancel}
+                        onClick={() => {
+                            onCancel()
+                            setFieldsForCreateTask({
+                                title: '',
+                                description: '',
+                            })
+                        }}
                         text={'Cancel'}
                     />
                     <Button

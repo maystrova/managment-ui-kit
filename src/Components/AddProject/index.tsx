@@ -28,7 +28,10 @@ const AddProject = ({ onCancel, onSubmit, isOpen }: AddProjectProps) => {
                 <StyledAddModalFooter>
                     <Button
                         backgroundColor={'#EAEAEA'}
-                        onClick={onCancel}
+                        onClick={() => {
+                            onCancel()
+                            setFieldsForCreateProject({ title: '' })
+                        }}
                         text={'Cancel'}
                     />
                     <Button
@@ -50,6 +53,7 @@ const AddProject = ({ onCancel, onSubmit, isOpen }: AddProjectProps) => {
                     onKeyDown={event => {
                         if (event.key === 'Enter') {
                             onSubmit(fieldsForAddProject, 'projects')
+                            setFieldsForCreateProject({ title: '' })
                         }
                     }}
                     type='text'

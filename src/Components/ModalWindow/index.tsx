@@ -33,7 +33,7 @@ const ModalWindow = ({
                 <StyledModalHeader>
                     <StyledModalTitle>{title}</StyledModalTitle>
                     <StyledModalClose onClick={onCancel}>
-                        &#10008;
+                        <img src='cancel.png' alt='Cancel' />
                     </StyledModalClose>
                 </StyledModalHeader>
                 <StyledModalBody>{children}</StyledModalBody>

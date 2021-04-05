@@ -16,7 +16,8 @@ const Comment = ({ name, profession, date, text, avatar }: DiscussionType) => {
             </StyledCommentAvatar>
             <StyledCommentHeader>
                 <span>
-                    <StyledCommentName>{name}</StyledCommentName>, {profession}
+                    <StyledCommentName>{name}</StyledCommentName>
+                    {`, ${profession}`}
                 </span>
                 <span>{date}</span>
             </StyledCommentHeader>

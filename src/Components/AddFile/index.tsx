@@ -50,7 +50,7 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
                 preview: `${protocol}${host}${pathname}?alt=media`,
                 title: fileMetaData.name,
                 size: `${fileMetaData.size.toString()} KB`,
-                format: `.${fileMetaData.contentType}`,
+                format: '',
                 id: parseInt(fileMetaData.generation),
             }
             filesData.push(preparedFile)

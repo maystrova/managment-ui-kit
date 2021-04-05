@@ -46,6 +46,10 @@ const StyledModalTitle = styled.div`
 `
 const StyledModalClose = styled.div`
     cursor: pointer;
+
+    & img {
+        width: 5px;
+    }
 `
 
 export {

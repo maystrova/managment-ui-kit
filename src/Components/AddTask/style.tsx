@@ -19,6 +19,7 @@ const StyledAddTaskDescription = styled.textarea`
     margin-bottom: 10px;
     outline: none;
     resize: none;
+    height: 100px;
 `
 
 const StyledAddTaskFooter = styled.div`

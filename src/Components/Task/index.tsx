@@ -253,11 +253,13 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
                                 </StyledTaskFile>
                             ))}
                     </StyledTaskFilesList>
-                    <Button
-                        onClick={onAddFileClick}
-                        text={'Add a File'}
-                        size={BUTTON_SIZE.MEDIUM}
-                    />
+                    {user && (
+                        <Button
+                            onClick={onAddFileClick}
+                            text={'Add a File'}
+                            size={BUTTON_SIZE.MEDIUM}
+                        />
+                    )}
                 </StyledTaskFiles>
             </StyledTaskDescription>
 
