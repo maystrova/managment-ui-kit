@@ -69,6 +69,9 @@ const StyledTaskFiles = styled.div`
 
 const StyledTaskFilesList = styled.div`
     margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
 `
 
 const StyledTaskFile = styled.div`

@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 
 const StyledList = styled.div`
-    padding: 15px;
     line-height: 2.5;
+    margin-bottom: 15px;
 `
 
 const StyledListTitle = styled.span`
     text-transform: uppercase;
     color: #878787;
+    margin-left: 15px;
 `
 
 const StyledListItemsBlock = styled.ul`
@@ -32,7 +33,7 @@ const StyledListItem = styled.a`
 `
 
 const StyledListItemsIcon = styled.img`
-    margin-right: 10px;
+    margin-left: 15px;
 `
 
 const StyledListItemsAvatar = styled.img`
@@ -51,6 +52,11 @@ const StyledListItemsCount = styled.span`
     margin-left: 15px;
 `
 
+const StyledListItemAvatars = styled.div`
+    margin-left: 15px;
+    line-height: 1;
+`
+
 const StyledListAdd = styled.button`
     color: #ffc200;
     background: none;
@@ -58,6 +64,10 @@ const StyledListAdd = styled.button`
     font-size: inherit;
     cursor: pointer;
     outline: none;
+    margin-left: 15px;
+`
+const StyledListItemTitle = styled.span`
+    margin-left: 15px;
 `
 
 export {
@@ -70,4 +80,6 @@ export {
     StyledListItemsCount,
     StyledListAdd,
     StyledListItemsBlock,
+    StyledListItemTitle,
+    StyledListItemAvatars,
 }

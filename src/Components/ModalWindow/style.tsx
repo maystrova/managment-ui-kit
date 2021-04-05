@@ -48,7 +48,7 @@ const StyledModalClose = styled.div`
     cursor: pointer;
 
     & img {
-        width: 5px;
+        width: 25px;
     }
 `
 
