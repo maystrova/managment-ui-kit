@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Checkbox } from '../Checkbox'
+import { Checkbox, CHECKBOX_SIZE } from '../Checkbox'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Tag } from '../Tag'
 import { Comment } from '../Comment'
@@ -7,23 +7,23 @@ import { DiscussionType, TaskType } from './types'
 import { AddComment } from '../AddComment'
 import { File } from '../File'
 import {
+    StyledAvatar,
     StyledEdit,
     StyledEditDescriptionForm,
     StyledEditTitleForm,
+    StyledFollowers,
     StyledTask,
     StyledTaskDescription,
     StyledTaskDescriptionText,
+    StyledTaskFile,
     StyledTaskFiles,
+    StyledTaskFilesList,
     StyledTaskHeader,
     StyledTaskHeaderTitle,
     StyledTaskInformation,
     StyledTaskTitle,
     StyledTaskUser,
     StyledTaskUserName,
-    StyledTaskFile,
-    StyledAvatar,
-    StyledFollowers,
-    StyledTaskFilesList,
 } from './style'
 import { Button, BUTTON_SIZE } from '../Button'
 import { KEY } from 'services/keys'
@@ -160,6 +160,7 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
                     <Checkbox
                         onChange={isChecked => onTaskUpdate(task, isChecked)}
                         isChecked={task.isChecked}
+                        sizeType={CHECKBOX_SIZE.LARGE}
                     />
                 </div>
             </StyledTaskHeader>

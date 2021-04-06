@@ -49,7 +49,7 @@ const StyledListItemsCount = styled.span`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 15px;
+    margin-left: 5px;
 `
 
 const StyledListItemAvatars = styled.div`

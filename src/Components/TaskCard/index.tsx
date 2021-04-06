@@ -1,16 +1,16 @@
 import React from 'react'
-import { Checkbox } from '../Checkbox'
+import { Checkbox, CHECKBOX_STYLE } from '../Checkbox'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import { Tag } from '../Tag'
 import { TaskType } from '../Task/types'
 import {
-    StyledTaskCardWrapper,
     StyledTaskCard,
     StyledTaskCardCheckbox,
+    StyledTaskCardDescription,
     StyledTaskCardFooter,
     StyledTaskCardHeader,
     StyledTaskCardUser,
-    StyledTaskCardDescription,
+    StyledTaskCardWrapper,
 } from './style'
 import { User } from 'services/user'
 
@@ -48,6 +48,7 @@ const TaskCard = ({
                 <StyledTaskCardHeader>
                     <StyledTaskCardCheckbox>
                         <Checkbox
+                            styleType={CHECKBOX_STYLE.ON_CARD}
                             isChecked={isChecked}
                             onChange={isChecked => {
                                 if (id) {
