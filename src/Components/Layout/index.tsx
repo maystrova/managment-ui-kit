@@ -198,6 +198,8 @@ const Layout = () => {
 
     const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
+    const [isLoading, setLoading] = useState<boolean>(false)
+
     const completedTasksCount: number = tasksList.filter(task => task.isChecked)
         .length
     const openedTasksCount: number = tasksList.length - completedTasksCount

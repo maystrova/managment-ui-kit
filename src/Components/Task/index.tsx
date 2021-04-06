@@ -45,6 +45,7 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
     const [descriptionEdit, setDescriptionEdit] = useState<string>(
         task.description,
     )
+
     const onCommentAdd = (comment: DiscussionType, task: TaskType): void => {
         const newDiscussions = [comment, ...task.discussions]
 
