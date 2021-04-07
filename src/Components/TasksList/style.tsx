@@ -19,4 +19,13 @@ const StyledTaskListHeaderTitle = styled.h2`
     margin: 10px 0;
 `
 
-export { StyledTasksList, StyledTasksListHeader, StyledTaskListHeaderTitle }
+const StyledLoading = styled.div`
+    padding: 20px;
+`
+
+export {
+    StyledTasksList,
+    StyledTasksListHeader,
+    StyledTaskListHeaderTitle,
+    StyledLoading,
+}

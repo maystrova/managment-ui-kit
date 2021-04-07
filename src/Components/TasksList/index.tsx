@@ -6,8 +6,10 @@ import {
     StyledTasksList,
     StyledTasksListHeader,
     StyledTaskListHeaderTitle,
+    StyledLoading,
 } from './style'
 import { User } from 'services/user'
+import { Uploading } from '../Uploading'
 
 interface TasksListProps {
     title: string
@@ -16,6 +18,7 @@ interface TasksListProps {
     onCreatedTaskClicked: () => void
     onTaskChecked: (task: TaskType) => void
     user: User | null
+    isLoading: boolean
 }
 
 const TasksList = ({
@@ -25,6 +28,7 @@ const TasksList = ({
     onCreatedTaskClicked,
     onTaskChecked,
     user,
+    isLoading,
 }: TasksListProps) => {
     const isAuthorized = Boolean(user?.id)
 
@@ -32,6 +36,7 @@ const TasksList = ({
         <StyledTasksList>
             <StyledTasksListHeader>
                 <StyledTaskListHeaderTitle>{title}</StyledTaskListHeaderTitle>
+
                 {isAuthorized && (
                     <Button
                         onClick={() => onCreatedTaskClicked()}
@@ -42,6 +47,12 @@ const TasksList = ({
                     />
                 )}
             </StyledTasksListHeader>
+
+            {isLoading && (
+                <StyledLoading>
+                    <Uploading />
+                </StyledLoading>
+            )}
 
             {tasks.map(task => {
                 return (

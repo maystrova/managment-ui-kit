@@ -1,5 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
+// export enum UPLOADING_SIZE {
+//     DEFAULT =
+// }
+
 const StyledUploading = styled.div`
     width: 100%;
     display: flex;
@@ -65,7 +69,7 @@ const load5 = keyframes`
 `
 
 const StyledUploadingCircle = styled.div`
-    font-size: 25px;
+    font-size: 20px;
     width: 1em;
     height: 1em;
     border-radius: 50%;

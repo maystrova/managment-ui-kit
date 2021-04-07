@@ -198,7 +198,7 @@ const Layout = () => {
 
     const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
-    const [isLoading, setLoading] = useState<boolean>(false)
+    const [isTasksLoading, setTasksLoading] = useState<boolean>(false)
 
     const completedTasksCount: number = tasksList.filter(task => task.isChecked)
         .length
@@ -333,8 +333,10 @@ const Layout = () => {
     }, [])
 
     const setServerTasks = async (user: User): Promise<void> => {
+        setTasksLoading(true)
         const clientTasks = await getAllTasks(user)
         setTasksList(clientTasks)
+        setTasksLoading(false)
     }
 
     useEffect(() => {
@@ -426,6 +428,7 @@ const Layout = () => {
                             tasks={backlogTasks}
                             onTaskSelected={task => setTask(task)}
                             user={user}
+                            isLoading={isTasksLoading}
                         />
 
                         <TasksList
@@ -440,6 +443,7 @@ const Layout = () => {
                             tasks={toDoTasks}
                             onTaskSelected={task => setTask(task)}
                             user={user}
+                            isLoading={isTasksLoading}
                         />
                     </div>
 
