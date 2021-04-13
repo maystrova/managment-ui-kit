@@ -1,9 +1,5 @@
 import styled, { keyframes } from 'styled-components'
 
-// export enum UPLOADING_SIZE {
-//     DEFAULT =
-// }
-
 const StyledUploading = styled.div`
     width: 100%;
     display: flex;
