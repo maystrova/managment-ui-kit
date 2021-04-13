@@ -87,7 +87,7 @@ const Share = ({ isOpen, onCancel }: ShareProps) => {
         <ModalWindow
             isOpen={isOpen}
             onCancel={onCancel}
-            title={'Support my project, share with your friends!'}
+            title="Support my project, share with your friends!"
         >
             <StyledShare>
                 <button
