@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
 import { ModalWindow } from '../ModalWindow'
-import {
-    StyledAddFile,
-    StyledAddFileFooter,
-    StyledUploadFileButton,
-    StyledChooseFile,
-} from './style'
+import { StyledAddFile, StyledAddFileFooter } from './style'
 import { storage } from 'services/firebase'
 import { Uploading } from '../Uploading'
 import { FileType } from '../File/type'
+import { Button, BUTTON_SIZE } from '../Button'
 
 export interface AddFileProps {
     onCancel: () => void
@@ -50,7 +46,7 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
                 preview: `${protocol}${host}${pathname}?alt=media`,
                 title: fileMetaData.name,
                 size: `${fileMetaData.size.toString()} KB`,
-                format: `.${fileMetaData.contentType}`,
+                format: '',
                 id: parseInt(fileMetaData.generation),
             }
             filesData.push(preparedFile)
@@ -125,19 +121,17 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
             footer={
                 <StyledAddFileFooter>
                     {Boolean(files.length) || (
-                        <StyledChooseFile
-                            type='file'
-                            onChange={onUploadClick}
-                        />
+                        <input type='file' onChange={onUploadClick} />
                     )}
 
                     {Boolean(files.length) && (
                         <StyledAddFileFooter>
-                            <StyledUploadFileButton
+                            <Button
+                                text={'Upload to task'}
+                                backgroundColor={'#CEF9C6'}
+                                size={BUTTON_SIZE.LARGE}
                                 onClick={() => onSubmit(files)}
-                            >
-                                Upload to task
-                            </StyledUploadFileButton>
+                            />
                         </StyledAddFileFooter>
                     )}
                 </StyledAddFileFooter>

@@ -25,7 +25,22 @@ const StyledUploadFileButton = styled.button`
     cursor: pointer;
 `
 
-const StyledChooseFile = styled.input``
+const StyledChooseFile = styled.label`
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+    }
+`
 
 export {
     StyledAddFile,

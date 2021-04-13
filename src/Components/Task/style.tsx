@@ -69,13 +69,18 @@ const StyledTaskFiles = styled.div`
 
 const StyledTaskFilesList = styled.div`
     margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
 `
 
 const StyledTaskFile = styled.div`
     margin-bottom: 15px;
 `
 
-const StyledEdit = styled.div``
+const StyledEdit = styled.div`
+    margin-bottom: 15px;
+`
 
 const StyledEditTitleForm = styled.input`
     padding: 5px 12px;
@@ -85,7 +90,8 @@ const StyledEditTitleForm = styled.input`
     border: 2px solid #eaeaea;
     border-radius: 6px;
     font-size: 20px;
-    margin-right: 20px;
+    width: 100%;
+    margin-bottom: 5px;
 `
 
 const StyledEditDescriptionForm = styled.textarea`
@@ -96,8 +102,9 @@ const StyledEditDescriptionForm = styled.textarea`
     border: 2px solid #eaeaea;
     border-radius: 6px;
     font-size: 15px;
-    margin-right: 20px;
     resize: none;
+    width: 100%;
+    margin: 0 15px 15px 0;
 `
 
 export {

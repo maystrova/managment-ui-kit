@@ -25,7 +25,10 @@ const AddTeam = ({ isOpen, onCancel, onSubmit }: AddTeamsProps) => {
                 <StyledAddModalFooter>
                     <Button
                         backgroundColor={'#EAEAEA'}
-                        onClick={onCancel}
+                        onClick={() => {
+                            onCancel()
+                            setFieldsForCreateTeam({ title: '' })
+                        }}
                         text={'Cancel'}
                     />
                     <Button
@@ -49,6 +52,7 @@ const AddTeam = ({ isOpen, onCancel, onSubmit }: AddTeamsProps) => {
                     onKeyDown={event => {
                         if (event.key === 'Enter') {
                             onSubmit(fieldsForCreateTeam, 'teams')
+                            setFieldsForCreateTeam({ title: '' })
                         }
                     }}
                     value={fieldsForCreateTeam.title}

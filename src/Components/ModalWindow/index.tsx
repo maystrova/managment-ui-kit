@@ -8,6 +8,8 @@ import {
     StyledModalTitle,
     StyledModalWindow,
 } from './style'
+import { Icon, ICON_SIZE } from '../Icon'
+import cancel from './cancel.png'
 
 export interface ModalWindowProps {
     isOpen: boolean
@@ -33,7 +35,7 @@ const ModalWindow = ({
                 <StyledModalHeader>
                     <StyledModalTitle>{title}</StyledModalTitle>
                     <StyledModalClose onClick={onCancel}>
-                        &#10008;
+                        <Icon size={ICON_SIZE.MEDIUM} src={cancel} />
                     </StyledModalClose>
                 </StyledModalHeader>
                 <StyledModalBody>{children}</StyledModalBody>

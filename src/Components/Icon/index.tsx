@@ -4,6 +4,7 @@ import { StyledIcon } from './style'
 enum ICON_SIZE {
     X_SMALL = 'x-small',
     SMALL = 'small',
+    MEDIUM = 'medium',
     LARGE = 'large',
 }
 

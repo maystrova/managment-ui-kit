@@ -25,8 +25,8 @@ const AddComment = ({ user, onCommentAdded }: AddCommentProps) => {
                 onKeyDown={event => {
                     if (event.key === KEY.ENTER) {
                         onCommentAdded({
-                            name: user ? user.fullName : 'User',
-                            profession: 'User',
+                            name: user ? user.fullName : 'Guest',
+                            profession: 'anonymous',
                             date: new Date(Date.now()).toDateString(),
                             text: comment,
                             avatar: user ? user.avatarUrl : vasyaUser,

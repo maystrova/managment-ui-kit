@@ -11,6 +11,8 @@ import {
     StyledListItemsCount,
     StyledListItemsIcon,
     StyledListTitle,
+    StyledListItemTitle,
+    StyledListItemAvatars,
 } from './style'
 import { SIDEBAR_LIST } from '../Layout/tasks'
 
@@ -35,14 +37,19 @@ const List = ({ items, addition, title, onAdditionalClick, id }: ListProps) => {
                                             alt='icon'
                                         />
                                     )}
-                                    {item.title}
-                                    {item.avatars?.map(avatar => (
-                                        <StyledListItemsAvatar
-                                            src={avatar.avatar}
-                                            alt='avatar'
-                                            key={avatar.id}
-                                        />
-                                    ))}
+                                    <StyledListItemTitle>
+                                        {item.title}
+                                    </StyledListItemTitle>
+                                    <StyledListItemAvatars>
+                                        {item.avatars?.map(avatar => (
+                                            <StyledListItemsAvatar
+                                                src={avatar.avatar}
+                                                alt='avatar'
+                                                key={avatar.id}
+                                            />
+                                        ))}
+                                    </StyledListItemAvatars>
+
                                     {item.count && (
                                         <StyledListItemsCount
                                             key={item.count.id}
