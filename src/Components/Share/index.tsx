@@ -18,7 +18,12 @@ interface ShareData {
     text: string
 }
 
-const shareVk = (shareData: ShareData) => {
+const title = 'managment-ui-kit'
+const text = 'Hello! This is my first project!'
+const url = 'https://managment-ui-kit.vercel.app/'
+const image = './hello.png'
+
+const shareVk = (shareData: ShareData): void => {
     let vkUrl = 'http://vk.com/share.php?'
     if (shareData.url) {
         vkUrl += 'url=' + encodeURIComponent(shareData.url)
@@ -33,7 +38,7 @@ const shareVk = (shareData: ShareData) => {
     popup(vkUrl)
 }
 
-const shareFB = (shareData: ShareData) => {
+const shareFB = (shareData: ShareData): void => {
     let url = 'http://www.fb.com/sharer.php?s=100'
     if (shareData.title) {
         url += '&p[title]=' + encodeURIComponent(shareData.title)
@@ -50,7 +55,7 @@ const shareFB = (shareData: ShareData) => {
     popup(url)
 }
 
-const shareTW = (shareData: ShareData) => {
+const shareTW = (shareData: ShareData): void => {
     let url = 'https://twitter.com/intent/tweet?',
         MAX_LEN_TW = 140,
         content = shareData.title,
@@ -78,7 +83,7 @@ const shareTW = (shareData: ShareData) => {
     popup(url)
 }
 
-const popup = (url: string) => {
+const popup = (url: string): void => {
     window.open(url, '', 'toolbar=0,status=0,width=626,height=436')
 }
 
@@ -93,10 +98,10 @@ const Share = ({ isOpen, onCancel }: ShareProps) => {
                 <button
                     onClick={() =>
                         shareVk({
-                            url: 'https://managment-ui-kit.vercel.app/',
-                            title: 'managment-ui-kit',
-                            image: './hello.png',
-                            text: 'Hello! This is my first project!',
+                            url: url,
+                            title: title,
+                            image: image,
+                            text: text,
                         })
                     }
                 >
@@ -105,10 +110,10 @@ const Share = ({ isOpen, onCancel }: ShareProps) => {
                 <button
                     onClick={() =>
                         shareFB({
-                            url: 'https://managment-ui-kit.vercel.app/',
-                            title: 'managment-ui-kit',
-                            image: './hello.png',
-                            text: 'Hello! This is my first project!',
+                            url: url,
+                            title: title,
+                            image: image,
+                            text: text,
                         })
                     }
                 >
@@ -118,10 +123,10 @@ const Share = ({ isOpen, onCancel }: ShareProps) => {
                 <button
                     onClick={() =>
                         shareTW({
-                            url: 'https://managment-ui-kit.vercel.app/',
-                            title: 'managment-ui-kit',
-                            image: './hello.png',
-                            text: 'Hello! This is my first project!',
+                            url: url,
+                            title: title,
+                            image: image,
+                            text: text,
                         })
                     }
                 >
