@@ -39,9 +39,6 @@ const StyledChooseFile = styled.label`
         cursor: pointer;
         top: 0;
         left: 0;
-        //height: 25px;
-        //width: 25px;
-        //pointer-events: none;
     }
 `
 
