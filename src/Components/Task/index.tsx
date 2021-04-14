@@ -99,15 +99,24 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
         onTaskUpdated(newTask)
     }
 
-    const onSaveClick = () => {
+    const onSaveTitleClick = () => {
+        onTitleEdit(titleEdit, task)
+        setShowTitleEdit(false)
+    }
+
+    const onSaveDescriptionClick = () => {
         {
-            showTitleEdit && onTitleEdit(titleEdit, task)
-            setShowTitleEdit(false)
-        }
-        {
-            showDescriptionEdit && onDescriptionEdit(titleEdit, task)
+            onDescriptionEdit(descriptionEdit, task)
             setShowDescriptionEdit(false)
         }
+    }
+
+    const onCancelTitleEdit = () => {
+        setShowTitleEdit(false)
+    }
+
+    const onCancelDescriptionEdit = () => {
+        setShowDescriptionEdit(false)
     }
 
     const userAvatar = user ? user.avatarUrl : task.user.avatar
@@ -135,20 +144,20 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
                                             onTitleEdit(titleEdit, task)
                                             setShowTitleEdit(false)
                                         } else if (event.keyCode == KEY.ESC) {
-                                            setShowTitleEdit(false)
+                                            onCancelTitleEdit()
                                         }
                                     }}
                                 />
                                 <Button
                                     text={'Save'}
                                     size={BUTTON_SIZE.MEDIUM}
-                                    onClick={onSaveClick}
+                                    onClick={onSaveTitleClick}
                                 />
                                 <Button
                                     text={'Cancel'}
                                     backgroundColor={'white'}
                                     size={BUTTON_SIZE.MEDIUM}
-                                    onClick={() => setShowTitleEdit(false)}
+                                    onClick={onCancelTitleEdit}
                                 />
                             </StyledEdit>
                         )}
@@ -218,42 +227,42 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
                                         onDescriptionEdit(descriptionEdit, task)
                                         setShowDescriptionEdit(false)
                                     } else if (event.keyCode == 27) {
-                                        setShowDescriptionEdit(false)
+                                        onCancelDescriptionEdit()
                                     }
                                 }}
                             />
                             <Button
                                 text={'Save'}
                                 size={BUTTON_SIZE.MEDIUM}
-                                onClick={onSaveClick}
+                                onClick={onSaveDescriptionClick}
                             />
                             <Button
                                 text={'Cancel'}
                                 backgroundColor={'white'}
                                 size={BUTTON_SIZE.MEDIUM}
-                                onClick={() => setShowDescriptionEdit(false)}
+                                onClick={onCancelDescriptionEdit}
                             />
                         </StyledEdit>
                     )}
                 </StyledTaskDescriptionText>
                 <StyledTaskFiles>
                     <StyledTaskFilesList>
-                        {task?.files &&
-                            task.files.map(file => (
-                                <StyledTaskFile>
-                                    <File
-                                        key={file.id}
-                                        title={file.title}
-                                        preview={file.preview}
-                                        format={file.format}
-                                        size={file.size}
-                                        onFileDelete={fileId => {
-                                            onFileDelete(task, fileId)
-                                        }}
-                                        id={file.id}
-                                    />
-                                </StyledTaskFile>
-                            ))}
+                        {/*task?.files &&*/}
+                        {task.files.map(file => (
+                            <StyledTaskFile>
+                                <File
+                                    key={file.id}
+                                    title={file.title}
+                                    preview={file.preview}
+                                    format={file.format}
+                                    size={file.size}
+                                    onFileDelete={fileId => {
+                                        onFileDelete(task, fileId)
+                                    }}
+                                    id={file.id}
+                                />
+                            </StyledTaskFile>
+                        ))}
                     </StyledTaskFilesList>
                     {user && (
                         <Button

@@ -5,6 +5,7 @@ const StyledTask = styled.div`
     border-radius: 6px;
     padding: 30px;
     line-height: 1.5;
+    height: min-content;
 `
 
 const StyledTaskHeader = styled.div`
