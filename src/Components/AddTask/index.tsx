@@ -42,19 +42,24 @@ const AddTask = ({ onCancel, onSubmit, isOpen }: ModalWindowProps) => {
                     <Button
                         backgroundColor={'rgb(206, 249, 198)'}
                         onClick={() => {
-                            onSubmit(fieldsForCreateTask)
-                            setFieldsForCreateTask({
-                                title: '',
-                                description: '',
-                            })
+                            if (
+                                fieldsForCreateTask.title.length &&
+                                fieldsForCreateTask.description.length
+                            ) {
+                                onSubmit(fieldsForCreateTask)
+                                setFieldsForCreateTask({
+                                    title: '',
+                                    description: '',
+                                })
+                            }
                         }}
-                        text={'Add a Task'}
+                        text={'Add Task'}
                     />
                 </StyledAddTaskFooter>
             }
             isOpen={isOpen}
             onCancel={onCancel}
-            title={'Add a Task'}
+            title={'Create a task'}
         >
             <div>
                 <StyledAddTaskTitle

@@ -371,6 +371,14 @@ const Layout = () => {
         await updateOpenedTask(newTask)
     }
 
+    const selectTask = (task: TaskType) => {
+        setTask(null)
+
+        setTimeout(() => {
+            setTask(task)
+        }, 300)
+    }
+
     return (
         <StyledLayout>
             <GlobalStyle />
@@ -426,7 +434,7 @@ const Layout = () => {
                             onTaskChecked={editTask}
                             title={'Backlog'}
                             tasks={backlogTasks}
-                            onTaskSelected={task => setTask(task)}
+                            onTaskSelected={selectTask}
                             user={user}
                             isLoading={isTasksLoading}
                         />
@@ -441,7 +449,7 @@ const Layout = () => {
                             onTaskChecked={editTask}
                             title={'To Do'}
                             tasks={toDoTasks}
-                            onTaskSelected={task => setTask(task)}
+                            onTaskSelected={selectTask}
                             user={user}
                             isLoading={isTasksLoading}
                         />
