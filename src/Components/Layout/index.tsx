@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Switch, BrowserRouter, HashRouter, Route } from 'react-router-dom'
 
 import { Sidebar } from '../Sidebar'
 import { Header } from '../Header'
@@ -39,6 +40,7 @@ import { getUser, User } from 'services/user'
 import { firebase } from 'services/firebase'
 
 import { TaskPage } from 'Pages/TaskPage'
+import { ROUTES } from '../../services/route'
 
 const sidebarLists: ListType[] = [
     {
@@ -232,73 +234,92 @@ const Layout = () => {
     }, [])
 
     return (
-        <StyledLayout>
-            <GlobalStyle />
-            <Sidebar
-                onLogin={() => authorization()}
-                onLogOut={logOut}
-                onItemAddClick={listId => {
-                    if (listId === SIDEBAR_LIST.PROJECTS) {
-                        setShowAddProject(true)
-                    } else if (listId === SIDEBAR_LIST.TEAMS) {
-                        setShowAddTeam(true)
-                    }
-                }}
-                title={'Projectus'}
-                icon={projectIcon}
-                search={searchIcon}
-                lists={sidebarItems}
-                statistics={{
-                    completed: completedTasksCount,
-                    opened: openedTasksCount,
-                }}
-                user={user}
-            />
-
-            <StyledLayoutMain>
-                <Header
-                    icon={redesignIcon}
-                    creators={[
-                        { avatar: userAvatar2, id: 'useravatar2' },
-                        { avatar: userAvatar3, id: 'useravatar3' },
-                        { avatar: userAvatar4, id: 'useravatar4' },
-                    ]}
-                    title={'Website Redesign'}
-                    menu={[
-                        { title: 'Tasks', id: '345' },
-                        { title: 'Kanban', id: '5555564' },
-                        { title: 'Activity', id: '3434343' },
-                        { title: 'Calendar', id: '34343' },
-                        { title: 'Files', id: '343488888' },
-                    ]}
-                    onShareWindowOpen={() => setShowShare(true)}
+        <BrowserRouter>
+            <StyledLayout>
+                <GlobalStyle />
+                <Sidebar
+                    onLogin={() => authorization()}
+                    onLogOut={logOut}
+                    onItemAddClick={listId => {
+                        if (listId === SIDEBAR_LIST.PROJECTS) {
+                            setShowAddProject(true)
+                        } else if (listId === SIDEBAR_LIST.TEAMS) {
+                            setShowAddTeam(true)
+                        }
+                    }}
+                    title={'Projectus'}
+                    icon={projectIcon}
+                    search={searchIcon}
+                    lists={sidebarItems}
+                    statistics={{
+                        completed: completedTasksCount,
+                        opened: openedTasksCount,
+                    }}
+                    user={user}
                 />
 
-                <StyledLayoutContent>
-                    <TaskPage user={user} />
-                </StyledLayoutContent>
-            </StyledLayoutMain>
-            <AddProject
-                isOpen={isShowAddProject}
-                onCancel={() => setShowAddProject(false)}
-                onSubmit={(fieldsForCreateProject, id) =>
-                    addNewProjectToList(
-                        sidebarItems,
-                        fieldsForCreateProject,
-                        id,
-                    )
-                }
-            />
-            <AddTeam
-                isOpen={isShowAddTeam}
-                onCancel={() => setShowAddTeam(false)}
-                onSubmit={(fieldsForCreateTeam, id) =>
-                    addNewTeamToList(sidebarItems, fieldsForCreateTeam, id)
-                }
-            />
+                <StyledLayoutMain>
+                    <Header
+                        icon={redesignIcon}
+                        creators={[
+                            { avatar: userAvatar2, id: 'useravatar2' },
+                            { avatar: userAvatar3, id: 'useravatar3' },
+                            { avatar: userAvatar4, id: 'useravatar4' },
+                        ]}
+                        title={'Website Redesign'}
+                        menu={[
+                            { title: 'Tasks', path: ROUTES.TASKS },
+                            { title: 'Kanban', path: '/kanban' },
+                            {
+                                title: 'Activity',
+                                path: '/activity',
+                            },
+                            {
+                                title: 'Calendar',
+                                path: '/calendar',
+                            },
+                            { title: 'Files', path: ROUTES.FILES },
+                        ]}
+                        onShareWindowOpen={() => setShowShare(true)}
+                    />
 
-            <Share isOpen={isShowShare} onCancel={() => setShowShare(false)} />
-        </StyledLayout>
+                    <StyledLayoutContent>
+                        <Switch>
+                            <Route path={[ROUTES.TASKS, '/']} exact>
+                                <TaskPage user={user} />
+                            </Route>
+
+                            <Route path={ROUTES.FILES} exact>
+                                <div>Files</div>
+                            </Route>
+                        </Switch>
+                    </StyledLayoutContent>
+                </StyledLayoutMain>
+                <AddProject
+                    isOpen={isShowAddProject}
+                    onCancel={() => setShowAddProject(false)}
+                    onSubmit={(fieldsForCreateProject, id) =>
+                        addNewProjectToList(
+                            sidebarItems,
+                            fieldsForCreateProject,
+                            id,
+                        )
+                    }
+                />
+                <AddTeam
+                    isOpen={isShowAddTeam}
+                    onCancel={() => setShowAddTeam(false)}
+                    onSubmit={(fieldsForCreateTeam, id) =>
+                        addNewTeamToList(sidebarItems, fieldsForCreateTeam, id)
+                    }
+                />
+
+                <Share
+                    isOpen={isShowShare}
+                    onCancel={() => setShowShare(false)}
+                />
+            </StyledLayout>
+        </BrowserRouter>
     )
 }
 
