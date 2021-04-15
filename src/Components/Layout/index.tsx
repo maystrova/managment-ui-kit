@@ -41,6 +41,8 @@ import { firebase } from 'services/firebase'
 
 import { TaskPage } from 'Pages/TaskPage'
 import { ROUTES } from '../../services/route'
+import { StyledFilesPage } from '../../Pages/FilesPage/style'
+import { FilesPage } from '../../Pages/FilesPage'
 
 const sidebarLists: ListType[] = [
     {
@@ -290,7 +292,7 @@ const Layout = () => {
                             </Route>
 
                             <Route path={ROUTES.FILES} exact>
-                                <div>Files</div>
+                                <FilesPage />
                             </Route>
                         </Switch>
                     </StyledLayoutContent>
