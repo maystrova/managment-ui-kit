@@ -39,11 +39,10 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
 
             const fileUrl = await snapshot.ref.getDownloadURL()
             const fileMetaData = await snapshot.ref.getMetadata()
-            console.log(fileMetaData)
 
             const { protocol, host, pathname } = new URL(fileUrl)
             const preparedFile: FileType = {
-                preview: `${protocol}${host}${pathname}?alt=media`,
+                preview: `${protocol}//${host}${pathname}?alt=media`,
                 title: fileMetaData.name,
                 size: `${fileMetaData.size.toString()} KB`,
                 format: '',

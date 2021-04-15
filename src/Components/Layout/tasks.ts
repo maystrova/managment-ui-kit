@@ -1,17 +1,18 @@
-import userAvatar1 from '../Layout/pics/userpic1.png'
-import userAvatar7 from '../Layout/pics/userpic7.png'
-import userAvatar8 from '../Layout/pics/userpic8.png'
-import userAvatar9 from '../Layout/pics/userpic9.png'
-import userAvatar5 from '../Layout/pics/userpic5.png'
-import userAvatar6 from '../Layout/pics/userpic6.png'
 import { TASK_TYPE, TaskType } from '../Task/types'
+import { TAG_TYPE } from '../Tag'
+
+import commentAvatar2 from './pics/commentpic3.png'
+import commentAvatar3 from './pics/commentpic2.png'
+import filePreview from './pics/file.png'
+import userAvatar1 from '../Layout/pics/userpic1.png'
 import userAvatar2 from './pics/userpic2.png'
 import userAvatar3 from './pics/userpic3.png'
 import userAvatar4 from './pics/userpic4.png'
-import commentAvatar3 from './pics/commentpic2.png'
-import commentAvatar2 from './pics/commentpic3.png'
-import filePreview from './pics/file.png'
-import { TAG_TYPE } from '../Tag'
+import userAvatar5 from '../Layout/pics/userpic5.png'
+import userAvatar6 from '../Layout/pics/userpic6.png'
+import userAvatar7 from '../Layout/pics/userpic7.png'
+import userAvatar8 from '../Layout/pics/userpic8.png'
+import userAvatar9 from '../Layout/pics/userpic9.png'
 
 export type Task = {
     title: string

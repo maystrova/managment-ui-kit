@@ -9,8 +9,6 @@ const StyledLayoutMain = styled.div`
 `
 
 const StyledLayoutContent = styled.div`
-    display: flex;
-    background-color: #eeebe5;
     padding: 20px;
 `
 const GlobalStyle = createGlobalStyle`

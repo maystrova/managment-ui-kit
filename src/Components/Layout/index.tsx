@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { firebase } from 'services/firebase'
+
 import { Sidebar } from '../Sidebar'
 import { Header } from '../Header'
-import { Task } from 'Components/Task'
-import { TASK_TYPE, TaskType } from '../Task/types'
-import { TasksList } from '../TasksList'
+
 import {
     GlobalStyle,
     StyledLayout,
@@ -12,41 +10,35 @@ import {
     StyledLayoutMain,
 } from './style'
 
-import { SIDEBAR_LIST, tasks } from './tasks'
+import { SIDEBAR_LIST } from './tasks'
 
-import projectIcon from '../Layout/pics/navigation-icon.svg'
-import searchIcon from '../Layout/pics/search-icon.svg'
+import backenderAvatar1 from '../Layout/pics/backend1.svg'
+import backenderAvatar2 from '../Layout/pics/backend2.svg'
+import communicationIcon from '../Layout/pics/communication.svg'
+import crmIcon from '../Layout/pics/crm.svg'
+import dashboardIcon from '../Layout/pics/dashboard.svg'
 import designerAvatar1 from '../Layout/pics/designers1.svg'
 import designerAvatar2 from '../Layout/pics/designers2.svg'
 import designerAvatar3 from '../Layout/pics/designers3.svg'
-import backenderAvatar1 from '../Layout/pics/backend1.svg'
-import backenderAvatar2 from '../Layout/pics/backend2.svg'
 import frontenderAvatar1 from '../Layout/pics/frontend1.svg'
 import frontenderAvatar2 from '../Layout/pics/frontend2.svg'
 import frontenderAvatar3 from '../Layout/pics/frontend3.svg'
 import frontenderAvatar4 from '../Layout/pics/frontend4.svg'
-import dashboardIcon from '../Layout/pics/dashboard.svg'
-import crmIcon from '../Layout/pics/crm.svg'
+import projectIcon from '../Layout/pics/navigation-icon.svg'
 import redesignIcon from '../Layout/pics/website.svg'
-import communicationIcon from '../Layout/pics/communication.svg'
+import searchIcon from '../Layout/pics/search-icon.svg'
 import userAvatar2 from '../Layout/pics/userpic2.png'
-import userAvatar1 from '../Layout/pics/userpic1.png'
 import userAvatar3 from '../Layout/pics/userpic3.png'
 import userAvatar4 from '../Layout/pics/userpic4.png'
-import userAvatar5 from '../Layout/pics/userpic5.png'
-import commentAvatar3 from '../Layout/pics/commentpic2.png'
-import commentAvatar2 from '../Layout/pics/commentpic3.png'
-import filePreview from '../Layout/pics/file.png'
+
 import { ListType, SidebarItem } from '../List/types'
-import { AddTask, FieldsForCreateTask } from '../AddTask'
 import { AddProject, FieldsForCreateProject } from '../AddProject'
 import { Share } from '../Share'
 import { AddTeam, FieldsForCreateTeam } from '../AddTeam'
-import { TAG_TYPE } from '../Tag'
-import { getUser, User } from '../../services/user'
-import { createTask, getAllTasks, updateTask } from '../../services/task'
-import { AddFile } from '../AddFile'
-import { FileType } from '../File/type'
+import { getUser, User } from 'services/user'
+import { firebase } from 'services/firebase'
+
+import { TaskPage } from 'Pages/TaskPage'
 
 const sidebarLists: ListType[] = [
     {
@@ -125,109 +117,21 @@ const sidebarLists: ListType[] = [
     },
 ]
 
-const DEFAULT_TASK = {
-    title: 'Find top 5 customer requests',
-    addedBy: 'Kristin A',
-    createdAt: '07.01.2020',
-    isChecked: false,
-    assignTo: 'Linzell Bowman',
-    dueOn: 'Tue, Dec 25',
-    type: TASK_TYPE.BACKLOG,
-    tag: TAG_TYPE.MARKETING,
-    followers: [userAvatar2, userAvatar3, userAvatar4, userAvatar5],
-    description:
-        'Task Descriptions are used during project planning, project execution and project control. During project planning the task descriptions are used for scope planning and creating estimates. During project execution the task description is used by those doing the activities to ensure they are doing the work correctly.',
-    discussions: [
-        {
-            name: 'Helena Brauer',
-            profession: 'Designer',
-            date: 'Yesterday at 12:37pm',
-            text:
-                'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
-            avatar: commentAvatar3,
-            id: '432455756',
-        },
-        {
-            name: 'Prescott MacCaffery',
-            profession: 'Developer',
-            date: 'Yesterday at 12:37pm',
-            text:
-                '@Helena Software quality assurance activity in which one or several humans check a program mainly',
-            avatar: commentAvatar2,
-            id: '235345446754',
-        },
-    ],
-    user: { avatar: userAvatar1 },
-    files: [
-        {
-            title: 'Redesign Brief',
-            format: '.pdf',
-            preview: filePreview,
-            size: '159 kb',
-            id: 1,
-        },
-        {
-            title: 'Header',
-            format: '.png',
-            preview: filePreview,
-            size: '129 kb',
-            id: 2,
-        },
-    ],
-}
-
-interface CreationTask {
-    isModalOpen: boolean
-    taskTypeForCreation: TASK_TYPE
-}
-
 const Layout = () => {
     const [user, setUser] = useState<User | null>(null)
-    const [task, setTask] = useState<TaskType | null>(null)
-    const [isShowAddTask, setShowAddTask] = useState<CreationTask>({
-        isModalOpen: false,
-        taskTypeForCreation: TASK_TYPE.BACKLOG,
-    })
-    const [showAddFile, setShowAddFile] = useState<boolean>(false)
 
     const [isShowAddProject, setShowAddProject] = useState<boolean>(false)
     const [isShowAddTeam, setShowAddTeam] = useState<boolean>(false)
     const [isShowShare, setShowShare] = useState<boolean>(false)
 
-    const [tasksList, setTasksList] = useState<TaskType[]>([])
-
     const [sidebarItems, setProjectsList] = useState<ListType[]>(sidebarLists)
 
-    const [isTasksLoading, setTasksLoading] = useState<boolean>(false)
+    // const completedTasksCount: number = tasksList.filter(task => task.isChecked)
+    //     .length
+    // const openedTasksCount: number = tasksList.length - completedTasksCount
 
-    const completedTasksCount: number = tasksList.filter(task => task.isChecked)
-        .length
-    const openedTasksCount: number = tasksList.length - completedTasksCount
-
-    const addNewTaskToList = async (
-        task: TaskType,
-        fieldsForCreateTask: FieldsForCreateTask,
-        tasksList: TaskType[],
-        taskType: TASK_TYPE,
-    ): Promise<void> => {
-        const newTask: TaskType = {
-            ...task,
-            title: fieldsForCreateTask.title || 'New Task',
-            description: fieldsForCreateTask.description,
-            type: taskType,
-        }
-
-        if (user) {
-            await createTask(newTask, user)
-        }
-
-        const newTasks = [...tasksList, newTask]
-        setTasksList(newTasks)
-        setShowAddTask({
-            isModalOpen: false,
-            taskTypeForCreation: TASK_TYPE.BACKLOG,
-        })
-    }
+    const completedTasksCount: number = 1
+    const openedTasksCount: number = 1
 
     const getUniqueId = (title: string): string => {
         const timestamp = Date.now()
@@ -303,8 +207,6 @@ const Layout = () => {
                     JSON.stringify(preparedUser),
                 )
 
-                setTask(null)
-                setTasksList([])
                 setUser(preparedUser)
                 // ...
             })
@@ -316,9 +218,6 @@ const Layout = () => {
 
         if (storageUser) {
             setUser(storageUser)
-        } else {
-            setTask(DEFAULT_TASK)
-            setTasksList(tasks)
         }
     }
 
@@ -331,53 +230,6 @@ const Layout = () => {
     useEffect(() => {
         getStateUser()
     }, [])
-
-    const setServerTasks = async (user: User): Promise<void> => {
-        setTasksLoading(true)
-        const clientTasks = await getAllTasks(user)
-        setTasksList(clientTasks)
-        setTasksLoading(false)
-    }
-
-    useEffect(() => {
-        if (user) {
-            setServerTasks(user)
-        }
-    }, [user])
-
-    const toDoTasks = tasksList.filter(task => task.type === TASK_TYPE.TODO)
-    const backlogTasks = tasksList.filter(
-        task => task.type === TASK_TYPE.BACKLOG,
-    )
-
-    const editTask = async (task: TaskType) => {
-        if (user) {
-            await updateTask(task, user)
-            await setServerTasks(user)
-        }
-    }
-
-    const updateOpenedTask = async (task: TaskType) => {
-        await editTask(task)
-        setTask(task)
-    }
-
-    const addFilesToTask = async (task: TaskType, files: FileType[]) => {
-        const newTask: TaskType = {
-            ...task,
-            files: [...task.files, ...files],
-        }
-
-        await updateOpenedTask(newTask)
-    }
-
-    const selectTask = (task: TaskType) => {
-        setTask(null)
-
-        setTimeout(() => {
-            setTask(task)
-        }, 300)
-    }
 
     return (
         <StyledLayout>
@@ -423,65 +275,9 @@ const Layout = () => {
                 />
 
                 <StyledLayoutContent>
-                    <div>
-                        <TasksList
-                            onCreatedTaskClicked={() =>
-                                setShowAddTask({
-                                    isModalOpen: true,
-                                    taskTypeForCreation: TASK_TYPE.BACKLOG,
-                                })
-                            }
-                            onTaskChecked={editTask}
-                            title={'Backlog'}
-                            tasks={backlogTasks}
-                            onTaskSelected={selectTask}
-                            user={user}
-                            isLoading={isTasksLoading}
-                        />
-
-                        <TasksList
-                            onCreatedTaskClicked={() =>
-                                setShowAddTask({
-                                    isModalOpen: true,
-                                    taskTypeForCreation: TASK_TYPE.TODO,
-                                })
-                            }
-                            onTaskChecked={editTask}
-                            title={'To Do'}
-                            tasks={toDoTasks}
-                            onTaskSelected={selectTask}
-                            user={user}
-                            isLoading={isTasksLoading}
-                        />
-                    </div>
-
-                    {task && (
-                        <Task
-                            task={task}
-                            onTaskUpdated={updateOpenedTask}
-                            user={user}
-                            onAddFileClick={() => setShowAddFile(true)}
-                        />
-                    )}
+                    <TaskPage user={user} />
                 </StyledLayoutContent>
             </StyledLayoutMain>
-            <AddTask
-                isOpen={isShowAddTask.isModalOpen}
-                onCancel={() =>
-                    setShowAddTask({
-                        isModalOpen: false,
-                        taskTypeForCreation: TASK_TYPE.BACKLOG,
-                    })
-                }
-                onSubmit={fieldsForCreateTask =>
-                    addNewTaskToList(
-                        DEFAULT_TASK,
-                        fieldsForCreateTask,
-                        tasksList,
-                        isShowAddTask.taskTypeForCreation,
-                    )
-                }
-            />
             <AddProject
                 isOpen={isShowAddProject}
                 onCancel={() => setShowAddProject(false)}
@@ -502,19 +298,6 @@ const Layout = () => {
             />
 
             <Share isOpen={isShowShare} onCancel={() => setShowShare(false)} />
-            {showAddFile && (
-                <AddFile
-                    onCancel={() => {
-                        setShowAddFile(false)
-                    }}
-                    onSubmit={files => {
-                        if (task) {
-                            addFilesToTask(task, files)
-                            setShowAddFile(false)
-                        }
-                    }}
-                />
-            )}
         </StyledLayout>
     )
 }
