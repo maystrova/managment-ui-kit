@@ -12,21 +12,17 @@ const StyledFilesPageHeader = styled.div`
 
 const StyledFilesPageItems = styled.div`
     border-bottom: 1px solid #ececec;
-`
-
-const StyledFilesPageRow = styled.ul`
-    list-style-type: none;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    padding: 0;
-    text-align: center;
     grid-template-rows: 82px;
+    text-align: center;
     align-items: center;
+
+    & button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
 `
 
-export {
-    StyledFilesPage,
-    StyledFilesPageHeader,
-    StyledFilesPageRow,
-    StyledFilesPageItems,
-}
+export { StyledFilesPage, StyledFilesPageHeader, StyledFilesPageItems }

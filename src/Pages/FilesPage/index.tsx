@@ -1,38 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     StyledFilesPage,
     StyledFilesPageHeader,
-    StyledFilesPageRow,
     StyledFilesPageItems,
 } from './style'
+import { getAllFiles } from 'services/files'
+import { User } from 'services/user'
+import { FileType } from '../../Components/File/type'
+import { FileRow } from '../../Components/FileRow'
 import { TAG_TYPE } from '../../Components/Tag'
-import { filesType } from './types'
 
 export interface FilesPageProps {
-    files?: filesType[]
+    user: User | null
 }
 
-const FilesPage = ({ files }: FilesPageProps) => {
+const FilesPage = ({ user }: FilesPageProps) => {
+    const [files, setFiles] = useState<FileType[]>([])
+
+    const getFiles = async (user: User) => {
+        const files = await getAllFiles(user)
+        setFiles(files)
+    }
+
+    console.log(files)
+
+    useEffect(() => {
+        if (user) getFiles(user)
+    }, [user])
+
     return (
         <StyledFilesPage>
             <StyledFilesPageHeader>
                 <StyledFilesPageItems>
-                    <StyledFilesPageRow>
-                        <li>Image</li>
-                        <li>Name</li>
-                        <li>Size</li>
-                        <li>Uploaded by</li>
-                        <li>Tag</li>
-                        <li>Date</li>
-                    </StyledFilesPageRow>
+                    <div>Image</div>
+                    <div>Name</div>
+                    <div>Size</div>
+                    <div>Uploaded by</div>
+                    <div>Tag</div>
+                    <div>Date</div>
                 </StyledFilesPageItems>
             </StyledFilesPageHeader>
-
-            {/*<StyledFilesPageItems>*/}
-            {/*    {files.map(file => {*/}
-            {/*        file.title*/}
-            {/*    })}*/}
-            {/*</StyledFilesPageItems>*/}
+            {files.map(file => (
+                <FileRow
+                    onButtonClick={() => {}}
+                    avatar={user?.avatarUrl}
+                    image={file.preview}
+                    name={file.title}
+                    size={file.size}
+                    uploadedBy={user?.fullName}
+                    tag={TAG_TYPE.DEVELOPMENT}
+                    date={file.date}
+                />
+            ))}
         </StyledFilesPage>
     )
 }

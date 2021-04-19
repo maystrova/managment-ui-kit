@@ -292,7 +292,7 @@ const Layout = () => {
                             </Route>
 
                             <Route path={ROUTES.FILES} exact>
-                                <FilesPage />
+                                <FilesPage user={user} />
                             </Route>
                         </Switch>
                     </StyledLayoutContent>

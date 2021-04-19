@@ -47,6 +47,7 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
                 size: `${fileMetaData.size.toString()} KB`,
                 format: '',
                 id: parseInt(fileMetaData.generation),
+                date: `${new Date(Date.now()).toDateString()}`,
             }
             filesData.push(preparedFile)
         }

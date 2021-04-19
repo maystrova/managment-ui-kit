@@ -1,7 +1,12 @@
 import React from 'react'
 import { FileType } from './type'
 import { Button, BUTTON_SIZE } from '../Button'
-import { StyledFile, StyledFilePreview, StyledFileSizeInfo } from './style'
+import {
+    StyledFile,
+    StyledFilePreview,
+    StyledFileSizeInfo,
+    StyledFileDate,
+} from './style'
 
 interface FileProps extends FileType {
     onFileDelete: (fileId: number) => void
@@ -14,6 +19,7 @@ const File = ({
     preview,
     format,
     id,
+    date,
 }: FileProps) => {
     return (
         <StyledFile>
@@ -25,6 +31,7 @@ const File = ({
                     {title}
                     {format}
                 </span>
+                <StyledFileDate>{date}</StyledFileDate>
                 <div>
                     <StyledFileSizeInfo>{size}</StyledFileSizeInfo>
                     <Button
