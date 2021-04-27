@@ -9,7 +9,7 @@ import {
 } from './style'
 
 interface FileProps extends FileType {
-    onFileDelete: (fileId: number) => void
+    onFileDelete: (fileId: string) => void
 }
 
 const File = ({

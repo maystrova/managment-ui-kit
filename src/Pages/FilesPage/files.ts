@@ -8,7 +8,7 @@ export const files: FileType[] = [
         format: '.pdf',
         preview: filePreview,
         size: '159 kb',
-        id: 3,
+        id: '3',
         taskId: '',
     },
     {
@@ -16,7 +16,7 @@ export const files: FileType[] = [
         format: '.png',
         preview: filePreview,
         size: '129 kb',
-        id: 4,
+        id: '4',
         taskId: '',
     },
 ]

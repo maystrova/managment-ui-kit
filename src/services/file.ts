@@ -4,22 +4,31 @@ import { User } from 'services/user'
 import { FileType } from 'Components/File/types'
 
 const getAllFiles = async (user: User): Promise<FileType[]> => {
-    const serverTasksRef = firebase.database().ref(`users/${user.id}/files/`)
-    const snapshot = await serverTasksRef.once('value')
-    const serverTasks = snapshot.val()
+    const serverFilesRef = firebase.database().ref(`users/${user.id}/files/`)
+    const snapshot = await serverFilesRef.once('value')
+    const serverFiles = snapshot.val()
     let files: FileType[] = []
 
-    for (const taskId in serverTasks) {
-        if (Boolean(serverTasks[taskId]?.files?.length)) {
-            files = [...files, ...serverTasks[taskId].files]
-        }
+    for (const fileId in serverFiles) {
+        files.push({
+            preview: serverFiles[fileId].preview,
+            title: serverFiles[fileId].title,
+            format: serverFiles[fileId].format,
+            size: serverFiles[fileId].size,
+            id: fileId,
+            date: serverFiles[fileId].date,
+            taskId: serverFiles[fileId].taskId,
+        })
     }
 
     return files
 }
 
-const writeFile = async (file: FileType, user: User) => {
-    await firebase.database().ref(`users/${user.id}/files`).push(file)
+const writeFile = async (
+    file: FileType,
+    user: User,
+): Promise<string | null> => {
+    return firebase.database().ref(`users/${user.id}/files`).push(file).key
 }
 
 export { getAllFiles, writeFile }

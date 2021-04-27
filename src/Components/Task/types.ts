@@ -31,7 +31,7 @@ export type TaskType = {
     description: string
     discussions: DiscussionType[]
     user: UserType
-    files: FileType[]
+    files: string[]
     type: TASK_TYPE
     id: string
 }

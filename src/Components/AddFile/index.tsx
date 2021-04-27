@@ -13,7 +13,7 @@ import { StyledAddFile, StyledAddFileFooter } from './style'
 
 export interface AddFileProps {
     onCancel: () => void
-    onSubmit: () => void
+    onSubmit: (fileIds: string[]) => void
     taskId: string
     user: User
 }
@@ -21,6 +21,7 @@ export interface AddFileProps {
 const AddFile = ({ onCancel, onSubmit, taskId, user }: AddFileProps) => {
     const [drag, setDrag] = useState<boolean>(false)
     const [files, setFiles] = useState<FileType[]>([])
+    const [fileIds, setFileIds] = useState<string[]>([])
     const [isLoading, setLoading] = useState<boolean>(false)
 
     const onDragStart = (e: any): void => {
@@ -53,7 +54,7 @@ const AddFile = ({ onCancel, onSubmit, taskId, user }: AddFileProps) => {
                 title: fileMetaData.name,
                 size: `${fileMetaData.size.toString()} KB`,
                 format: '',
-                id: parseInt(fileMetaData.generation),
+                id: fileMetaData.generation,
                 date: `${new Date(Date.now()).toDateString()}`,
                 taskId: taskId,
             }
@@ -66,20 +67,30 @@ const AddFile = ({ onCancel, onSubmit, taskId, user }: AddFileProps) => {
     const writeFilesToFireStore = async (
         files: FileType[],
         user: User,
-    ): Promise<void> => {
+    ): Promise<string[]> => {
+        let fileIds = []
+
         for (const file of files) {
             try {
-                await writeFile(file, user)
+                const fileId = await writeFile(file, user)
+
+                if (fileId) {
+                    fileIds.push(fileId)
+                }
             } catch (error) {
                 console.error(error)
             }
         }
+
+        return fileIds
     }
 
     const uploadFilesHandler = async (files: File[], user: User) => {
         const filesData = await uploadFiles(files)
-        await writeFilesToFireStore(filesData, user)
+        const fileIds = await writeFilesToFireStore(filesData, user)
+
         setFiles(filesData)
+        setFileIds(fileIds)
 
         setLoading(false)
         setDrag(false)
@@ -151,7 +162,7 @@ const AddFile = ({ onCancel, onSubmit, taskId, user }: AddFileProps) => {
                                 text={'Upload to task'}
                                 backgroundColor={'#CEF9C6'}
                                 size={BUTTON_SIZE.LARGE}
-                                onClick={onSubmit}
+                                onClick={() => onSubmit(fileIds)}
                             />
                         </StyledAddFileFooter>
                     )}

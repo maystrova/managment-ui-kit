@@ -13,7 +13,6 @@ import { DEFAULT_TASK } from './defaultTask'
 import { tasks } from 'Components/Layout/tasks'
 
 import { StyledTaskPage, StyledTaskPageList } from './style'
-import { FileType } from 'Components/File/types'
 
 interface CreationTask {
     isModalOpen: boolean
@@ -66,10 +65,14 @@ const TaskPage = ({ user }: TaskPageProps) => {
         setTask(task)
     }
 
-    const addFilesToTask = async (task: TaskType, files: FileType[]) => {
+    const addFilesToTask = async (task: TaskType, filesIds: string[]) => {
+        const files = Boolean(task?.files?.length)
+            ? [...task?.files, ...filesIds]
+            : filesIds
+
         const newTask: TaskType = {
             ...task,
-            files: [...task.files, ...files],
+            files,
         }
 
         await updateOpenedTask(newTask)
@@ -159,7 +162,8 @@ const TaskPage = ({ user }: TaskPageProps) => {
                     onCancel={() => {
                         setShowAddFile(false)
                     }}
-                    onSubmit={() => {
+                    onSubmit={fileIds => {
+                        addFilesToTask(task, fileIds)
                         setShowAddFile(false)
                     }}
                 />

@@ -3,7 +3,6 @@ import { TAG_TYPE } from '../Tag'
 
 import commentAvatar2 from './pics/commentpic3.png'
 import commentAvatar3 from './pics/commentpic2.png'
-import filePreview from './pics/file.png'
 import userAvatar1 from '../Layout/pics/userpic1.png'
 import userAvatar2 from './pics/userpic2.png'
 import userAvatar3 from './pics/userpic3.png'
@@ -61,24 +60,7 @@ export const tasks: TaskType[] = [
                 id: '234565745',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 3,
-                taskId: '1',
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 4,
-                taskId: '1',
-            },
-        ],
+        files: [],
     },
     {
         id: '2',
@@ -114,24 +96,7 @@ export const tasks: TaskType[] = [
                 id: '62342352554333',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 1,
-                taskId: '1',
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 2,
-                taskId: '1',
-            },
-        ],
+        files: [],
     },
     {
         id: '4',
@@ -167,24 +132,7 @@ export const tasks: TaskType[] = [
                 id: '111111111',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 1,
-                taskId: '1',
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 1000,
-                taskId: '1',
-            },
-        ],
+        files: [],
     },
     {
         id: '3',
@@ -220,24 +168,7 @@ export const tasks: TaskType[] = [
                 id: '545454545454',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 99999,
-                taskId: '1',
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 234234,
-                taskId: '1',
-            },
-        ],
+        files: [],
     },
     {
         id: '5',
@@ -274,24 +205,7 @@ export const tasks: TaskType[] = [
                 id: '21211212121212',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 3245,
-                taskId: '1',
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 2345235465,
-                taskId: '1',
-            },
-        ],
+        files: [],
     },
     {
         id: '6',
@@ -327,23 +241,6 @@ export const tasks: TaskType[] = [
                 id: '7272772727272',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 345,
-                taskId: '1',
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 2345742345,
-                taskId: '1',
-            },
-        ],
+        files: [],
     },
 ]

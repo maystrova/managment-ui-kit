@@ -22,7 +22,7 @@ const FilesPage = ({ user }: FilesPageProps) => {
         setFiles(files)
     }
 
-    const onFileDelete = (fileIdForDelete: number): void => {
+    const onFileDelete = (fileIdForDelete: string): void => {
         console.log('fileIdForDelete', fileIdForDelete)
         // const newFiles: FileType[] = files.filter(
         //     file => file.id !== fileIdForDelete,

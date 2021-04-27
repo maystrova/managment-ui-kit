@@ -44,22 +44,5 @@ export const DEFAULT_TASK: TaskType = {
         },
     ],
     user: { avatar: userAvatar1 },
-    files: [
-        {
-            title: 'Redesign Brief',
-            format: '.pdf',
-            preview: filePreview,
-            size: '159 kb',
-            id: Date.now(),
-            taskId: '1',
-        },
-        {
-            title: 'Header',
-            format: '.png',
-            preview: filePreview,
-            size: '129 kb',
-            id: Date.now(),
-            taskId: '1',
-        },
-    ],
+    files: [],
 }
