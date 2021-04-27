@@ -12,7 +12,11 @@ const StyledFileRowUploadedBy = styled.div`
     align-items: center;
 `
 
-const StyledFileRowActions = styled.button`
+const StyledFileRowActions = styled.div`
+    position: relative;
+`
+
+const StyledFileRowActionsButton = styled.button`
     width: 99px;
     height: 40px;
     border-radius: 20px;
@@ -27,6 +31,12 @@ const StyledFileRowActions = styled.button`
     }
 `
 
+const StyledFileRowDeleteFileButton = styled.div`
+    position: absolute;
+    bottom: -25px;
+    left: 10px;
+`
+
 const StyledFileRowDownload = styled.button`
     background: none;
 `
@@ -34,6 +44,8 @@ const StyledFileRowDownload = styled.button`
 export {
     StyledFileRowPreview,
     StyledFileRowUploadedBy,
-    StyledFileRowActions,
+    StyledFileRowActionsButton,
     StyledFileRowDownload,
+    StyledFileRowDeleteFileButton,
+    StyledFileRowActions,
 }

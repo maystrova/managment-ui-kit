@@ -4,11 +4,11 @@ import {
     StyledFilesPageHeader,
     StyledFilesPageItems,
 } from './style'
-import { getAllFiles } from 'services/files'
+import { getAllFiles } from 'services/file'
 import { User } from 'services/user'
-import { FileType } from '../../Components/File/type'
-import { FileRow } from '../../Components/FileRow'
-import { TAG_TYPE } from '../../Components/Tag'
+import { FileType } from 'Components/File/types'
+import { FileRow } from 'Components/FileRow'
+import { TAG_TYPE } from 'Components/Tag'
 
 export interface FilesPageProps {
     user: User | null
@@ -22,7 +22,17 @@ const FilesPage = ({ user }: FilesPageProps) => {
         setFiles(files)
     }
 
-    console.log(files)
+    const onFileDelete = (fileIdForDelete: number): void => {
+        console.log('fileIdForDelete', fileIdForDelete)
+        // const newFiles: FileType[] = files.filter(
+        //     file => file.id !== fileIdForDelete,
+        // )
+        // setFiles(newFiles)
+    }
+
+    const onFileDownload = () => {
+        window.open('')
+    }
 
     useEffect(() => {
         if (user) getFiles(user)
@@ -42,8 +52,10 @@ const FilesPage = ({ user }: FilesPageProps) => {
             </StyledFilesPageHeader>
             {files.map(file => (
                 <FileRow
-                    onButtonClick={() => {}}
+                    onDownload={onFileDownload}
+                    onFileDelete={() => onFileDelete(file.id)}
                     avatar={user?.avatarUrl}
+                    key={file.id}
                     image={file.preview}
                     name={file.title}
                     size={file.size}

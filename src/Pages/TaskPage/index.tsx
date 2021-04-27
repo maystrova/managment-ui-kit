@@ -4,16 +4,16 @@ import { TasksList } from 'Components/TasksList'
 import { TASK_TYPE, TaskType } from 'Components/Task/types'
 import { Task } from 'Components/Task'
 import { AddFile } from 'Components/AddFile'
-import { FileType } from 'Components/File/type'
 import { AddTask, FieldsForCreateTask } from 'Components/AddTask'
 
 import { User } from 'services/user'
 import { createTask, getAllTasks, updateTask } from 'services/task'
 
 import { DEFAULT_TASK } from './defaultTask'
-import { tasks } from '../../Components/Layout/tasks'
+import { tasks } from 'Components/Layout/tasks'
 
 import { StyledTaskPage, StyledTaskPageList } from './style'
+import { FileType } from 'Components/File/types'
 
 interface CreationTask {
     isModalOpen: boolean
@@ -152,16 +152,15 @@ const TaskPage = ({ user }: TaskPageProps) => {
                 />
             )}
 
-            {showAddFile && (
+            {showAddFile && task && user && (
                 <AddFile
+                    user={user}
+                    taskId={task.id}
                     onCancel={() => {
                         setShowAddFile(false)
                     }}
-                    onSubmit={files => {
-                        if (task) {
-                            addFilesToTask(task, files)
-                            setShowAddFile(false)
-                        }
+                    onSubmit={() => {
+                        setShowAddFile(false)
                     }}
                 />
             )}

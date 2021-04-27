@@ -122,6 +122,8 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
     const userAvatar = user ? user.avatarUrl : task.user.avatar
     const userName = user ? user.fullName : task.assignTo
 
+    console.log(task)
+
     return (
         <StyledTask>
             <StyledTaskHeader>
@@ -247,22 +249,23 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
                 </StyledTaskDescriptionText>
                 <StyledTaskFiles>
                     <StyledTaskFilesList>
-                        {/*task?.files &&*/}
-                        {task.files.map(file => (
-                            <StyledTaskFile>
-                                <File
-                                    key={file.id}
-                                    title={file.title}
-                                    preview={file.preview}
-                                    format={file.format}
-                                    size={file.size}
-                                    onFileDelete={fileId => {
-                                        onFileDelete(task, fileId)
-                                    }}
-                                    id={file.id}
-                                />
-                            </StyledTaskFile>
-                        ))}
+                        {task?.files &&
+                            task.files.map(file => (
+                                <StyledTaskFile>
+                                    <File
+                                        taskId={file.taskId}
+                                        key={file.id}
+                                        title={file.title}
+                                        preview={file.preview}
+                                        format={file.format}
+                                        size={file.size}
+                                        onFileDelete={fileId => {
+                                            onFileDelete(task, fileId)
+                                        }}
+                                        id={file.id}
+                                    />
+                                </StyledTaskFile>
+                            ))}
                     </StyledTaskFilesList>
                     {user && (
                         <Button

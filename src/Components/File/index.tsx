@@ -1,5 +1,5 @@
 import React from 'react'
-import { FileType } from './type'
+import { FileType } from './types'
 import { Button, BUTTON_SIZE } from '../Button'
 import {
     StyledFile,

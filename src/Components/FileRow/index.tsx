@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Tag, TAG_TYPE } from '../Tag'
 import {
+    StyledFileRowActionsButton,
+    StyledFileRowDownload,
     StyledFileRowPreview,
     StyledFileRowUploadedBy,
+    StyledFileRowDeleteFileButton,
     StyledFileRowActions,
-    StyledFileRowDownload,
 } from './style'
 import { StyledFilesPageItems } from '../../Pages/FilesPage/style'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
 import arrow from './Arrow.svg'
 import download from './Download.svg'
+import { Button, BUTTON_SIZE } from '../Button'
 
 interface FileRowProps {
     image: string
@@ -19,7 +22,8 @@ interface FileRowProps {
     tag: TAG_TYPE
     date: string | undefined
     avatar?: string
-    onButtonClick: () => void
+    onFileDelete: () => void
+    onDownload: () => void
 }
 
 const FileRow = ({
@@ -30,8 +34,11 @@ const FileRow = ({
     tag,
     uploadedBy,
     avatar,
-    onButtonClick,
+    onFileDelete,
+    onDownload,
 }: FileRowProps) => {
+    const [showDeleteButton, setShowDeleteButton] = useState<boolean>(false)
+
     return (
         <StyledFilesPageItems>
             <StyledFileRowPreview>
@@ -47,16 +54,29 @@ const FileRow = ({
                 <Tag text={tag} type={tag} />
             </div>
             <div>{date}</div>
-            <div>
-                <StyledFileRowActions onClick={onButtonClick}>
+            <StyledFileRowActions>
+                <StyledFileRowActionsButton
+                    onClick={() => setShowDeleteButton(true)}
+                >
                     <div>
                         <span>Actions</span>
                         <img src={arrow} alt={'more'} />
                     </div>
-                </StyledFileRowActions>
-            </div>
+                </StyledFileRowActionsButton>
+                {showDeleteButton && (
+                    <StyledFileRowDeleteFileButton>
+                        <Button
+                            onClick={onFileDelete}
+                            text={'Delete'}
+                            size={BUTTON_SIZE.MEDIUM}
+                            backgroundColor={'transparent'}
+                            color={'red'}
+                        />
+                    </StyledFileRowDeleteFileButton>
+                )}
+            </StyledFileRowActions>
             <div>
-                <StyledFileRowDownload>
+                <StyledFileRowDownload onClick={onDownload}>
                     <img src={download} alt='download' />
                 </StyledFileRowDownload>
             </div>

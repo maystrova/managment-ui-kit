@@ -28,6 +28,7 @@ export enum SIDEBAR_LIST {
 
 export const tasks: TaskType[] = [
     {
+        id: '1',
         title: 'E-mail after registration so that I can confirm my address',
         user: { avatar: userAvatar1 },
         tag: TAG_TYPE.DEVELOPMENT,
@@ -67,6 +68,7 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '159 kb',
                 id: 3,
+                taskId: '1',
             },
             {
                 title: 'Header',
@@ -74,10 +76,12 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '129 kb',
                 id: 4,
+                taskId: '1',
             },
         ],
     },
     {
+        id: '2',
         title: 'Find top 5 customers and get reviews from them',
         user: { avatar: userAvatar7 },
         tag: TAG_TYPE.MARKETING,
@@ -117,6 +121,7 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '159 kb',
                 id: 1,
+                taskId: '1',
             },
             {
                 title: 'Header',
@@ -124,10 +129,12 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '129 kb',
                 id: 2,
+                taskId: '1',
             },
         ],
     },
     {
+        id: '4',
         title: 'Two-factor authentication to make my private data more secure',
         user: { avatar: userAvatar8 },
         tag: TAG_TYPE.DESIGN,
@@ -167,6 +174,7 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '159 kb',
                 id: 1,
+                taskId: '1',
             },
             {
                 title: 'Header',
@@ -174,10 +182,12 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '129 kb',
                 id: 1000,
+                taskId: '1',
             },
         ],
     },
     {
+        id: '3',
         title: `An option to search in current projects or in all projects`,
         user: { avatar: userAvatar9 },
         tag: TAG_TYPE.DESIGN,
@@ -217,6 +227,7 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '159 kb',
                 id: 99999,
+                taskId: '1',
             },
             {
                 title: 'Header',
@@ -224,10 +235,12 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '129 kb',
                 id: 234234,
+                taskId: '1',
             },
         ],
     },
     {
+        id: '5',
         title: `Account for teams and personal in bottom style`,
         user: { avatar: userAvatar5 },
         tag: TAG_TYPE.MARKETING,
@@ -268,6 +281,7 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '159 kb',
                 id: 3245,
+                taskId: '1',
             },
             {
                 title: 'Header',
@@ -275,10 +289,12 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '129 kb',
                 id: 2345235465,
+                taskId: '1',
             },
         ],
     },
     {
+        id: '6',
         title: `Listing on Product Hunt so that we can reach as many potential users`,
         user: { avatar: userAvatar6 },
         tag: TAG_TYPE.DESIGN,
@@ -318,6 +334,7 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '159 kb',
                 id: 345,
+                taskId: '1',
             },
             {
                 title: 'Header',
@@ -325,6 +342,7 @@ export const tasks: TaskType[] = [
                 preview: filePreview,
                 size: '129 kb',
                 id: 2345742345,
+                taskId: '1',
             },
         ],
     },

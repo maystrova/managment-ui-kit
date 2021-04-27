@@ -41,7 +41,6 @@ import { firebase } from 'services/firebase'
 
 import { TaskPage } from 'Pages/TaskPage'
 import { ROUTES } from '../../services/route'
-import { StyledFilesPage } from '../../Pages/FilesPage/style'
 import { FilesPage } from '../../Pages/FilesPage'
 
 const sidebarLists: ListType[] = [
@@ -215,6 +214,7 @@ const Layout = () => {
                 // ...
             })
             .catch(() => {})
+        console.log(user?.id)
     }
 
     const getStateUser = async (): Promise<void> => {

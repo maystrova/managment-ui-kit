@@ -5,4 +5,5 @@ export type FileType = {
     size: string
     id: number
     date?: string
+    taskId: string
 }

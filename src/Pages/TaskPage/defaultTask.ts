@@ -11,6 +11,7 @@ import userAvatar4 from './images/userpic4.png'
 import userAvatar5 from './images/userpic5.png'
 
 export const DEFAULT_TASK: TaskType = {
+    id: 'DEFAULT_TASK',
     title: 'Find top 5 customer requests',
     addedBy: 'Kristin A',
     createdAt: '07.01.2020',
@@ -49,14 +50,16 @@ export const DEFAULT_TASK: TaskType = {
             format: '.pdf',
             preview: filePreview,
             size: '159 kb',
-            id: 1,
+            id: Date.now(),
+            taskId: '1',
         },
         {
             title: 'Header',
             format: '.png',
             preview: filePreview,
             size: '129 kb',
-            id: 2,
+            id: Date.now(),
+            taskId: '1',
         },
     ],
 }

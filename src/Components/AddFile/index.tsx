@@ -1,17 +1,24 @@
 import React, { useState } from 'react'
-import { ModalWindow } from '../ModalWindow'
-import { StyledAddFile, StyledAddFileFooter } from './style'
+
 import { storage } from 'services/firebase'
+import { writeFile } from 'services/file'
+import { User } from 'services/user'
+
 import { Uploading } from '../Uploading'
-import { FileType } from '../File/type'
+import { ModalWindow } from '../ModalWindow'
+import { FileType } from 'Components/File/types'
 import { Button, BUTTON_SIZE } from '../Button'
+
+import { StyledAddFile, StyledAddFileFooter } from './style'
 
 export interface AddFileProps {
     onCancel: () => void
-    onSubmit: (filesUrls: FileType[]) => void
+    onSubmit: () => void
+    taskId: string
+    user: User
 }
 
-const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
+const AddFile = ({ onCancel, onSubmit, taskId, user }: AddFileProps) => {
     const [drag, setDrag] = useState<boolean>(false)
     const [files, setFiles] = useState<FileType[]>([])
     const [isLoading, setLoading] = useState<boolean>(false)
@@ -48,6 +55,7 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
                 format: '',
                 id: parseInt(fileMetaData.generation),
                 date: `${new Date(Date.now()).toDateString()}`,
+                taskId: taskId,
             }
             filesData.push(preparedFile)
         }
@@ -55,9 +63,22 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
         return filesData
     }
 
-    const uploadFilesHandler = async (files: File[]) => {
-        const filesData = await uploadFiles(files)
+    const writeFilesToFireStore = async (
+        files: FileType[],
+        user: User,
+    ): Promise<void> => {
+        for (const file of files) {
+            try {
+                await writeFile(file, user)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+    }
 
+    const uploadFilesHandler = async (files: File[], user: User) => {
+        const filesData = await uploadFiles(files)
+        await writeFilesToFireStore(filesData, user)
         setFiles(filesData)
 
         setLoading(false)
@@ -67,12 +88,12 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
     const onDrop = async (e: any): Promise<void> => {
         e.preventDefault()
         let files = e.dataTransfer.files
-        await uploadFilesHandler(files)
+        await uploadFilesHandler(files, user)
     }
 
     const onUploadClick = async (e: any): Promise<void> => {
         let files = e.target.files
-        await uploadFilesHandler(files)
+        await uploadFilesHandler(files, user)
     }
 
     return (
@@ -130,7 +151,7 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
                                 text={'Upload to task'}
                                 backgroundColor={'#CEF9C6'}
                                 size={BUTTON_SIZE.LARGE}
-                                onClick={() => onSubmit(files)}
+                                onClick={onSubmit}
                             />
                         </StyledAddFileFooter>
                     )}
