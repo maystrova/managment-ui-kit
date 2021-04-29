@@ -4,10 +4,13 @@ import { User } from 'services/user'
 import { getAllFiles } from 'services/file'
 import { FileType } from '../File/types'
 import { File } from '../File'
+import { StyledTaskFilesList } from '../Task/style'
+import { Uploading } from '../Uploading'
 
 interface FilesProps {
     fileIds: string[]
     user: User
+    // onFileDelete: (fileId: FileType) => void
 }
 
 const Files = ({ fileIds, user }: FilesProps) => {
@@ -36,8 +39,8 @@ const Files = ({ fileIds, user }: FilesProps) => {
     }, [fileIds, user])
 
     return (
-        <div>
-            {isLoading && 'Loading'}
+        <StyledTaskFilesList>
+            {isLoading && <Uploading />}
             {Boolean(files.length) &&
                 files.map(file => (
                     <File
@@ -51,7 +54,7 @@ const Files = ({ fileIds, user }: FilesProps) => {
                         date={file.date}
                     />
                 ))}
-        </div>
+        </StyledTaskFilesList>
     )
 }
 

@@ -24,10 +24,10 @@ const FilesPage = ({ user }: FilesPageProps) => {
 
     const onFileDelete = (fileIdForDelete: string): void => {
         console.log('fileIdForDelete', fileIdForDelete)
-        // const newFiles: FileType[] = files.filter(
-        //     file => file.id !== fileIdForDelete,
-        // )
-        // setFiles(newFiles)
+        const newFiles: FileType[] = files.filter(
+            file => file.id !== fileIdForDelete,
+        )
+        setFiles(newFiles)
     }
 
     const onFileDownload = () => {

@@ -15,9 +15,7 @@ import {
     StyledTask,
     StyledTaskDescription,
     StyledTaskDescriptionText,
-    StyledTaskFile,
     StyledTaskFiles,
-    StyledTaskFilesList,
     StyledTaskHeader,
     StyledTaskHeaderTitle,
     StyledTaskInformation,
@@ -29,6 +27,8 @@ import { Button, BUTTON_SIZE } from '../Button'
 import { KEY } from 'services/keys'
 import { User } from 'services/user'
 import { Files } from '../Files'
+import { FileType } from '../File/types'
+import { files } from '../../Pages/FilesPage/files'
 
 interface TaskProps {
     task: TaskType
@@ -58,13 +58,21 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
         onTaskUpdated(newTask)
     }
 
-    // const onFileDelete = (task: TaskType, fileIdForDelete: number): void => {
+    // const onFileDelete = (task: TaskType, fileIdForDelete: string): void => {
     //     const newTask: TaskType = {
     //         ...task,
     //         files: task.files.filter(file => file.id !== fileIdForDelete),
     //     }
     //     onTaskUpdated(newTask)
     // }
+
+    const onFileDelete = (task: TaskType, fileForDelete: string): void => {
+        const newTask: TaskType = {
+            ...task,
+            files: task.files.filter(file => file !== fileForDelete),
+        }
+        onTaskUpdated(newTask)
+    }
 
     const onTaskUpdate = (
         task: TaskType,
@@ -249,9 +257,9 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
 
                 {user && (
                     <StyledTaskFiles>
-                        <StyledTaskFilesList>
+                        <div>
                             <Files fileIds={task.files} user={user} />
-                        </StyledTaskFilesList>
+                        </div>
                         <Button
                             onClick={onAddFileClick}
                             text={'Add a File'}
