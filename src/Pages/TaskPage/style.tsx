@@ -6,9 +6,10 @@ const StyledTaskPage = styled.div`
     grid-gap: 20px;
 `
 
-const StyledTaskPageList = styled.div`
-    display: grid;
-    grid-gap: 20px;
+const StyledTaskPageList = styled.div``
+
+const StyledTaskPageBacklog = styled.div`
+    margin-bottom: 20px;
 `
 
-export { StyledTaskPage, StyledTaskPageList }
+export { StyledTaskPage, StyledTaskPageList, StyledTaskPageBacklog }

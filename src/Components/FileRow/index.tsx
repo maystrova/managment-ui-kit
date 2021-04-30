@@ -66,7 +66,7 @@ const FileRow = ({
                 {showDeleteButton && (
                     <StyledFileRowDeleteFileButton>
                         <Button
-                            onClick={onFileDelete}
+                            onClick={() => onFileDelete()}
                             text={'Delete'}
                             size={BUTTON_SIZE.MEDIUM}
                             backgroundColor={'transparent'}
@@ -76,9 +76,9 @@ const FileRow = ({
                 )}
             </StyledFileRowActions>
             <div>
-                <StyledFileRowDownload onClick={onDownload}>
+                <a href={image} target='_blank'>
                     <img src={download} alt='download' />
-                </StyledFileRowDownload>
+                </a>
             </div>
         </StyledFilesPageItems>
     )

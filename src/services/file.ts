@@ -24,6 +24,18 @@ const getAllFiles = async (user: User): Promise<FileType[]> => {
     return files
 }
 
+const deleteFileFromTask = async (
+    taskId: string,
+    fileId: string,
+    user: User,
+): Promise<void> => {
+    const serverFilesRef = firebase
+        .database()
+        .ref(`users/${user.id}/files/${fileId}`)
+
+    await serverFilesRef.remove()
+}
+
 const writeFile = async (
     file: FileType,
     user: User,
@@ -31,4 +43,4 @@ const writeFile = async (
     return firebase.database().ref(`users/${user.id}/files`).push(file).key
 }
 
-export { getAllFiles, writeFile }
+export { getAllFiles, writeFile, deleteFileFromTask }

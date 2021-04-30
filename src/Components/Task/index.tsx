@@ -5,7 +5,6 @@ import { Tag } from '../Tag'
 import { Comment } from '../Comment'
 import { DiscussionType, TaskType } from './types'
 import { AddComment } from '../AddComment'
-import { File } from '../File'
 import {
     StyledAvatar,
     StyledEdit,
@@ -27,8 +26,6 @@ import { Button, BUTTON_SIZE } from '../Button'
 import { KEY } from 'services/keys'
 import { User } from 'services/user'
 import { Files } from '../Files'
-import { FileType } from '../File/types'
-import { files } from '../../Pages/FilesPage/files'
 
 interface TaskProps {
     task: TaskType
@@ -258,7 +255,13 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
                 {user && (
                     <StyledTaskFiles>
                         <div>
-                            <Files fileIds={task.files} user={user} />
+                            <Files
+                                onFileDelete={fileId =>
+                                    onFileDelete(task, fileId)
+                                }
+                                fileIds={task.files}
+                                user={user}
+                            />
                         </div>
                         <Button
                             onClick={onAddFileClick}

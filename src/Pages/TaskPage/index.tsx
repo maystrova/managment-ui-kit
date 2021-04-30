@@ -12,7 +12,11 @@ import { createTask, getAllTasks, updateTask } from 'services/task'
 import { DEFAULT_TASK } from './defaultTask'
 import { tasks } from 'Components/Layout/tasks'
 
-import { StyledTaskPage, StyledTaskPageList } from './style'
+import {
+    StyledTaskPage,
+    StyledTaskPageList,
+    StyledTaskPageBacklog,
+} from './style'
 
 interface CreationTask {
     isModalOpen: boolean
@@ -115,20 +119,22 @@ const TaskPage = ({ user }: TaskPageProps) => {
     return (
         <StyledTaskPage>
             <StyledTaskPageList>
-                <TasksList
-                    onCreatedTaskClicked={() =>
-                        setShowAddTask({
-                            isModalOpen: true,
-                            taskTypeForCreation: TASK_TYPE.BACKLOG,
-                        })
-                    }
-                    onTaskChecked={editTask}
-                    title={'Backlog'}
-                    tasks={backlogTasks}
-                    onTaskSelected={selectTask}
-                    user={user}
-                    isLoading={isTasksLoading}
-                />
+                <StyledTaskPageBacklog>
+                    <TasksList
+                        onCreatedTaskClicked={() =>
+                            setShowAddTask({
+                                isModalOpen: true,
+                                taskTypeForCreation: TASK_TYPE.BACKLOG,
+                            })
+                        }
+                        onTaskChecked={editTask}
+                        title={'Backlog'}
+                        tasks={backlogTasks}
+                        onTaskSelected={selectTask}
+                        user={user}
+                        isLoading={isTasksLoading}
+                    />
+                </StyledTaskPageBacklog>
 
                 <TasksList
                     onCreatedTaskClicked={() =>

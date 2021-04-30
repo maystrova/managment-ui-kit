@@ -4,7 +4,7 @@ import {
     StyledFilesPageHeader,
     StyledFilesPageItems,
 } from './style'
-import { getAllFiles } from 'services/file'
+import { deleteFileFromTask, getAllFiles } from 'services/file'
 import { User } from 'services/user'
 import { FileType } from 'Components/File/types'
 import { FileRow } from 'Components/FileRow'
@@ -22,12 +22,17 @@ const FilesPage = ({ user }: FilesPageProps) => {
         setFiles(files)
     }
 
-    const onFileDelete = (fileIdForDelete: string): void => {
-        console.log('fileIdForDelete', fileIdForDelete)
-        const newFiles: FileType[] = files.filter(
-            file => file.id !== fileIdForDelete,
-        )
-        setFiles(newFiles)
+    const onFileDelete = async (
+        taskId: string,
+        fileIdForDelete: string,
+        user: User,
+    ): Promise<void> => {
+        try {
+            await deleteFileFromTask(taskId, fileIdForDelete, user)
+            await getFiles(user)
+        } catch (errors) {
+            console.log('Delete file', errors)
+        }
     }
 
     const onFileDownload = () => {
@@ -53,7 +58,11 @@ const FilesPage = ({ user }: FilesPageProps) => {
             {files.map(file => (
                 <FileRow
                     onDownload={onFileDownload}
-                    onFileDelete={() => onFileDelete(file.id)}
+                    onFileDelete={() => {
+                        if (user) {
+                            return onFileDelete(file.taskId, file.id, user)
+                        }
+                    }}
                     avatar={user?.avatarUrl}
                     key={file.id}
                     image={file.preview}

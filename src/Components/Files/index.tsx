@@ -10,10 +10,10 @@ import { Uploading } from '../Uploading'
 interface FilesProps {
     fileIds: string[]
     user: User
-    // onFileDelete: (fileId: FileType) => void
+    onFileDelete: (fileId: string) => void
 }
 
-const Files = ({ fileIds, user }: FilesProps) => {
+const Files = ({ fileIds, user, onFileDelete }: FilesProps) => {
     const [isLoading, setLoading] = useState<boolean>(false)
     const [files, setFiles] = useState<FileType[]>([])
 
@@ -45,7 +45,8 @@ const Files = ({ fileIds, user }: FilesProps) => {
                 files.map(file => (
                     <File
                         id={file.id}
-                        onFileDelete={() => {}}
+                        key={file.id}
+                        onFileDelete={fileId => onFileDelete(fileId)}
                         taskId={file.taskId}
                         size={file.size}
                         format={file.format}
