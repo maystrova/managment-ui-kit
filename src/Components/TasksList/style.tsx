@@ -7,7 +7,6 @@ const StyledTaskListWrapper = styled.div`
 const StyledTasksList = styled.div`
     background-color: #fff;
     padding: 20px;
-    margin: 0 20px 20px 0;
     width: 463px;
     border-radius: 6px;
 `

@@ -1,17 +1,17 @@
-import userAvatar1 from '../Layout/pics/userpic1.png'
-import userAvatar7 from '../Layout/pics/userpic7.png'
-import userAvatar8 from '../Layout/pics/userpic8.png'
-import userAvatar9 from '../Layout/pics/userpic9.png'
-import userAvatar5 from '../Layout/pics/userpic5.png'
-import userAvatar6 from '../Layout/pics/userpic6.png'
 import { TASK_TYPE, TaskType } from '../Task/types'
+import { TAG_TYPE } from '../Tag'
+
+import commentAvatar2 from './pics/commentpic3.png'
+import commentAvatar3 from './pics/commentpic2.png'
+import userAvatar1 from '../Layout/pics/userpic1.png'
 import userAvatar2 from './pics/userpic2.png'
 import userAvatar3 from './pics/userpic3.png'
 import userAvatar4 from './pics/userpic4.png'
-import commentAvatar3 from './pics/commentpic2.png'
-import commentAvatar2 from './pics/commentpic3.png'
-import filePreview from './pics/file.png'
-import { TAG_TYPE } from '../Tag'
+import userAvatar5 from '../Layout/pics/userpic5.png'
+import userAvatar6 from '../Layout/pics/userpic6.png'
+import userAvatar7 from '../Layout/pics/userpic7.png'
+import userAvatar8 from '../Layout/pics/userpic8.png'
+import userAvatar9 from '../Layout/pics/userpic9.png'
 
 export type Task = {
     title: string
@@ -27,6 +27,7 @@ export enum SIDEBAR_LIST {
 
 export const tasks: TaskType[] = [
     {
+        id: '1',
         title: 'E-mail after registration so that I can confirm my address',
         user: { avatar: userAvatar1 },
         tag: TAG_TYPE.DEVELOPMENT,
@@ -59,24 +60,10 @@ export const tasks: TaskType[] = [
                 id: '234565745',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 3,
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 4,
-            },
-        ],
+        files: [],
     },
     {
+        id: '2',
         title: 'Find top 5 customers and get reviews from them',
         user: { avatar: userAvatar7 },
         tag: TAG_TYPE.MARKETING,
@@ -109,24 +96,10 @@ export const tasks: TaskType[] = [
                 id: '62342352554333',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 1,
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 2,
-            },
-        ],
+        files: [],
     },
     {
+        id: '4',
         title: 'Two-factor authentication to make my private data more secure',
         user: { avatar: userAvatar8 },
         tag: TAG_TYPE.DESIGN,
@@ -159,24 +132,10 @@ export const tasks: TaskType[] = [
                 id: '111111111',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 1,
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 1000,
-            },
-        ],
+        files: [],
     },
     {
+        id: '3',
         title: `An option to search in current projects or in all projects`,
         user: { avatar: userAvatar9 },
         tag: TAG_TYPE.DESIGN,
@@ -209,24 +168,10 @@ export const tasks: TaskType[] = [
                 id: '545454545454',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 99999,
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 234234,
-            },
-        ],
+        files: [],
     },
     {
+        id: '5',
         title: `Account for teams and personal in bottom style`,
         user: { avatar: userAvatar5 },
         tag: TAG_TYPE.MARKETING,
@@ -260,24 +205,10 @@ export const tasks: TaskType[] = [
                 id: '21211212121212',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 3245,
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 2345235465,
-            },
-        ],
+        files: [],
     },
     {
+        id: '6',
         title: `Listing on Product Hunt so that we can reach as many potential users`,
         user: { avatar: userAvatar6 },
         tag: TAG_TYPE.DESIGN,
@@ -310,21 +241,6 @@ export const tasks: TaskType[] = [
                 id: '7272772727272',
             },
         ],
-        files: [
-            {
-                title: 'Redesign Brief',
-                format: '.pdf',
-                preview: filePreview,
-                size: '159 kb',
-                id: 345,
-            },
-            {
-                title: 'Header',
-                format: '.png',
-                preview: filePreview,
-                size: '129 kb',
-                id: 2345742345,
-            },
-        ],
+        files: [],
     },
 ]

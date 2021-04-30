@@ -1,19 +1,27 @@
 import React, { useState } from 'react'
-import { ModalWindow } from '../ModalWindow'
-import { StyledAddFile, StyledAddFileFooter } from './style'
+
 import { storage } from 'services/firebase'
+import { writeFile } from 'services/file'
+import { User } from 'services/user'
+
 import { Uploading } from '../Uploading'
-import { FileType } from '../File/type'
+import { ModalWindow } from '../ModalWindow'
+import { FileType } from 'Components/File/types'
 import { Button, BUTTON_SIZE } from '../Button'
+
+import { StyledAddFile, StyledAddFileFooter } from './style'
 
 export interface AddFileProps {
     onCancel: () => void
-    onSubmit: (filesUrls: FileType[]) => void
+    onSubmit: (fileIds: string[]) => void
+    taskId: string
+    user: User
 }
 
-const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
+const AddFile = ({ onCancel, onSubmit, taskId, user }: AddFileProps) => {
     const [drag, setDrag] = useState<boolean>(false)
     const [files, setFiles] = useState<FileType[]>([])
+    const [fileIds, setFileIds] = useState<string[]>([])
     const [isLoading, setLoading] = useState<boolean>(false)
 
     const onDragStart = (e: any): void => {
@@ -39,15 +47,16 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
 
             const fileUrl = await snapshot.ref.getDownloadURL()
             const fileMetaData = await snapshot.ref.getMetadata()
-            console.log(fileMetaData)
 
             const { protocol, host, pathname } = new URL(fileUrl)
             const preparedFile: FileType = {
-                preview: `${protocol}${host}${pathname}?alt=media`,
+                preview: `${protocol}//${host}${pathname}?alt=media`,
                 title: fileMetaData.name,
                 size: `${fileMetaData.size.toString()} KB`,
                 format: '',
-                id: parseInt(fileMetaData.generation),
+                id: fileMetaData.generation,
+                date: `${new Date(Date.now()).toDateString()}`,
+                taskId: taskId,
             }
             filesData.push(preparedFile)
         }
@@ -55,10 +64,33 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
         return filesData
     }
 
-    const uploadFilesHandler = async (files: File[]) => {
+    const writeFilesToFireStore = async (
+        files: FileType[],
+        user: User,
+    ): Promise<string[]> => {
+        let fileIds = []
+
+        for (const file of files) {
+            try {
+                const fileId = await writeFile(file, user)
+
+                if (fileId) {
+                    fileIds.push(fileId)
+                }
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        return fileIds
+    }
+
+    const uploadFilesHandler = async (files: File[], user: User) => {
         const filesData = await uploadFiles(files)
+        const fileIds = await writeFilesToFireStore(filesData, user)
 
         setFiles(filesData)
+        setFileIds(fileIds)
 
         setLoading(false)
         setDrag(false)
@@ -67,12 +99,12 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
     const onDrop = async (e: any): Promise<void> => {
         e.preventDefault()
         let files = e.dataTransfer.files
-        await uploadFilesHandler(files)
+        await uploadFilesHandler(files, user)
     }
 
     const onUploadClick = async (e: any): Promise<void> => {
         let files = e.target.files
-        await uploadFilesHandler(files)
+        await uploadFilesHandler(files, user)
     }
 
     return (
@@ -130,7 +162,7 @@ const AddFile = ({ onCancel, onSubmit }: AddFileProps) => {
                                 text={'Upload to task'}
                                 backgroundColor={'#CEF9C6'}
                                 size={BUTTON_SIZE.LARGE}
-                                onClick={() => onSubmit(files)}
+                                onClick={() => onSubmit(fileIds)}
                             />
                         </StyledAddFileFooter>
                     )}

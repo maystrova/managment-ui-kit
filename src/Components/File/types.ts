@@ -3,5 +3,7 @@ export type FileType = {
     title: string
     format: string
     size: string
-    id: number
+    id: string
+    date?: string
+    taskId: string
 }

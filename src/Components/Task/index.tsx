@@ -5,7 +5,6 @@ import { Tag } from '../Tag'
 import { Comment } from '../Comment'
 import { DiscussionType, TaskType } from './types'
 import { AddComment } from '../AddComment'
-import { File } from '../File'
 import {
     StyledAvatar,
     StyledEdit,
@@ -15,9 +14,7 @@ import {
     StyledTask,
     StyledTaskDescription,
     StyledTaskDescriptionText,
-    StyledTaskFile,
     StyledTaskFiles,
-    StyledTaskFilesList,
     StyledTaskHeader,
     StyledTaskHeaderTitle,
     StyledTaskInformation,
@@ -28,6 +25,7 @@ import {
 import { Button, BUTTON_SIZE } from '../Button'
 import { KEY } from 'services/keys'
 import { User } from 'services/user'
+import { Files } from '../Files'
 
 interface TaskProps {
     task: TaskType
@@ -57,10 +55,18 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
         onTaskUpdated(newTask)
     }
 
-    const onFileDelete = (task: TaskType, fileIdForDelete: number): void => {
+    // const onFileDelete = (task: TaskType, fileIdForDelete: string): void => {
+    //     const newTask: TaskType = {
+    //         ...task,
+    //         files: task.files.filter(file => file.id !== fileIdForDelete),
+    //     }
+    //     onTaskUpdated(newTask)
+    // }
+
+    const onFileDelete = (task: TaskType, fileForDelete: string): void => {
         const newTask: TaskType = {
             ...task,
-            files: task.files.filter(file => file.id !== fileIdForDelete),
+            files: task.files.filter(file => file !== fileForDelete),
         }
         onTaskUpdated(newTask)
     }
@@ -245,33 +251,25 @@ const Task = ({ task, onTaskUpdated, user, onAddFileClick }: TaskProps) => {
                         </StyledEdit>
                     )}
                 </StyledTaskDescriptionText>
-                <StyledTaskFiles>
-                    <StyledTaskFilesList>
-                        {/*task?.files &&*/}
-                        {task.files.map(file => (
-                            <StyledTaskFile>
-                                <File
-                                    key={file.id}
-                                    title={file.title}
-                                    preview={file.preview}
-                                    format={file.format}
-                                    size={file.size}
-                                    onFileDelete={fileId => {
-                                        onFileDelete(task, fileId)
-                                    }}
-                                    id={file.id}
-                                />
-                            </StyledTaskFile>
-                        ))}
-                    </StyledTaskFilesList>
-                    {user && (
+
+                {user && (
+                    <StyledTaskFiles>
+                        <div>
+                            <Files
+                                onFileDelete={fileId =>
+                                    onFileDelete(task, fileId)
+                                }
+                                fileIds={task.files}
+                                user={user}
+                            />
+                        </div>
                         <Button
                             onClick={onAddFileClick}
                             text={'Add a File'}
                             size={BUTTON_SIZE.MEDIUM}
                         />
-                    )}
-                </StyledTaskFiles>
+                    </StyledTaskFiles>
+                )}
             </StyledTaskDescription>
 
             <div>

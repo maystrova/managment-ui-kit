@@ -14,4 +14,8 @@ const StyledFileSizeInfo = styled.span`
     opacity: 70%;
 `
 
-export { StyledFile, StyledFilePreview, StyledFileSizeInfo }
+const StyledFileDate = styled.span`
+    display: none;
+`
+
+export { StyledFile, StyledFilePreview, StyledFileSizeInfo, StyledFileDate }

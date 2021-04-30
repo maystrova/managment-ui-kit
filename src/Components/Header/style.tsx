@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 const StyledHeader = styled.div`
     background-color: white;
@@ -37,7 +38,7 @@ const StyledHeaderButton = styled.div`
     margin-left: 10px;
 `
 
-const StyledHeaderMenuItem = styled.a`
+const StyledHeaderMenuItem = styled(NavLink)`
     color: black;
     opacity: 70%;
     margin-right: 20px;
@@ -46,7 +47,8 @@ const StyledHeaderMenuItem = styled.a`
     padding-bottom: 10px;
     display: inline-block;
 
-    &:hover {
+    &:hover,
+    &.active {
         border-bottom-color: #ffc200;
         transition: border-bottom-color 300ms ease-in-out;
     }

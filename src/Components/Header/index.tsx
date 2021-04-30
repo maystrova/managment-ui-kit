@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '../Button'
 import { Icon, ICON_SIZE } from '../Icon'
 import { Avatar, AVATAR_SIZE } from '../Avatar'
-import { HeaderCreatorType, HeaderMenuType } from './types'
+import { HeaderCreatorType } from './types'
 import {
     StyledHeader,
     StyledHeaderButton,
@@ -14,12 +14,13 @@ import {
     StyledHeaderTopic,
     StyledHeaderUser,
 } from './style'
+import { RouteType } from '../../services/route'
 
 export interface HeaderProps {
     creators: HeaderCreatorType[]
     icon: string
     title: string
-    menu: HeaderMenuType[]
+    menu: RouteType[]
     onShareWindowOpen: () => void
 }
 
@@ -62,7 +63,7 @@ const Header = ({
             </StyledHeaderRow>
             <div>
                 {menu.map(item => (
-                    <StyledHeaderMenuItem key={item.id} href='#'>
+                    <StyledHeaderMenuItem key={item.path} to={item.path}>
                         {item.title}
                     </StyledHeaderMenuItem>
                 ))}

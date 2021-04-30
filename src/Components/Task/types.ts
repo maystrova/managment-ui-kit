@@ -1,5 +1,5 @@
 import { TAG_TYPE } from '../Tag'
-import { FileType } from '../File/type'
+import { FileType } from '../File/types'
 
 export type DiscussionType = {
     name: string
@@ -31,7 +31,7 @@ export type TaskType = {
     description: string
     discussions: DiscussionType[]
     user: UserType
-    files: FileType[]
+    files: string[]
     type: TASK_TYPE
-    id?: string
+    id: string
 }
